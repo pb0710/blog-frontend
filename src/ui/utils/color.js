@@ -1,0 +1,48 @@
+export default {
+	name: 'default',
+	default: {
+		name: 'default',
+		main: '#fff',
+		bright: '#ecf5ff',
+		dim: '#f4f4f5',
+		text: '#606266',
+		border: '#dcdfe6',
+		ripple: '#82848a',
+	},
+	primary: {
+		name: 'primary',
+		main: '#409eff',
+		bright: '#66b1ff',
+		dim: '#3a8ee6',
+		text: '#fff',
+		border: '#409eff',
+		ripple: '#ecf5ff',
+	},
+	success: {
+		name: 'success',
+		main: '#67c23a',
+		bright: '#85ce61',
+		dim: '#5daf34',
+		text: '#fff',
+		border: '#67c23a',
+		ripple: '#f0f9eb',
+	},
+	warning: {
+		name: 'warning',
+		main: '#e6a23c',
+		bright: '#ebb563',
+		dim: '#cf9236',
+		text: '#fff',
+		border: '#e6a23c',
+		ripple: '#fdf6ec',
+	},
+	error: {
+		name: 'error',
+		main: '#f56c6c',
+		bright: '#f78989',
+		dim: '#dd6161',
+		text: '#fff',
+		border: '#f56c6c',
+		ripple: '#fef0f0',
+	}
+}
