@@ -45,7 +45,7 @@ function Button({ children, className, onClick, color = 'default' }) {
 				onMouseDown={handleStart}
 				onMouseUp={handleStop}
 			>
-				<TouchRipple ref={ref} color={color} center={true} />
+				<TouchRipple ref={ref} color={color} />
 				{children}
 			</button>
 		</>

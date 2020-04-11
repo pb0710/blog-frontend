@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useRef, useState, useEffect, useCallback } from 'react'
+import React, { useImperativeHandle, useRef, useState, useCallback } from 'react'
 import { TransitionGroup } from "react-transition-group"
 import { makeStyles } from '@material-ui/styles'
 import Ripple from './Ripple'
@@ -26,7 +26,7 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 	const container = useRef()
 	const classes = useStyles()
 
-	const addRipple = (rippleX, rippleY, rippleSize) => {
+	const addRipple = useCallback((rippleX, rippleY, rippleSize) => {
 
 		setRipples(oldRipples => [
 			...oldRipples,
@@ -40,7 +40,7 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 			/>
 		])
 		key.current++
-	}
+	}, [color, timeout])
 
 	const start = useCallback((e) => {
 		const element = container.current
@@ -74,7 +74,7 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 		}
 
 		addRipple(rippleX, rippleY, rippleSize)
-	}, [addRipple])
+	}, [addRipple, center])
 
 	const stop = useCallback(() => {
 		setRipples(oldRipples => {

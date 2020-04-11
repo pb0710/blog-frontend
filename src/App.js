@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     width: 400,
     height: 120,
+    // background: 'pink',
   },
   test: {
     margin: 8,

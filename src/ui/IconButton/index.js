@@ -17,10 +17,10 @@ const useStyles = makeStyles({
 		outline: 0,
 		border: 0,
 		borderRadius: '50%',
-		transition: 'all 0.2s ease-out',
+		transition: 'all 0.25s ease-out',
 
 		'&:hover': {
-			background: color.main,
+			background: color.dim,
 			cursor: 'pointer',
 		},
 	}),
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 export default function IconButton({ children, className }) {
 
-	const color = 'default'
+	const color = 'transparent'
 	const classes = useStyles({ color: colorMap[color] })
 	const { ref, handleStart, handleStop } = useRipple()
 
@@ -38,7 +38,7 @@ export default function IconButton({ children, className }) {
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
 		>
-			<TouchRipple ref={ref} center={true} timeout={600} />
+			<TouchRipple ref={ref} color={color} center={true} timeout={600} />
 			{children}
 		</button>
 	)

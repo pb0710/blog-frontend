@@ -39,5 +39,13 @@ export default {
 		dim: '#dd6161',
 		text: '#fff',
 		ripple: '#fef0f0',
+	},
+	transparent: {
+		name: 'transparent',
+		main: 'rgba(120,120,120,.2)',
+		bright: 'rgba(240,240,240,.2)',
+		dim: 'rgba(100,100,100,.1)',
+		text: 'rgba(0,0,0,1)',
+		ripple: 'rgba(0,0,0,.7)'
 	}
 }
