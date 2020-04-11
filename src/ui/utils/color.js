@@ -2,12 +2,11 @@ export default {
 	name: 'default',
 	default: {
 		name: 'default',
-		main: '#fff',
-		bright: '#ecf5ff',
-		dim: '#f4f4f5',
-		text: '#606266',
-		border: '#dcdfe6',
-		ripple: '#82848a',
+		main: '#f4f4f5',
+		bright: '#fcfcfe',
+		dim: '#e0e0e0',
+		text: '#303133',
+		ripple: '#606266',
 	},
 	primary: {
 		name: 'primary',
@@ -15,7 +14,6 @@ export default {
 		bright: '#66b1ff',
 		dim: '#3a8ee6',
 		text: '#fff',
-		border: '#409eff',
 		ripple: '#ecf5ff',
 	},
 	success: {
@@ -24,7 +22,6 @@ export default {
 		bright: '#85ce61',
 		dim: '#5daf34',
 		text: '#fff',
-		border: '#67c23a',
 		ripple: '#f0f9eb',
 	},
 	warning: {
@@ -33,7 +30,6 @@ export default {
 		bright: '#ebb563',
 		dim: '#cf9236',
 		text: '#fff',
-		border: '#e6a23c',
 		ripple: '#fdf6ec',
 	},
 	error: {
@@ -42,7 +38,6 @@ export default {
 		bright: '#f78989',
 		dim: '#dd6161',
 		text: '#fff',
-		border: '#f56c6c',
 		ripple: '#fef0f0',
 	}
 }
