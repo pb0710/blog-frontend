@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton } from 'ui'
+import { Paper, Button, IconButton, List, ListItem } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -18,12 +18,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
     width: 400,
     height: 120,
-    // background: 'pink',
   },
   test: {
     margin: 8,
-    // color: 'red',
-    // background: 'skyblue',
+  },
+  list: {
+    width: 240
   }
 })
 
@@ -42,6 +42,17 @@ function App() {
 
       <Paper className={classes.paper}>
         <IconButton className={classes.test}>图</IconButton>
+        <IconButton className={classes.test}>标</IconButton>
+        <IconButton className={classes.test}>Icon</IconButton>
+      </Paper>
+
+      <Paper className={classes.paper} style={{ height: 200 }}>
+        <List className={classes.list} bordered={true}>
+          <ListItem>列表项</ListItem>
+          <ListItem>这是一个列表1</ListItem>
+          <ListItem>asdfsa123</ListItem>
+          <ListItem>这是一个列表2</ListItem>
+        </List>
       </Paper>
     </div>
   )

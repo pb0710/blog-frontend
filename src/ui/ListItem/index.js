@@ -6,42 +6,45 @@ import { useRipple } from '../utils/hooks'
 import colorMap from '../utils/color'
 
 const useStyles = makeStyles({
-	root: ({ color }) => ({
-		display: 'inline-block',
+	root: ({ color, bordered }) => ({
+		display: 'flex',
+		alignItems: 'center',
+		boxSizing: 'border-box',
 		position: 'relative',
-		whiteSpace: 'nowrap',
-		textAlign: 'center',
-		width: 48,
-		height: 48,
-		background: 'transparent',
-		outline: 0,
-		border: 0,
-		borderRadius: '50%',
-		transition: 'all 0.25s ease-out',
+		width: '100%',
+		height: 40,
+		margin: 0,
+		padding: '0 24px',
+		background: '#fff',
+		borderBottom: bordered ? '1px solid #f0f0f0' : 0,
+		transition: 'all 0.15s ease-out',
 
 		'&:hover': {
 			background: color.dim,
-			cursor: 'pointer',
 		},
+
+		'&:last-child': {
+			border: 0
+		}
 	}),
 })
 
-function IconButton({ children, className }) {
+function ListItem({ children, className, bordered = true }) {
 
 	const color = 'transparent'
-	const classes = useStyles({ color: colorMap[color] })
+	const classes = useStyles({ color: colorMap[color], bordered })
 	const { ref, handleStart, handleStop } = useRipple()
 
 	return (
-		<button
+		<li 
 			className={clsx(classes.root, className)}
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
 		>
-			<TouchRipple ref={ref} color={color} center={true} timeout={600} />
+			<TouchRipple ref={ref} color={color} timeout={400} />
 			{children}
-		</button>
+		</li>
 	)
 }
 
-export default React.memo(IconButton)
+export default ListItem

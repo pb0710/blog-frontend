@@ -38,18 +38,16 @@ function Button({ children, className, onClick, color = 'default' }) {
 	const { ref, handleStart, handleStop } = useRipple()
 
 	return (
-		<>
-			<button
-				className={clsx(classes.root, className)}
-				onClick={onClick}
-				onMouseDown={handleStart}
-				onMouseUp={handleStop}
-			>
-				<TouchRipple ref={ref} color={color} />
-				{children}
-			</button>
-		</>
+		<button
+			className={clsx(classes.root, className)}
+			onClick={onClick}
+			onMouseDown={handleStart}
+			onMouseUp={handleStop}
+		>
+			<TouchRipple ref={ref} color={color} />
+			{children}
+		</button>
 	)
 }
 
-export default Button
+export default React.memo(Button)

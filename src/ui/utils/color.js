@@ -44,7 +44,7 @@ export default {
 		name: 'transparent',
 		main: 'rgba(120,120,120,.2)',
 		bright: 'rgba(240,240,240,.2)',
-		dim: 'rgba(100,100,100,.1)',
+		dim: 'rgba(120,120,120,.1)',
 		text: 'rgba(0,0,0,1)',
 		ripple: 'rgba(0,0,0,.7)'
 	}
