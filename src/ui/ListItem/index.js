@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 	}),
 })
 
-function ListItem({ children, className, bordered = true }) {
+function ListItem({ children, className, bordered = true, onClick }) {
 
 	const color = 'transparent'
 	const classes = useStyles({ color: colorMap[color], bordered })
@@ -40,8 +40,9 @@ function ListItem({ children, className, bordered = true }) {
 			className={clsx(classes.root, className)}
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
+			onClick={onClick}
 		>
-			<TouchRipple ref={ref} color={color} timeout={400} />
+			<TouchRipple ref={ref} color={color} />
 			{children}
 		</li>
 	)

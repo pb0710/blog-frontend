@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 		textAlign: 'center',
 		width: 48,
 		height: 48,
+		color: color.text,
 		background: 'transparent',
 		outline: 0,
 		border: 0,
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 	}),
 })
 
-function IconButton({ children, className }) {
+function IconButton({ children, className, onClick }) {
 
 	const color = 'transparent'
 	const classes = useStyles({ color: colorMap[color] })
@@ -35,10 +36,11 @@ function IconButton({ children, className }) {
 	return (
 		<button
 			className={clsx(classes.root, className)}
+			onClick={onClick}
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
 		>
-			<TouchRipple ref={ref} color={color} center={true} timeout={600} />
+			<TouchRipple ref={ref} color={color} center={true} timeout={500} />
 			{children}
 		</button>
 	)

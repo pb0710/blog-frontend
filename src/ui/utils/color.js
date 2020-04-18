@@ -1,10 +1,9 @@
 export default {
-	name: 'default',
 	default: {
 		name: 'default',
 		main: '#f4f4f5',
 		bright: '#fcfcfe',
-		dim: '#e0e0e0',
+		dim: '#e8e8e8',
 		text: '#303133',
 		ripple: '#606266',
 	},
@@ -45,7 +44,7 @@ export default {
 		main: 'rgba(120,120,120,.2)',
 		bright: 'rgba(240,240,240,.2)',
 		dim: 'rgba(120,120,120,.1)',
-		text: 'rgba(0,0,0,1)',
-		ripple: 'rgba(0,0,0,.7)'
+		text: '#303133',
+		ripple: 'rgba(0,0,0,.4)'
 	}
 }

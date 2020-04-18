@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 		outline: 0,
 		border: 0,
 		borderRadius: 2,
-		boxShadow: '0 1px 3px rgba(26,26,26,.1)',
+		boxShadow: `0 ${color.name === 'default' ? '0 1px' : '1px 3px'} rgba(26,26,26,.1)`,
 		color: color.text,
 		padding: '4px 16px',
 		transition: 'all 0.2s ease-out',

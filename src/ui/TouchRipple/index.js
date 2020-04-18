@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useRef, useState, useCallback } from 'react'
-import { TransitionGroup } from "react-transition-group"
+import { TransitionGroup } from 'react-transition-group'
 import { makeStyles } from '@material-ui/styles'
 import Ripple from './Ripple'
 
@@ -77,12 +77,7 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 	}, [addRipple, center])
 
 	const stop = useCallback(() => {
-		setRipples(oldRipples => {
-			if (oldRipples.length > 0) {
-				return oldRipples.slice(1)
-			}
-			return oldRipples
-		})
+		setRipples(oldRipples => oldRipples.length > 0 ? oldRipples.slice(1) : oldRipples)
 	}, [])
 
 	useImperativeHandle(ref, () => ({
@@ -92,7 +87,7 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 
 	return (
 		<span ref={container} className={classes.root}>
-			<TransitionGroup >
+			<TransitionGroup component={null}>
 				{ripples}
 			</TransitionGroup>
 		</span>

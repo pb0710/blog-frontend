@@ -6,11 +6,9 @@ import colorMap from '../../utils/color'
 const useStyles = makeStyles({
 	root: ({ styles }) => ({
 		position: 'absolute',
-		opacity: 0.3,
 		...styles
 	}),
 	child: {
-		opacity: 1,
 		display: 'block',
 		width: '100%',
 		height: '100%',
@@ -18,7 +16,7 @@ const useStyles = makeStyles({
 		background: ({ color }) => color.ripple,
 	},
 	enter: {
-		animation: '$enter ease-out',
+		animation: '$enter ease-out forwards',
 		animationDuration: ({ timeout }) => timeout,
 	},
 	leave: {
@@ -28,11 +26,11 @@ const useStyles = makeStyles({
 	'@keyframes enter': {
 		from: {
 			transform: 'scale(0)',
-			opacity: 0.1,
+			opacity: .1,
 		},
 		to: {
 			transform: 'scale(1)',
-			opacity: 0.3,
+			opacity: .4,
 		}
 	},
 	'@keyframes exit': {
@@ -51,7 +49,8 @@ export default function Ripple(props) {
 		rippleY,
 		rippleSize,
 		in: inProp,
-		timeout = 500,
+		onExited = () => { },
+		timeout = 400,
 		color = 'default'
 	} = props
 
@@ -66,8 +65,16 @@ export default function Ripple(props) {
 	const classes = useStyles({ styles, timeout, color: colorMap[color] })
 
 	useEffect(() => {
-		inProp || setLeave(true)
-	}, [inProp])
+		if (!inProp) {
+
+			setLeave(true)
+			const timer = setTimeout(onExited, timeout)
+
+			return () => {
+				clearTimeout(timer)
+			}
+		}
+	}, [inProp, onExited, timeout])
 
 	return (
 		<span className={clsx(classes.root, classes.enter)}>
