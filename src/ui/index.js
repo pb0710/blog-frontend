@@ -9,6 +9,7 @@ import List from './List'
 import ListItem from './ListItem'
 import Dialog from './Dialog'
 import Switch from './Switch'
+import Loading from './Loading'
 
 export {
 	Button,
@@ -19,4 +20,5 @@ export {
 	ListItem,
 	Dialog,
 	Switch,
+	Loading,
 }

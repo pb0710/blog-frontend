@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog, Switch } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -105,6 +105,22 @@ function App() {
         <Switch label="切换" defaultChecked={false} onChange={handleToggleSwitch} />
         <Switch disabled={true} defaultChecked={false} />
         <Switch disabled={true} label="禁用模式" />
+      </Paper>
+
+      <Paper className={classes.paper} style={{ backgroundColor: '1#1abc9c' }}>
+        <Loading />
+        <Loading color="primary" />
+        <Loading color="success" />
+        <Loading color="warning" />
+        <Loading color="error" />
+      </Paper>
+
+      <Paper className={classes.paper} style={{ backgroundColor: '#1abc9c' }}>
+        <Loading type="line" />
+        <Loading type="line" color="primary" />
+        <Loading type="line" color="success" />
+        <Loading type="line" color="warning" />
+        <Loading type="line" color="error" />
       </Paper>
     </div>
   )
