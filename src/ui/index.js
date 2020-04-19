@@ -11,6 +11,7 @@ import Dialog from './Dialog'
 import Switch from './Switch'
 import Loading from './Loading'
 import Input from './Input'
+import Divider from './Divider'
 
 export {
 	Button,
@@ -23,4 +24,5 @@ export {
 	Switch,
 	Loading,
 	Input,
+	Divider,
 }

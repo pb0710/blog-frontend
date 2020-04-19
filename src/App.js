@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -47,6 +47,10 @@ function App() {
 
   const handleToggleSwitch = value => {
     // console.log('value', value)
+  }
+  
+  const handleInput = e => {
+    // console.log('value', e.target.value)
   }
 
   return (
@@ -123,11 +127,12 @@ function App() {
         <Loading type="line" color="error" />
       </Paper>
 
-      <Paper className={classes.paper} style={{ flexDirection: 'column', height: 240 }}>
+      <Paper className={classes.paper} style={{ flexDirection: 'column', height: 260 }}>
         <Input placeholder="标准输入框" />
         <Input color="success" />
         <Input color="warning" placeholder="Placeholder" />
-        <Input color="error" />
+        <Divider />
+        <Input color="error" onChange={handleInput} />
         <Input disabled={true} placeholder="禁用状态" />
       </Paper>
 
