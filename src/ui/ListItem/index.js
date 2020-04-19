@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 		padding: '0 24px',
 		background: '#fff',
 		borderBottom: bordered ? '1px solid #f0f0f0' : 0,
+		borderRadius: bordered || 2,
 		transition: 'all 0.15s ease-out',
 
 		'&:hover': {
@@ -48,4 +49,4 @@ function ListItem({ children, className, bordered = true, onClick }) {
 	)
 }
 
-export default ListItem
+export default React.memo(ListItem)

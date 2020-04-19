@@ -123,9 +123,11 @@ export default function Dialog(props) {
 	const {
 		visible,
 		children,
-		onConfirm,
-		onCancel,
 		title = 'Title',
+		confirmText = '确定',
+		cancelText = '取消',
+		onConfirm = null,
+		onCancel = null,
 		maskClosable = false,
 	} = props
 
@@ -138,7 +140,7 @@ export default function Dialog(props) {
 	const count = useRenderCount()
 	const { x, y } = useCoordinate(visible)
 
-	const maskLeave = useMemo(() => count === 0 ? false : !visible, [visible, count])
+	const maskLeave = useMemo(() => count === 0 ? false : !visible, [visible])
 
 	useEffect(() => {
 		const element = modalRef.current
@@ -162,8 +164,8 @@ export default function Dialog(props) {
 				<div className={classes.content}>{children}</div>
 				<div className={classes.footer}>
 					<div className={classes.operation}>
-						<Button color="default" onClick={onCancel}>取消</Button>
-						<Button color="primary" onClick={onConfirm}>确定</Button>
+						<Button color="default" onClick={onCancel}>{cancelText}</Button>
+						<Button color="primary" onClick={onConfirm}>{confirmText}</Button>
 					</div>
 				</div>
 			</Paper>

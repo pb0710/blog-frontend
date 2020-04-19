@@ -28,4 +28,4 @@ function List({ children, className, bordered = true }) {
 	)
 }
 
-export default List
+export default React.memo(List)

@@ -103,8 +103,8 @@ function App() {
         <Switch color="warning" onChange={handleToggleSwitch} />
         <Switch color="error" onChange={handleToggleSwitch} />
         <Switch label="切换" defaultChecked={false} onChange={handleToggleSwitch} />
-        <Switch disabled={true} defaultChecked={false} onChange={handleToggleSwitch} />
-        <Switch disabled={true} label="禁用模式" onChange={handleToggleSwitch} />
+        <Switch disabled={true} defaultChecked={false} />
+        <Switch disabled={true} label="禁用模式" />
       </Paper>
     </div>
   )
