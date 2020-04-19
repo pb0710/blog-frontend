@@ -6,7 +6,7 @@ import { useRipple } from '../utils/hooks'
 import colorMap from '../utils/color'
 
 const useStyles = makeStyles({
-	root: ({ color }) => ({
+	root: ({ color, disabled }) => ({
 		display: 'inline-block',
 		position: 'relative',
 		whiteSpace: 'nowrap',
@@ -18,32 +18,37 @@ const useStyles = makeStyles({
 		outline: 0,
 		border: 0,
 		borderRadius: '50%',
+		opacity: disabled && .5,
+		cursor: disabled ? 'not-allowed' : 'pointer',
 		transition: 'all 0.25s ease-out',
 
 		'&:hover': {
-			background: color.dim,
-			cursor: 'pointer',
+			background: disabled || color.dim,
 		},
 	}),
 })
 
-function IconButton({ children, className, onClick }) {
+export default React.memo(function IconButton(props) {
+
+	const { children, className, disabled = false, onClick = null } = props
 
 	const color = 'transparent'
-	const classes = useStyles({ color: colorMap[color] })
+
+	const classes = useStyles({ disabled, color: colorMap[color] })
+
 	const { ref, handleStart, handleStop } = useRipple()
+
+	const beNull = value => disabled ? null : value
 
 	return (
 		<button
 			className={clsx(classes.root, className)}
-			onClick={onClick}
-			onMouseDown={handleStart}
-			onMouseUp={handleStop}
+			onClick={beNull(onClick)}
+			onMouseDown={beNull(handleStart)}
+			onMouseUp={beNull(handleStop)}
 		>
-			<TouchRipple ref={ref} color={color} center={true} timeout={500} />
+			{beNull(<TouchRipple ref={ref} color={color} center={true} timeout={500} />)}
 			{children}
 		</button>
 	)
-}
-
-export default React.memo(IconButton)
+})

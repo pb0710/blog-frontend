@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
   paper: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     width: 600,
     height: 120,
@@ -61,20 +61,28 @@ function App() {
         <Button className={classes.test} color="success">成功</Button>
         <Button className={classes.test} color="warning">警告</Button>
         <Button className={classes.test} color="error">错误</Button>
+        <Button className={classes.test} color="primary" disabled={true}>禁用</Button>
       </Paper>
 
       <Paper className={classes.paper}>
         <IconButton className={classes.test}>图</IconButton>
         <IconButton className={classes.test}>标</IconButton>
         <IconButton className={classes.test}>Icon</IconButton>
+        <IconButton disabled={true}>禁用</IconButton>
       </Paper>
 
       <Paper className={classes.paper} style={{ height: 200 }}>
         <List className={classes.list} bordered={true}>
           <ListItem>列表项</ListItem>
           <ListItem>这是一个列表1</ListItem>
-          <ListItem>asdfsa123</ListItem>
+          <ListItem>Bordered</ListItem>
           <ListItem>这是一个列表2</ListItem>
+        </List>
+        <List className={classes.list} bordered={false}>
+          <ListItem bordered={false}>无边框列表项</ListItem>
+          <ListItem bordered={false}>这是一个无边框列表1</ListItem>
+          <ListItem bordered={false}>No bordered</ListItem>
+          <ListItem bordered={false}>这是一个无边框列表2</ListItem>
         </List>
       </Paper>
 
