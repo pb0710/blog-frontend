@@ -8,6 +8,7 @@ import IconButton from './IconButton'
 import List from './List'
 import ListItem from './ListItem'
 import Dialog from './Dialog'
+import Switch from './Switch'
 
 export {
 	Button,
@@ -16,5 +17,6 @@ export {
 	TouchRipple,
 	List,
 	ListItem,
-	Dialog
+	Dialog,
+	Switch,
 }

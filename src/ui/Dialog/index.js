@@ -94,7 +94,7 @@ const useStyles = makeStyles({
 		fontWeight: 600,
 		color: '#303133',
 		padding: '0 16px',
-		borderBottom: '1px solid #eaeaea',
+		borderBottom: '1px solid #f0f0f0',
 	},
 	content: {
 		display: 'flex',
@@ -110,7 +110,7 @@ const useStyles = makeStyles({
 		position: 'absolute',
 		bottom: 0,
 		padding: '0 16px',
-		borderTop: '1px solid #eaeaea',
+		borderTop: '1px solid #f0f0f0',
 	},
 	operation: {
 		display: 'flex',
@@ -138,7 +138,7 @@ export default function Dialog(props) {
 	const count = useRenderCount()
 	const { x, y } = useCoordinate(visible)
 
-	const maskLeave = useMemo(() => count === 0 ? false : !visible, [visible])
+	const maskLeave = useMemo(() => count === 0 ? false : !visible, [visible, count])
 
 	useEffect(() => {
 		const element = modalRef.current

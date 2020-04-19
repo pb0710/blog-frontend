@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 400,
+    width: 600,
     height: 120,
     margin: 40,
   },
@@ -33,7 +33,7 @@ function App() {
   const classes = useStyles()
   const [visible, setVisible] = useState(false)
 
-  const handleShow = () => {
+  const handleShowDialog = () => {
     setVisible(true)
   }
 
@@ -45,14 +45,18 @@ function App() {
     setVisible(false)
   }
 
+  const handleToggleSwitch = value => {
+    // console.log('value', value)
+  }
+
   return (
     <div className={classes.root}>
       <Dialog visible={visible} onConfirm={onConfirm} onCancel={handleCancel}>
-        sdfsdaf
+        There are dialog of content
       </Dialog>
 
       <Paper className={classes.paper}>
-        <Button className={classes.test} onClick={handleShow}>默认</Button>
+        <Button className={classes.test}>默认</Button>
         <Button className={classes.test} color="primary">主题</Button>
         <Button className={classes.test} color="success">成功</Button>
         <Button className={classes.test} color="warning">警告</Button>
@@ -62,7 +66,7 @@ function App() {
       <Paper className={classes.paper}>
         <IconButton className={classes.test}>图</IconButton>
         <IconButton className={classes.test}>标</IconButton>
-        <IconButton className={classes.test} onClick={handleShow}>Icon</IconButton>
+        <IconButton className={classes.test}>Icon</IconButton>
       </Paper>
 
       <Paper className={classes.paper} style={{ height: 200 }}>
@@ -70,8 +74,29 @@ function App() {
           <ListItem>列表项</ListItem>
           <ListItem>这是一个列表1</ListItem>
           <ListItem>asdfsa123</ListItem>
-          <ListItem onClick={handleShow}>这是一个列表2</ListItem>
+          <ListItem>这是一个列表2</ListItem>
         </List>
+      </Paper>
+
+      <Paper className={classes.paper} style={{ height: 300, flexDirection: 'column' }}>
+        <Button color="primary" className={classes.test} onClick={handleShowDialog}>按钮</Button>
+        <IconButton className={classes.test} onClick={handleShowDialog}>Icon</IconButton>
+        <List className={classes.list} bordered={true}>
+          <ListItem onClick={handleShowDialog}>列表项1</ListItem>
+          <ListItem onClick={handleShowDialog}>列表项2</ListItem>
+          <ListItem onClick={handleShowDialog}>列表项3</ListItem>
+        </List>
+        <Switch onChange={handleShowDialog} />
+      </Paper>
+
+      <Paper className={classes.paper}>
+        <Switch onChange={handleToggleSwitch} />
+        <Switch color="success" onChange={handleToggleSwitch} />
+        <Switch color="warning" onChange={handleToggleSwitch} />
+        <Switch color="error" onChange={handleToggleSwitch} />
+        <Switch label="切换" defaultChecked={false} onChange={handleToggleSwitch} />
+        <Switch disabled={true} defaultChecked={false} onChange={handleToggleSwitch} />
+        <Switch disabled={true} label="禁用模式" onChange={handleToggleSwitch} />
       </Paper>
     </div>
   )
