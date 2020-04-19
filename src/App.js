@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -54,7 +54,7 @@ function App() {
       <Dialog visible={visible} onConfirm={onConfirm} onCancel={handleCancel}>
         There are dialog of content
       </Dialog>
-
+      
       <Paper className={classes.paper}>
         <Button className={classes.test}>默认</Button>
         <Button className={classes.test} color="primary">主题</Button>
@@ -107,7 +107,7 @@ function App() {
         <Switch disabled={true} label="禁用模式" />
       </Paper>
 
-      <Paper className={classes.paper} style={{ backgroundColor: '1#1abc9c' }}>
+      <Paper className={classes.paper}>
         <Loading />
         <Loading color="primary" />
         <Loading color="success" />
@@ -115,13 +115,22 @@ function App() {
         <Loading color="error" />
       </Paper>
 
-      <Paper className={classes.paper} style={{ backgroundColor: '#1abc9c' }}>
+      <Paper className={classes.paper}>
         <Loading type="line" />
         <Loading type="line" color="primary" />
         <Loading type="line" color="success" />
         <Loading type="line" color="warning" />
         <Loading type="line" color="error" />
       </Paper>
+
+      <Paper className={classes.paper} style={{ flexDirection: 'column', height: 240 }}>
+        <Input placeholder="标准输入框" />
+        <Input color="success" />
+        <Input color="warning" placeholder="Placeholder" />
+        <Input color="error" />
+        <Input disabled={true} placeholder="禁用状态" />
+      </Paper>
+
     </div>
   )
 }

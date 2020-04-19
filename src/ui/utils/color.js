@@ -12,7 +12,7 @@ export default {
 		main: '#409eff',
 		bright: '#66b1ff',
 		dim: '#3a8ee6',
-		text: '#fff',
+		text: '#ffffff',
 		ripple: '#ecf5ff',
 	},
 	success: {
@@ -20,7 +20,7 @@ export default {
 		main: '#67c23a',
 		bright: '#85ce61',
 		dim: '#5daf34',
-		text: '#fff',
+		text: '#ffffff',
 		ripple: '#f0f9eb',
 	},
 	warning: {
@@ -28,7 +28,7 @@ export default {
 		main: '#e6a23c',
 		bright: '#ebb563',
 		dim: '#cf9236',
-		text: '#fff',
+		text: '#ffffff',
 		ripple: '#fdf6ec',
 	},
 	error: {
@@ -36,7 +36,7 @@ export default {
 		main: '#f56c6c',
 		bright: '#f78989',
 		dim: '#dd6161',
-		text: '#fff',
+		text: '#ffffff',
 		ripple: '#fef0f0',
 	},
 	transparent: {

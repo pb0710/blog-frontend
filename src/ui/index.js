@@ -10,6 +10,7 @@ import ListItem from './ListItem'
 import Dialog from './Dialog'
 import Switch from './Switch'
 import Loading from './Loading'
+import Input from './Input'
 
 export {
 	Button,
@@ -21,4 +22,5 @@ export {
 	Dialog,
 	Switch,
 	Loading,
+	Input,
 }

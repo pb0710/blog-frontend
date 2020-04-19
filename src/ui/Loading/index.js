@@ -38,7 +38,7 @@ const useStyles = makeStyles({
 		animationDelay: -1000,
 	}),
 	bounce: {
-		animation: '$ballStretch 2.0s infinite ease-in-out',
+		animation: '$ballStretch 2s infinite ease-in-out',
 	},
 	'@keyframes ballStretch': {
 		'0%, 100%': {

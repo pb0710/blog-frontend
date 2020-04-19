@@ -11,7 +11,6 @@ const useStyles = makeStyles({
 		minWidth: 32,
 		height: 22,
 		margin: 8,
-		userSelect: 'none',
 		position: 'relative',
 	},
 	label: ({ disabled }) => ({
@@ -41,7 +40,7 @@ const useStyles = makeStyles({
 		height: 12,
 		borderRadius: '50%',
 		background: checked ? '#fff' : '#303133',
-		transition: 'all .2s ease-in-out',
+		transition: 'all .2s',
 		transform: checked && 'translateX(17px)',
 	}),
 	mask: {
