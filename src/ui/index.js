@@ -12,6 +12,7 @@ import Switch from './Switch'
 import Loading from './Loading'
 import Input from './Input'
 import Divider from './Divider'
+import Progress from './Progress'
 
 export {
 	Button,
@@ -25,4 +26,5 @@ export {
 	Loading,
 	Input,
 	Divider,
+	Progress,
 }

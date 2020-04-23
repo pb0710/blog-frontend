@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 		boxSizing: 'border-box',
 		width: '100%',
 		height: '100%',
-		background: '#fff',
+		background: '#fafafa',
 		paddingLeft: 8,
 		paddingRight: 8,
 		borderRadius: 2,

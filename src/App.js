@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider, Progress } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -58,6 +58,8 @@ function App() {
       <Dialog visible={visible} onConfirm={onConfirm} onCancel={handleCancel}>
         There are dialog of content
       </Dialog>
+
+      <Progress color="primary" percent={40} />
       
       <Paper className={classes.paper}>
         <Button className={classes.test}>默认</Button>
