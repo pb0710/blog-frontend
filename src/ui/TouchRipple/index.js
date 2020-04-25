@@ -42,7 +42,7 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 		key.current++
 	}, [color, timeout])
 
-	const start = useCallback((e) => {
+	const start = useCallback(e => {
 		const element = container.current
 
 		const rect = element
@@ -80,10 +80,13 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 		setRipples(oldRipples => oldRipples.length > 0 ? oldRipples.slice(1) : oldRipples)
 	}, [])
 
-	useImperativeHandle(ref, () => ({
-		start,
-		stop
-	}), [start, stop])
+	useImperativeHandle(ref,
+		() => ({
+			start,
+			stop
+		}),
+		[start, stop]
+	)
 
 	return (
 		<span ref={container} className={classes.root}>

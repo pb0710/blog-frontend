@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 		background: '#fff',
 		borderBottom: bordered ? '1px solid #f0f0f0' : 0,
 		borderRadius: bordered || 2,
-		transition: 'all 0.15s ease-out',
+		transition: 'all .15s ease-out',
 
 		'&:hover': {
 			background: color.dim,
@@ -32,9 +32,9 @@ const useStyles = makeStyles({
 
 function ListItem({ children, className, bordered = true, onClick }) {
 
-	const color = 'transparent'
+	const color = 'default'
 	const classes = useStyles({ color: colorMap[color], bordered })
-	const { ref, handleStart, handleStop } = useRipple()
+	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	return (
 		<li 
@@ -43,7 +43,7 @@ function ListItem({ children, className, bordered = true, onClick }) {
 			onMouseUp={handleStop}
 			onClick={onClick}
 		>
-			<TouchRipple ref={ref} color={color} />
+			<TouchRipple ref={rippleRef} color={color} />
 			{children}
 		</li>
 	)

@@ -36,7 +36,7 @@ export default React.memo(function IconButton(props) {
 
 	const classes = useStyles({ disabled, color: colorMap[color] })
 
-	const { ref, handleStart, handleStop } = useRipple()
+	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	const beNull = value => disabled ? null : value
 
@@ -47,7 +47,7 @@ export default React.memo(function IconButton(props) {
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
 		>
-			{beNull(<TouchRipple ref={ref} color={color} center={true} timeout={500} />)}
+			{beNull(<TouchRipple ref={rippleRef} color={color} center={true} timeout={500} />)}
 			{children}
 		</button>
 	)

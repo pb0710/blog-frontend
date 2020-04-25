@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 		outline: 0,
 		border: 0,
 		borderRadius: 2,
-		// default颜色的boxShadow单独处理下（背景色太浅导致阴影明显）
+		// default背景色太浅导致阴影明显，使得轮廓看起来比较大。单独调整下阴影
 		boxShadow: `0 ${color.name === 'default' ? '0 1px' : '1px 3px'} rgba(26,26,26,.1)`,
 		color: color.text,
 		opacity: disabled && .5,
@@ -45,7 +45,7 @@ export default React.memo(function Button(props) {
 
 	const classes = useStyles({ disabled, color: colorMap[color] })
 
-	const { ref, handleStart, handleStop } = useRipple()
+	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	const beNull = value => disabled ? null : value
 
@@ -56,7 +56,7 @@ export default React.memo(function Button(props) {
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
 		>
-			{beNull(<TouchRipple ref={ref} color={color} />)}
+			{beNull(<TouchRipple ref={rippleRef} color={color} />)}
 			{children}
 		</button>
 	)

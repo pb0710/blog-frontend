@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider, Progress } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider, Progress, Selector, Option } from 'ui'
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +26,9 @@ const useStyles = makeStyles({
   },
   list: {
     width: 240
+  },
+  selector: {
+    width: 160
   }
 })
 
@@ -48,19 +51,41 @@ function App() {
   const handleToggleSwitch = value => {
     // console.log('value', value)
   }
-  
+
   const handleInput = e => {
     // console.log('value', e.target.value)
   }
 
   return (
     <div className={classes.root}>
-      <Dialog visible={visible} onConfirm={onConfirm} onCancel={handleCancel}>
+      {/* <Dialog visible={visible} onConfirm={onConfirm} onCancel={handleCancel}>
         There are dialog of content
-      </Dialog>
+      </Dialog> */}
 
       <Progress color="primary" percent={40} />
-      
+
+      <Paper className={classes.paper} style={{ padding: 10, height: 80, alignItems: 'start' }}>
+        <Selector>
+          <Option value="全部">全部</Option>
+          <Option value="男">男</Option>
+          <Option value="女">女</Option>
+        </Selector>
+
+        <Selector className={classes.selector} color="error">
+          <Option value="beijing">北京市</Option>
+          <Option value="shanghai">上海市</Option>
+          <Option value="shengzheng">深圳市</Option>
+          <Option value="guangzhou">广州市</Option>
+          <Option value="others">其他城市</Option>
+        </Selector>
+
+        <Selector color="success">
+          <Option value="成年">成年</Option>
+          <Option value="未成年">未成年</Option>
+        </Selector>
+
+      </Paper>
+
       <Paper className={classes.paper}>
         <Button className={classes.test}>默认</Button>
         <Button className={classes.test} color="primary">主题</Button>

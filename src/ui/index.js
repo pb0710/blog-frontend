@@ -13,6 +13,8 @@ import Loading from './Loading'
 import Input from './Input'
 import Divider from './Divider'
 import Progress from './Progress'
+import Selector from './Selector'
+import Option from './Option'
 
 export {
 	Button,
@@ -27,4 +29,6 @@ export {
 	Input,
 	Divider,
 	Progress,
+	Selector,
+	Option,
 }

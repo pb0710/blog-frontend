@@ -4,18 +4,33 @@ import { useRef, useState, useContext, useEffect, useCallback, useMemo } from 'r
  * 绑定水波纹特效
  */
 export function useRipple() {
-	const ref = useRef()
+	const rippleRef = useRef()
 
-	const handleStart = e => ref.current.start(e)
+	const handleStart = e => rippleRef.current.start(e)
 
-	const handleStop = () => ref.current.stop()
+	const handleStop = () => rippleRef.current.stop()
 
-	return { ref, handleStart, handleStop }
+	return { rippleRef, handleStart, handleStop }
+}
+
+/**
+ * Boolean State
+ * @param {boolean} defaultValue 默认值
+ */
+export function useBoolean(defaultValue) {
+
+	const [boolean, setBoolean] = useState(defaultValue)
+
+	const setTrue = () => { setBoolean(true) }
+	const setFalse = () => { setBoolean(false) }
+	const toggleBoolean = () => { setBoolean(prev => !prev) }
+
+	return { boolean, setTrue, setFalse, toggleBoolean }
 }
 
 /**
  * 获取点击的XY坐标
- * @param {boolean} visible 禁用状态
+ * @param {boolean} muted 禁用状态
  */
 export function useCoordinate(muted) {
 
@@ -43,7 +58,7 @@ export function useCoordinate(muted) {
 // 获取该组件渲染次数
 export function useRenderCount() {
 	const count = useRef(0)
-	
+
 	useEffect(() => {
 		count.current++
 	})
