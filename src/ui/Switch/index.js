@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { v4 as uuid } from 'uuid'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: {
@@ -70,7 +70,7 @@ export default React.memo(function Switch(props) {
 	const classes = useStyles({
 		checked,
 		disabled,
-		color: colorMap[color]
+		color: themeColors[color]
 	})
 
 	const handleToggle = () => {

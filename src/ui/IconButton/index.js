@@ -3,14 +3,15 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
 import { useRipple } from '../utils/hooks'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: ({ color, disabled }) => ({
-		display: 'inline-block',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
 		position: 'relative',
 		whiteSpace: 'nowrap',
-		textAlign: 'center',
 		width: 48,
 		height: 48,
 		color: color.text,
@@ -34,14 +35,14 @@ export default React.memo(function IconButton(props) {
 
 	const color = 'transparent'
 
-	const classes = useStyles({ disabled, color: colorMap[color] })
+	const classes = useStyles({ disabled, color: themeColors[color] })
 
 	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	const beNull = value => disabled ? null : value
 
 	return (
-		<button
+		<div
 			className={clsx(classes.root, className)}
 			onClick={beNull(onClick)}
 			onMouseDown={beNull(handleStart)}
@@ -49,6 +50,6 @@ export default React.memo(function IconButton(props) {
 		>
 			{beNull(<TouchRipple ref={rippleRef} color={color} center={true} timeout={500} />)}
 			{children}
-		</button>
+		</div>
 	)
 })

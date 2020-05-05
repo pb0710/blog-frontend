@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
 import { useRipple } from '../utils/hooks'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: ({ color, isCurrent }) => ({
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 		height: 32,
 		paddingLeft: 8,
 		transition: 'all .1s',
-		
+
 		'&:hover': {
 			background: color.main,
 			color: color.text
@@ -34,10 +34,10 @@ export default React.forwardRef(function Option(props, ref) {
 		isCurrent = false
 	} = props
 
-	const classes = useStyles({ 
+	const classes = useStyles({
 		timeout,
-		isCurrent, 
-		color: colorMap[color] 
+		isCurrent,
+		color: themeColors[color]
 	})
 
 	const { rippleRef, handleStart, handleStop } = useRipple()

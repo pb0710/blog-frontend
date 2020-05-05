@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider, Progress, Selector, Option } from 'ui'
+import { Paper, Button, IconButton, List, ListItem, Dialog, Switch, Loading, Input, Divider, Progress, Select, Option } from 'ui'
+import { DesktopIcon, MenuIcon, CloseOutlineIcon, SearchIcon, UserIcon } from 'ui/utils/icons'
 
 const useStyles = makeStyles({
   root: {
@@ -24,11 +25,18 @@ const useStyles = makeStyles({
   test: {
     margin: 8,
   },
+  icon: {
+    margin: 8,
+    fontSize: 18
+  },
   list: {
     width: 240
   },
-  selector: {
+  select: {
     width: 160
+  },
+  bgColor: {
+    backgroundColor: 'red',
   }
 })
 
@@ -56,6 +64,8 @@ function App() {
     // console.log('value', e.target.value)
   }
 
+  const handleTestClick = () => console.log('click')
+
   return (
     <div className={classes.root}>
       {/* <Dialog visible={visible} onConfirm={onConfirm} onCancel={handleCancel}>
@@ -65,24 +75,24 @@ function App() {
       <Progress color="primary" percent={40} />
 
       <Paper className={classes.paper} style={{ padding: 10, height: 80, alignItems: 'start' }}>
-        <Selector>
+        <Select>
           <Option value="全部">全部</Option>
           <Option value="男">男</Option>
           <Option value="女">女</Option>
-        </Selector>
+        </Select>
 
-        <Selector className={classes.selector} color="error">
+        <Select className={classes.select} color="error">
           <Option value="beijing">北京市</Option>
           <Option value="shanghai">上海市</Option>
           <Option value="shengzheng">深圳市</Option>
           <Option value="guangzhou">广州市</Option>
           <Option value="others">其他城市</Option>
-        </Selector>
+        </Select>
 
-        <Selector color="success">
+        <Select color="success">
           <Option value="成年">成年</Option>
           <Option value="未成年">未成年</Option>
-        </Selector>
+        </Select>
 
       </Paper>
 
@@ -96,15 +106,23 @@ function App() {
       </Paper>
 
       <Paper className={classes.paper}>
-        <IconButton className={classes.test}>图</IconButton>
-        <IconButton className={classes.test}>标</IconButton>
-        <IconButton className={classes.test}>Icon</IconButton>
-        <IconButton disabled={true}>禁用</IconButton>
+        <IconButton className={classes.icon}>
+          <UserIcon />
+        </IconButton>
+        <IconButton className={classes.icon}>
+          <SearchIcon />
+        </IconButton>
+        <IconButton className={classes.icon}>
+          <MenuIcon />
+        </IconButton>
+        <IconButton className={classes.icon} disabled={true}>
+          <CloseOutlineIcon />
+        </IconButton>
       </Paper>
 
       <Paper className={classes.paper} style={{ height: 200 }}>
         <List className={classes.list} bordered={true}>
-          <ListItem>列表项</ListItem>
+          <ListItem onClick={handleTestClick}>列表项</ListItem>
           <ListItem>这是一个列表1</ListItem>
           <ListItem>Bordered</ListItem>
           <ListItem>这是一个列表2</ListItem>
@@ -118,8 +136,12 @@ function App() {
       </Paper>
 
       <Paper className={classes.paper} style={{ height: 300, flexDirection: 'column' }}>
-        <Button color="primary" className={classes.test} onClick={handleShowDialog}>按钮</Button>
-        <IconButton className={classes.test} onClick={handleShowDialog}>Icon</IconButton>
+        <Button color="primary" className={classes.test} onClick={handleShowDialog}>
+          按钮
+        </Button>
+        <IconButton className={classes.icon} onClick={handleShowDialog}>
+          <DesktopIcon />
+        </IconButton>
         <List className={classes.list} bordered={true}>
           <ListItem onClick={handleShowDialog}>列表项1</ListItem>
           <ListItem onClick={handleShowDialog}>列表项2</ListItem>
@@ -166,6 +188,5 @@ function App() {
     </div>
   )
 }
-
 
 export default App

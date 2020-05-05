@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useBoolean } from '../utils/hooks'
+import { ArrowDownIcon } from '../utils/icons'
 import Option from '../Option'
 import Glass from '../Glass'
 
@@ -18,10 +19,12 @@ const useStyles = makeStyles({
 		boxSizing: 'border-box',
 		display: 'flex',
 		alignItems: 'center',
+		justifyContent: 'space-between',
 		width: '100%',
 		height: 32,
 		background: '#fafafa',
 		paddingLeft: 8,
+		paddingRight: 8,
 		borderRadius: 2,
 		border: '1px solid #e2e2e2'
 	},
@@ -31,7 +34,7 @@ const useStyles = makeStyles({
 		top: 0,
 		left: 0,
 		borderRadius: 2,
-		boxShadow: '0 1px 3px rgba(52,52,52,.2)',
+		boxShadow: '0 4px 24px rgba(26,26,26,.14)',
 		overflow: 'hidden',
 		zIndex: visible ? 1 : -1,
 		opacity: visible ? 1 : 0,
@@ -47,7 +50,7 @@ const useStyles = makeStyles({
 			transform: 'scale(.6)',
 		},
 		'60%': {
-			transform: 'scale(1.04)',
+			transform: 'scale(1.03)',
 		},
 		'100%': {
 			opacity: 1,
@@ -56,14 +59,14 @@ const useStyles = makeStyles({
 	}
 })
 
-export default function Selector(props) {
+export default function Select(props) {
 
 	const {
 		className,
 		children,
 		color = 'primary',
 		timeout = 250,
-		onChange = () => {}
+		onChange = () => { }
 	} = props
 
 	const {
@@ -76,22 +79,23 @@ export default function Selector(props) {
 	const [childrens, setChildrens] = useState([])
 	const [selectedIndex, setSelectedIndex] = useState(0)
 
-	const classes = useStyles({ 
-		visible, 
+	const classes = useStyles({
+		visible,
 		timeout,
-	 })
+	})
 
 	const refs = useMemo(
 		() => React.Children.map(children, () => React.createRef()),
 		[children]
 	)
 
-	const selected = useMemo(() => {
-		return {
+	const selected = useMemo(
+		() => ({
 			value: values[selectedIndex],
 			children: childrens[selectedIndex]
-		}
-	}, [values, childrens, selectedIndex])
+		}),
+		[values, childrens, selectedIndex]
+	)
 
 	useEffect(
 		() => {
@@ -122,6 +126,7 @@ export default function Selector(props) {
 		<div className={clsx(classes.root, className)}>
 			<div className={classes.selected} onClick={handleShowList}>
 				{selected.children}
+				<ArrowDownIcon />
 			</div>
 			{
 				<Glass className={clsx(classes.optionWrapper, visible && classes.enter)}>

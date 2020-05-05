@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import colorMap from '../../utils/color'
+import themeColors from '../../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: ({ styles }) => ({
@@ -62,7 +62,7 @@ export default function Ripple(props) {
 	}
 
 	const [leave, setLeave] = useState(false)
-	const classes = useStyles({ styles, timeout, color: colorMap[color] })
+	const classes = useStyles({ styles, timeout, color: themeColors[color] })
 
 	useEffect(() => {
 		if (!inProp) {

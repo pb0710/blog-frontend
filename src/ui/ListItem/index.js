@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
 import { useRipple } from '../utils/hooks'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: ({ color, bordered }) => ({
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 function ListItem({ children, className, bordered = true, onClick }) {
 
 	const color = 'default'
-	const classes = useStyles({ color: colorMap[color], bordered })
+	const classes = useStyles({ color: themeColors[color], bordered })
 	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	return (

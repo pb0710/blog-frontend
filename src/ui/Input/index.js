@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 import { hex2Rgba } from '../utils'
 
 const useStyles = makeStyles({
@@ -39,7 +39,7 @@ export default React.memo(function Input(props) {
 	const [focus, setFocus] = useState(false)
 
 	const classes = useStyles({ 
-		color: colorMap[color], 
+		color: themeColors[color], 
 		disabled,
 		focus, 
 	})

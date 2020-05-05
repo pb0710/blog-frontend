@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const ballStyles = {
 	width: '100%',
@@ -104,7 +104,7 @@ export default React.memo(function Loading(props) {
 
 	const { color = 'default', type = 'bounce' } = props
 
-	const classes = useStyles({ color: colorMap[color] })
+	const classes = useStyles({ color: themeColors[color] })
 
 	const controlType = type => {
 		switch (type) {

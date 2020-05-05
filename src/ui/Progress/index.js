@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: ({ fixedStyles, trailColor }) => ({
@@ -42,7 +42,7 @@ export default React.memo(function Progress(props) {
 		: {}
 
 	const classes = useStyles({
-		color: colorMap[color],
+		color: themeColors[color],
 		trailColor,
 		percent,
 		fixedStyles,

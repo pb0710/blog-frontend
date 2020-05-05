@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
 import { useRipple } from '../utils/hooks'
-import colorMap from '../utils/color'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: ({ color, disabled }) => ({
@@ -43,7 +43,7 @@ export default React.memo(function Button(props) {
 		disabled = false
 	} = props
 
-	const classes = useStyles({ disabled, color: colorMap[color] })
+	const classes = useStyles({ disabled, color: themeColors[color] })
 
 	const { rippleRef, handleStart, handleStop } = useRipple()
 

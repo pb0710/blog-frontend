@@ -22,6 +22,10 @@ module.exports = {
 		"react",
 		"react-hooks"
 	],
+	"parser": "babel-eslint",
+	// "rules": {
+	// 	"strict": 0
+	// },
 	"rules": {
 		"react/prop-types": 0,
 		"react-hooks/rules-of-hooks": "error",
