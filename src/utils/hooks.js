@@ -74,7 +74,7 @@ export function useMouseWheel({ throttleInterval } = {}) {
  * @param {promise} promise api promise 
  * @param {boolean} immediate 是否立即执行
  */
-const useAsync = (promise, immediate = true) => {
+export function useAsync(promise, immediate = true) {
   const [pending, setPending] = useState(false)
   const [value, setValue] = useState(null)
   const [error, setError] = useState(null)

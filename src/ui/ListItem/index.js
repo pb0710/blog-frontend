@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
 import { useRipple } from '../utils/hooks'
 import themeColors from '../utils/themeColors'
+import { NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles({
 	root: ({ color, bordered }) => ({
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 		transition: 'all .15s ease-out',
 
 		'&:hover': {
-			background: color.dim,
+			background: color.main,
 		},
 
 		'&:last-child': {
@@ -30,22 +31,37 @@ const useStyles = makeStyles({
 	}),
 })
 
-function ListItem({ children, className, bordered = true, onClick }) {
+function ListItem(props) {
 
-	const color = 'default'
-	const classes = useStyles({ color: themeColors[color], bordered })
+	const {
+		children,
+		className,
+		activeClassName,
+		bordered = true,
+		onClick = () => { },
+		to = '/',
+		color = 'default'
+	} = props
+
+	const classes = useStyles({
+		color: themeColors[color],
+		bordered
+	})
+
 	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	return (
-		<li 
+		<NavLink
 			className={clsx(classes.root, className)}
+			activeClassName={activeClassName}
+			to={to}
+			onClick={onClick}
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
-			onClick={onClick}
 		>
 			<TouchRipple ref={rippleRef} color={color} />
 			{children}
-		</li>
+		</NavLink>
 	)
 }
 

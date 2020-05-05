@@ -26,7 +26,14 @@ const useStyles = makeStyles({
 		paddingLeft: 8,
 		paddingRight: 8,
 		borderRadius: 2,
-		border: '1px solid #e2e2e2'
+		border: '1px solid #e2e2e2',
+		'&>i': {
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			fontSize: 12,
+			color: '#606266',
+		}
 	},
 	optionWrapper: ({ visible, timeout }) => ({
 		width: '100%',
@@ -126,7 +133,9 @@ export default function Select(props) {
 		<div className={clsx(classes.root, className)}>
 			<div className={classes.selected} onClick={handleShowList}>
 				{selected.children}
-				<ArrowDownIcon />
+				<i>
+					<ArrowDownIcon />
+				</i>
 			</div>
 			{
 				<Glass className={clsx(classes.optionWrapper, visible && classes.enter)}>

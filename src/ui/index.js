@@ -3,6 +3,7 @@ import './index.css'
 
 import Button from './Button'
 import Paper from './Paper'
+import Glass from './Glass'
 import TouchRipple from './TouchRipple'
 import IconButton from './IconButton'
 import List from './List'
@@ -20,6 +21,7 @@ export {
 	Button,
 	IconButton,
 	Paper,
+	Glass,
 	TouchRipple,
 	List,
 	ListItem,
