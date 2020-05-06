@@ -39,8 +39,9 @@ function ListItem(props) {
 		activeClassName,
 		bordered = true,
 		onClick = () => { },
+		color = 'default',
 		to = '/',
-		color = 'default'
+		linked = false
 	} = props
 
 	const classes = useStyles({
@@ -51,17 +52,31 @@ function ListItem(props) {
 	const { rippleRef, handleStart, handleStop } = useRipple()
 
 	return (
-		<NavLink
-			className={clsx(classes.root, className)}
-			activeClassName={activeClassName}
-			to={to}
-			onClick={onClick}
-			onMouseDown={handleStart}
-			onMouseUp={handleStop}
-		>
-			<TouchRipple ref={rippleRef} color={color} />
-			{children}
-		</NavLink>
+		linked
+			? (
+				<NavLink
+					className={clsx(classes.root, className)}
+					activeClassName={activeClassName}
+					to={to}
+					onClick={onClick}
+					onMouseDown={handleStart}
+					onMouseUp={handleStop}
+				>
+					<TouchRipple ref={rippleRef} color={color} />
+					{children}
+				</NavLink>
+			)
+			: (
+				<li
+					className={clsx(classes.root, className)}
+					onClick={onClick}
+					onMouseDown={handleStart}
+					onMouseUp={handleStop}
+				>
+					<TouchRipple ref={rippleRef} color={color} />
+					{children}
+				</li>
+			)
 	)
 }
 

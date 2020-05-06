@@ -16,6 +16,7 @@ import Divider from './Divider'
 import Progress from './Progress'
 import Select from './Select'
 import Option from './Option'
+import Collapse from './Collapse'
 
 export {
 	Button,
@@ -33,4 +34,5 @@ export {
 	Progress,
 	Select,
 	Option,
+	Collapse,
 }
