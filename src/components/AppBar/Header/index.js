@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Glass, IconButton, Input } from 'ui'
-import { MenuIcon, NotifyIcon, UserIcon, ApplicationIcon, SearchIcon } from 'ui/utils/icons'
+import { MenuIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 
 const useStyles = makeStyles({

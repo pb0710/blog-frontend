@@ -55,6 +55,7 @@ export default React.memo(function Button(props) {
 			onClick={beNull(onClick)}
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
+			onMouseLeave={beNull(handleStop)}
 		>
 			{beNull(<TouchRipple ref={rippleRef} color={color} />)}
 			{children}

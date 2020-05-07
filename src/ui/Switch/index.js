@@ -83,11 +83,12 @@ export default React.memo(function Switch(props) {
 
 	return (
 		<div className={classes.root}>
-			{label && (
+			{
+				label &&
 				<label className={classes.label} htmlFor={id}>
 					{label}
 				</label>
-			)}
+			}
 			<div className={classes.switch} onClick={handleToggle}>
 				<div className={classes.button}></div>
 			</div>

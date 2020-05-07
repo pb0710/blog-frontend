@@ -5,6 +5,7 @@ import themeColors from '../utils/themeColors'
 import { hex2Rgba } from '../utils'
 import { SearchIcon } from '../utils/icons'
 import { flexCenter } from 'utils/styles'
+import { useCallback } from 'react'
 
 const useStyles = makeStyles({
 	root: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 		paddingRight: 32,
 		borderRadius: 2,
 		outline: 0,
-		border: `1px solid ${focus ? color.main : '#d2d2d2'}`,
+		border: `1px solid ${focus ? color.main : '#e7e7e7'}`,
 		boxShadow: `0 0 0 ${focus ? '2px' : '6px'} ${hex2Rgba(color.main, focus ? .7 : 0)}`,
 		opacity: disabled && .5,
 		cursor: disabled && 'not-allowed',
@@ -46,16 +47,18 @@ export default React.memo(function Input(props) {
 		placeholder,
 		color = 'primary',
 		disabled = false,
+		showSearch = false,
+		onSearch = null,
 		onChange = null,
-		showSearch = false
 	} = props
 
+	const [value, setValue] = useState('')
 	const [focus, setFocus] = useState(false)
 
-	const classes = useStyles({ 
-		color: themeColors[color], 
+	const classes = useStyles({
+		color: themeColors[color],
 		disabled,
-		focus, 
+		focus,
 	})
 
 	const beNull = value => disabled ? null : value
@@ -68,6 +71,22 @@ export default React.memo(function Input(props) {
 		setFocus(false)
 	})
 
+	const handleChangeInput = useCallback(
+		e => {
+			const keywords = e.target.value
+			setValue(keywords)
+			onChange && onChange(e)
+		},
+		[onChange]
+	)
+
+	const handleSearch = useCallback(
+		() => {
+			onSearch && onSearch(value)
+		},
+		[value]
+	)
+
 	return (
 		<div className={classes.root}>
 			<input
@@ -77,9 +96,14 @@ export default React.memo(function Input(props) {
 				placeholder={placeholder}
 				onFocus={handleFocusInput}
 				onBlur={handleBlurInput}
-				onChange={beNull(onChange)}
+				onChange={handleChangeInput}
 			/>
-			{showSearch && <div className={classes.searchIcon}><SearchIcon /></div>}
+			{
+				showSearch &&
+				<div className={classes.searchIcon} onClick={handleSearch}>
+					<SearchIcon />
+				</div>
+			}
 		</div>
 	)
 })

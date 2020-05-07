@@ -2,8 +2,6 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Route, Switch } from 'react-router'
 import navMap from 'common/navMap'
-import { useState } from 'react'
-import { Button, Collapse } from 'ui'
 
 const useStyles = makeStyles({
 	root: {
@@ -25,13 +23,6 @@ export default function Content(props) {
 
 	const classes = useStyles()
 
-	const [visible, setVisible] = useState(false)
-
-	const handleToggleVisible = () => {
-		console.log('visible: ', visible);
-		setVisible(prev => !prev)
-	}
-
 	return (
 		<div className={classes.root}>
 			<Switch>
@@ -43,13 +34,6 @@ export default function Content(props) {
 					))
 				}
 			</Switch>
-			<Collapse visible={visible}>
-				<div className={classes.test}></div>
-			</Collapse>
-			<Button onClick={handleToggleVisible}>切换</Button>
-			<Collapse visible={visible}>
-				<div className={classes.test}></div>
-			</Collapse>
 		</div>
 	)
 }

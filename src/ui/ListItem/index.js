@@ -61,6 +61,7 @@ function ListItem(props) {
 					onClick={onClick}
 					onMouseDown={handleStart}
 					onMouseUp={handleStop}
+					onMouseLeave={handleStop}
 				>
 					<TouchRipple ref={rippleRef} color={color} />
 					{children}
@@ -72,6 +73,7 @@ function ListItem(props) {
 					onClick={onClick}
 					onMouseDown={handleStart}
 					onMouseUp={handleStop}
+					onMouseLeave={handleStop}
 				>
 					<TouchRipple ref={rippleRef} color={color} />
 					{children}

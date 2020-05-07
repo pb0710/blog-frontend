@@ -48,6 +48,7 @@ export default React.memo(function IconButton(props) {
 			onClick={beNull(onClick)}
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
+			onMouseLeave={beNull(handleStop)}
 		>
 			{beNull(<TouchRipple ref={rippleRef} color={color} center={true} timeout={500} />)}
 			{children}

@@ -58,6 +58,7 @@ export default React.forwardRef(function Option(props, ref) {
 			className={clsx(classes.root, className)}
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
+			onMouseLeave={handleStop}
 			onClick={handleSelect}
 		>
 			<TouchRipple ref={rippleRef} color={color} />
