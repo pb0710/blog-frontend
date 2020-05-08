@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 		paddingRight: 32,
 		borderRadius: 2,
 		outline: 0,
-		border: `1px solid ${focus ? color.main : '#e7e7e7'}`,
+		border: `1px solid ${focus ? color.main : '#e5e5e5'}`,
 		boxShadow: `0 0 0 ${focus ? '2px' : '6px'} ${hex2Rgba(color.main, focus ? .7 : 0)}`,
 		opacity: disabled && .5,
 		cursor: disabled && 'not-allowed',

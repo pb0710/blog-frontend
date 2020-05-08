@@ -5,17 +5,12 @@ import { MenuIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 
 const useStyles = makeStyles({
-	root: ({ drawerOpened }) => ({
+	root: {
 		display: 'flex',
 		alignItems: 'center',
-		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
-		height: 48,
-		position: 'fixed',
-		top: 0,
-		right: 0,
-		transition: 'width 250ms ease-out',
-		zIndex: 777,
-	}),
+		width: '100%',
+		height: '100%',
+	},
 	navWrapper: {
 		...flexCenter,
 		justifyContent: 'space-between',
@@ -53,11 +48,11 @@ const useStyles = makeStyles({
 export default function Header(props) {
 
 	const {
-		drawerOpened = false,
+		drawerOpened,
 		setDrawerOpened = () => { }
 	} = props
 
-	const classes = useStyles({ drawerOpened })
+	const classes = useStyles()
 
 	const handleShowDrawer = useCallback(
 		() => {

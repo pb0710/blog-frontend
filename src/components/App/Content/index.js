@@ -5,23 +5,17 @@ import navMap from 'common/navMap'
 
 const useStyles = makeStyles({
 	root: {
-		paddingTop: 56,
-		marginLeft: 300,
-	},
-	test: {
-		width: 300,
-		height: 500,
-		background: 'orange',
-	},
+		
+	}
 })
 
 export default function Content(props) {
 
 	const {
-
+		drawerOpened
 	} = props
 
-	const classes = useStyles()
+	const classes = useStyles({ drawerOpened })
 
 	return (
 		<div className={classes.root}>

@@ -1,38 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
-import { makeStyles } from '@material-ui/styles'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from 'store'
 import 'normalize.css'
 import './index.css'
-import AppBar from 'components/AppBar'
-import Content from 'components/Content'
-
-const useStyles = makeStyles({
-  root: {
-    width: '100vw',
-    height: '100vh',
-    // background: 'pink',
-    background: '#f6f6f6',
-    overflowY: 'auto',
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
-})
-
-function App() {
-  const classes = useStyles()
-  return (
-    <div className={classes.root}>
-      <AppBar />
-      <Content />
-    </div>
-  )
-}
+import App from 'components/App'
 
 ReactDOM.render(
   <React.StrictMode>

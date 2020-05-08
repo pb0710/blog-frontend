@@ -2,19 +2,14 @@ import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { IconButton, Paper, Divider } from 'ui'
 import { ArrowLeftIcon } from 'ui/utils/icons'
+import navMap from 'common/navMap'
 import NavMenu from './NavMenu'
 
 const useStyles = makeStyles({
-	root: ({ drawerOpened }) => ({
-		width: 240,
-		height: '100vh',
-		position: 'fixed',
-		left: 0,
-		transform: `translateX(${drawerOpened ? 0 : -240}px)`,
-		transition: 'transform 250ms ease-out',
-		overflowY: 'auto',
-		zIndex: 888,
-	}),
+	root: {
+		width: '100%',
+		height: '100%',
+	},
 	divider: {
 		marginTop: 48,
 	},
@@ -29,11 +24,11 @@ const useStyles = makeStyles({
 export default function Sider(props) {
 
 	const {
-		drawerOpened = false,
+		drawerOpened,
 		setDrawerOpened = () => { }
 	} = props
 
-	const classes = useStyles({ drawerOpened })
+	const classes = useStyles()
 
 	const handleHideDrawer = useCallback(
 		() => {
@@ -51,7 +46,7 @@ export default function Sider(props) {
 				</IconButton>
 			}
 			<Divider className={classes.divider} />
-			<NavMenu />
+			<NavMenu navMap={navMap} />
 		</Paper >
 	)
 }

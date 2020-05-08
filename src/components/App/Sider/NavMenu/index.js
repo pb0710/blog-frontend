@@ -1,7 +1,6 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import navMap from 'common/navMap'
 import { Collapse, List, ListItem } from 'ui'
 import { ArrowBoldIcon } from 'ui/utils/icons'
 import themeColors from 'ui/utils/themeColors'
@@ -52,9 +51,7 @@ const useStyles = makeStyles({
 
 export default function NavMenu(props) {
 
-	const {
-
-	} = props
+	const { navMap } = props
 
 	const defaultChildOpenStatus = useMemo(
 		() => {
