@@ -17,6 +17,7 @@ import Progress from './Progress'
 import Select from './Select'
 import Option from './Option'
 import Collapse from './Collapse'
+import NavMenu from './NavMenu'
 
 export {
 	Button,
@@ -35,4 +36,5 @@ export {
 	Select,
 	Option,
 	Collapse,
+	NavMenu,
 }

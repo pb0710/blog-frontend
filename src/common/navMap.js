@@ -13,7 +13,7 @@ const navMap = [
 		id: 0,
 		name: '主页',
 		path: '/home',
-		icon: <HomeIcon />,
+		icon: null,
 		component: <Home />,
 		child: null,
 	},
@@ -21,7 +21,7 @@ const navMap = [
 		id: 1,
 		name: '文章',
 		path: '/article',
-		icon: <ReadIcon />,
+		icon: null,
 		component: <Article />,
 		child: [
 			{
@@ -72,7 +72,7 @@ const navMap = [
 		id: 2,
 		name: '讨论区',
 		path: '/comment',
-		icon: <BranchIcon />,
+		icon: null,
 		component: <StudyRoute />,
 		child: null,
 	},
@@ -80,7 +80,7 @@ const navMap = [
 		id: 3,
 		name: '学习路线',
 		path: '/js',
-		icon: <BranchIcon />,
+		icon: null,
 		component: <StudyRoute />,
 		child: [
 			{
@@ -117,7 +117,7 @@ const navMap = [
 		id: 4,
 		name: '设置',
 		path: '/setting',
-		icon: <ControlIcon />,
+		icon: null,
 		component: <Setting />,
 		child: null,
 	},

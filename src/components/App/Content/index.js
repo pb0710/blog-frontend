@@ -5,7 +5,7 @@ import navMap from 'common/navMap'
 
 const useStyles = makeStyles({
 	root: {
-		
+
 	}
 })
 
@@ -18,16 +18,25 @@ export default function Content(props) {
 	const classes = useStyles({ drawerOpened })
 
 	return (
-		<div className={classes.root}>
-			<Switch>
-				{
-					navMap.map(({ id, path, component }) => (
-						<Route exact key={id} path={path}>
+		<Switch className={classes.root}>
+			{
+				navMap.map(({ id, path, component, child }, index) => (
+					child
+						? child.map(({
+							id: childId,
+							path: childPath,
+							component: childComponent
+						}) =>
+							<Route key={id + childId} path={path + childPath}>
+								{childComponent}
+							</Route>
+						)
+						:
+						<Route key={id} path={path}>
 							{component}
 						</Route>
-					))
-				}
-			</Switch>
-		</div>
+				))
+			}
+		</Switch>
 	)
 }

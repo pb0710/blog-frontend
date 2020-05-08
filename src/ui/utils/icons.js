@@ -6,6 +6,12 @@ export const ArrowBoldIcon = () => (
 	</svg>
 )
 
+export const ArrowLeftBoldIcon = () => (
+	<svg viewBox="0 0 24 24" focusable="false" data-icon="boldLeft" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true">
+		<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+	</svg>
+)
+
 export const ArrowUpIcon = () => (
 	<svg viewBox="64 64 896 896" focusable="false" data-icon="up" width="1em" height="1em" fill="currentColor" aria-hidden="true">
 		<path d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"></path>
@@ -36,9 +42,15 @@ export const CloseOutlineIcon = () => (
 	</svg>
 )
 
-export const MenuIcon = () => (
+export const MenuSlimIcon = () => (
 	<svg viewBox="64 64 896 896" focusable="false" data-icon="menu" width="1em" height="1em" fill="currentColor" aria-hidden="true">
 		<path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
+	</svg>
+)
+
+export const MenuIcon = () => (
+	<svg viewBox="0 0 24 24" focusable="false" data-icon="navmenu" width="1.3em" height="1.3em" fill="currentColor" aria-hidden="true">
+		<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
 	</svg>
 )
 
@@ -61,7 +73,7 @@ export const UserIcon = () => (
 )
 
 export const ApplicationIcon = () => (
-	<svg viewBox="0 0 24 24" focusable="false" data-icon="desktop" width="1.3em" height="1.3em" fill="currentColor" aria-hidden="true">
+	<svg viewBox="0 0 24 24" focusable="false" data-icon="app" width="1.3em" height="1.3em" fill="currentColor" aria-hidden="true">
 		<path d="M6,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM6,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM12,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM16,6c0,1.1 0.9,2 2,2s2,-0.9 2,-2 -0.9,-2 -2,-2 -2,0.9 -2,2zM12,8c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,14c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2zM18,20c1.1,0 2,-0.9 2,-2s-0.9,-2 -2,-2 -2,0.9 -2,2 0.9,2 2,2z"></path>
 	</svg>
 )

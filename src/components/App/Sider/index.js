@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { IconButton, Paper, Divider } from 'ui'
+import { IconButton, Paper, Divider, NavMenu } from 'ui'
 import { ArrowLeftIcon } from 'ui/utils/icons'
 import navMap from 'common/navMap'
-import NavMenu from './NavMenu'
 
 const useStyles = makeStyles({
 	root: {
@@ -11,12 +10,12 @@ const useStyles = makeStyles({
 		height: '100%',
 	},
 	divider: {
-		marginTop: 48,
+		marginTop: 52,
 	},
 	hideIcon: {
 		position: 'absolute',
 		right: 8,
-		top: 4,
+		top: 6,
 		fontSize: 15,
 	},
 })
@@ -46,7 +45,7 @@ export default function Sider(props) {
 				</IconButton>
 			}
 			<Divider className={classes.divider} />
-			<NavMenu navMap={navMap} />
+			<NavMenu menuOptions={navMap} />
 		</Paper >
 	)
 }

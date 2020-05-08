@@ -35,6 +35,7 @@ const useStyles = makeStyles({
 	searchInput: {
 		background: 'rgba(250,250,250,.8)',
 		width: 240,
+		height: 32,
 	},
 	operationWrapper: {
 		...flexCenter,

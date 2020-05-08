@@ -1,10 +1,11 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import { Collapse, List, ListItem } from 'ui'
-import { ArrowBoldIcon } from 'ui/utils/icons'
-import themeColors from 'ui/utils/themeColors'
-import { flexCenter } from 'utils/styles'
+import Collapse from '../Collapse'
+import List from '../List'
+import ListItem from '../ListItem'
+import { ArrowBoldIcon } from '../utils/icons'
+import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: {
@@ -16,18 +17,27 @@ const useStyles = makeStyles({
 		textDecoration: 'none',
 		color: '#303133',
 		fontWeight: 500,
+		'&>svg': {
+			marginRight: 24,
+			fontSize: 16,
+		}
 	},
 	childWrapper: {
 		minHeight: 0,
 		transition: 'height 250ms ease-out',
 	},
-	childNavItem: {
+	childNavItem: ({ paddingLeft }) => ({
 		textDecoration: 'none',
 		color: '#303133',
-		paddingLeft: 48,
-	},
+		paddingLeft,
+		'&>svg': {
+			marginRight: 24,
+			fontSize: 16,
+		}
+	}),
 	arrowIcon: {
-		...flexCenter,
+		display: 'flex',
+		alignItems: 'center',
 		justifyContent: 'flex-end',
 		height: '100%',
 		position: 'absolute',
@@ -51,23 +61,28 @@ const useStyles = makeStyles({
 
 export default function NavMenu(props) {
 
-	const { navMap } = props
+	const {
+		color = 'primary',
+		menuOptions = [],
+		paddingLeft = 44
+	} = props
 
 	const defaultChildOpenStatus = useMemo(
 		() => {
 			let defaultObj = {}
-			navMap.forEach(({ id }) => {
+			menuOptions.forEach(({ id }) => {
 				defaultObj[id] = false
 			})
 			return defaultObj
 		},
-		[navMap]
+		[menuOptions]
 	)
 
 	const [childOpenStatus, setChildOpenStatus] = useState(defaultChildOpenStatus)
 
 	const classes = useStyles({
-		color: themeColors['primary']
+		paddingLeft,
+		color: themeColors[color]
 	})
 
 	const handleToggleChildOpen = useCallback(
@@ -83,9 +98,9 @@ export default function NavMenu(props) {
 	return (
 		<List className={classes.root} bordered={false}>
 			{
-				navMap.map(({ id, name, path, child }) => {
+				menuOptions.map(({ id, name, path, child, icon }) => {
 					const opened = childOpenStatus[id]
-					
+
 					return (
 						<Fragment key={id}>
 							<ListItem
@@ -96,6 +111,7 @@ export default function NavMenu(props) {
 								linked={!child}
 								onClick={child ? () => handleToggleChildOpen(id) : null}
 							>
+								{icon}
 								<span>{name}</span>
 								{
 									child &&
@@ -112,15 +128,16 @@ export default function NavMenu(props) {
 									bordered={false}
 								>
 									{
-										child.map(({ id, name, path }) => (
+										child.map(({ id, name, path: childPath, icon }) => (
 											<ListItem
 												key={id}
 												className={classes.childNavItem}
 												activeClassName={classes.childNavItemActived}
-												to={path}
+												to={path + childPath}
 												bordered={false}
 												linked={true}
 											>
+												{icon}
 												<span>{name}</span>
 											</ListItem>
 										))

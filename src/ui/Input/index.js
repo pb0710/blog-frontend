@@ -10,7 +10,7 @@ import { useCallback } from 'react'
 const useStyles = makeStyles({
 	root: {
 		minWidth: 200,
-		height: 28,
+		minHeight: 28,
 		position: 'relative',
 	},
 	input: ({ color, focus, disabled }) => ({
