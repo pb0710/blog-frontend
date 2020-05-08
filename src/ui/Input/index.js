@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 		cursor: disabled && 'not-allowed',
 		transition: 'all .2s ease-out',
 	}),
-	searchIcon: ({ color, focus }) => ({
+	searchIcon: {
 		...flexCenter,
 		height: '100%',
 		position: 'absolute',
@@ -36,8 +36,8 @@ const useStyles = makeStyles({
 		top: 0,
 		fontSize: 15,
 		cursor: 'pointer',
-		color: focus ? color.main : '#606266',
-	})
+		color: '#606266',
+	}
 })
 
 export default React.memo(function Input(props) {
