@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Glass, IconButton, Input } from 'ui'
-import { MenuIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
+import { MenuSlimIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 
 const useStyles = makeStyles({
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 	searchInput: {
 		background: 'rgba(250,250,250,.8)',
 		width: 240,
-		height: 32,
+		height: 30,
 	},
 	operationWrapper: {
 		...flexCenter,
@@ -68,13 +68,13 @@ export default function Header(props) {
 				{
 					drawerOpened ? null : (
 						<IconButton onClick={handleShowDrawer}>
-							<MenuIcon />
+							<MenuSlimIcon />
 						</IconButton>
 					)
 				}
 				<span className={classes.branch}>
 					Blog
-			</span>
+				</span>
 			</div>
 
 			<div className={classes.search}>

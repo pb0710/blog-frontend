@@ -1,6 +1,6 @@
 import { styled } from '@material-ui/styles'
 
-const Glass = styled('div')({
+const Glass = styled('section')({
 	display: 'inline-block',
 	whiteSpace: 'nowrap',
 	borderRadius: 2,

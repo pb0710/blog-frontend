@@ -2,6 +2,7 @@ import 'normalize.css'
 import './index.css'
 
 import Button from './Button'
+import Container from './Container'
 import Paper from './Paper'
 import Glass from './Glass'
 import TouchRipple from './TouchRipple'
@@ -18,9 +19,12 @@ import Select from './Select'
 import Option from './Option'
 import Collapse from './Collapse'
 import NavMenu from './NavMenu'
+import Link from './Link'
+import Tag from './Tag'
 
 export {
 	Button,
+	Container,
 	IconButton,
 	Paper,
 	Glass,
@@ -37,4 +41,6 @@ export {
 	Option,
 	Collapse,
 	NavMenu,
+	Link,
+	Tag,
 }

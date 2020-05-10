@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 	root: {
 		width: '100vw',
 		height: '100vh',
-		background: '#f6f6f6',
+		background: '#f7f7f7',
 		overflowY: 'auto',
 	},
 	header: ({ drawerOpened }) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 	}),
 	sider: ({ drawerOpened }) => ({
 		width: 240,
-		height: '100vh',
+		height: '100%',
 		position: 'fixed',
 		top: 0,
 		left: 0,
@@ -33,9 +33,9 @@ const useStyles = makeStyles({
 		zIndex: 800,
 	}),
 	content: ({ drawerOpened }) => ({
-		paddingTop: 56,
-		transitionDelay: drawerOpened ? '0ms' : '250ms',
-		// transition: 'width 250ms ease-out',
+		paddingTop: 68,
+		// transitionDelay: drawerOpened ? '0ms' : '250ms',
+		transition: 'width 250ms ease-out',
 		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
 		height: '100%',
 		position: 'fixed',
