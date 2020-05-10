@@ -6,10 +6,12 @@ import Content from './Content'
 
 const useStyles = makeStyles({
 	root: {
-		width: '100vw',
-		height: '100vh',
+		display: 'flex',
+		flexDirection: 'row-reverse',
+		width: '100%',
+		minHeight: '100vh',
 		background: '#f7f7f7',
-		overflowY: 'auto',
+		overflowX: 'hidden',
 	},
 	header: ({ drawerOpened }) => ({
 		position: 'fixed',
@@ -29,19 +31,15 @@ const useStyles = makeStyles({
 		borderRight: '1px solid #eaeaea',
 		transform: `translateX(${drawerOpened ? 0 : -240}px)`,
 		transition: 'transform 250ms ease-out',
+		overflowX: 'hidden',
 		overflowY: 'auto',
 		zIndex: 800,
 	}),
 	content: ({ drawerOpened }) => ({
 		paddingTop: 68,
-		// transitionDelay: drawerOpened ? '0ms' : '250ms',
-		transition: 'width 250ms ease-out',
+		paddingBottom: 16,
 		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
-		height: '100%',
-		position: 'fixed',
-		top: 0,
-		right: 0,
-		overflowY: 'auto',
+		transition: 'width 250ms ease-out',
 	}),
 })
 

@@ -5,7 +5,7 @@ import ArticleCard from 'components/ArticleCard'
 
 const useStyles = makeStyles({
 	root: {
-
+		
 	},
 	paper: {
 		overflow: 'hidden',
@@ -31,6 +31,14 @@ export default function Home(props) {
 		<Container className={classes.root}>
 			<Paper className={classes.paper}>
 				<div className={classes.grid}>
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
 					<ArticleCard />
 					<ArticleCard />
 					<ArticleCard />
