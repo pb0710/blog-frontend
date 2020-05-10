@@ -1,20 +1,20 @@
 import { all, fork, put, takeEvery, select } from 'redux-saga/effects'
 
-// 初始化全局数据
-function* initData() {
-	
+function* toggleDrawer() {
+	const { drawerOpened } = yield select()
+	yield put({ type: 'UPDATE_DRAWER_OPEN', payload: !drawerOpened })
 }
 
 // ------------------------------saga---------------watch----------------------------------------
 
-function* initDataSaga() {
-	yield takeEvery('INIT_DATA', function*(action) {
-		yield initData(action.payload)
+function* toggleDrawerSaga() {
+	yield takeEvery('TOGGLE_DRAWER', function*(action) {
+		yield toggleDrawer()
 	})
 }
 
 export default function*() {
 	yield all([
-		fork(initDataSaga),
+		fork(toggleDrawerSaga),
 	])
 }

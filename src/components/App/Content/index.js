@@ -20,7 +20,7 @@ export default function Content(props) {
 	return (
 		<Switch className={classes.root}>
 			{
-				navMap.map(({ id, path, component, child }, index) => (
+				navMap.map(({ id, path, component, child }) => (
 					child
 						? child.map(({
 							id: childId,

@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { useDispatch, useSelector } from 'react-redux'
 import { Glass, IconButton, Input } from 'ui'
 import { MenuSlimIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
+import { updateDrawerOpenedAction } from 'store/actions'
 
 const useStyles = makeStyles({
 	root: {
@@ -49,15 +51,16 @@ const useStyles = makeStyles({
 export default function Header(props) {
 
 	const {
-		drawerOpened,
-		setDrawerOpened = () => { }
+
 	} = props
 
+	const drawerOpened = useSelector(state => state.drawerOpened)
+	const dispatch = useDispatch()
 	const classes = useStyles()
 
 	const handleShowDrawer = useCallback(
 		() => {
-			setDrawerOpened(true)
+			dispatch(updateDrawerOpenedAction(true))
 		},
 		[]
 	)
@@ -66,11 +69,10 @@ export default function Header(props) {
 		<Glass className={classes.root}>
 			<div className={classes.navWrapper}>
 				{
-					drawerOpened ? null : (
-						<IconButton onClick={handleShowDrawer}>
-							<MenuSlimIcon />
-						</IconButton>
-					)
+					drawerOpened ||
+					<IconButton onClick={handleShowDrawer}>
+						<MenuSlimIcon />
+					</IconButton>
 				}
 				<span className={classes.branch}>
 					Blog

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { useSelector } from 'react-redux'
 import Header from './Header'
 import Sider from './Sider'
 import Content from './Content'
@@ -45,22 +46,19 @@ const useStyles = makeStyles({
 
 export default function App() {
 
-	const [drawerOpened, setDrawerOpened] = useState(false)
-
+	const drawerOpened = useSelector(state => state.drawerOpened)
 	const classes = useStyles({ drawerOpened })
-
-	const drawerProps = { drawerOpened, setDrawerOpened }
 
 	return (
 		<div className={classes.root}>
 			<div className={classes.header}>
-				<Header {...drawerProps} />
+				<Header />
 			</div>
 			<div className={classes.sider}>
-				<Sider {...drawerProps} />
+				<Sider />
 			</div>
 			<div className={classes.content}>
-				<Content {...drawerProps} />
+				<Content />
 			</div>
 		</div>
 	)

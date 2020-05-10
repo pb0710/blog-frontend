@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-// 是否为历史保单（历史保单不允许操作）
-export const isHistory = handleActions({
-	UPDATE_IS_HISTORY: (state, action) => action.payload
+// 侧边抽屉打开状态
+export const drawerOpened = handleActions({
+	UPDATE_DRAWER_OPEN: (state, action) => action.payload
 }, false)
