@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 		boxSizing: 'border-box',
 		position: 'relative',
 		width: '100%',
-		height: 40,
+		minHeight: 40,
 		margin: 0,
 		padding: '0 24px',
 		background: '#fff',

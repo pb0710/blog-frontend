@@ -17,8 +17,8 @@ const useStyles = makeStyles({
 		transition: 'all 250ms ease-out',
 
 		'&:hover': {
-			boxShadow: '0 0 36px rgba(0,0,0,.06)',
-			zIndex: 6,
+			boxShadow: '0 4px 40px rgba(0,0,0,.08)',
+			zIndex: 8,
 
 			'& img': {
 				transform: 'scale(1.1)',

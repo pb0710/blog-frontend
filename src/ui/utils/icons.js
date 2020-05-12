@@ -7,7 +7,7 @@ export const ArrowBoldIcon = () => (
 )
 
 export const ArrowLeftBoldIcon = () => (
-	<svg viewBox="0 0 24 24" focusable="false" data-icon="boldLeft" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true">
+	<svg viewBox="0 0 24 24" focusable="false" data-icon="boldLeft" width="1.5em" height="1.5em" fill="currentColor" aria-hidden="true">
 		<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
 	</svg>
 )

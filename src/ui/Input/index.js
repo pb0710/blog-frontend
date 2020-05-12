@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 		boxShadow: `0 0 0 ${focus ? '2px' : '6px'} ${hex2Rgba(color.main, focus ? .7 : 0)}`,
 		opacity: disabled && .5,
 		cursor: disabled && 'not-allowed',
-		transition: 'all .2s ease-out',
+		transition: 'all 250ms ease-out',
 	}),
 	searchIcon: {
 		...flexCenter,

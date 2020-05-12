@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useSelector } from 'react-redux'
 import Header from './Header'
@@ -13,35 +13,13 @@ const useStyles = makeStyles({
 		minHeight: '100vh',
 		background: '#f7f7f7',
 		overflowX: 'hidden',
-	},
-	header: ({ drawerOpened }) => ({
-		position: 'fixed',
-		top: 0,
-		right: 0,
-		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
-		height: 52,
-		transition: 'width 250ms ease-out',
-		zIndex: 700,
-	}),
-	sider: ({ drawerOpened }) => ({
-		width: 240,
-		height: '100%',
-		position: 'fixed',
-		top: 0,
-		left: 0,
-		borderRight: '1px solid #eaeaea',
-		transform: `translateX(${drawerOpened ? 0 : -240}px)`,
-		transition: 'transform 250ms ease-out',
-		overflowX: 'hidden',
 		overflowY: 'auto',
-		zIndex: 800,
-	}),
-	content: ({ drawerOpened }) => ({
-		paddingTop: 68,
-		paddingBottom: 16,
+	},
+	rightWrapper: ({ drawerOpened }) => ({
 		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
-		transition: 'width 250ms ease-out',
-	}),
+		transition: 'width 200ms ease-out',
+		overflowY: 'hidden',
+	})
 })
 
 export default function App() {
@@ -51,13 +29,9 @@ export default function App() {
 
 	return (
 		<div className={classes.root}>
-			<div className={classes.header}>
+			<Sider />
+			<div className={classes.rightWrapper}>
 				<Header />
-			</div>
-			<div className={classes.sider}>
-				<Sider />
-			</div>
-			<div className={classes.content}>
 				<Content />
 			</div>
 		</div>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Container, Paper } from 'ui'
+import { Container, Paper, Button, List, ListItem } from 'ui'
 import ArticleCard from 'components/ArticleCard'
 import AffixContainer from 'components/AffixContainer'
+import Panel from 'components/Panel'
 
 const useStyles = makeStyles({
 	root: {
@@ -38,38 +39,37 @@ export default function Home(props) {
 	const classes = useStyles()
 
 	return (
-		<div className={classes.root}>
-			<Container>
-				<Paper className={classes.paper}>
-					<div className={classes.grid}>
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-					</div>
-				</Paper>
-			</Container>
+		<Container className={classes.root}>
+			<Paper className={classes.paper}>
+				<div className={classes.grid}>
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+					<ArticleCard />
+				</div>
+			</Paper>
 
 			<AffixContainer>
-				<Paper className={classes.baseInfo}>
+				<Panel title="每日一句">
+
+
+				</Panel>
+				<Paper className={classes.oneSentence}>
 
 				</Paper>
-				<Paper className={classes.oneSentence}>
-					
-				</Paper>
 			</AffixContainer>
-		</div>
+		</Container>
 	)
 }

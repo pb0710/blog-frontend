@@ -1,25 +1,20 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useSelector } from 'react-redux'
-import { Container } from 'ui'
 
 const useStyles = makeStyles({
 	root: ({ drawerOpened }) => ({
-		display: 'flex',
-		flexDirection: 'row-reverse',
-		position: 'fixed',
-		top: 68,
-		right: 0,
-		left: 0,
-		transition: 'transform 250ms ease-out',
-		transform: drawerOpened ? 'translateX(120px)' : 'none',
-	}),
-	affixWrapper: {
 		boxSizing: 'border-box',
 		display: 'flex',
 		flexDirection: 'column',
 		width: 293,
-	},
+		marginLeft: 16,
+		position: 'fixed',
+		top: 68,
+		right: 'calc(50% - 550px)',
+		transform: `translateX(${drawerOpened ? 120 : 0}px)`,
+		transition: 'transform 200ms ease-out',
+	})
 })
 
 export default function AffixContainer(props) {
@@ -32,10 +27,8 @@ export default function AffixContainer(props) {
 	const classes = useStyles({ drawerOpened })
 
 	return (
-		<Container className={classes.root}>
-			<div className={classes.affixWrapper}>
-				{children}
-			</div>
-		</Container>
+		<div className={classes.root}>
+			{children}
+		</div>
 	)
 }
