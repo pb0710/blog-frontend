@@ -2,13 +2,21 @@ import { useRef, useState, useContext, useEffect, useCallback, useMemo } from 'r
 
 /**
  * 绑定水波纹特效
+ * @param {boolean} muted 是否禁用
  */
-export function useRipple() {
+export function useRipple(muted) {
+
 	const rippleRef = useRef()
 
-	const handleStart = e => rippleRef.current.start(e)
+	const handleStart = useCallback(
+		e => muted ? null : rippleRef.current.start(e),
+		[muted]
+	)
 
-	const handleStop = () => rippleRef.current.stop()
+	const handleStop = useCallback(
+		() => muted ? null : rippleRef.current.stop(),
+		[muted]
+	)
 
 	return { rippleRef, handleStart, handleStop }
 }

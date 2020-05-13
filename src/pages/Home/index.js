@@ -62,7 +62,7 @@ export default function Home(props) {
 			</Paper>
 
 			<AffixContainer>
-				<Panel title="每日一句">
+				<Panel title="一句">
 
 
 				</Panel>

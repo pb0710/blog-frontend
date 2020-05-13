@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 		alignItems: 'center',
 		minWidth: 32,
 		height: 22,
-		margin: 8,
+		marginLeft: 8,
 		position: 'relative',
 	},
 	label: ({ disabled }) => ({
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 		background: checked ? color.main : '#fff',
 		paddingLeft: 4,
 		paddingRight: 4,
-		margin: 8,
+		marginLeft: 8,
 		borderRadius: 11,
 		border: `1px solid ${checked ? color.main : '#aaa'}`,
 		opacity: disabled && .5,

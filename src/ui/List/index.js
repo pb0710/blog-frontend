@@ -13,7 +13,6 @@ const useStyles = makeStyles({
 		background: '#fff',
 		border: ({ bordered }) => bordered ? '1px solid #e2e2e2' : 0,
 		borderRadius: 2,
-		overflow: 'hidden',
 	},
 })
 

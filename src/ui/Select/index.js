@@ -9,7 +9,7 @@ import Glass from '../Glass'
 
 const useStyles = makeStyles({
 	root: {
-		minWidth: 80,
+		minWidth: 104,
 		minHeight: 32,
 		position: 'relative',
 		cursor: 'pointer',
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
 		borderRadius: 2,
 		boxShadow: '0 4px 24px rgba(26,26,26,.14)',
 		overflow: 'hidden',
-		zIndex: visible ? 1 : -1,
+		zIndex: visible ? 999 : -1,
 		opacity: visible ? 1 : 0,
 		transition: `all ${timeout}ms ease-out`,
 		transformOrigin: '50% 16px',

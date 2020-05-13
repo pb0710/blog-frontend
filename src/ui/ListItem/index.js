@@ -26,7 +26,8 @@ const useStyles = makeStyles({
 		},
 
 		'&:last-child': {
-			border: 0
+			border: 0,
+			borderRadius: 2,
 		}
 	}),
 })
@@ -38,6 +39,7 @@ function ListItem(props) {
 		className,
 		activeClassName,
 		bordered = true,
+		rippleMuted = false,
 		onClick = () => { },
 		color = 'default',
 		to = '/',
@@ -49,7 +51,7 @@ function ListItem(props) {
 		bordered
 	})
 
-	const { rippleRef, handleStart, handleStop } = useRipple()
+	const { rippleRef, handleStart, handleStop } = useRipple(rippleMuted)
 
 	return (
 		linked
