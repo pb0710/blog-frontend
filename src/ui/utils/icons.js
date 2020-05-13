@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ArrowBoldIcon = () => (
+export const ArrowDownBoldIcon = () => (
 	<svg viewBox="0 0 24 24" focusable="false" data-icon="arrow" width="1.5em" height="1.5em" fill="currentColor" aria-hidden="true" role="presentation">
 		<path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
 	</svg>

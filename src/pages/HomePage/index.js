@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 	}
 })
 
-export default function Home(props) {
+export default function HomePage(props) {
 
 	const {
 

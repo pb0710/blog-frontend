@@ -25,15 +25,15 @@ const useStyles = makeStyles({
 		alignItems: 'center',
 		minWidth: 30,
 		height: 20,
-		background: checked ? color.main : '#fff',
+		background: checked ? color.main : '#fafafa',
 		paddingLeft: 4,
 		paddingRight: 4,
 		marginLeft: 8,
 		borderRadius: 11,
-		border: `1px solid ${checked ? color.main : '#aaa'}`,
+		border: checked ? 'rgba(0,0,0,0)' : '1px solid #e2e2e2',
 		opacity: disabled && .5,
 		cursor: disabled ? 'not-allowed' : 'pointer',
-		transition: 'all .2s ease-in-out',
+		transition: 'all .2s ease-out',
 	}),
 	button: ({ checked }) => ({
 		width: 12,
@@ -43,15 +43,6 @@ const useStyles = makeStyles({
 		transition: 'all .2s',
 		transform: checked && 'translateX(17px)',
 	}),
-	mask: {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		width: '100%',
-		height: '100%',
-		background: 'rgba(255,255,255,.5)',
-		cursor: 'not-allowed',
-	}
 })
 
 export default React.memo(function Switch(props) {

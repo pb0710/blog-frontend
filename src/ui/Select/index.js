@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useBoolean } from '../utils/hooks'
-import { ArrowDownIcon } from '../utils/icons'
+import { ArrowDownBoldIcon } from '../utils/icons'
 import Option from '../Option'
 import Glass from '../Glass'
 
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 			alignItems: 'center',
 			justifyContent: 'center',
 			fontSize: 12,
-			color: '#606266',
+			color: '#303133',
 		}
 	},
 	optionWrapper: ({ visible, timeout }) => ({
@@ -134,12 +134,14 @@ export default function Select(props) {
 			<div className={classes.selected} onClick={handleShowList}>
 				{selected.children}
 				<i>
-					<ArrowDownIcon />
+					<ArrowDownBoldIcon />
 				</i>
 			</div>
 			{
 				<Glass className={clsx(classes.optionWrapper, visible && classes.enter)}>
-					<Option value={selected.value} color={color}>{selected.children}</Option>
+					<Option value={selected.value} color={color}>
+						{selected.children}
+					</Option>
 					{
 						React.Children.map(
 							children,

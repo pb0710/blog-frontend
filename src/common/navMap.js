@@ -1,8 +1,7 @@
 import React from 'react'
-import { HomeIcon, ReadIcon, ControlIcon, BranchIcon } from 'ui/utils/icons'
-import Home from 'pages/Home'
+import HomePage from 'pages/HomePage'
 import Article from 'pages/Article'
-import Setting from 'pages/Setting'
+import SettingPage from 'pages/SettingPage'
 import StudyRoute from 'pages/StudyRoute'
 import HTML from 'pages/HTML'
 import CSS from 'pages/CSS'
@@ -14,7 +13,7 @@ const navMap = [
 		name: '主页',
 		path: '/home',
 		icon: null,
-		component: <Home />,
+		component: <HomePage />,
 		child: null,
 	},
 	{
@@ -118,7 +117,7 @@ const navMap = [
 		name: '设置',
 		path: '/setting',
 		icon: null,
-		component: <Setting />,
+		component: <SettingPage />,
 		child: null,
 	},
 ]

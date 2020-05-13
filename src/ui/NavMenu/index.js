@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import Collapse from '../Collapse'
 import List from '../List'
 import ListItem from '../ListItem'
-import { ArrowBoldIcon } from '../utils/icons'
+import { ArrowDownBoldIcon } from '../utils/icons'
 import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
@@ -116,7 +116,7 @@ export default function NavMenu(props) {
 								{
 									child &&
 									<i className={clsx(classes.arrowIcon, opened && classes.arrowIconSelected)}>
-										<ArrowBoldIcon />
+										<ArrowDownBoldIcon />
 									</i>
 								}
 							</ListItem>

@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 		minHeight: 40,
 		margin: 0,
 		padding: '0 24px',
-		background: '#fff',
 		borderBottom: bordered ? '1px solid #f0f0f0' : 0,
 		borderRadius: bordered || 2,
 		transition: 'all .15s ease-out',
@@ -25,10 +24,16 @@ const useStyles = makeStyles({
 			background: color.main,
 		},
 
+		'&:first-child': {
+			borderTopLeftRadius: 2,
+			borderTopRightRadius: 2,
+		},
+
 		'&:last-child': {
-			border: 0,
-			borderRadius: 2,
-		}
+			borderBottom: 0,
+			borderBottomLeftRadius: 2,
+			borderBottomRightRadius: 2,
+		},
 	}),
 })
 
