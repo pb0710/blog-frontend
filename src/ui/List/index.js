@@ -7,7 +7,7 @@ const useStyles = makeStyles({
 		boxSizing: 'border-box',
 		position: 'relative',
 		minWidth: 200,
-		minHeight: 80,
+		minHeight: 40,
 		margin: 0,
 		padding: 0,
 		border: ({ bordered }) => bordered ? '1px solid #e2e2e2' : 0,

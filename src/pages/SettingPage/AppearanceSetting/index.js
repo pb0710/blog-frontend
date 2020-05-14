@@ -5,15 +5,11 @@ import SettingSection from 'components/SettingSection'
 
 const useStyles = makeStyles({
 	root: {
-
+		marginBottom: 16,
 	},
 })
 
-export default function SettingPage(props) {
-
-	const {
-
-	} = props
+export default function SettingPage() {
 
 	const classes = useStyles()
 
