@@ -7,19 +7,12 @@ import Content from './Content'
 
 const useStyles = makeStyles({
 	root: {
-		display: 'flex',
-		flexDirection: 'row-reverse',
 		width: '100%',
 		minHeight: '100vh',
 		background: '#f7f7f7',
 		overflowX: 'hidden',
 		overflowY: 'auto',
 	},
-	rightWrapper: ({ drawerOpened }) => ({
-		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
-		transition: 'width 200ms ease-out',
-		overflowY: 'hidden',
-	})
 })
 
 export default function App() {
@@ -30,10 +23,8 @@ export default function App() {
 	return (
 		<div className={classes.root}>
 			<Sider />
-			<div className={classes.rightWrapper}>
-				<Header />
-				<Content />
-			</div>
+			<Header />
+			<Content />
 		</div>
 	)
 }

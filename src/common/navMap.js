@@ -72,7 +72,7 @@ const navMap = [
 		name: '讨论区',
 		path: '/comment',
 		icon: null,
-		component: <StudyRoute />,
+		component: <JS />,
 		child: null,
 	},
 	{

@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 		boxSizing: 'border-box',
 		display: 'flex',
 		flexDirection: 'column',
-		width: 264,
+		width: '33%',
 		height: 304,
 		background: '#fff',
 		padding: 16,

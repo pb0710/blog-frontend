@@ -6,18 +6,22 @@ const useStyles = makeStyles({
 	root: ({ drawerOpened }) => ({
 		boxSizing: 'border-box',
 		display: 'flex',
-		flexDirection: 'column',
-		width: 240,
-		marginLeft: 16,
-		position: 'fixed',
-		top: 68,
-		right: 'calc(50% - 524px)',
-		transform: `translateX(${drawerOpened ? 120 : 0}px)`,
-		transition: 'transform 200ms ease-out',
-	})
+		justifyContent: 'center',
+		width: drawerOpened ? 'calc(100% - 240px)' : '100%',
+		height: '100%',
+		minHeight: '100vh',
+		paddingTop: 68,
+		paddingBottom: 16,
+		transition: 'width 200ms ease-out',
+	}),
+	container: {
+		width: 1048,
+		padding: '0 16px',
+		margin: 0,
+	}
 })
 
-export default function AffixContainer(props) {
+export default function FlexablePage(props) {
 
 	const {
 		children
@@ -28,7 +32,9 @@ export default function AffixContainer(props) {
 
 	return (
 		<div className={classes.root}>
-			{children}
+			<div className={classes.container}>
+				{children}
+			</div>
 		</div>
 	)
 }

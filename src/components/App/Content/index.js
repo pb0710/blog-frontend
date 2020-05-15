@@ -1,26 +1,20 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Route, Switch } from 'react-router'
-import { useSelector } from 'react-redux'
 import navMap from 'common/navMap'
 
 const useStyles = makeStyles({
 	root: {
+		display: 'flex',
+		flexDirection: 'row-reverse',
 		width: '100%',
 		height: '100%',
-		paddingTop: 68,
-		paddingBottom: 16,
 	}
 })
 
-export default function Content(props) {
+export default function Content() {
 
-	const {
-
-	} = props
-
-	const drawerOpened = useSelector(state => state.drawerOpened)
-	const classes = useStyles({ drawerOpened })
+	const classes = useStyles()
 
 	return (
 		<div className={classes.root}>

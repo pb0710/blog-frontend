@@ -4,30 +4,24 @@ import { Container, Paper, Button, List, ListItem } from 'ui'
 import ArticleCard from 'components/ArticleCard'
 import AffixContainer from 'components/AffixContainer'
 import Panel from 'components/Panel'
+import FlexablePage from 'components/FlexablePage'
 
 const useStyles = makeStyles({
 	root: {
-
+		
 	},
-	paper: {
+	wrapper: {
+		// 偏移右下，宽度-1
+		width: 791,
 		overflow: 'hidden',
 	},
 	grid: {
 		display: 'flex',
 		flexFlow: 'wrap',
-		width: 792,
+		width: 800,
 		marginRight: '-1px',
 		marginBottom: '-1px',
 	},
-	baseInfo: {
-		width: '100%',
-		height: 240,
-		marginBottom: 16,
-	},
-	oneSentence: {
-		width: '100%',
-		height: 104,
-	}
 })
 
 export default function HomePage(props) {
@@ -39,8 +33,8 @@ export default function HomePage(props) {
 	const classes = useStyles()
 
 	return (
-		<Container className={classes.root}>
-			<Paper className={classes.paper}>
+		<FlexablePage className={classes.root}>
+			<Paper className={classes.wrapper}>
 				<div className={classes.grid}>
 					<ArticleCard />
 					<ArticleCard />
@@ -66,10 +60,7 @@ export default function HomePage(props) {
 
 
 				</Panel>
-				<Paper className={classes.oneSentence}>
-
-				</Paper>
 			</AffixContainer>
-		</Container>
+		</FlexablePage>
 	)
 }

@@ -29,5 +29,5 @@ export default function SettingPage() {
 		[]
 	)
 
-	return <SettingSection className={classes.root} title='语言' optionsList={optionsList} />
+	return <SettingSection className={classes.root} title='国际化' optionsList={optionsList} />
 }

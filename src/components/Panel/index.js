@@ -7,7 +7,7 @@ const useStyles = makeStyles({
 	root: {
 		boxSizing: 'border-box',
 		width: '100%',
-		minHeight: 120,
+		minHeight: 160,
 		marginBottom: 16,
 	
 		'&>h2': {
