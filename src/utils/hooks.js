@@ -3,19 +3,18 @@ import { throttle } from 'utils'
 
 /**
  * promise批量转换resource
- * @param  {...promise} promises 
+ * @param  {...promise} promises
  */
 export function useSuspense(...promises) {
-
-	const wrapPromise = useCallback(promise => {
+	const wrapPromise = useCallback((promise) => {
 		let status = 'pending'
 		let result
 		let suspenser = promise.then(
-			value => {
+			(value) => {
 				status = 'resolved'
 				result = value
 			},
-			error => {
+			(error) => {
 				status = 'rejected'
 				result = error
 			}
@@ -34,7 +33,10 @@ export function useSuspense(...promises) {
 		}
 	}, [])
 
-	return useCallback(promises.map(promise => wrapPromise(promise)), [])
+	return useCallback(
+		promises.map((promise) => wrapPromise(promise)),
+		[]
+	)
 }
 
 /**
@@ -45,19 +47,22 @@ export function useBoolean() {
 
 	const setTrue = useCallback(() => setBoolean(true), [])
 	const setFalse = useCallback(() => setBoolean(false), [])
-	const toggleBoolean = useCallback(() => setBoolean(prev => !prev), [])
+	const toggleBoolean = useCallback(() => setBoolean((prev) => !prev), [])
 
 	return { boolean, setTrue, setFalse, toggleBoolean }
 }
 
 /**
  * 监听鼠标滚轮
- * @param {object} options 
+ * @param {object} options
  */
 export function useMouseWheel({ throttleInterval } = {}) {
 	const [down, setDown] = useState(false)
 
-	const handleMouseWheel = useCallback(throttle(e => setDown(e.wheelDelta < 0), throttleInterval), [throttleInterval])
+	const handleMouseWheel = useCallback(
+		throttle((e) => setDown(e.wheelDelta < 0), throttleInterval),
+		[throttleInterval]
+	)
 
 	useEffect(() => {
 		document.addEventListener('mousewheel', handleMouseWheel)
@@ -71,29 +76,59 @@ export function useMouseWheel({ throttleInterval } = {}) {
 
 /**
  * 请求接口（维护pending）
- * @param {promise} promise api promise 
+ * @param {promise} promise api promise
  * @param {boolean} immediate 是否立即执行
  */
 export function useAsync(promise, immediate = true) {
-  const [pending, setPending] = useState(false)
-  const [value, setValue] = useState(null)
-  const [error, setError] = useState(null)
+	const [pending, setPending] = useState(false)
+	const [value, setValue] = useState(null)
+	const [error, setError] = useState(null)
 
-  const execute = useCallback(() => {
-    setPending(true)
-    setValue(null)
-    setError(null)
-    return promise()
-      .then(response => setValue(response))
-      .catch(error => setError(error))
-      .finally(() => setPending(false))
-  }, [promise])
+	const execute = useCallback(() => {
+		setPending(true)
+		setValue(null)
+		setError(null)
+		return promise()
+			.then((response) => setValue(response))
+			.catch((error) => setError(error))
+			.finally(() => setPending(false))
+	}, [promise])
 
-  useEffect(() => {
-    if (immediate) {
-      execute()
-    }
-  }, [execute, immediate])
+	useEffect(() => {
+		if (immediate) {
+			execute()
+		}
+	}, [execute, immediate])
 
-  return { execute, pending, value, error }
+	return { execute, pending, value, error }
+}
+
+/**
+ * 弹出窗展示状态
+ */
+export function usePopupVisible() {
+	const [visible, setVisible] = useState(false)
+
+	const handleTogglePopup = useCallback(() => {
+		setVisible((prev) => !prev)
+	}, [])
+
+	const handleHidePopup = useCallback(() => {
+		setVisible(false)
+	}, [])
+
+	const handleShowPopup = useCallback(() => {
+		setVisible(false)
+	}, [])
+
+	useEffect(() => {
+		visible
+			? document.addEventListener('click', handleTogglePopup)
+			: document.removeEventListener('click', handleTogglePopup)
+		return () => {
+			document.removeEventListener('click', handleTogglePopup)
+		}
+	}, [visible])
+
+	return { visible, handleTogglePopup, handleShowPopup, handleHidePopup }
 }
