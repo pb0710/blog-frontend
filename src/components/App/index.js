@@ -9,15 +9,13 @@ const useStyles = makeStyles({
 	root: {
 		width: '100%',
 		minHeight: '100vh',
-		background: '#f7f7f7',
 		overflowX: 'hidden',
-		overflowY: 'auto',
-	},
+		overflowY: 'auto'
+	}
 })
 
 export default function App() {
-
-	const drawerOpened = useSelector(state => state.drawerOpened)
+	const drawerOpened = useSelector((state) => state.drawerOpened)
 	const classes = useStyles({ drawerOpened })
 
 	return (
