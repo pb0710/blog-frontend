@@ -9,6 +9,7 @@ import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
 	root: {
+		overflowY: 'auto',
 		cursor: 'pointer',
 		userSelect: 'none',
 		transition: 'all 250ms'

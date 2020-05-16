@@ -21,7 +21,8 @@ const useStyles = makeStyles({
 			zIndex: 8,
 
 			'& img': {
-				transform: 'scale(1.1)'
+				transform: 'scale(1.04)',
+				filter: 'brightness(1.1)'
 			}
 		}
 	},
@@ -37,7 +38,7 @@ const useStyles = makeStyles({
 			maxHeight: '100%',
 			objectFit: 'cover',
 			verticalAlign: 'text-top',
-			transition: 'transform 250ms ease-out'
+			transition: 'all 200ms ease-out'
 		}
 	},
 	info: {
@@ -85,7 +86,7 @@ export default function ArticleCard(props) {
 	const {
 		id,
 		title = 'Linux操作系统',
-		imageUrl = 'https://iph.href.lu/300x200?fg=ffffff&bg=43ad7f',
+		imageUrl = 'http://111.229.246.221/image/book/sy03.jpg',
 		viewsCount = '3000',
 		tags = []
 	} = props

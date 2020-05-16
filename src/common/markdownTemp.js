@@ -32,4 +32,12 @@ export const markdown =
 	'> aaaaaaaaa\n' +
 	'>> bbbbbbbbb\n' +
 	'>>> cccccccccc\n\n' +
-	'``` var a=11; ```'
+	'```javascript \n' +
+	'var a=11;\n' +
+	'```\n' +
+	'```css \n' +
+	'font-size:14px;\n' +
+	'```\n' +
+	'```html \n' +
+	'<div>test</div>\n' +
+	'```\n'

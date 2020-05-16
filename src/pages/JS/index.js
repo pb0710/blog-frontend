@@ -5,10 +5,18 @@ import ArticleDetail from 'components/ArticleDetail'
 
 const useStyles = makeStyles({
 	root: {},
-	backgroundImage: {
+	backgroundImageWrapper: {
 		width: '100%',
-		height: 480,
-		background: 'skyblue'
+		height: 520,
+
+		'&>img': {
+			width: '100%',
+			height: '100%',
+			maxWidth: '100%',
+			maxHeight: '100%',
+			objectFit: 'cover',
+			verticalAlign: 'text-top'
+		}
 	},
 	container: {
 		width: 1048,
@@ -31,7 +39,9 @@ export default function JS(props) {
 
 	return (
 		<FlexablePage className={classes.root}>
-			<div className={classes.backgroundImage}></div>
+			<div className={classes.backgroundImageWrapper}>
+				<img src="http://111.229.246.221/image/book/sy04.jpg" />
+			</div>
 			<div className={classes.container}>
 				<div className={classes.articleWrapper}>
 					<ArticleDetail />

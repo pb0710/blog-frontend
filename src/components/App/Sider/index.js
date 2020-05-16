@@ -17,20 +17,25 @@ const useStyles = makeStyles({
 		position: 'fixed',
 		top: 0,
 		left: 0,
+		paddingTop: 52,
 		borderRight: '1px solid #eaeaea',
 		boxShadow: 'none',
 		transform: `translateX(${drawerOpened ? 0 : -240}px)`,
 		transition: 'transform 200ms ease-out',
 		overflowX: 'hidden',
-		overflowY: 'auto',
+		overflowY: 'hidden',
 		zIndex: 88
 	}),
 	topbar: {
 		display: 'flex',
 		alignItems: 'center',
 		flexDirection: 'row-reverse',
+		width: '100%',
 		height: 52,
-		borderBottom: '1px solid #eaeaea'
+		borderBottom: '1px solid #eaeaea',
+		position: 'fixed',
+		top: 0,
+		right: 0
 	},
 	closeDrawerIcon: {
 		position: 'absolute',

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 export default function UserPopup(props) {
 	const {} = props
 
-	const { visible, handleTogglePopup } = usePopupVisible()
+	const { visible, handleTogglePopup, handleShowPopup } = usePopupVisible()
 	const classes = useStyles()
 
 	return (
@@ -20,7 +20,7 @@ export default function UserPopup(props) {
 			<IconButton focus={visible} onClick={handleTogglePopup}>
 				<UserIcon />
 			</IconButton>
-			<Popup visible={visible} onClick={handleTogglePopup}>
+			<Popup visible={visible} onClick={handleShowPopup}>
 				user
 			</Popup>
 		</div>
