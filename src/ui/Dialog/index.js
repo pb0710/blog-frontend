@@ -8,62 +8,62 @@ import { useRenderCount, useCoordinate } from '../utils/hooks'
 
 const useStyles = makeStyles({
 	root: {
-		zIndex: 999,
+		zIndex: 999
 	},
 	maskEnter: {
 		animation: '$fade-in ease-out forwards',
-		animationDuration: 300,
+		animationDuration: 300
 	},
 	maskLeave: {
 		animation: '$fade-out ease-out forwards',
-		animationDuration: 300,
+		animationDuration: 300
 	},
 	modalEnter: {
 		animation: '$swell ease-out forwards',
-		animationDuration: 300,
+		animationDuration: 300
 	},
 	modalLeave: {
 		animation: '$shrink ease-out forwards',
-		animationDuration: 300,
+		animationDuration: 300
 	},
 	'@keyframes fade-in': {
 		from: {
 			zIndex: -1,
-			opacity: 0,
+			opacity: 0
 		},
 		to: {
 			zIndex: 111,
-			opacity: 1,
+			opacity: 1
 		}
 	},
 	'@keyframes fade-out': {
 		from: {
 			zIndex: 111,
-			opacity: 1,
+			opacity: 1
 		},
 		to: {
 			zIndex: -1,
-			opacity: 0,
+			opacity: 0
 		}
 	},
 	'@keyframes swell': {
 		from: {
 			opacity: 0,
-			transform: 'scale(0)',
+			transform: 'scale(0)'
 		},
 		to: {
 			opacity: 1,
-			transform: 'scale(1)',
+			transform: 'scale(1)'
 		}
 	},
 	'@keyframes shrink': {
 		from: {
 			opacity: 1,
-			transform: 'scale(1)',
+			transform: 'scale(1)'
 		},
 		to: {
 			opacity: 0,
-			transform: 'scale(0)',
+			transform: 'scale(0)'
 		}
 	},
 	mask: {
@@ -75,7 +75,7 @@ const useStyles = makeStyles({
 		width: '100vw',
 		height: '100vh',
 		background: 'rgba(200,200,200,.2)',
-		zIndex: -1,
+		zIndex: -1
 	},
 	modal: {
 		display: 'flex',
@@ -84,7 +84,7 @@ const useStyles = makeStyles({
 		top: 'calc(50% - 120px)',
 		width: 500,
 		minHeight: 178,
-		transformOrigin: ({ originX, originY }) => `${originX}px ${originY}px`,
+		transformOrigin: ({ originX, originY }) => `${originX}px ${originY}px`
 	},
 	title: {
 		display: 'flex',
@@ -94,12 +94,12 @@ const useStyles = makeStyles({
 		fontWeight: 600,
 		color: '#303133',
 		padding: '0 16px',
-		borderBottom: '1px solid #f0f0f0',
+		borderBottom: '1px solid #f0f0f0'
 	},
 	content: {
 		display: 'flex',
 		alignItems: 'center',
-		padding: '24px 16px',
+		padding: '24px 16px'
 	},
 	footer: {
 		display: 'flex',
@@ -110,7 +110,7 @@ const useStyles = makeStyles({
 		position: 'absolute',
 		bottom: 0,
 		padding: '0 16px',
-		borderTop: '1px solid #f0f0f0',
+		borderTop: '1px solid #f0f0f0'
 	},
 	operation: {
 		display: 'flex',
@@ -128,7 +128,7 @@ export default function Dialog(props) {
 		cancelText = '取消',
 		onConfirm = null,
 		onCancel = null,
-		maskClosable = false,
+		maskClosable = false
 	} = props
 
 	const modalRef = useRef()
@@ -140,7 +140,7 @@ export default function Dialog(props) {
 	const count = useRenderCount()
 	const { x, y } = useCoordinate(visible)
 
-	const maskLeave = useMemo(() => count === 0 ? false : !visible, [visible])
+	const maskLeave = useMemo(() => (count === 0 ? false : !visible), [visible])
 
 	useEffect(() => {
 		const element = modalRef.current
@@ -154,18 +154,20 @@ export default function Dialog(props) {
 	return (
 		<Glass
 			className={clsx(classes.mask, visible && classes.maskEnter, maskLeave && classes.maskLeave)}
-			onClick={maskClosable ? onCancel : () => { }}
-		>
+			onClick={maskClosable ? onCancel : () => {}}>
 			<Paper
 				ref={modalRef}
-				className={clsx(classes.modal, visible ? classes.modalEnter : classes.modalLeave)}
-			>
+				className={clsx(classes.modal, visible ? classes.modalEnter : classes.modalLeave)}>
 				<div className={classes.title}>{title}</div>
 				<div className={classes.content}>{children}</div>
 				<div className={classes.footer}>
 					<div className={classes.operation}>
-						<Button color="default" onClick={onCancel}>{cancelText}</Button>
-						<Button color="primary" onClick={onConfirm}>{confirmText}</Button>
+						<Button color="default" onClick={onCancel}>
+							{cancelText}
+						</Button>
+						<Button color="primary" onClick={onConfirm}>
+							{confirmText}
+						</Button>
 					</div>
 				</div>
 			</Paper>

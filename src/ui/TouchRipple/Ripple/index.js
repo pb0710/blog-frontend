@@ -13,11 +13,11 @@ const useStyles = makeStyles({
 		width: '100%',
 		height: '100%',
 		borderRadius: '50%',
-		background: ({ color }) => color.ripple,
+		background: ({ color }) => color.ripple
 	},
 	enter: {
 		animation: '$enter ease-out forwards',
-		animationDuration: ({ timeout }) => timeout,
+		animationDuration: ({ timeout }) => timeout
 	},
 	leave: {
 		animation: '$exit ease-out forwards',
@@ -26,19 +26,19 @@ const useStyles = makeStyles({
 	'@keyframes enter': {
 		from: {
 			transform: 'scale(0)',
-			opacity: .1,
+			opacity: 0.1
 		},
 		to: {
 			transform: 'scale(1)',
-			opacity: .4,
+			opacity: 0.4
 		}
 	},
 	'@keyframes exit': {
 		from: {
-			opacity: 1,
+			opacity: 1
 		},
 		to: {
-			opacity: 0,
+			opacity: 0
 		}
 	}
 })
@@ -49,7 +49,7 @@ export default function Ripple(props) {
 		rippleY,
 		rippleSize,
 		in: inProp,
-		onExited = () => { },
+		onExited = () => {},
 		timeout = 400,
 		color = 'default'
 	} = props
@@ -58,7 +58,7 @@ export default function Ripple(props) {
 		width: rippleSize,
 		height: rippleSize,
 		left: rippleX - rippleSize / 2,
-		top: rippleY - rippleSize / 2,
+		top: rippleY - rippleSize / 2
 	}
 
 	const [leave, setLeave] = useState(false)
@@ -66,7 +66,6 @@ export default function Ripple(props) {
 
 	useEffect(() => {
 		if (!inProp) {
-
 			setLeave(true)
 			const timer = setTimeout(onExited, timeout)
 

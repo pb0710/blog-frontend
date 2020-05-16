@@ -3,22 +3,13 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 
 const useStyles = makeStyles({
-	root: {
-
-	},
+	root: {}
 })
 
 export default function Template(props) {
-
-	const {
-		className
-	} = props
+	const { className } = props
 
 	const classes = useStyles()
 
-	return (
-		<div className={clsx(classes.root, className)}>
-
-		</div>
-	)
+	return <div className={clsx(classes.root, className)}></div>
 }

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 export default function FlexablePage(props) {
 	const { children, className } = props
 
-	const drawerOpened = useSelector((state) => state.drawerOpened)
+	const drawerOpened = useSelector(state => state.drawerOpened)
 	const classes = useStyles({ drawerOpened })
 
 	return <div className={clsx(classes.root, className)}>{children}</div>

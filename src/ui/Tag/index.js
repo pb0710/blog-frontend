@@ -29,14 +29,13 @@ const useStyles = makeStyles({
 			transition: 'color 250ms',
 
 			'&:hover': {
-				color: color.dim,
+				color: color.dim
 			}
 		}
-	}),
+	})
 })
 
 export default function Tag(props) {
-
 	const {
 		className,
 		children,
@@ -54,12 +53,11 @@ export default function Tag(props) {
 	return (
 		<div className={clsx(classes.root, className)}>
 			{children}
-			{
-				closeable && 
+			{closeable && (
 				<i onClick={onClose}>
 					<CloseOutlineIcon />
 				</i>
-			}
+			)}
 		</div>
 	)
 }

@@ -5,12 +5,11 @@ import SettingSection from 'components/SettingSection'
 
 const useStyles = makeStyles({
 	root: {
-		marginBottom: 16,
-	},
+		marginBottom: 16
+	}
 })
 
 export default function UserSetting() {
-
 	const classes = useStyles()
 
 	const optionsList = useMemo(
@@ -24,10 +23,10 @@ export default function UserSetting() {
 				id: 1,
 				name: '自动登录',
 				component: <Switch />
-			},
+			}
 		],
 		[]
 	)
 
-	return <SettingSection className={classes.root} title='账户' optionsList={optionsList} />
+	return <SettingSection className={classes.root} title="账户" optionsList={optionsList} />
 }

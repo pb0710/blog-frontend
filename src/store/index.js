@@ -7,20 +7,20 @@ import rootSaga from './sagas'
 const sagaMiddleware = createSagaMiddleware()
 
 const logger = createLogger({
-  // 针对性的打印一些redux,可以理解为白名单
-  // predicate: (getState, action) => action.type !== 'INCREMENT',
-  // 只针对没有错的折叠
-  collapsed: (getState, action, logEntry) => !logEntry.error,
-  // titleFormatter: (action, time, took) => `ACTION: ${action.type}     - TIME: ${time} - SPEND: ${took.toFixed(2)}`,
-  colors: {
-    title: () => 'blue',
-    prevState: () => 'pink',
-    action: () => 'blue',
-    nextState: () => 'violet',
-    error: () => 'red'
-  },
-  // 全量的开关diff
-  diff: true
+	// 针对性的打印一些redux,可以理解为白名单
+	// predicate: (getState, action) => action.type !== 'INCREMENT',
+	// 只针对没有错的折叠
+	collapsed: (getState, action, logEntry) => !logEntry.error,
+	// titleFormatter: (action, time, took) => `ACTION: ${action.type}     - TIME: ${time} - SPEND: ${took.toFixed(2)}`,
+	colors: {
+		title: () => 'blue',
+		prevState: () => 'pink',
+		action: () => 'blue',
+		nextState: () => 'violet',
+		error: () => 'red'
+	},
+	// 全量的开关diff
+	diff: true
 })
 
 /**

@@ -10,21 +10,14 @@ const useStyles = makeStyles({
 		height: '100%',
 		minHeight: '100vh',
 		paddingTop: 68,
-		paddingBottom: 16,
-	},
+		paddingBottom: 16
+	}
 })
 
 export default function FixedPage(props) {
-
-	const {
-		children
-	} = props
+	const { children } = props
 
 	const classes = useStyles()
 
-	return (
-		<div className={classes.root}>
-			{children}
-		</div>
-	)
+	return <div className={classes.root}>{children}</div>
 }

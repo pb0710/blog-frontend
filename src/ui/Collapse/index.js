@@ -7,34 +7,26 @@ const useStyles = makeStyles({
 		height,
 		overflow: 'hidden',
 		transition: 'height 250ms ease-out'
-	}),
+	})
 })
 
 export default function Collapse(props) {
-
-	const {
-		visible = false,
-		children,
-		className
-	} = props
+	const { visible = false, children, className } = props
 
 	const containerRef = useRef()
 
 	const [initialHeight, setinitialHeight] = useState()
 
-	const height = useMemo(
-		() => visible ? initialHeight : (initialHeight ? 0 : 'auto'),
-		[visible, initialHeight]
-	)
+	const height = useMemo(() => (visible ? initialHeight : initialHeight ? 0 : 'auto'), [
+		visible,
+		initialHeight
+	])
 
-	useEffect(
-		() => {
-			const element = containerRef.current
-			const elementHeight = element?.offsetHeight
-			setinitialHeight(elementHeight)
-		},
-		[]
-	)
+	useEffect(() => {
+		const element = containerRef.current
+		const elementHeight = element?.offsetHeight
+		setinitialHeight(elementHeight)
+	}, [])
 
 	const classes = useStyles({ height })
 

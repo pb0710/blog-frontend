@@ -23,31 +23,24 @@ const useStyles = makeStyles({
 		// default背景色太浅导致阴影明显，使得轮廓看起来比较大。单独调整下阴影
 		boxShadow: `0 ${color.name === 'default' ? '0 1px' : '1px 3px'} rgba(26,26,26,.1)`,
 		color: color.text,
-		opacity: disabled && .5,
+		opacity: disabled && 0.5,
 		cursor: disabled ? 'not-allowed' : 'pointer',
 		transition: 'all 0.2s ease-out',
 
 		'&:hover': {
-			background: disabled || color.dim,
-		},
-	}),
+			background: disabled || color.dim
+		}
+	})
 })
 
 export default React.memo(function Button(props) {
-
-	const {
-		children,
-		className,
-		onClick,
-		color = 'default',
-		disabled = false
-	} = props
+	const { children, className, onClick, color = 'default', disabled = false } = props
 
 	const classes = useStyles({ disabled, color: themeColors[color] })
 
 	const { rippleRef, handleStart, handleStop } = useRipple()
 
-	const beNull = value => disabled ? null : value
+	const beNull = value => (disabled ? null : value)
 
 	return (
 		<button
@@ -55,8 +48,7 @@ export default React.memo(function Button(props) {
 			onClick={beNull(onClick)}
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
-			onMouseLeave={beNull(handleStop)}
-		>
+			onMouseLeave={beNull(handleStop)}>
 			{beNull(<TouchRipple ref={rippleRef} color={color} />)}
 			{children}
 		</button>

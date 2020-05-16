@@ -13,12 +13,12 @@ const useStyles = makeStyles({
 			fontSize: 15,
 			height: 56,
 			paddingLeft: 8,
-			margin: 0,
+			margin: 0
 		}
 	},
 	paper: {
 		width: '100%',
-		borderRadius: 2,
+		borderRadius: 2
 	},
 	listItem: {
 		display: 'flex',
@@ -32,12 +32,7 @@ const useStyles = makeStyles({
 })
 
 function SettingSection(props) {
-
-	const {
-		className,
-		title,
-		optionsList = []
-	} = props
+	const { className, title, optionsList = [] } = props
 
 	const classes = useStyles()
 
@@ -46,14 +41,12 @@ function SettingSection(props) {
 			<h2>{title}</h2>
 			<Paper className={classes.paper}>
 				<List bordered={false}>
-					{
-						optionsList.map(({ id, name, component }) => (
-							<ListItem key={id} className={classes.listItem} rippleMuted={true}>
-								<span>{name}</span>
-								{component}
-							</ListItem>
-						))
-					}
+					{optionsList.map(({ id, name, component }) => (
+						<ListItem key={id} className={classes.listItem} rippleMuted={true}>
+							<span>{name}</span>
+							{component}
+						</ListItem>
+					))}
 				</List>
 			</Paper>
 		</div>

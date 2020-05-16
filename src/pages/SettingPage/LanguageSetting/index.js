@@ -5,12 +5,11 @@ import SettingSection from 'components/SettingSection'
 
 const useStyles = makeStyles({
 	root: {
-		marginBottom: 16,
-	},
+		marginBottom: 16
+	}
 })
 
 export default function SettingPage() {
-
 	const classes = useStyles()
 
 	const optionsList = useMemo(
@@ -24,10 +23,10 @@ export default function SettingPage() {
 						<Option value="en">English</Option>
 					</Select>
 				)
-			},
+			}
 		],
 		[]
 	)
 
-	return <SettingSection className={classes.root} title='国际化' optionsList={optionsList} />
+	return <SettingSection className={classes.root} title="国际化" optionsList={optionsList} />
 }

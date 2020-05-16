@@ -20,31 +20,30 @@ const useStyles = makeStyles({
 		transition: 'all .15s ease-out',
 
 		'&:hover': {
-			background: color.main,
+			background: color.main
 		},
 
 		'&:first-child': {
 			borderTopLeftRadius: 2,
-			borderTopRightRadius: 2,
+			borderTopRightRadius: 2
 		},
 
 		'&:last-child': {
 			borderBottom: 0,
 			borderBottomLeftRadius: 2,
-			borderBottomRightRadius: 2,
-		},
-	}),
+			borderBottomRightRadius: 2
+		}
+	})
 })
 
 function ListItem(props) {
-
 	const {
 		children,
 		className,
 		activeClassName,
 		bordered = true,
 		rippleMuted = false,
-		onClick = () => { },
+		onClick = () => {},
 		color = 'default',
 		to = '/',
 		linked = false
@@ -57,34 +56,28 @@ function ListItem(props) {
 
 	const { rippleRef, handleStart, handleStop } = useRipple(rippleMuted)
 
-	return (
-		linked
-			? (
-				<NavLink
-					className={clsx(classes.root, className)}
-					activeClassName={activeClassName}
-					to={to}
-					onClick={onClick}
-					onMouseDown={handleStart}
-					onMouseUp={handleStop}
-					onMouseLeave={handleStop}
-				>
-					<TouchRipple ref={rippleRef} color={color} />
-					{children}
-				</NavLink>
-			)
-			: (
-				<li
-					className={clsx(classes.root, className)}
-					onClick={onClick}
-					onMouseDown={handleStart}
-					onMouseUp={handleStop}
-					onMouseLeave={handleStop}
-				>
-					<TouchRipple ref={rippleRef} color={color} />
-					{children}
-				</li>
-			)
+	return linked ? (
+		<NavLink
+			className={clsx(classes.root, className)}
+			activeClassName={activeClassName}
+			to={to}
+			onClick={onClick}
+			onMouseDown={handleStart}
+			onMouseUp={handleStop}
+			onMouseLeave={handleStop}>
+			<TouchRipple ref={rippleRef} color={color} />
+			{children}
+		</NavLink>
+	) : (
+		<li
+			className={clsx(classes.root, className)}
+			onClick={onClick}
+			onMouseDown={handleStart}
+			onMouseUp={handleStop}
+			onMouseLeave={handleStop}>
+			<TouchRipple ref={rippleRef} color={color} />
+			{children}
+		</li>
 	)
 }
 

@@ -11,15 +11,12 @@ const useStyles = makeStyles({
 		paddingLeft: 16,
 		paddingRight: 16,
 		color: '#409eff',
-		userSelect: 'none',
-	},
+		userSelect: 'none'
+	}
 })
 
 export default function Branch(props) {
-
-	const {
-		mainRoute
-	} = props
+	const { mainRoute } = props
 
 	const classes = useStyles()
 

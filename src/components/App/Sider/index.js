@@ -23,35 +23,31 @@ const useStyles = makeStyles({
 		transition: 'transform 200ms ease-out',
 		overflowX: 'hidden',
 		overflowY: 'auto',
-		zIndex: 88,
+		zIndex: 88
 	}),
 	topbar: {
 		display: 'flex',
 		alignItems: 'center',
 		flexDirection: 'row-reverse',
 		height: 52,
-		borderBottom: '1px solid #eaeaea',
+		borderBottom: '1px solid #eaeaea'
 	},
 	closeDrawerIcon: {
 		position: 'absolute',
 		left: 8,
 		top: 6,
-		fontSize: 15,
-	},
+		fontSize: 15
+	}
 })
 
 export default function Sider() {
-
 	const dispatch = useDispatch()
 	const drawerOpened = useSelector(state => state.drawerOpened)
 	const classes = useStyles({ drawerOpened })
 
-	const handleHideDrawer = useCallback(
-		() => {
-			dispatch(updateDrawerOpenedAction(false))
-		},
-		[]
-	)
+	const handleHideDrawer = useCallback(() => {
+		dispatch(updateDrawerOpenedAction(false))
+	}, [])
 
 	return (
 		<Paper className={classes.root}>
@@ -62,6 +58,6 @@ export default function Sider() {
 				<Branch />
 			</div>
 			<NavMenu menuOptions={navMap} />
-		</Paper >
+		</Paper>
 	)
 }

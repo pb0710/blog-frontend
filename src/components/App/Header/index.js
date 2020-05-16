@@ -2,12 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { Glass, IconButton, Input, Dialog } from 'ui'
-import {
-	MenuSlimIcon,
-	NotifyIcon,
-	UserIcon,
-	ApplicationIcon
-} from 'ui/utils/icons'
+import { MenuSlimIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
 import Branch from 'components/Branch'
@@ -50,7 +45,7 @@ const useStyles = makeStyles({
 })
 
 export default function Header() {
-	const drawerOpened = useSelector((state) => state.drawerOpened)
+	const drawerOpened = useSelector(state => state.drawerOpened)
 	const dispatch = useDispatch()
 	const classes = useStyles({ drawerOpened })
 

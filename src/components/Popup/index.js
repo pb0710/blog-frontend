@@ -49,18 +49,14 @@ const useStyles = makeStyles({
 })
 
 export default React.memo(function Popup(props) {
-	const { children, className, visible = false } = props
+	const { children, className, visible = false, onClick = null } = props
 
 	const classes = useStyles()
 
 	return (
 		<Paper
-			className={clsx(
-				classes.root,
-				className,
-				visible ? classes.enter : classes.leave
-			)}
-		>
+			className={clsx(classes.root, className, visible ? classes.enter : classes.leave)}
+			onClick={onClick}>
 			{children}
 		</Paper>
 	)

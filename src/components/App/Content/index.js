@@ -8,35 +8,29 @@ const useStyles = makeStyles({
 		display: 'flex',
 		flexDirection: 'row-reverse',
 		width: '100%',
-		height: '100%',
+		height: '100%'
 	}
 })
 
 export default function Content() {
-
 	const classes = useStyles()
 
 	return (
 		<div className={classes.root}>
-			<Switch >
-				{
-					navMap.map(({ id, path, component, child }) => (
-						child
-							? child.map(({
-								id: childId,
-								path: childPath,
-								component: childComponent
-							}) =>
-								<Route key={id + childId} path={path + childPath}>
-									{childComponent}
-								</Route>
-							)
-							:
-							<Route key={id} path={path}>
-								{component}
+			<Switch>
+				{navMap.map(({ id, path, component, child }) =>
+					child ? (
+						child.map(({ id: childId, path: childPath, component: childComponent }) => (
+							<Route key={id + childId} path={path + childPath}>
+								{childComponent}
 							</Route>
-					))
-				}
+						))
+					) : (
+						<Route key={id} path={path}>
+							{component}
+						</Route>
+					)
+				)}
 			</Switch>
 		</div>
 	)

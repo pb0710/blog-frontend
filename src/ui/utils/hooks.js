@@ -5,18 +5,11 @@ import { useRef, useState, useContext, useEffect, useCallback, useMemo } from 'r
  * @param {boolean} muted 是否禁用
  */
 export function useRipple(muted) {
-
 	const rippleRef = useRef()
 
-	const handleStart = useCallback(
-		e => muted ? null : rippleRef.current.start(e),
-		[muted]
-	)
+	const handleStart = useCallback(e => (muted ? null : rippleRef.current.start(e)), [muted])
 
-	const handleStop = useCallback(
-		() => muted ? null : rippleRef.current.stop(),
-		[muted]
-	)
+	const handleStop = useCallback(() => (muted ? null : rippleRef.current.stop()), [muted])
 
 	return { rippleRef, handleStart, handleStop }
 }
@@ -26,12 +19,17 @@ export function useRipple(muted) {
  * @param {boolean} defaultValue 默认值
  */
 export function useBoolean(defaultValue) {
-
 	const [boolean, setBoolean] = useState(defaultValue)
 
-	const setTrue = () => { setBoolean(true) }
-	const setFalse = () => { setBoolean(false) }
-	const toggleBoolean = () => { setBoolean(prev => !prev) }
+	const setTrue = () => {
+		setBoolean(true)
+	}
+	const setFalse = () => {
+		setBoolean(false)
+	}
+	const toggleBoolean = () => {
+		setBoolean(prev => !prev)
+	}
 
 	return { boolean, setTrue, setFalse, toggleBoolean }
 }
@@ -41,7 +39,6 @@ export function useBoolean(defaultValue) {
  * @param {boolean} muted 禁用状态
  */
 export function useCoordinate(muted) {
-
 	const [x, setX] = useState()
 	const [y, setY] = useState()
 

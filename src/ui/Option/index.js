@@ -19,16 +19,15 @@ const useStyles = makeStyles({
 			background: color.main,
 			color: color.text
 		}
-	}),
+	})
 })
 
 export default React.forwardRef(function Option(props, ref) {
-
 	const {
 		className,
 		children,
 		value,
-		handleChange = () => { },
+		handleChange = () => {},
 		color = 'default',
 		timeout = 0,
 		isCurrent = false
@@ -42,10 +41,14 @@ export default React.forwardRef(function Option(props, ref) {
 
 	const { rippleRef, handleStart, handleStop } = useRipple()
 
-	useImperativeHandle(ref, () => ({
-		value,
-		children
-	}), [value, children])
+	useImperativeHandle(
+		ref,
+		() => ({
+			value,
+			children
+		}),
+		[value, children]
+	)
 
 	const handleSelect = () => {
 		setTimeout(() => {
@@ -59,8 +62,7 @@ export default React.forwardRef(function Option(props, ref) {
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
 			onMouseLeave={handleStop}
-			onClick={handleSelect}
-		>
+			onClick={handleSelect}>
 			<TouchRipple ref={rippleRef} color={color} />
 			{children}
 		</div>

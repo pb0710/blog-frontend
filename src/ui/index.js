@@ -42,5 +42,5 @@ export {
 	Collapse,
 	NavMenu,
 	Link,
-	Tag,
+	Tag
 }

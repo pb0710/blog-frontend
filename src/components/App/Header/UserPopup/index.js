@@ -20,7 +20,9 @@ export default function UserPopup(props) {
 			<IconButton focus={visible} onClick={handleTogglePopup}>
 				<UserIcon />
 			</IconButton>
-			<Popup visible={visible}>user</Popup>
+			<Popup visible={visible} onClick={handleTogglePopup}>
+				user
+			</Popup>
 		</div>
 	)
 }

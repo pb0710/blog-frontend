@@ -6,15 +6,15 @@ import { throttle } from 'utils'
  * @param  {...promise} promises
  */
 export function useSuspense(...promises) {
-	const wrapPromise = useCallback((promise) => {
+	const wrapPromise = useCallback(promise => {
 		let status = 'pending'
 		let result
 		let suspenser = promise.then(
-			(value) => {
+			value => {
 				status = 'resolved'
 				result = value
 			},
-			(error) => {
+			error => {
 				status = 'rejected'
 				result = error
 			}
@@ -34,7 +34,7 @@ export function useSuspense(...promises) {
 	}, [])
 
 	return useCallback(
-		promises.map((promise) => wrapPromise(promise)),
+		promises.map(promise => wrapPromise(promise)),
 		[]
 	)
 }
@@ -47,7 +47,7 @@ export function useBoolean() {
 
 	const setTrue = useCallback(() => setBoolean(true), [])
 	const setFalse = useCallback(() => setBoolean(false), [])
-	const toggleBoolean = useCallback(() => setBoolean((prev) => !prev), [])
+	const toggleBoolean = useCallback(() => setBoolean(prev => !prev), [])
 
 	return { boolean, setTrue, setFalse, toggleBoolean }
 }
@@ -60,7 +60,7 @@ export function useMouseWheel({ throttleInterval } = {}) {
 	const [down, setDown] = useState(false)
 
 	const handleMouseWheel = useCallback(
-		throttle((e) => setDown(e.wheelDelta < 0), throttleInterval),
+		throttle(e => setDown(e.wheelDelta < 0), throttleInterval),
 		[throttleInterval]
 	)
 
@@ -89,8 +89,8 @@ export function useAsync(promise, immediate = true) {
 		setValue(null)
 		setError(null)
 		return promise()
-			.then((response) => setValue(response))
-			.catch((error) => setError(error))
+			.then(response => setValue(response))
+			.catch(error => setError(error))
 			.finally(() => setPending(false))
 	}, [promise])
 
@@ -110,7 +110,7 @@ export function usePopupVisible() {
 	const [visible, setVisible] = useState(false)
 
 	const handleTogglePopup = useCallback(() => {
-		setVisible((prev) => !prev)
+		setVisible(prev => !prev)
 	}, [])
 
 	const handleHidePopup = useCallback(() => {

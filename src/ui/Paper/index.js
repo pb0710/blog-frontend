@@ -5,7 +5,7 @@ const Paper = styled('section')({
 	whiteSpace: 'nowrap',
 	borderRadius: 2,
 	background: '#fff',
-	boxShadow: '0 1px 3px rgba(26,26,26,.1)',
+	boxShadow: '0 1px 3px rgba(26,26,26,.1)'
 })
 
 export default Paper

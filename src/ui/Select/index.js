@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 		minHeight: 32,
 		position: 'relative',
 		cursor: 'pointer',
-		userSelect: 'none',
+		userSelect: 'none'
 	},
 	selected: {
 		boxSizing: 'border-box',
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 			alignItems: 'center',
 			justifyContent: 'center',
 			fontSize: 12,
-			color: '#303133',
+			color: '#303133'
 		}
 	},
 	optionWrapper: ({ visible, timeout }) => ({
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 		zIndex: visible ? 999 : -1,
 		opacity: visible ? 1 : 0,
 		transition: `all ${timeout}ms ease-out`,
-		transformOrigin: '50% 16px',
+		transformOrigin: '50% 16px'
 	}),
 	enter: {
 		animation: '$enter .3s'
@@ -54,33 +54,22 @@ const useStyles = makeStyles({
 	'@keyframes enter': {
 		'0%': {
 			opacity: 0,
-			transform: 'scale(.6)',
+			transform: 'scale(.6)'
 		},
 		'60%': {
-			transform: 'scale(1.03)',
+			transform: 'scale(1.03)'
 		},
 		'100%': {
 			opacity: 1,
-			transform: 'scale(1)',
+			transform: 'scale(1)'
 		}
 	}
 })
 
 export default function Select(props) {
+	const { className, children, color = 'primary', timeout = 250, onChange = () => {} } = props
 
-	const {
-		className,
-		children,
-		color = 'primary',
-		timeout = 250,
-		onChange = () => { }
-	} = props
-
-	const {
-		boolean: visible,
-		setTrue: handleShowList,
-		setFalse: handleHideList
-	} = useBoolean(false)
+	const { boolean: visible, setTrue: handleShowList, setFalse: handleHideList } = useBoolean(false)
 
 	const [values, setValues] = useState([])
 	const [childrens, setChildrens] = useState([])
@@ -88,13 +77,10 @@ export default function Select(props) {
 
 	const classes = useStyles({
 		visible,
-		timeout,
+		timeout
 	})
 
-	const refs = useMemo(
-		() => React.Children.map(children, () => React.createRef()),
-		[children]
-	)
+	const refs = useMemo(() => React.Children.map(children, () => React.createRef()), [children])
 
 	const selected = useMemo(
 		() => ({
@@ -104,25 +90,19 @@ export default function Select(props) {
 		[values, childrens, selectedIndex]
 	)
 
-	useEffect(
-		() => {
-			const values = refs.map(ref => ref.current.value)
-			const childrens = refs.map(ref => ref.current.children)
-			setValues(values)
-			setChildrens(childrens)
-		},
-		[refs]
-	)
+	useEffect(() => {
+		const values = refs.map(ref => ref.current.value)
+		const childrens = refs.map(ref => ref.current.children)
+		setValues(values)
+		setChildrens(childrens)
+	}, [refs])
 
-	useEffect(
-		() => {
-			visible && document.addEventListener('click', handleHideList)
-			return () => {
-				document.removeEventListener('click', handleHideList)
-			}
-		},
-		[visible, handleHideList]
-	)
+	useEffect(() => {
+		visible && document.addEventListener('click', handleHideList)
+		return () => {
+			document.removeEventListener('click', handleHideList)
+		}
+	}, [visible, handleHideList])
 
 	const handleChange = value => {
 		setSelectedIndex(values.indexOf(value))
@@ -142,18 +122,15 @@ export default function Select(props) {
 					<Option value={selected.value} color={color}>
 						{selected.children}
 					</Option>
-					{
-						React.Children.map(
-							children,
-							(child, index) => React.cloneElement(child, {
-								ref: refs[index],
-								handleChange,
-								isCurrent: index === selectedIndex,
-								color,
-								timeout
-							})
-						)
-					}
+					{React.Children.map(children, (child, index) =>
+						React.cloneElement(child, {
+							ref: refs[index],
+							handleChange,
+							isCurrent: index === selectedIndex,
+							color,
+							timeout
+						})
+					)}
 				</Glass>
 			}
 		</div>

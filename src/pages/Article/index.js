@@ -2,16 +2,11 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
-	root: {
-
-	},
+	root: {}
 })
 
 export default function Article(props) {
-
-	const {
-		
-	} = props
+	const {} = props
 
 	const classes = useStyles()
 

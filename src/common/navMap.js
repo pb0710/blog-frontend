@@ -14,7 +14,7 @@ const navMap = [
 		path: '/home',
 		icon: null,
 		component: <HomePage />,
-		child: null,
+		child: null
 	},
 	{
 		id: 1,
@@ -28,43 +28,43 @@ const navMap = [
 				name: 'HTML5',
 				path: '/html',
 				icon: null,
-				component: <HTML />,
+				component: <HTML />
 			},
 			{
 				id: 1,
 				name: 'CSS3',
 				path: '/css',
 				icon: null,
-				component: <CSS />,
+				component: <CSS />
 			},
 			{
 				id: 2,
 				name: 'ECMAScript',
 				path: '/es6',
 				icon: null,
-				component: <JS />,
+				component: <JS />
 			},
 			{
 				id: 3,
 				name: 'WEB前端',
 				path: '/frontend',
 				icon: null,
-				component: <JS />,
+				component: <JS />
 			},
 			{
 				id: 4,
 				name: 'React Hooks',
 				path: '/react',
 				icon: null,
-				component: <CSS />,
+				component: <CSS />
 			},
 			{
 				id: 5,
 				name: 'Vue',
 				path: '/vue',
 				icon: null,
-				component: <JS />,
-			},
+				component: <JS />
+			}
 		]
 	},
 	{
@@ -73,7 +73,7 @@ const navMap = [
 		path: '/comment',
 		icon: null,
 		component: <JS />,
-		child: null,
+		child: null
 	},
 	{
 		id: 3,
@@ -87,29 +87,29 @@ const navMap = [
 				name: '前端',
 				path: '/frontend',
 				icon: null,
-				component: <HTML />,
+				component: <HTML />
 			},
 			{
 				id: 1,
 				name: '后端',
 				path: '/backend',
 				icon: null,
-				component: <CSS />,
+				component: <CSS />
 			},
 			{
 				id: 2,
 				name: '运维',
 				path: '/operations',
 				icon: null,
-				component: <JS />,
+				component: <JS />
 			},
 			{
 				id: 3,
 				name: '测试',
 				path: '/tester',
 				icon: null,
-				component: <JS />,
-			},
+				component: <JS />
+			}
 		]
 	},
 	{
@@ -118,8 +118,8 @@ const navMap = [
 		path: '/setting',
 		icon: null,
 		component: <SettingPage />,
-		child: null,
-	},
+		child: null
+	}
 ]
 
 export default navMap

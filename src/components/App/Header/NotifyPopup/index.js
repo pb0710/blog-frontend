@@ -20,7 +20,9 @@ export default function NotifyPopup(props) {
 			<IconButton focus={visible} onClick={handleTogglePopup}>
 				<NotifyIcon />
 			</IconButton>
-			<Popup visible={visible}>notify</Popup>
+			<Popup visible={visible} onClick={handleTogglePopup}>
+				notify
+			</Popup>
 		</div>
 	)
 }

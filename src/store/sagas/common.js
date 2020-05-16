@@ -8,13 +8,11 @@ function* toggleDrawer() {
 // ------------------------------saga---------------watch----------------------------------------
 
 function* toggleDrawerSaga() {
-	yield takeEvery('TOGGLE_DRAWER', function*(action) {
+	yield takeEvery('TOGGLE_DRAWER', function* (action) {
 		yield toggleDrawer()
 	})
 }
 
-export default function*() {
-	yield all([
-		fork(toggleDrawerSaga),
-	])
+export default function* () {
+	yield all([fork(toggleDrawerSaga)])
 }

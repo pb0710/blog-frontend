@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 	root: {
 		minWidth: 200,
 		minHeight: 28,
-		position: 'relative',
+		position: 'relative'
 	},
 	input: ({ color, focus, disabled }) => ({
 		boxSizing: 'border-box',
@@ -23,10 +23,10 @@ const useStyles = makeStyles({
 		borderRadius: 2,
 		outline: 0,
 		border: `1px solid ${focus ? color.main : '#e5e5e5'}`,
-		boxShadow: `0 0 0 ${focus ? '2px' : '6px'} ${hex2Rgba(color.main, focus ? .7 : 0)}`,
-		opacity: disabled && .5,
+		boxShadow: `0 0 0 ${focus ? '2px' : '6px'} ${hex2Rgba(color.main, focus ? 0.7 : 0)}`,
+		opacity: disabled && 0.5,
 		cursor: disabled && 'not-allowed',
-		transition: 'all 250ms ease-out',
+		transition: 'all 250ms ease-out'
 	}),
 	searchIcon: {
 		...flexCenter,
@@ -36,12 +36,11 @@ const useStyles = makeStyles({
 		top: 0,
 		fontSize: 15,
 		cursor: 'pointer',
-		color: '#606266',
+		color: '#606266'
 	}
 })
 
 export default React.memo(function Input(props) {
-
 	const {
 		className,
 		placeholder,
@@ -49,7 +48,7 @@ export default React.memo(function Input(props) {
 		disabled = false,
 		showSearch = false,
 		onSearch = null,
-		onChange = null,
+		onChange = null
 	} = props
 
 	const [value, setValue] = useState('')
@@ -58,10 +57,10 @@ export default React.memo(function Input(props) {
 	const classes = useStyles({
 		color: themeColors[color],
 		disabled,
-		focus,
+		focus
 	})
 
-	const beNull = value => disabled ? null : value
+	const beNull = value => (disabled ? null : value)
 
 	const handleFocusInput = beNull(() => {
 		setFocus(true)
@@ -80,12 +79,9 @@ export default React.memo(function Input(props) {
 		[onChange]
 	)
 
-	const handleSearch = useCallback(
-		() => {
-			onSearch && onSearch(value)
-		},
-		[value]
-	)
+	const handleSearch = useCallback(() => {
+		onSearch && onSearch(value)
+	}, [value])
 
 	return (
 		<div className={classes.root}>
@@ -98,12 +94,11 @@ export default React.memo(function Input(props) {
 				onBlur={handleBlurInput}
 				onChange={handleChangeInput}
 			/>
-			{
-				showSearch &&
+			{showSearch && (
 				<div className={classes.searchIcon} onClick={handleSearch}>
 					<SearchIcon />
 				</div>
-			}
+			)}
 		</div>
 	)
 })

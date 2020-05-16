@@ -13,12 +13,11 @@ const useStyles = makeStyles({
 		right: 0,
 		bottom: 0,
 		left: 0,
-		borderRadius: 'inherit',
-	},
+		borderRadius: 'inherit'
+	}
 })
 
 export default React.forwardRef(function TouchRipple(props, ref) {
-
 	const { center = false, timeout, color } = props
 
 	const [ripples, setRipples] = useState([])
@@ -28,7 +27,6 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 
 	const addRipple = useCallback(
 		(rippleX, rippleY, rippleSize) => {
-
 			setRipples(oldRipples => [
 				...oldRipples,
 				<Ripple
@@ -52,11 +50,11 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 			const rect = element
 				? element.getBoundingClientRect()
 				: {
-					width: 0,
-					height: 0,
-					left: 0,
-					top: 0
-				}
+						width: 0,
+						height: 0,
+						left: 0,
+						top: 0
+				  }
 
 			let rippleX
 			let rippleY
@@ -66,7 +64,6 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 				rippleX = Math.round(rect.width / 2)
 				rippleY = Math.round(rect.height / 2)
 				rippleSize = Math.round(Math.sqrt(4 * (rippleX ** 2 + rippleY ** 2)))
-
 			} else {
 				rippleX = Math.round(e.clientX - rect.left)
 				rippleY = Math.round(e.clientY - rect.top)
@@ -82,24 +79,15 @@ export default React.forwardRef(function TouchRipple(props, ref) {
 		[addRipple, center]
 	)
 
-	const stop = useCallback(
-		() => {
-			setRipples(oldRipples => oldRipples.length > 0 ? oldRipples.slice(1) : oldRipples)
-		},
-		[]
-	)
+	const stop = useCallback(() => {
+		setRipples(oldRipples => (oldRipples.length > 0 ? oldRipples.slice(1) : oldRipples))
+	}, [])
 
-	useImperativeHandle(
-		ref,
-		() => ({ start, stop }),
-		[start, stop]
-	)
+	useImperativeHandle(ref, () => ({ start, stop }), [start, stop])
 
 	return (
 		<span ref={container} className={classes.root}>
-			<TransitionGroup component={null}>
-				{ripples}
-			</TransitionGroup>
+			<TransitionGroup component={null}>{ripples}</TransitionGroup>
 		</span>
 	)
 })

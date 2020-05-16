@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 })
 
 export default function App() {
-	const drawerOpened = useSelector((state) => state.drawerOpened)
+	const drawerOpened = useSelector(state => state.drawerOpened)
 	const classes = useStyles({ drawerOpened })
 
 	return (

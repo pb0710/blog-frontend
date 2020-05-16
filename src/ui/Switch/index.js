@@ -11,14 +11,14 @@ const useStyles = makeStyles({
 		minWidth: 32,
 		height: 22,
 		marginLeft: 8,
-		position: 'relative',
+		position: 'relative'
 	},
 	label: ({ disabled }) => ({
-		opacity: disabled && .5,
-		cursor: disabled ? 'not-allowed' : 'pointer',
+		opacity: disabled && 0.5,
+		cursor: disabled ? 'not-allowed' : 'pointer'
 	}),
 	checkbox: {
-		display: 'none',
+		display: 'none'
 	},
 	switch: ({ checked, color, disabled }) => ({
 		display: 'flex',
@@ -31,9 +31,9 @@ const useStyles = makeStyles({
 		marginLeft: 8,
 		borderRadius: 11,
 		border: checked ? 'rgba(0,0,0,0)' : '1px solid #e2e2e2',
-		opacity: disabled && .5,
+		opacity: disabled && 0.5,
 		cursor: disabled ? 'not-allowed' : 'pointer',
-		transition: 'all .2s ease-out',
+		transition: 'all .2s ease-out'
 	}),
 	button: ({ checked }) => ({
 		width: 12,
@@ -41,8 +41,8 @@ const useStyles = makeStyles({
 		borderRadius: '50%',
 		background: checked ? '#fff' : '#303133',
 		transition: 'all .2s',
-		transform: checked && 'translateX(17px)',
-	}),
+		transform: checked && 'translateX(17px)'
+	})
 })
 
 export default React.memo(function Switch(props) {
@@ -51,7 +51,7 @@ export default React.memo(function Switch(props) {
 		color = 'primary',
 		disabled = false,
 		label,
-		onChange = () => { }
+		onChange = () => {}
 	} = props
 
 	const id = `switch-${uuid()}-${label}`
@@ -65,7 +65,6 @@ export default React.memo(function Switch(props) {
 	})
 
 	const handleToggle = () => {
-
 		if (disabled) return
 
 		setChecked(prev => !prev)
@@ -74,12 +73,11 @@ export default React.memo(function Switch(props) {
 
 	return (
 		<div className={classes.root}>
-			{
-				label &&
+			{label && (
 				<label className={classes.label} htmlFor={id}>
 					{label}
 				</label>
-			}
+			)}
 			<div className={classes.switch} onClick={handleToggle}>
 				<div className={classes.button}></div>
 			</div>

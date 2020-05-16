@@ -10,8 +10,8 @@ const ballStyles = {
 	position: 'absolute',
 	top: 0,
 	left: 0,
-	opacity: .6,
-	mixBlendMode: 'multiply',
+	opacity: 0.6,
+	mixBlendMode: 'multiply'
 }
 
 const dotstyles = {
@@ -19,26 +19,26 @@ const dotstyles = {
 	height: 16,
 	borderRadius: '100%',
 	display: 'inline-block',
-	opacity: .8,
+	opacity: 0.8
 }
 
 const useStyles = makeStyles({
 	bounceRoot: {
 		width: 40,
 		height: 40,
-		position: 'relative',
+		position: 'relative'
 	},
 	ball1: ({ color }) => ({
 		...ballStyles,
-		background: color.name === 'default' ? '#888' : color.main,
+		background: color.name === 'default' ? '#888' : color.main
 	}),
 	ball2: ({ color }) => ({
 		...ballStyles,
 		background: color.name === 'default' ? '#888' : color.main,
-		animationDelay: -1000,
+		animationDelay: -1000
 	}),
 	bounce: {
-		animation: '$ballStretch 2s infinite ease-in-out',
+		animation: '$ballStretch 2s infinite ease-in-out'
 	},
 	'@keyframes ballStretch': {
 		'0%, 100%': {
@@ -52,31 +52,31 @@ const useStyles = makeStyles({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		width: 56,
+		width: 56
 	},
 	dot1: ({ color }) => ({
 		...dotstyles,
-		background: color.name === 'default' ? '#888' : color.main,
+		background: color.name === 'default' ? '#888' : color.main
 	}),
 	dot2: ({ color }) => ({
 		...dotstyles,
 		background: color.name === 'default' ? '#888' : color.main,
-		animationDelay: 160,
+		animationDelay: 160
 	}),
 	dot3: ({ color }) => ({
 		...dotstyles,
 		background: color.name === 'default' ? '#888' : color.main,
-		animationDelay: 320,
+		animationDelay: 320
 	}),
 	line: {
-		animation: '$dotStretch 1.4s infinite ease-in-out both',
+		animation: '$dotStretch 1.4s infinite ease-in-out both'
 	},
 	'@keyframes dotStretch': {
 		'0%, 80%, 100%': {
-			transform: 'scale(0)',
+			transform: 'scale(0)'
 		},
 		'40%': {
-			transform: 'scale(1)',
+			transform: 'scale(1)'
 		}
 	}
 })
@@ -101,7 +101,6 @@ function Line({ classes }) {
 }
 
 export default React.memo(function Loading(props) {
-
 	const { color = 'default', type = 'bounce' } = props
 
 	const classes = useStyles({ color: themeColors[color] })

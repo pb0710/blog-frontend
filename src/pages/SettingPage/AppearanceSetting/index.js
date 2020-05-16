@@ -5,12 +5,11 @@ import SettingSection from 'components/SettingSection'
 
 const useStyles = makeStyles({
 	root: {
-		marginBottom: 16,
-	},
+		marginBottom: 16
+	}
 })
 
 export default function SettingPage() {
-
 	const classes = useStyles()
 
 	const optionsList = useMemo(
@@ -36,10 +35,10 @@ export default function SettingPage() {
 				id: 2,
 				name: '桌面模式下默认打开抽屉',
 				component: <Switch />
-			},
+			}
 		],
 		[]
 	)
 
-	return <SettingSection className={classes.root} title='外观' optionsList={optionsList} />
+	return <SettingSection className={classes.root} title="外观" optionsList={optionsList} />
 }

@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 			zIndex: 8,
 
 			'& img': {
-				transform: 'scale(1.1)',
+				transform: 'scale(1.1)'
 			}
 		}
 	},
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 			maxHeight: '100%',
 			objectFit: 'cover',
 			verticalAlign: 'text-top',
-			transition: 'transform 250ms ease-out',
+			transition: 'transform 250ms ease-out'
 		}
 	},
 	info: {
@@ -50,16 +50,16 @@ const useStyles = makeStyles({
 			height: 42,
 			whiteSpace: 'nowrap',
 			textOverflow: 'ellipsis',
-			overflow: 'hidden',
+			overflow: 'hidden'
 		}
 	},
 	divider: {
-		background: '#f6f6f6',
+		background: '#f6f6f6'
 	},
 	infoFooter: {
 		display: 'flex',
 		alignItems: 'center',
-		height: 32,
+		height: 32
 	},
 	views: {
 		display: 'flex',
@@ -67,7 +67,7 @@ const useStyles = makeStyles({
 
 		'&>span': {
 			fontSize: 12,
-			marginLeft: 4,
+			marginLeft: 4
 		}
 	},
 	tagsWrapper: {
@@ -76,25 +76,23 @@ const useStyles = makeStyles({
 		width: '100%',
 
 		'&>div': {
-			marginLeft: 8,
+			marginLeft: 8
 		}
 	}
 })
 
 export default function ArticleCard(props) {
-
 	const {
 		id,
 		title = 'Linux操作系统',
-		imageUrl = "https://iph.href.lu/300x200?fg=ffffff&bg=43ad7f",
+		imageUrl = 'https://iph.href.lu/300x200?fg=ffffff&bg=43ad7f',
 		viewsCount = '3000',
-		tags = [],
+		tags = []
 	} = props
 
 	const views = useMemo(
-		() => viewsCount.toString().length > 3
-			? `${Number(viewsCount / 1000).toFixed(1)}K`
-			: viewsCount,
+		() =>
+			viewsCount.toString().length > 3 ? `${Number(viewsCount / 1000).toFixed(1)}K` : viewsCount,
 		[viewsCount]
 	)
 
@@ -109,9 +107,7 @@ export default function ArticleCard(props) {
 			</div>
 			<div className={classes.info}>
 				<h2>
-					<Link>
-						{title}
-					</Link>
+					<Link>{title}</Link>
 				</h2>
 				<Divider className={classes.divider} />
 				<div className={classes.infoFooter}>
