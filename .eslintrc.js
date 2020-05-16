@@ -18,7 +18,7 @@ module.exports = {
 		ecmaVersion: 2019,
 		sourceType: 'module'
 	},
-	plugins: ['react', 'react-hooks'],
+	plugins: ['prettier', 'react', 'react-hooks'],
 	parser: 'babel-eslint',
 	rules: {
 		'react/prop-types': 0,

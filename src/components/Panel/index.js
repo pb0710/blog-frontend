@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 		width: '100%',
 		minHeight: 160,
 		marginBottom: 16,
-	
+
 		'&>h2': {
 			display: 'flex',
 			alignItems: 'center',
@@ -18,23 +18,19 @@ const useStyles = makeStyles({
 			fontSize: 13,
 			margin: 0,
 			padding: '8px 12px',
-			height: 32,
-		},
+			height: 32
+		}
 	},
 	title: {
-		marginLeft: 8,
+		marginLeft: 8
 	},
 	divider: {
-		margin: 0,
+		margin: 0
 	}
 })
 
 export default function Panel(props) {
-
-	const {
-		children,
-		title,
-	} = props
+	const { children, title } = props
 
 	const classes = useStyles()
 

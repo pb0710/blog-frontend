@@ -1,11 +1,6 @@
 # dependencies
 */node_modules
 
-electron-win/electron-with-beauty
-*.asar
-*/release
-*/log
-
 node_modules
 
 # production
