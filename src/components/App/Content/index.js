@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Route, Switch } from 'react-router'
 import navMap from 'common/navMap'
+import Article from 'components/Article'
 
 const useStyles = makeStyles({
 	root: {
@@ -31,6 +32,9 @@ export default function Content() {
 						</Route>
 					)
 				)}
+				<Route path="/article/:id">
+					<Article />
+				</Route>
 			</Switch>
 		</div>
 	)

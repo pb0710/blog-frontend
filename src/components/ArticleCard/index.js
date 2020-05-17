@@ -83,13 +83,7 @@ const useStyles = makeStyles({
 })
 
 export default function ArticleCard(props) {
-	const {
-		id,
-		title = 'Linux操作系统',
-		imageUrl = 'http://111.229.246.221/image/book/sy03.jpg',
-		viewsCount = '3000',
-		tags = []
-	} = props
+	const { id, title = '', imageUrl = '', viewsCount = '', tags = [] } = props
 
 	const views = useMemo(
 		() =>
@@ -97,18 +91,20 @@ export default function ArticleCard(props) {
 		[viewsCount]
 	)
 
+	const path = `article/${id}`
+
 	const classes = useStyles()
 
 	return (
 		<div className={classes.root}>
 			<div className={classes.imgWrapper}>
-				<Link>
+				<Link to={path}>
 					<img src={imageUrl} />
 				</Link>
 			</div>
 			<div className={classes.info}>
 				<h2>
-					<Link>{title}</Link>
+					<Link to={path}>{title}</Link>
 				</h2>
 				<Divider className={classes.divider} />
 				<div className={classes.infoFooter}>
@@ -117,8 +113,9 @@ export default function ArticleCard(props) {
 						<span>{views}</span>
 					</div>
 					<div className={classes.tagsWrapper}>
-						<Tag>JavaScript</Tag>
-						<Tag>前端</Tag>
+						{tags.map(tag => (
+							<Tag>{tag}</Tag>
+						))}
 					</div>
 				</div>
 			</div>

@@ -14,14 +14,13 @@ const useStyles = makeStyles({
 })
 
 export default function ArticleDetail(props) {
-	const {} = props
-
+	const { content } = props
 	const classes = useStyles()
 
 	return (
 		<Paper className={classes.root}>
 			<ReactMarkdown
-				source={markdown}
+				source={content}
 				unwrapDisallowed={true}
 				escapeHtml={true}
 				renderers={{

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper } from 'ui'
+import { Paper, Loading } from 'ui'
+import * as api from 'apis'
 import ArticleCard from 'components/ArticleCard'
 import AffixContainer from 'components/AffixContainer'
 import Panel from 'components/Panel'
@@ -27,36 +28,57 @@ const useStyles = makeStyles({
 		width: 800,
 		marginRight: '-1px',
 		marginBottom: '-1px'
+	},
+	loadingWrapper: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '100%',
+		height: 'calc(100vh - 84px)'
 	}
 })
 
 export default function HomePage(props) {
 	const {} = props
 
+	const [articleList, setArticleList] = useState([])
 	const classes = useStyles()
+
+	const getArticleList = async () => {
+		try {
+			const result = await api.fetchArticleList()
+			setArticleList(result)
+		} catch (e) {
+			console.error(e)
+		}
+	}
+
+	useEffect(() => {
+		getArticleList()
+	}, [])
 
 	return (
 		<FlexablePage className={classes.root}>
 			<div className={classes.container}>
 				<Paper className={classes.wrapper}>
-					<div className={classes.grid}>
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
-					</div>
+					{articleList.length > 0 ? (
+						<div className={classes.grid}>
+							{articleList.map(({ id, title, backgroundImage, views, tags }) => (
+								<ArticleCard
+									key={id}
+									id={id}
+									title={title}
+									imageUrl={backgroundImage}
+									viewsCount={views}
+									tags={tags}
+								/>
+							))}
+						</div>
+					) : (
+						<div className={classes.loadingWrapper}>
+							<Loading color="primary" />
+						</div>
+					)}
 				</Paper>
 			</div>
 			<AffixContainer>

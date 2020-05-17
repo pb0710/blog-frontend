@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import FlexablePage from 'components/FlexablePage'
 import ArticleDetail from 'components/ArticleDetail'
+import { useParams } from 'react-router-dom'
+import * as api from 'apis'
 
 const useStyles = makeStyles({
 	root: {},
@@ -32,19 +34,36 @@ const useStyles = makeStyles({
 	}
 })
 
-export default function JS(props) {
+export default function Article(props) {
 	const {} = props
 
+	const { id } = useParams()
+	const [article, setArticle] = useState('')
+	const [backgroundImage, setBackgroundImage] = useState('')
 	const classes = useStyles()
+
+	const fetchArticleDetail = async () => {
+		try {
+			const { content, backgroundImage } = await api.fetchArticleContent(id)
+			setArticle(content)
+			setBackgroundImage(backgroundImage)
+		} catch (e) {
+			console.error(e)
+		}
+	}
+
+	useEffect(() => {
+		fetchArticleDetail()
+	}, [])
 
 	return (
 		<FlexablePage className={classes.root}>
 			<div className={classes.backgroundImageWrapper}>
-				<img src="http://111.229.246.221/image/blog/mysql.jpg" />
+				<img src={backgroundImage} />
 			</div>
 			<div className={classes.container}>
 				<div className={classes.articleWrapper}>
-					<ArticleDetail />
+					<ArticleDetail content={article} />
 				</div>
 			</div>
 		</FlexablePage>
