@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
+import { NavLink } from 'react-router-dom'
 import TouchRipple from '../TouchRipple'
 import { useRipple } from '../utils/hooks'
 import themeColors from '../utils/themeColors'
-import { NavLink } from 'react-router-dom'
 
 const useStyles = makeStyles({
 	root: ({ color, bordered }) => ({
@@ -43,7 +43,7 @@ function ListItem(props) {
 		activeClassName,
 		bordered = true,
 		rippleMuted = false,
-		onClick = () => {},
+		onClick = null,
 		color = 'default',
 		to = '/',
 		linked = false
@@ -56,29 +56,33 @@ function ListItem(props) {
 
 	const { rippleRef, handleStart, handleStop } = useRipple(rippleMuted)
 
-	return linked ? (
-		<NavLink
-			className={clsx(classes.root, className)}
-			activeClassName={activeClassName}
-			to={to}
-			onClick={onClick}
-			onMouseDown={handleStart}
-			onMouseUp={handleStop}
-			onMouseLeave={handleStop}>
+	// 公用props
+	const commonProps = useMemo(
+		() => ({
+			className: clsx(classes.root, className),
+			onClick,
+			onMouseDown: handleStart,
+			onMouseUp: handleStop,
+			onMouseLeave: handleStop
+		}),
+		[className, onClick, handleStart, handleStop]
+	)
+
+	const renderNavItem = () => (
+		<NavLink {...commonProps} activeClassName={activeClassName} to={to} exact>
 			<TouchRipple ref={rippleRef} color={color} />
 			{children}
 		</NavLink>
-	) : (
-		<li
-			className={clsx(classes.root, className)}
-			onClick={onClick}
-			onMouseDown={handleStart}
-			onMouseUp={handleStop}
-			onMouseLeave={handleStop}>
+	)
+
+	const renderItem = () => (
+		<li {...commonProps}>
 			<TouchRipple ref={rippleRef} color={color} />
 			{children}
 		</li>
 	)
+
+	return linked ? renderNavItem() : renderItem()
 }
 
 export default React.memo(ListItem)

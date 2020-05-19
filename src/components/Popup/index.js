@@ -7,10 +7,11 @@ import { useRenderCount } from 'ui/utils/hooks'
 const useStyles = makeStyles({
 	root: {
 		width: 320,
-		minHeight: 280,
+		minHeight: 400,
+		boxShadow: '2px 4px 24px rgba(26,26,26,.14)',
 		position: 'fixed',
-		top: 60,
-		right: 8,
+		top: 64,
+		right: 24,
 		zIndex: -1,
 		opacity: 0
 	},
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
 		'0%': {
 			zIndex: -1,
 			opacity: 0,
-			transform: 'translateY(16px)'
+			transform: 'translateY(32px)'
 		},
 		'100%': {
 			zIndex: 0,
@@ -41,7 +42,7 @@ const useStyles = makeStyles({
 		to: {
 			zIndex: -1,
 			opacity: 0,
-			transform: 'translateY(16px)'
+			transform: 'translateY(32px)'
 		}
 	}
 })
@@ -54,9 +55,7 @@ export default React.memo(function Popup(props) {
 	const renderCount = useRenderCount()
 
 	return renderCount === 0 ? null : (
-		<Paper
-			className={clsx(classes.root, className, visible ? classes.enter : classes.leave)}
-			onClick={onClick}>
+		<Paper className={clsx(classes.root, className, visible ? classes.enter : classes.leave)} onClick={onClick}>
 			{children}
 		</Paper>
 	)

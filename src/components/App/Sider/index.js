@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 		position: 'fixed',
 		top: 0,
 		left: 0,
-		paddingTop: 52,
+		paddingTop: 64,
 		borderRight: '1px solid #eaeaea',
 		boxShadow: 'none',
 		transform: `translateX(${drawerOpened ? 0 : -240}px)`,
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 	topbar: {
 		display: 'flex',
 		alignItems: 'center',
-		flexDirection: 'row-reverse',
+		justifyContent: 'space-between',
 		width: '100%',
 		height: 52,
 		borderBottom: '1px solid #eaeaea',
@@ -39,7 +39,7 @@ const useStyles = makeStyles({
 	},
 	closeDrawerIcon: {
 		position: 'absolute',
-		left: 8,
+		right: 8,
 		top: 6,
 		fontSize: 15
 	}
@@ -57,10 +57,10 @@ export default function Sider() {
 	return (
 		<Paper className={classes.root}>
 			<div className={classes.topbar}>
+				<Branch />
 				<IconButton className={classes.closeDrawerIcon} onClick={handleHideDrawer}>
 					<ArrowLeftBoldIcon />
 				</IconButton>
-				<Branch />
 			</div>
 			<NavMenu menuOptions={navMap} />
 		</Paper>

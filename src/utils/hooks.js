@@ -118,7 +118,7 @@ export function usePopupVisible() {
 	}, [])
 
 	const handleShowPopup = useCallback(() => {
-		setVisible(false)
+		setVisible(true)
 	}, [])
 
 	useEffect(() => {

@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 		...flexCenter,
 		fontSize: 24,
 		fontWeight: 600,
-		paddingLeft: 16,
+		paddingLeft: 24,
 		paddingRight: 16,
 		color: '#409eff',
 		userSelect: 'none'

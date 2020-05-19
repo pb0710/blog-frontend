@@ -63,9 +63,9 @@ export default function HomePage(props) {
 				<Paper className={classes.wrapper}>
 					{articleList.length > 0 ? (
 						<div className={classes.grid}>
-							{articleList.map(({ id, title, backgroundImage, views, tags }) => (
+							{articleList.map(({ id, title, backgroundImage, views, tags }, index) => (
 								<ArticleCard
-									key={id}
+									key={index}
 									id={id}
 									title={title}
 									imageUrl={backgroundImage}
@@ -82,7 +82,7 @@ export default function HomePage(props) {
 				</Paper>
 			</div>
 			<AffixContainer>
-				<Panel title="一句"></Panel>
+				<Panel title=""></Panel>
 			</AffixContainer>
 		</FlexablePage>
 	)

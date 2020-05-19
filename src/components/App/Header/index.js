@@ -1,8 +1,8 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { Glass, IconButton, Input, Dialog } from 'ui'
-import { MenuSlimIcon, NotifyIcon, UserIcon, ApplicationIcon } from 'ui/utils/icons'
+import { Glass, IconButton, Input } from 'ui'
+import { MenuSlimIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
 import Branch from 'components/Branch'
@@ -18,7 +18,8 @@ const useStyles = makeStyles({
 		right: 0,
 		width: '100%',
 		height: 52,
-		padding: '0 8px',
+		padding: '0 16px',
+		boxShadow: '0 1px 2px rgba(26,26,26,.1)',
 		transition: 'width 250ms ease-out',
 		zIndex: 70
 	},

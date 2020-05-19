@@ -1,6 +1,6 @@
 import React from 'react'
 import HomePage from 'pages/HomePage'
-import Article from 'pages/Article'
+import ArticlePage from 'pages/ArticlePage'
 import SettingPage from 'pages/SettingPage'
 import StudyRoute from 'pages/StudyRoute'
 import HTML from 'pages/HTML'
@@ -11,7 +11,7 @@ const navMap = [
 	{
 		id: 0,
 		name: '主页',
-		path: '/home',
+		path: '/',
 		icon: null,
 		component: <HomePage />,
 		child: null
@@ -21,7 +21,7 @@ const navMap = [
 		name: '文章',
 		path: '/article',
 		icon: null,
-		component: <Article />,
+		component: null,
 		child: [
 			{
 				id: 0,
@@ -72,7 +72,7 @@ const navMap = [
 		name: '讨论区',
 		path: '/comment',
 		icon: null,
-		component: <JS />,
+		component: <ArticlePage />,
 		child: null
 	},
 	{
@@ -80,7 +80,7 @@ const navMap = [
 		name: '学习路线',
 		path: '/js',
 		icon: null,
-		component: <StudyRoute />,
+		component: null,
 		child: [
 			{
 				id: 0,
@@ -101,7 +101,7 @@ const navMap = [
 				name: '运维',
 				path: '/operations',
 				icon: null,
-				component: <JS />
+				component: <StudyRoute />
 			},
 			{
 				id: 3,

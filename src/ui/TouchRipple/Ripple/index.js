@@ -44,15 +44,7 @@ const useStyles = makeStyles({
 })
 
 export default function Ripple(props) {
-	const {
-		rippleX,
-		rippleY,
-		rippleSize,
-		in: inProp,
-		onExited = () => {},
-		timeout = 400,
-		color = 'default'
-	} = props
+	const { rippleX, rippleY, rippleSize, in: visible, onExited = () => {}, timeout = 400, color = 'default' } = props
 
 	const styles = {
 		width: rippleSize,
@@ -65,7 +57,7 @@ export default function Ripple(props) {
 	const classes = useStyles({ styles, timeout, color: themeColors[color] })
 
 	useEffect(() => {
-		if (!inProp) {
+		if (!visible) {
 			setLeave(true)
 			const timer = setTimeout(onExited, timeout)
 
@@ -73,7 +65,7 @@ export default function Ripple(props) {
 				clearTimeout(timer)
 			}
 		}
-	}, [inProp, onExited, timeout])
+	}, [visible, onExited, timeout])
 
 	return (
 		<span className={clsx(classes.root, classes.enter)}>

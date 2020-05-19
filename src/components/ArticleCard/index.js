@@ -17,12 +17,12 @@ const useStyles = makeStyles({
 		transition: 'all 250ms ease-out',
 
 		'&:hover': {
-			boxShadow: '0 4px 40px rgba(0,0,0,.06)',
+			boxShadow: '0 4px 40px rgba(0,0,0,.04)',
 			zIndex: 8,
 
 			'& img': {
 				transform: 'scale(1.04)',
-				filter: 'brightness(1.1)'
+				filter: 'brightness(1.04)'
 			}
 		}
 	},
@@ -86,8 +86,7 @@ export default function ArticleCard(props) {
 	const { id, title = '', imageUrl = '', viewsCount = '', tags = [] } = props
 
 	const views = useMemo(
-		() =>
-			viewsCount.toString().length > 3 ? `${Number(viewsCount / 1000).toFixed(1)}K` : viewsCount,
+		() => (viewsCount.toString().length > 3 ? `${Number(viewsCount / 1000).toFixed(1)}K` : viewsCount),
 		[viewsCount]
 	)
 
@@ -114,7 +113,7 @@ export default function ArticleCard(props) {
 					</div>
 					<div className={classes.tagsWrapper}>
 						{tags.map(tag => (
-							<Tag>{tag}</Tag>
+							<Tag key={tag}>{tag}</Tag>
 						))}
 					</div>
 				</div>

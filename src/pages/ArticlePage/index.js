@@ -4,12 +4,19 @@ import FlexablePage from 'components/FlexablePage'
 import ArticleDetail from 'components/ArticleDetail'
 import { useParams } from 'react-router-dom'
 import * as api from 'apis'
+import { Paper } from 'ui'
 
 const useStyles = makeStyles({
 	root: {},
-	backgroundImageWrapper: {
+	container: {
+		width: 1048,
+		padding: '0 16px',
+		margin: 0,
+		position: 'absolute',
+		top: 0
+	},
+	banner: {
 		width: '100%',
-		height: 520,
 
 		'&>img': {
 			width: '100%',
@@ -20,21 +27,13 @@ const useStyles = makeStyles({
 			verticalAlign: 'text-top'
 		}
 	},
-	container: {
-		width: 1048,
-		height: '100%',
-		padding: '0 16px',
-		margin: 0,
-		position: 'absolute',
-		top: 320
-	},
 	articleWrapper: {
 		width: 792,
 		marginBottom: 16
 	}
 })
 
-export default function Article(props) {
+export default function ArticlePage(props) {
 	const {} = props
 
 	const { id } = useParams()
@@ -58,13 +57,13 @@ export default function Article(props) {
 
 	return (
 		<FlexablePage className={classes.root}>
-			<div className={classes.backgroundImageWrapper}>
-				<img src={backgroundImage} />
-			</div>
 			<div className={classes.container}>
-				<div className={classes.articleWrapper}>
+				<Paper className={classes.articleWrapper}>
+					<div className={classes.banner}>
+						<img src={backgroundImage} />
+					</div>
 					<ArticleDetail content={article} />
-				</div>
+				</Paper>
 			</div>
 		</FlexablePage>
 	)

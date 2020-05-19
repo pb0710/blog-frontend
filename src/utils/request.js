@@ -25,11 +25,8 @@ instance.interceptors.response.use(
 
 			if (status === 'OK') {
 				return Promise.resolve(payload)
-			} else if (status === 'FAIL') {
-				// console.error('status: FAIL')
-				return Promise.reject('status: FAIL')
 			} else {
-				return Promise.reject('status: undefined')
+				return Promise.reject('request failed')
 			}
 		} else {
 			console.error(`响应状态：${status}`)
