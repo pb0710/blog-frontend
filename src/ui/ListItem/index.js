@@ -17,6 +17,8 @@ const useStyles = makeStyles({
 		margin: 0,
 		borderBottom: bordered ? '1px solid #f0f0f0' : 0,
 		borderRadius: bordered || 2,
+		textDecoration: 'none',
+		color: '#303133',
 		transition: 'all .15s ease-out',
 
 		'&:hover': {

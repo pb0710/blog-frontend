@@ -1,4 +1,5 @@
 import { useRef, useState, useContext, useEffect, useCallback, useMemo } from 'react'
+import { judgeElementContains } from '../utils'
 
 /**
  * 绑定水波纹特效
@@ -48,9 +49,7 @@ export function useCoordinate(muted) {
 			setY(e.clientY)
 		}
 
-		muted
-			? document.removeEventListener('click', getPageXY)
-			: document.addEventListener('click', getPageXY)
+		muted ? document.removeEventListener('click', getPageXY) : document.addEventListener('click', getPageXY)
 
 		return () => {
 			document.removeEventListener('click', getPageXY)
@@ -68,4 +67,58 @@ export function useRenderCount() {
 		count.current++
 	})
 	return count.current
+}
+
+/**
+ * 弹出窗展示状态
+ * @param {boolean} popupEventHide 点击弹窗内容是否隐藏
+ * @param {boolean} blurHide 点击Popup外区域是否隐藏
+ */
+export function usePopupVisible(popupEventHide = true, blurHide = true) {
+	const triggerRef = useRef()
+	const popupRef = useRef()
+	const [visible, setVisible] = useState(false)
+
+	const handleHidePopup = useCallback(() => {
+		setVisible(false)
+	}, [])
+
+	const handleShowPopup = useCallback(() => {
+		setVisible(true)
+	}, [])
+
+	const handleBindPopup = useCallback(
+		e => {
+			setVisible(true)
+			const targetElement = e.target
+			if (popupEventHide) {
+				setVisible(false)
+			} else if (popupRef.current) {
+				const popupElement = popupRef.current
+				if (!judgeElementContains(popupElement, targetElement)) {
+					setVisible(false)
+				}
+			}
+			if (triggerRef.current) {
+				const triggerElement = triggerRef.current
+				if (judgeElementContains(triggerElement, targetElement)) {
+					setVisible(true)
+				}
+			}
+		},
+		[popupEventHide]
+	)
+
+	useEffect(() => {
+		if (blurHide) {
+			visible
+				? document.addEventListener('click', handleBindPopup)
+				: document.removeEventListener('click', handleBindPopup)
+			return () => {
+				document.removeEventListener('click', handleBindPopup)
+			}
+		}
+	}, [visible, blurHide])
+
+	return { triggerRef, popupRef, visible, handleBindPopup, handleShowPopup, handleHidePopup }
 }

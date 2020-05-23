@@ -15,8 +15,6 @@ const useStyles = makeStyles({
 		transition: 'all 250ms'
 	},
 	navItem: {
-		textDecoration: 'none',
-		color: '#303133',
 		fontWeight: 500,
 		'&>svg': {
 			marginRight: 24,

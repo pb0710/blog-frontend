@@ -18,52 +18,45 @@ const navMap = [
 	},
 	{
 		id: 1,
-		name: '文章',
+		name: '文章分类',
 		path: '/article',
 		icon: null,
 		component: null,
 		child: [
 			{
 				id: 0,
-				name: 'HTML5',
-				path: '/html',
+				name: '前端',
+				path: '/frontend',
 				icon: null,
 				component: <HTML />
 			},
 			{
 				id: 1,
-				name: 'CSS3',
-				path: '/css',
+				name: '移动端',
+				path: '/mobile',
 				icon: null,
 				component: <CSS />
 			},
 			{
 				id: 2,
-				name: 'ECMAScript',
-				path: '/es6',
+				name: '后端',
+				path: '/backend',
 				icon: null,
 				component: <JS />
 			},
 			{
 				id: 3,
-				name: 'WEB前端',
-				path: '/frontend',
+				name: '计算机基础',
+				path: '/computer_science',
 				icon: null,
 				component: <JS />
 			},
 			{
 				id: 4,
-				name: 'React Hooks',
-				path: '/react',
+				name: '工具',
+				path: '/tools',
 				icon: null,
 				component: <CSS />
-			},
-			{
-				id: 5,
-				name: 'Vue',
-				path: '/vue',
-				icon: null,
-				component: <JS />
 			}
 		]
 	},

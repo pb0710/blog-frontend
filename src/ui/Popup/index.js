@@ -6,12 +6,13 @@ import { TransitionGroup } from 'react-transition-group'
 
 const useStyles = makeStyles({
 	root: {
-		width: 320,
+		width: 360,
 		minHeight: 400,
-		boxShadow: '2px 4px 24px rgba(26,26,26,.14)',
+		boxShadow: '0 4px 24px rgba(26,26,26,.14)',
 		position: 'fixed',
 		top: 64,
-		right: 24
+		right: 24,
+		userSelect: 'none'
 	},
 	enter: {
 		animation: '$enter 200ms ease-out forwards'

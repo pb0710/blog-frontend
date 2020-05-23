@@ -12,3 +12,7 @@ export function hex2Rgba(hex, opacity) {
 		${opacity}
 	)`
 }
+
+// 判断两个dom是否为包含关系 => 参数1是否包含参数2（相等也算）
+export const judgeElementContains = (element, targetElement) =>
+	targetElement === element || element.contains(targetElement)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, memo, useState } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import themeColors from '../utils/themeColors'
@@ -40,15 +40,18 @@ const useStyles = makeStyles({
 	}
 })
 
-export default React.memo(function Input(props) {
+const Input = forwardRef((props, ref) => {
 	const {
 		className,
 		placeholder,
 		color = 'primary',
 		disabled = false,
-		showSearch = false,
+		search = false,
 		onSearch = null,
-		onChange = null
+		onChange = null,
+		onFocus = null,
+		onBlur = null,
+		onClick = null
 	} = props
 
 	const [value, setValue] = useState('')
@@ -62,13 +65,21 @@ export default React.memo(function Input(props) {
 
 	const beNull = value => (disabled ? null : value)
 
-	const handleFocusInput = beNull(() => {
-		setFocus(true)
-	})
+	const handleFocusInput = useCallback(
+		beNull(() => {
+			onFocus && onFocus()
+			setFocus(true)
+		}),
+		[]
+	)
 
-	const handleBlurInput = beNull(() => {
-		setFocus(false)
-	})
+	const handleBlurInput = useCallback(
+		beNull(() => {
+			onBlur && onBlur()
+			setFocus(false)
+		}),
+		[]
+	)
 
 	const handleChangeInput = useCallback(
 		e => {
@@ -84,7 +95,7 @@ export default React.memo(function Input(props) {
 	}, [value])
 
 	return (
-		<div className={classes.root}>
+		<div ref={ref} className={classes.root}>
 			<input
 				type="text"
 				disabled={disabled}
@@ -93,8 +104,9 @@ export default React.memo(function Input(props) {
 				onFocus={handleFocusInput}
 				onBlur={handleBlurInput}
 				onChange={handleChangeInput}
+				onClick={beNull(onClick)}
 			/>
-			{showSearch && (
+			{search && (
 				<div className={classes.searchIcon} onClick={handleSearch}>
 					<SearchIcon />
 				</div>
@@ -102,3 +114,5 @@ export default React.memo(function Input(props) {
 		</div>
 	)
 })
+
+export default memo(Input)

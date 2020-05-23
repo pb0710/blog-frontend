@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { Glass, IconButton, Input } from 'ui'
+import { Glass, IconButton } from 'ui'
 import { MenuSlimIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
 import Branch from 'components/Branch'
+import Search from './Search'
 import UserPopup from './UserPopup'
 import NotifyPopup from './NotifyPopup'
 
@@ -26,17 +27,6 @@ const useStyles = makeStyles({
 	navWrapper: {
 		...flexCenter,
 		justifyContent: 'space-between'
-	},
-	search: {
-		...flexCenter,
-		justifyContent: 'space-between',
-		margin: '0 auto',
-		position: 'relative'
-	},
-	searchInput: {
-		background: 'rgba(250,250,250,.8)',
-		width: 240,
-		height: 30
 	},
 	operationWrapper: {
 		...flexCenter,
@@ -63,9 +53,7 @@ export default function Header() {
 				<Branch />
 			</div>
 
-			<div className={classes.search}>
-				<Input className={classes.searchInput} showSearch={true} />
-			</div>
+			<Search />
 
 			<div className={classes.operationWrapper}>
 				<NotifyPopup />

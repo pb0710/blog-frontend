@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { IconButton } from 'ui'
+import { IconButton, Popup } from 'ui'
 import { UserIcon } from 'ui/utils/icons'
-import Popup from 'components/Popup'
-import { usePopupVisible } from 'utils/hooks'
+import { usePopupVisible } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
 	root: {}
@@ -12,7 +11,7 @@ const useStyles = makeStyles({
 export default function UserPopup(props) {
 	const {} = props
 
-	const { ref: popupRef, visible, handleBindPopup } = usePopupVisible()
+	const { popupRef, visible, handleBindPopup } = usePopupVisible(false, true)
 	const classes = useStyles()
 
 	return (

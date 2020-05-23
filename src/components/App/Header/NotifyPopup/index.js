@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { IconButton, Button } from 'ui'
+import { IconButton, Popup, Button } from 'ui'
 import { NotifyIcon } from 'ui/utils/icons'
-import Popup from 'components/Popup'
-import { usePopupVisible } from 'utils/hooks'
+import { usePopupVisible } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
-	root: {}
+	root: {},
+	notifyPopop: {
+		right: 120
+	}
 })
 
 export default function NotifyPopup(props) {
 	const {} = props
 
-	const { ref: popupRef, visible, handleBindPopup } = usePopupVisible()
+	const { popupRef, visible, handleBindPopup } = usePopupVisible(false, true)
 	const classes = useStyles()
 
 	return (
@@ -20,7 +22,7 @@ export default function NotifyPopup(props) {
 			<IconButton focus={visible} onClick={handleBindPopup}>
 				<NotifyIcon />
 			</IconButton>
-			<Popup ref={popupRef} visible={visible} onClick={handleBindPopup}>
+			<Popup className={classes.notifyPopop} ref={popupRef} visible={visible} onClick={handleBindPopup}>
 				notify
 				<Button>说的方法第三方</Button>
 			</Popup>

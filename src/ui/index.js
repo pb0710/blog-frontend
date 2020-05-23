@@ -21,6 +21,7 @@ import Collapse from './Collapse'
 import NavMenu from './NavMenu'
 import Link from './Link'
 import Tag from './Tag'
+import Popup from './Popup'
 
 export {
 	Button,
@@ -42,5 +43,6 @@ export {
 	Collapse,
 	NavMenu,
 	Link,
-	Tag
+	Tag,
+	Popup
 }
