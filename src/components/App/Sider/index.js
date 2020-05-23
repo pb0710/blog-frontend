@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 		position: 'absolute',
 		right: 8,
 		top: 6,
-		fontSize: 15
+		fontSize: 14
 	}
 })
 

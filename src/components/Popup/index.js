@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo, forwardRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Paper } from 'ui'
 import clsx from 'clsx'
-import { useRenderCount } from 'ui/utils/hooks'
+import { TransitionGroup } from 'react-transition-group'
 
 const useStyles = makeStyles({
 	root: {
@@ -11,12 +11,10 @@ const useStyles = makeStyles({
 		boxShadow: '2px 4px 24px rgba(26,26,26,.14)',
 		position: 'fixed',
 		top: 64,
-		right: 24,
-		zIndex: -1,
-		opacity: 0
+		right: 24
 	},
 	enter: {
-		animation: '$enter 250ms forwards'
+		animation: '$enter 200ms ease-out forwards'
 	},
 	leave: {
 		animation: '$leave 150ms ease-out forwards'
@@ -47,16 +45,33 @@ const useStyles = makeStyles({
 	}
 })
 
-export default React.memo(function Popup(props) {
-	const { children, className, visible = false, onClick = null } = props
-
+const Window = forwardRef((props, ref) => {
+	const { children, className, onClick = null, in: inProp, onExited = () => {}, timeout = 150 } = props
 	const classes = useStyles()
 
-	const renderCount = useRenderCount()
+	useEffect(() => {
+		if (!inProp) {
+			const exitTimer = setTimeout(onExited, timeout)
+			return () => {
+				clearTimeout(exitTimer)
+			}
+		}
+	}, [inProp, onExited, timeout])
 
-	return renderCount === 0 ? null : (
-		<Paper className={clsx(classes.root, className, visible ? classes.enter : classes.leave)} onClick={onClick}>
+	return (
+		<Paper
+			ref={ref}
+			className={clsx(classes.root, className, inProp ? classes.enter : classes.leave)}
+			onClick={onClick}
+		>
 			{children}
 		</Paper>
 	)
 })
+
+const Popup = forwardRef((props, ref) => {
+	const { visible = false } = props
+	return <TransitionGroup component={null}>{visible && <Window ref={ref} {...props} />}</TransitionGroup>
+})
+
+export default memo(Popup)

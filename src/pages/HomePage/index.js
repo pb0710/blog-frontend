@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 		justifyContent: 'center',
 		alignItems: 'center',
 		width: '100%',
-		height: 'calc(100vh - 84px)'
+		height: 'calc(100vh - 88px)'
 	}
 })
 

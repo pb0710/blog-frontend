@@ -107,11 +107,8 @@ export function useAsync(promise, immediate = true) {
  * 弹出窗展示状态
  */
 export function usePopupVisible() {
+	const ref = useRef()
 	const [visible, setVisible] = useState(false)
-
-	const handleTogglePopup = useCallback(() => {
-		setVisible(prev => !prev)
-	}, [])
 
 	const handleHidePopup = useCallback(() => {
 		setVisible(false)
@@ -121,14 +118,25 @@ export function usePopupVisible() {
 		setVisible(true)
 	}, [])
 
+	const handleBindPopup = useCallback(e => {
+		setVisible(true)
+		if (ref.current) {
+			const targetElement = e.target
+			const element = ref.current
+			if (!(targetElement === element || element.contains(targetElement))) {
+				setVisible(false)
+			}
+		}
+	}, [])
+
 	useEffect(() => {
 		visible
-			? document.addEventListener('click', handleTogglePopup)
-			: document.removeEventListener('click', handleTogglePopup)
+			? document.addEventListener('click', handleBindPopup)
+			: document.removeEventListener('click', handleBindPopup)
 		return () => {
-			document.removeEventListener('click', handleTogglePopup)
+			document.removeEventListener('click', handleBindPopup)
 		}
 	}, [visible])
 
-	return { visible, handleTogglePopup, handleShowPopup, handleHidePopup }
+	return { ref, visible, handleBindPopup, handleShowPopup, handleHidePopup }
 }

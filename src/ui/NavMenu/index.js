@@ -101,7 +101,8 @@ export default function NavMenu(props) {
 							bordered={false}
 							to={path}
 							linked={!child}
-							onClick={child ? () => handleToggleChildOpen(id) : null}>
+							onClick={child ? () => handleToggleChildOpen(id) : null}
+						>
 							{icon}
 							<span>{name}</span>
 							{child && (
@@ -119,7 +120,8 @@ export default function NavMenu(props) {
 										activeClassName={classes.childNavItemActived}
 										to={path + childPath}
 										bordered={false}
-										linked={true}>
+										linked={true}
+									>
 										{icon}
 										<span>{name}</span>
 									</ListItem>
