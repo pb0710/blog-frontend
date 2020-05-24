@@ -71,7 +71,7 @@ function ListItem(props) {
 	)
 
 	const renderNavItem = () => (
-		<NavLink {...commonProps} activeClassName={activeClassName} to={to} exact>
+		<NavLink {...commonProps} activeClassName={activeClassName} to={to} exact={to === '/'}>
 			<TouchRipple ref={rippleRef} color={color} />
 			{children}
 		</NavLink>

@@ -83,14 +83,14 @@ const useStyles = makeStyles({
 })
 
 export default function ArticleCard(props) {
-	const { id, title = '', imageUrl = '', viewsCount = '', tags = [] } = props
+	const { id, title = '', imageUrl = '', viewsCount = '', tags = [], sort = 'not_found' } = props
 
 	const views = useMemo(
 		() => (viewsCount.toString().length > 3 ? `${Number(viewsCount / 1000).toFixed(1)}K` : viewsCount),
 		[viewsCount]
 	)
 
-	const path = `article/${id}`
+	const path = `article/${sort}/${id}`
 
 	const classes = useStyles()
 

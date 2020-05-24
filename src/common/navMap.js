@@ -53,7 +53,7 @@ const navMap = [
 			},
 			{
 				id: 4,
-				name: '工具',
+				name: '软件工具',
 				path: '/tools',
 				icon: null,
 				component: <CSS />
@@ -62,14 +62,6 @@ const navMap = [
 	},
 	{
 		id: 2,
-		name: '讨论区',
-		path: '/comment',
-		icon: null,
-		component: <ArticlePage />,
-		child: null
-	},
-	{
-		id: 3,
 		name: '学习路线',
 		path: '/js',
 		icon: null,
@@ -104,6 +96,14 @@ const navMap = [
 				component: <JS />
 			}
 		]
+	},
+	{
+		id: 3,
+		name: '文档聚合',
+		path: '/comment',
+		icon: null,
+		component: <ArticlePage />,
+		child: null
 	},
 	{
 		id: 4,
