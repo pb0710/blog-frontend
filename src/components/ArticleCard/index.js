@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { memo, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Divider, Link, Tag } from 'ui'
 import { EyesIcon } from 'ui/utils/icons'
@@ -82,15 +82,15 @@ const useStyles = makeStyles({
 	}
 })
 
-export default function ArticleCard(props) {
-	const { id, title = '', imageUrl = '', viewsCount = '', tags = [], sort = 'not_found' } = props
+export default memo(function ArticleCard(props) {
+	const { id, sort = '', title = '', imageUrl = '', viewsCount = '', tags = [] } = props
 
 	const views = useMemo(
 		() => (viewsCount.toString().length > 3 ? `${Number(viewsCount / 1000).toFixed(1)}K` : viewsCount),
 		[viewsCount]
 	)
 
-	const path = `article/${sort}/${id}`
+	const path = `/article/${sort}/detail/${id}`
 
 	const classes = useStyles()
 
@@ -120,4 +120,4 @@ export default function ArticleCard(props) {
 			</div>
 		</div>
 	)
-}
+})

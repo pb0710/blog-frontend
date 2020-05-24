@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 })
 
 export default function Branch(props) {
-	const { mainRoute } = props
+	const { mainRoute = '/' } = props
 
 	const classes = useStyles()
 

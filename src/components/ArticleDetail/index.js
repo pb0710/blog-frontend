@@ -7,7 +7,7 @@ const useStyles = makeStyles({
 	root: {
 		boxSizing: 'border-box',
 		width: '100%',
-		padding: ({ content }) => content && 24
+		padding: ({ content }) => content && 32
 	}
 })
 

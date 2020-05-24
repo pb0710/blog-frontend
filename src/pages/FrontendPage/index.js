@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 	root: {}
 })
 
-export default memo(function HomePage(props) {
+export default memo(function FrontendPage(props) {
 	const {} = props
 
 	const [articleList, setArticleList] = useState([])

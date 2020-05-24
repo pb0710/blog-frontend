@@ -33,7 +33,7 @@ export default function Content() {
 						</Route>
 					)
 				)}
-				<Route path="/article/:sort/:id" component={ArticlePage} />
+				<Route path="/article/:sort/detail/:id" exact component={ArticlePage} />
 				<Route component={NotFound} />
 			</Switch>
 		</div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import HomePage from 'pages/HomePage'
+import FrontendPage from 'pages/FrontendPage'
 import ArticlePage from 'pages/ArticlePage'
 import SettingPage from 'pages/SettingPage'
 import StudyRoute from 'pages/StudyRoute'
@@ -28,7 +29,7 @@ const navMap = [
 				name: '前端',
 				path: '/frontend',
 				icon: null,
-				component: <HTML />
+				component: <FrontendPage />
 			},
 			{
 				id: 1,
@@ -53,8 +54,8 @@ const navMap = [
 			},
 			{
 				id: 4,
-				name: '软件工具',
-				path: '/tools',
+				name: '工程化',
+				path: '/engineering',
 				icon: null,
 				component: <CSS />
 			}
