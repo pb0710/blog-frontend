@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 	wrapper: {
 		// 偏移右下，宽度-1
 		width: 791,
+		minHeight: 'calc(100vh - 88px)',
 		overflow: 'hidden'
 	},
 	grid: {

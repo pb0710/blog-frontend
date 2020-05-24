@@ -10,15 +10,15 @@ const useStyles = makeStyles({
 	root: {}
 })
 
-export default memo(function FrontendPage(props) {
-	const {} = props
+export default memo(function ArticleListPage(props) {
+	const { sort } = props
 
 	const [articleList, setArticleList] = useState([])
 	const classes = useStyles()
 
 	const getArticleList = async () => {
 		try {
-			const result = await api.fetchArticleList()
+			const result = await api.fetchArticleList(sort)
 			setArticleList(result)
 		} catch (e) {
 			console.error(e)

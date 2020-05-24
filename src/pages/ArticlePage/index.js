@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'
 import ArticleDetail from 'components/ArticleDetail'
-import { useParams } from 'react-router-dom'
 import * as api from 'apis'
 import { Paper } from 'ui'
 

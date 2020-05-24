@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 		position: 'fixed',
 		top: 0,
 		left: 0,
-		paddingTop: 64,
+		paddingTop: 68,
 		borderRight: '1px solid #eaeaea',
 		boxShadow: 'none',
 		transform: `translateX(${drawerOpened ? 0 : -240}px)`,
