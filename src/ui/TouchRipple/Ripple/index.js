@@ -16,11 +16,11 @@ const useStyles = makeStyles({
 		background: ({ color }) => color.ripple
 	},
 	enter: {
-		animation: '$enter ease-out forwards',
+		animation: '$enter ease-in-out forwards',
 		animationDuration: ({ timeout }) => timeout
 	},
 	leave: {
-		animation: '$exit ease-out forwards',
+		animation: '$exit ease-in-out forwards',
 		animationDuration: ({ timeout }) => timeout
 	},
 	'@keyframes enter': {

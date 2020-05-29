@@ -1,11 +1,18 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { IconButton, Popup } from 'ui'
+import { IconButton, Popup, Button, Link } from 'ui'
 import { UserIcon } from 'ui/utils/icons'
 import { usePopupVisible } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
-	root: {}
+	root: {},
+	popup: {
+		boxSizing: 'border-box',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		padding: 16
+	}
 })
 
 export default function UserPopup(props) {
@@ -19,8 +26,10 @@ export default function UserPopup(props) {
 			<IconButton focus={visible} onClick={handleBindPopup}>
 				<UserIcon />
 			</IconButton>
-			<Popup ref={popupRef} visible={visible} onClick={handleBindPopup}>
-				user
+			<Popup className={classes.popup} ref={popupRef} visible={visible} onClick={handleBindPopup}>
+				<Link to="/article_upload">
+					<Button color="primary">发布文章</Button>
+				</Link>
 			</Popup>
 		</div>
 	)

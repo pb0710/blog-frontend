@@ -35,7 +35,6 @@ const useStyles = makeStyles({
 
 export default function ArticlePage(props) {
 	const {} = props
-
 	const { id } = useParams()
 	const [article, setArticle] = useState('')
 	const [backgroundImage, setBackgroundImage] = useState('')

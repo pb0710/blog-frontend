@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router'
 import navMap from 'common/navMap'
 import NotFound from 'pages/NotFound'
 import ArticlePage from 'pages/ArticlePage'
+import ArticleUploadPage from 'pages/ArticleUploadPage'
 
 const useStyles = makeStyles({
 	root: {
@@ -34,6 +35,7 @@ export default function Content() {
 					)
 				)}
 				<Route path="/article/:sort/detail/:id" exact component={ArticlePage} />
+				<Route path="/article_upload" exact component={ArticleUploadPage} />
 				<Route component={NotFound} />
 			</Switch>
 		</div>
