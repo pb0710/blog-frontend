@@ -9,17 +9,19 @@ import { useCallback } from 'react'
 
 const useStyles = makeStyles({
 	root: {
+		width: 200,
+		height: 30,
 		minWidth: 200,
 		minHeight: 28,
 		position: 'relative'
 	},
-	input: ({ color, focus, disabled }) => ({
+	input: ({ color, focus, disabled, search }) => ({
 		boxSizing: 'border-box',
 		width: '100%',
 		height: '100%',
 		background: '#fafafa',
 		paddingLeft: 8,
-		paddingRight: 32,
+		paddingRight: search ? 32 : 8,
 		borderRadius: 2,
 		outline: 0,
 		border: `1px solid ${focus ? color.main : '#e5e5e5'}`,
@@ -43,6 +45,7 @@ const useStyles = makeStyles({
 const Input = forwardRef((props, ref) => {
 	const {
 		className,
+		inputClassName,
 		placeholder,
 		color = 'primary',
 		disabled = false,
@@ -60,7 +63,8 @@ const Input = forwardRef((props, ref) => {
 	const classes = useStyles({
 		color: themeColors[color],
 		disabled,
-		focus
+		focus,
+		search
 	})
 
 	const beNull = value => (disabled ? null : value)
@@ -95,11 +99,11 @@ const Input = forwardRef((props, ref) => {
 	}, [value])
 
 	return (
-		<div ref={ref} className={classes.root}>
+		<div ref={ref} className={clsx(classes.root, className)}>
 			<input
 				type="text"
 				disabled={disabled}
-				className={clsx(classes.input, className)}
+				className={clsx(classes.input, inputClassName)}
 				placeholder={placeholder}
 				onFocus={handleFocusInput}
 				onBlur={handleBlurInput}

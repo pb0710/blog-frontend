@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'
-import * as api from 'apis'
+import * as articleApi from 'apis/article'
 import { Paper, Input } from 'ui'
 
 const useStyles = makeStyles({
@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 	},
 	uploadWrapper: {
 		width: 792,
+		minHeight: 800,
 		marginBottom: 16
 	}
 })

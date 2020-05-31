@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Switch, Route } from 'react-router'
 import navMap from 'common/navMap'
-import NotFound from 'pages/NotFound'
+import NotFoundPage from 'pages/NotFoundPage'
 import ArticlePage from 'pages/ArticlePage'
 import ArticleUploadPage from 'pages/ArticleUploadPage'
 
@@ -36,7 +36,7 @@ export default function Content() {
 				)}
 				<Route path="/article/:sort/detail/:id" exact component={ArticlePage} />
 				<Route path="/article_upload" exact component={ArticleUploadPage} />
-				<Route component={NotFound} />
+				<Route component={NotFoundPage} />
 			</Switch>
 		</div>
 	)

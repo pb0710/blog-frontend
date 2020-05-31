@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo, forwardRef } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 		height: 40,
 		color: color.text,
 		fontSize: 16,
-		background: focus ? 'rgba(0,0,0,.1)' : 'transparent',
+		background: focus ? 'rgba(120,120,120,.1)' : 'transparent',
 		outline: 0,
 		border: 0,
 		borderRadius: '50%',
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 	})
 })
 
-export default React.memo(function IconButton(props) {
+function IconButton(props, ref) {
 	const { children, className, focus = false, disabled = false, onClick = null } = props
 
 	const color = 'transparent'
@@ -43,13 +43,17 @@ export default React.memo(function IconButton(props) {
 
 	return (
 		<div
+			ref={ref}
 			className={clsx(classes.root, className)}
 			onClick={beNull(onClick)}
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
-			onMouseLeave={beNull(handleStop)}>
+			onMouseLeave={beNull(handleStop)}
+		>
 			{beNull(<TouchRipple ref={rippleRef} color={color} center={true} timeout={500} />)}
 			{children}
 		</div>
 	)
-})
+}
+
+export default memo(forwardRef(IconButton))

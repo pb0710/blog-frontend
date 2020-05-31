@@ -1,13 +1,13 @@
 import axios from 'axios'
-import * as configs from 'configs'
+import * as config from 'common/config'
 
 // 自定义拦截器
 const instance = axios.create({
-	baseURL: configs.domain,
+	baseURL: config.domain,
 	method: 'GET',
 	headers: {
-		'Content-Type': 'application/json;charset=UTF-8'
-		// 'Access-Control-Allow-Origin': '*'
+		'Content-Type': 'application/json;charset=UTF-8',
+		'Access-Control-Allow-Origin': '*'
 	}
 })
 

@@ -27,13 +27,13 @@ const useStyles = makeStyles({
 export default function Search(props) {
 	const {} = props
 
-	const { popupRef, triggerRef, visible, handleBindPopup } = usePopupVisible(true, true)
+	const { popupRef, triggerRef, visible, handleShowPopup } = usePopupVisible({ clickPopupHide: true })
 	const classes = useStyles()
 
 	return (
 		<div className={classes.root}>
-			<Input ref={triggerRef} className={classes.searchInput} search={true} onClick={handleBindPopup} />
-			<Popup ref={popupRef} className={classes.searchResult} visible={visible} onClick={handleBindPopup}>
+			<Input ref={triggerRef} className={classes.searchInput} search={true} onClick={handleShowPopup} />
+			<Popup ref={popupRef} className={classes.searchResult} visible={visible}>
 				<List bordered={false}>
 					<ListItem rippleMuted={true} linked={true} to="/">
 						时代发生地方

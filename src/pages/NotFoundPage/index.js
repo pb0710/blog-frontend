@@ -21,10 +21,18 @@ const useStyles = makeStyles({
 		display: 'flex',
 		justifyContent: 'space-between',
 		width: '60%'
+	},
+	goBack: {
+		color: '#409eff',
+		background: '#fff',
+		boxShadow: '0 1px 3px rgba(26,26,26,.1)',
+		'&:hover': {
+			background: '#f9f9f9'
+		}
 	}
 })
 
-export default memo(function NotFound(props) {
+export default memo(function NotFoundPagePage(props) {
 	const {} = props
 	const history = useHistory()
 	const classes = useStyles()
@@ -39,7 +47,9 @@ export default memo(function NotFound(props) {
 				<h1>页面找不到啦...</h1>
 
 				<div className={classes.operationWrapper}>
-					<Button onClick={handleGoback}>后退</Button>
+					<Button className={classes.goBack} onClick={handleGoback}>
+						后退
+					</Button>
 					<Link to="/">
 						<Button color="primary">返回首页</Button>
 					</Link>

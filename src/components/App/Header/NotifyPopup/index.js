@@ -14,15 +14,15 @@ const useStyles = makeStyles({
 export default function NotifyPopup(props) {
 	const {} = props
 
-	const { popupRef, visible, handleBindPopup } = usePopupVisible(false, true)
+	const { popupRef, visible, handleShowPopup } = usePopupVisible()
 	const classes = useStyles()
 
 	return (
 		<div className={classes.root}>
-			<IconButton focus={visible} onClick={handleBindPopup}>
+			<IconButton focus={visible} onClick={handleShowPopup}>
 				<NotifyIcon />
 			</IconButton>
-			<Popup className={classes.notifyPopop} ref={popupRef} visible={visible} onClick={handleBindPopup}>
+			<Popup className={classes.notifyPopop} ref={popupRef} visible={visible}>
 				notify
 				<Button>说的方法第三方</Button>
 			</Popup>

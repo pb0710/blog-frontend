@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'
 import ArticleDetail from 'components/ArticleDetail'
-import * as api from 'apis'
+import * as articleApi from 'apis/article'
 import { Paper } from 'ui'
 
 const useStyles = makeStyles({
@@ -42,7 +42,7 @@ export default function ArticlePage(props) {
 
 	const fetchArticleDetail = async () => {
 		try {
-			const { content, backgroundImage } = await api.fetchArticleContent(id)
+			const { content, backgroundImage } = await articleApi.fetchDetail(id)
 			setArticle(content)
 			setBackgroundImage(backgroundImage)
 		} catch (e) {

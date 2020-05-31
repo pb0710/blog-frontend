@@ -1,6 +1,6 @@
 import React, { memo, useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import * as api from 'apis'
+import * as articleApi from 'apis/article'
 import ArticleCollection from 'components/ArticleCollection'
 import AffixContainer from 'components/AffixContainer'
 import Panel from 'components/Panel'
@@ -18,7 +18,7 @@ export default memo(function ArticleListPage(props) {
 
 	const getArticleList = async () => {
 		try {
-			const result = await api.fetchArticleList(sort)
+			const result = await articleApi.fetchList(sort)
 			setArticleList(result)
 		} catch (e) {
 			console.error(e)
