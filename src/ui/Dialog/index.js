@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import Glass from '../Glass'
+import GroundGlass from '../GroundGlass'
 import Paper from '../Paper'
 import Button from '../Button'
 import { useRenderCount, useCoordinate } from '../utils/hooks'
@@ -152,12 +152,11 @@ export default function Dialog(props) {
 	}, [x, y])
 
 	return (
-		<Glass
+		<GroundGlass
 			className={clsx(classes.mask, visible && classes.maskEnter, maskLeave && classes.maskLeave)}
-			onClick={maskClosable ? onCancel : () => {}}>
-			<Paper
-				ref={modalRef}
-				className={clsx(classes.modal, visible ? classes.modalEnter : classes.modalLeave)}>
+			onClick={maskClosable ? onCancel : () => {}}
+		>
+			<Paper ref={modalRef} className={clsx(classes.modal, visible ? classes.modalEnter : classes.modalLeave)}>
 				<div className={classes.title}>{title}</div>
 				<div className={classes.content}>{children}</div>
 				<div className={classes.footer}>
@@ -171,6 +170,6 @@ export default function Dialog(props) {
 					</div>
 				</div>
 			</Paper>
-		</Glass>
+		</GroundGlass>
 	)
 }

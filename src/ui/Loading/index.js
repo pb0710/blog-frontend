@@ -19,7 +19,7 @@ const dotstyles = {
 	height: 16,
 	borderRadius: '100%',
 	display: 'inline-block',
-	opacity: 0.8
+	opacity: 1
 }
 
 const useStyles = makeStyles({
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		width: 56
+		width: 64
 	},
 	dot1: ({ color }) => ({
 		...dotstyles,

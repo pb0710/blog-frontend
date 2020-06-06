@@ -16,8 +16,7 @@ const useStyles = makeStyles({
 		transition: 'all .1s',
 
 		'&:hover': {
-			background: color.main,
-			color: color.text
+			background: color.main
 		}
 	})
 })
@@ -62,7 +61,8 @@ export default React.forwardRef(function Option(props, ref) {
 			onMouseDown={handleStart}
 			onMouseUp={handleStop}
 			onMouseLeave={handleStop}
-			onClick={handleSelect}>
+			onClick={handleSelect}
+		>
 			<TouchRipple ref={rippleRef} color={color} />
 			{children}
 		</div>

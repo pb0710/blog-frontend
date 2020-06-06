@@ -1,6 +1,6 @@
 import { styled } from '@material-ui/styles'
 
-const Glass = styled('section')({
+const GroundGlass = styled('section')({
 	display: 'inline-block',
 	whiteSpace: 'nowrap',
 	borderRadius: 2,
@@ -9,4 +9,4 @@ const Glass = styled('section')({
 	boxShadow: '0 1px 3px rgba(26,26,26,.1)'
 })
 
-export default Glass
+export default GroundGlass

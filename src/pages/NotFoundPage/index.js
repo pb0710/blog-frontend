@@ -23,7 +23,6 @@ const useStyles = makeStyles({
 		width: '60%'
 	},
 	goBack: {
-		color: '#409eff',
 		background: '#fff',
 		boxShadow: '0 1px 3px rgba(26,26,26,.1)',
 		'&:hover': {

@@ -21,7 +21,6 @@ const useStyles = makeStyles({
 			zIndex: 8,
 
 			'& img': {
-				transform: 'scale(1.04)',
 				filter: 'brightness(1.04)'
 			}
 		}

@@ -44,11 +44,13 @@ export default React.memo(function Button(props) {
 
 	return (
 		<button
+			type="button"
 			className={clsx(classes.root, className)}
 			onClick={beNull(onClick)}
 			onMouseDown={beNull(handleStart)}
 			onMouseUp={beNull(handleStop)}
-			onMouseLeave={beNull(handleStop)}>
+			onMouseLeave={beNull(handleStop)}
+		>
 			{beNull(<TouchRipple ref={rippleRef} color={color} />)}
 			{children}
 		</button>

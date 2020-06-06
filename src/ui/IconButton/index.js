@@ -43,6 +43,7 @@ function IconButton(props, ref) {
 
 	return (
 		<div
+			type="button"
 			ref={ref}
 			className={clsx(classes.root, className)}
 			onClick={beNull(onClick)}

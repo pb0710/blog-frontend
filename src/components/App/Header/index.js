@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { Glass, IconButton } from 'ui'
+import { GroundGlass, IconButton } from 'ui'
 import { MenuSlimIcon, ApplicationIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
@@ -45,7 +45,7 @@ export default function Header() {
 	}, [])
 
 	return (
-		<Glass className={classes.root}>
+		<GroundGlass className={classes.root}>
 			<div className={classes.navWrapper}>
 				<IconButton onClick={handleShowDrawer}>
 					<MenuSlimIcon />
@@ -62,6 +62,6 @@ export default function Header() {
 				</IconButton>
 				<UserPopup />
 			</div>
-		</Glass>
+		</GroundGlass>
 	)
 }

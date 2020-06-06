@@ -30,9 +30,19 @@ export default function Search(props) {
 	const { popupRef, triggerRef, visible, handleShowPopup } = usePopupVisible({ clickPopupHide: true })
 	const classes = useStyles()
 
+	const handleInput = value => {
+		console.log('value: ', value)
+	}
+
 	return (
 		<div className={classes.root}>
-			<Input ref={triggerRef} className={classes.searchInput} search={true} onClick={handleShowPopup} />
+			<Input
+				ref={triggerRef}
+				className={classes.searchInput}
+				type="search"
+				onClick={handleShowPopup}
+				onChange={handleInput}
+			/>
 			<Popup ref={popupRef} className={classes.searchResult} visible={visible}>
 				<List bordered={false}>
 					<ListItem rippleMuted={true} linked={true} to="/">

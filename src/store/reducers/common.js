@@ -7,3 +7,11 @@ export const drawerOpened = handleActions(
 	},
 	false
 )
+
+// 全局遮罩层显示状态
+export const maskVisible = handleActions(
+	{
+		UPDATE_MASK_VISIBLE: (state, action) => action.payload
+	},
+	true
+)

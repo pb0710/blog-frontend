@@ -4,7 +4,7 @@ import './index.css'
 import Button from './Button'
 import Container from './Container'
 import Paper from './Paper'
-import Glass from './Glass'
+import GroundGlass from './GroundGlass'
 import TouchRipple from './TouchRipple'
 import IconButton from './IconButton'
 import List from './List'
@@ -22,13 +22,15 @@ import NavMenu from './NavMenu'
 import Link from './Link'
 import Tag from './Tag'
 import Popup from './Popup'
+import Form from './Form'
+import FormItem from './FormItem'
 
 export {
 	Button,
 	Container,
 	IconButton,
 	Paper,
-	Glass,
+	GroundGlass,
 	TouchRipple,
 	List,
 	ListItem,
@@ -44,5 +46,7 @@ export {
 	NavMenu,
 	Link,
 	Tag,
-	Popup
+	Popup,
+	Form,
+	FormItem
 }

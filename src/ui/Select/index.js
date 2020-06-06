@@ -4,8 +4,9 @@ import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useBoolean } from '../utils/hooks'
 import { ArrowDownBoldIcon } from '../utils/icons'
+import themeColors from '../utils/themeColors'
 import Option from '../Option'
-import Glass from '../Glass'
+import GroundGlass from '../GroundGlass'
 
 const useStyles = makeStyles({
 	root: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
 			color: '#303133'
 		}
 	},
-	optionWrapper: ({ visible, timeout }) => ({
+	optionWrapper: ({ listVisible, timeout }) => ({
 		width: '100%',
 		position: 'absolute',
 		top: 0,
@@ -43,21 +44,22 @@ const useStyles = makeStyles({
 		borderRadius: 2,
 		boxShadow: '0 4px 24px rgba(26,26,26,.14)',
 		overflow: 'hidden',
-		zIndex: visible ? 999 : -1,
-		opacity: visible ? 1 : 0,
+		zIndex: listVisible ? 999 : -1,
+		opacity: listVisible ? 1 : 0,
 		transition: `all ${timeout}ms ease-out`,
 		transformOrigin: '50% 16px'
 	}),
+	firstOption: ({ color }) => ({
+		color: color.main
+	}),
 	enter: {
-		animation: '$enter .3s'
+		animation: '$enter ease-out',
+		animationDuration: ({ timeout }) => timeout
 	},
 	'@keyframes enter': {
 		'0%': {
 			opacity: 0,
 			transform: 'scale(.6)'
-		},
-		'60%': {
-			transform: 'scale(1.03)'
 		},
 		'100%': {
 			opacity: 1,
@@ -67,17 +69,17 @@ const useStyles = makeStyles({
 })
 
 export default function Select(props) {
-	const { className, children, color = 'primary', timeout = 250, onChange = () => {} } = props
+	const { className, children, color = 'primary', timeout = 200, onChange = null } = props
 
-	const { boolean: visible, setTrue: handleShowList, setFalse: handleHideList } = useBoolean(false)
-
+	const { boolean: listVisible, setTrue: handleShowList, setFalse: handleHideList } = useBoolean(false)
 	const [values, setValues] = useState([])
 	const [childrens, setChildrens] = useState([])
 	const [selectedIndex, setSelectedIndex] = useState(0)
 
 	const classes = useStyles({
-		visible,
-		timeout
+		listVisible,
+		timeout,
+		color: themeColors[color]
 	})
 
 	const refs = useMemo(() => React.Children.map(children, () => React.createRef()), [children])
@@ -98,40 +100,45 @@ export default function Select(props) {
 	}, [refs])
 
 	useEffect(() => {
-		visible && document.addEventListener('click', handleHideList)
+		listVisible && document.addEventListener('click', handleHideList)
 		return () => {
 			document.removeEventListener('click', handleHideList)
 		}
-	}, [visible, handleHideList])
+	}, [listVisible, handleHideList])
 
 	const handleChange = value => {
 		setSelectedIndex(values.indexOf(value))
-		onChange(value)
+		onChange && onChange(value)
 	}
 
 	return (
 		<div className={clsx(classes.root, className)}>
 			<div className={classes.selected} onClick={handleShowList}>
-				{selected.children}
-				<i>
-					<ArrowDownBoldIcon />
-				</i>
+				{listVisible ? null : (
+					<>
+						{selected.children}
+						<i>
+							<ArrowDownBoldIcon />
+						</i>
+					</>
+				)}
 			</div>
 			{
-				<Glass className={clsx(classes.optionWrapper, visible && classes.enter)}>
-					<Option value={selected.value} color={color}>
+				<GroundGlass className={clsx(classes.optionWrapper, listVisible && classes.enter)}>
+					<Option className={classes.firstOption} value={selected.value}>
 						{selected.children}
 					</Option>
-					{React.Children.map(children, (child, index) =>
-						React.cloneElement(child, {
-							ref: refs[index],
-							handleChange,
-							isCurrent: index === selectedIndex,
-							color,
-							timeout
-						})
-					)}
-				</Glass>
+					{children &&
+						React.Children.map(children, (child, index) =>
+							React.cloneElement(child, {
+								ref: refs[index],
+								handleChange,
+								isCurrent: index === selectedIndex,
+								// color,
+								timeout
+							})
+						)}
+				</GroundGlass>
 			}
 		</div>
 	)

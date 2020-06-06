@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useState } from 'react'
+import React, { forwardRef, memo, useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import themeColors from '../utils/themeColors'
@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 		boxSizing: 'border-box',
 		width: '100%',
 		height: '100%',
+		color: '#303133',
 		background: '#fafafa',
 		paddingLeft: 8,
 		paddingRight: search ? 32 : 8,
@@ -28,7 +29,11 @@ const useStyles = makeStyles({
 		boxShadow: `0 0 0 ${focus ? '2px' : '6px'} ${hex2Rgba(color.main, focus ? 0.7 : 0)}`,
 		opacity: disabled && 0.5,
 		cursor: disabled && 'not-allowed',
-		transition: 'all 250ms ease-out'
+		transition: 'all 250ms ease-out',
+		'&::placeholder': {
+			color: '#aaa',
+			fontSize: 13
+		}
 	}),
 	searchIcon: {
 		...flexCenter,
@@ -46,7 +51,11 @@ const Input = forwardRef((props, ref) => {
 	const {
 		className,
 		inputClassName,
+		name,
+		value = '',
+		values = {},
 		placeholder,
+		type = 'input',
 		color = 'primary',
 		disabled = false,
 		search = false,
@@ -57,7 +66,7 @@ const Input = forwardRef((props, ref) => {
 		onClick = null
 	} = props
 
-	const [value, setValue] = useState('')
+	const [inputVal, setInputVal] = useState('')
 	const [focus, setFocus] = useState(false)
 
 	const classes = useStyles({
@@ -67,7 +76,7 @@ const Input = forwardRef((props, ref) => {
 		search
 	})
 
-	const beNull = value => (disabled ? null : value)
+	const beNull = inputVal => (disabled ? null : inputVal)
 
 	const handleFocusInput = useCallback(
 		beNull(() => {
@@ -88,20 +97,26 @@ const Input = forwardRef((props, ref) => {
 	const handleChangeInput = useCallback(
 		e => {
 			const keywords = e.target.value
-			setValue(keywords)
-			onChange && onChange(e)
+			setInputVal(keywords)
+			onChange && onChange(keywords, values)
 		},
-		[onChange]
+		[onChange, values]
 	)
 
 	const handleSearch = useCallback(() => {
-		onSearch && onSearch(value)
+		onSearch && onSearch(inputVal)
+	}, [inputVal])
+
+	useEffect(() => {
+		setInputVal(value)
 	}, [value])
 
 	return (
 		<div ref={ref} className={clsx(classes.root, className)}>
 			<input
-				type="text"
+				type={type === 'password' ? 'password' : 'text'}
+				name={name}
+				value={inputVal}
 				disabled={disabled}
 				className={clsx(classes.input, inputClassName)}
 				placeholder={placeholder}
@@ -110,7 +125,7 @@ const Input = forwardRef((props, ref) => {
 				onChange={handleChangeInput}
 				onClick={beNull(onClick)}
 			/>
-			{search && (
+			{type === 'search' && (
 				<div className={classes.searchIcon} onClick={handleSearch}>
 					<SearchIcon />
 				</div>

@@ -1,8 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
+import { useDispatch } from 'react-redux'
 import { IconButton, Popup, Button, Link, Divider } from 'ui'
 import { UserIcon } from 'ui/utils/icons'
 import { usePopupVisible } from 'ui/utils/hooks'
+import { updateMaskVisibleAction } from 'store/actions'
 const avatar = 'https://lh3.googleusercontent.com/ogw/ADGmqu97NB7zYjkUdeIKAirM7m8dq1RQZZwyescNtVzX=s192-c-mo'
 
 const useStyles = makeStyles({
@@ -70,9 +72,14 @@ const useStyles = makeStyles({
 
 export default function UserPopup(props) {
 	const {} = props
-
-	const { popupRef, visible, handleHidePopup, handleShowPopup } = usePopupVisible()
+	const dispatch = useDispatch()
+	const { popupRef, visible, handleShowPopup, handleHidePopup } = usePopupVisible()
 	const classes = useStyles()
+
+	const handleRegister = e => {
+		handleHidePopup(e)
+		dispatch(updateMaskVisibleAction(true))
+	}
 
 	return (
 		<div className={classes.root}>
@@ -86,7 +93,7 @@ export default function UserPopup(props) {
 						<h3>这是用户昵称</h3>
 						<span>1234567890@gmail.com</span>
 					</div>
-					<Link className={classes.accountSetting} to="/setting">
+					<Link className={classes.accountSetting} to="/setting" onClick={handleHidePopup}>
 						管理您的账号
 					</Link>
 				</div>
@@ -98,8 +105,8 @@ export default function UserPopup(props) {
 				</Link>
 				<Divider />
 				<div className={classes.accountOperators}>
-					<Button color="primary">登陆</Button>
-					<Button>注册</Button>
+					<Button color="primary">登录</Button>
+					<Button onClick={handleRegister}>注册</Button>
 				</div>
 			</Popup>
 		</div>

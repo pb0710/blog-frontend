@@ -16,6 +16,11 @@ export default function SettingPage() {
 		() => [
 			{
 				id: 0,
+				name: '夜间模式',
+				component: <Switch defaultChecked={false} />
+			},
+			{
+				id: 1,
 				name: '主题',
 				component: (
 					<Select>
@@ -25,11 +30,6 @@ export default function SettingPage() {
 						<Option value="warning">橙黄</Option>
 					</Select>
 				)
-			},
-			{
-				id: 1,
-				name: '夜间模式',
-				component: <Switch defaultChecked={false} />
 			},
 			{
 				id: 2,
