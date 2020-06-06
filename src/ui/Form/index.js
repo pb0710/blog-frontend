@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from 'react'
+import React, { memo, Children, cloneElement, useState, useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import _useForm from './hooks'
@@ -34,6 +34,7 @@ function _Form(props) {
 	)
 
 	const handleSubmit = useCallback(() => {
+		console.log('test')
 		validateFields()
 		const errors = []
 		for (const [name, errorTip] of Object.entries(errorTips)) {
@@ -50,36 +51,38 @@ function _Form(props) {
 	}, [onFinish, onFinishFailed, values, errorTips])
 
 	// 查找表单提交组件（如果是提交组件，传递onClick和values）
-	const checkSubmitType = child => {
+	const getSubmitElement = child => {
 		if (child?.type?.name === 'FormItem' && child?.props?.submitType) {
-			return { onClick: handleSubmit }
+			return cloneElement(child, { onClick: handleSubmit })
 		} else if (child.props.children) {
 			const childsChildren = child.props.children
 			// 考虑到不同层级的child.props.children为多个的情况
 			if (childsChildren.length > 1) {
-				for (const item of childsChildren) {
+				const newChildren = Children.map(childsChildren, item => {
 					// 只取FormItem下拥有submitType的作为提交组件
 					if (item?.type?.name === 'FormItem') {
-						return checkSubmitType(item)
+						return getSubmitElement(item)
+					} else {
+						return item
 					}
-				}
+				})
+				return cloneElement(child, { children: newChildren })
 			} else {
-				return checkSubmitType(childsChildren)
+				return getSubmitElement(childsChildren)
 			}
-		} else {
-			return null
 		}
 	}
 
 	return (
 		<form className={clsx(classes.root, className)} onChange={handleChange}>
 			{children && typeof children === 'object'
-				? React.Children.map(children, child => {
-						const submitEvent = checkSubmitType(child)
-						return React.cloneElement(
-							child,
-							submitEvent ? { ...submitEvent } : { setFieldsValue, values, errorTips, setErrorTips, trigger }
-						)
+				? Children.map(children, child => {
+						const submitElement = getSubmitElement(child)
+						return submitElement
+							? submitElement
+							: child?.type?.name === 'FormItem'
+							? cloneElement(child, { setFieldsValue, values, errorTips, setErrorTips, trigger })
+							: child
 				  })
 				: children}
 		</form>
