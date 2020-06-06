@@ -14,36 +14,47 @@ const useStyles = makeStyles({
 	}
 })
 
-function Form(props) {
-	const { className, children, onSubmit, onChange } = props
+function _Form(props) {
+	const { className, children, onFinish, onFinishFailed, onChange, form = {} } = props
+	const { values = {}, setFieldsValue, validateFields, trigger } = form
 	const classes = useStyles()
-	const [values, setValues] = useState({})
+	// 维护所有表单组件的校验提示
+	const [errorTips, setErrorTips] = useState({})
 
 	const handleChange = useCallback(
 		e => {
 			const { name, value } = e.target
 			if (name) {
-				setValues(prev => ({ ...prev, [name]: value }))
-				onChange && onChange(e.target, values)
+				setFieldsValue && setFieldsValue({ [name]: value })
+				onChange && onChange(name, value, values)
 			}
 		},
-		[values]
+		[values, setFieldsValue]
 	)
 
-	const handleSubmit = useCallback(
-		values => {
-			onSubmit && onSubmit(values)
-		},
-		[onSubmit]
-	)
+	const handleSubmit = useCallback(() => {
+		validateFields()
+		const errors = []
+		for (const [name, errorTip] of Object.entries(errorTips)) {
+			if (errorTip) {
+				errors.push({ name, errorTip })
+			}
+		}
+
+		if (errors.length === 0) {
+			onFinish && onFinish(values)
+		} else {
+			onFinishFailed && onFinishFailed(values, errors)
+		}
+	}, [onFinish, onFinishFailed, values, errorTips])
 
 	// 查找表单提交组件（如果是提交组件，传递onClick和values）
 	const checkSubmitType = child => {
 		if (child?.type?.name === 'FormItem' && child?.props?.submitType) {
-			return { onClick: () => handleSubmit(values) }
+			return { onClick: handleSubmit }
 		} else if (child.props.children) {
 			const childsChildren = child.props.children
-			// 考虑到child.props.children为多个的情况
+			// 考虑到不同层级的child.props.children为多个的情况
 			if (childsChildren.length > 1) {
 				for (const item of childsChildren) {
 					// 只取FormItem下拥有submitType的作为提交组件
@@ -64,11 +75,37 @@ function Form(props) {
 			{children && typeof children === 'object'
 				? React.Children.map(children, child => {
 						const submitEvent = checkSubmitType(child)
-						return React.cloneElement(child, submitEvent ? { ...submitEvent } : { values })
+						return React.cloneElement(
+							child,
+							submitEvent ? { ...submitEvent } : { setFieldsValue, values, errorTips, setErrorTips, trigger }
+						)
 				  })
 				: children}
 		</form>
 	)
 }
 
-export default memo(Form)
+function _useForm() {
+	// 维护所有表单组件的值
+	const [values, setValues] = useState({})
+	const [trigger, setTrigger] = useState(false)
+
+	const getFieldValue = name => values[name]
+	const setFieldsValue = useCallback(newValues => {
+		setValues(prev => ({ ...prev, ...newValues }))
+	}, [])
+
+	const validateFields = (...names) => {
+		if (names.length === 0) {
+			// 校验全部
+			setTrigger(prev => !prev)
+		} else {
+		}
+	}
+	return { values, trigger, getFieldValue, setFieldsValue, validateFields }
+}
+
+const Form = memo(_Form)
+Form.useForm = _useForm
+
+export default Form

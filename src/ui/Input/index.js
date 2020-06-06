@@ -1,11 +1,10 @@
-import React, { forwardRef, memo, useState, useEffect } from 'react'
+import React, { forwardRef, memo, useState, useEffect, useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import themeColors from '../utils/themeColors'
 import { hex2Rgba } from '../utils'
 import { SearchIcon } from '../utils/icons'
 import { flexCenter } from 'utils/styles'
-import { useCallback } from 'react'
 
 const useStyles = makeStyles({
 	root: {
@@ -15,14 +14,14 @@ const useStyles = makeStyles({
 		minHeight: 28,
 		position: 'relative'
 	},
-	input: ({ color, focus, disabled, search }) => ({
+	input: ({ color, focus, disabled, type }) => ({
 		boxSizing: 'border-box',
 		width: '100%',
 		height: '100%',
 		color: '#303133',
 		background: '#fafafa',
 		paddingLeft: 8,
-		paddingRight: search ? 32 : 8,
+		paddingRight: type === 'search' ? 32 : 8,
 		borderRadius: 2,
 		outline: 0,
 		border: `1px solid ${focus ? color.main : '#e5e5e5'}`,
@@ -58,7 +57,6 @@ const Input = forwardRef((props, ref) => {
 		type = 'input',
 		color = 'primary',
 		disabled = false,
-		search = false,
 		onSearch = null,
 		onChange = null,
 		onFocus = null,
@@ -73,7 +71,7 @@ const Input = forwardRef((props, ref) => {
 		color: themeColors[color],
 		disabled,
 		focus,
-		search
+		type
 	})
 
 	const beNull = inputVal => (disabled ? null : inputVal)

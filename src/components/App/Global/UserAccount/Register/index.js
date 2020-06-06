@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback, useMemo, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, Button, Switch, Loading, Form, FormItem } from 'ui'
 import { useSelector, useDispatch } from 'react-redux'
@@ -37,6 +37,9 @@ const useStyles = makeStyles({
 			fontSize: 13,
 			cursor: 'pointer'
 		}
+	},
+	submit: {
+		width: 80
 	}
 })
 
@@ -44,20 +47,7 @@ export default function Register(props) {
 	const {} = props
 	const dispatch = useDispatch()
 	const classes = useStyles()
-
-	const handleInputUsername = value => {
-		console.log('value: ', value)
-	}
-
-	const handleInputPassword = value => {}
-
-	const handleInputPasswordConfirm = (value, values) => {
-		console.log('value: ', value)
-		console.log('values: ', values)
-		if (value === values.password) {
-			alert('相等')
-		}
-	}
+	const form = Form.useForm()
 
 	const handleQuit = () => {
 		dispatch(updateMaskVisibleAction(false))
@@ -67,7 +57,31 @@ export default function Register(props) {
 		console.log('values', values)
 	}
 
-	const handleFormChange = (target, values) => {}
+	const handleSubmitFailed = (values, errors) => {
+		console.log('errors: ', errors)
+	}
+
+	const handleFormChange = (targetName, targetValue, values) => {}
+
+	// 校验两次输入密码相等
+	const validatePasswordEqual = async (value, callback, values) => {
+		const passwordVal = values.password || ''
+		if (!value) {
+			callback('必填项！')
+		} else if (value === passwordVal) {
+			callback()
+		} else {
+			callback('密码不一致！')
+		}
+	}
+
+	const validateRequired = async (value, callback, values) => {
+		if (value) {
+			callback()
+		} else {
+			callback('必填项！')
+		}
+	}
 
 	return (
 		<div className={classes.root}>
@@ -75,19 +89,19 @@ export default function Register(props) {
 				<h1>账户注册</h1>
 				{/* <Loading type="bounce" color="primary" /> */}
 			</div>
-			<Form onSubmit={handleSubmit} onChange={handleFormChange}>
-				<FormItem label="用户名" name="username">
-					<Input className={classes.input} onChange={handleInputUsername} />
+			<Form form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed} onChange={handleFormChange}>
+				<FormItem label="用户名" name="username" validator={validateRequired}>
+					<Input className={classes.input} />
 				</FormItem>
-				<FormItem label="密码" name="password">
-					<Input className={classes.input} type="password" onChange={handleInputPassword} />
+				<FormItem label="密码" name="password" validator={validateRequired}>
+					<Input className={classes.input} type="password" />
 				</FormItem>
-				<FormItem label="确认密码" name="password_confirm">
-					<Input className={classes.input} type="password" onChange={handleInputPasswordConfirm} />
+				<FormItem label="确认密码" name="password_confirm" validator={validatePasswordEqual}>
+					<Input className={classes.input} type="password" />
 				</FormItem>
 				<div className={classes.operationsWrapper}>
 					<u onClick={handleQuit}>以后再说</u>
-					<FormItem submitType={true}>
+					<FormItem className={classes.submit} submitType={true}>
 						<Button color="primary">下一步</Button>
 					</FormItem>
 				</div>

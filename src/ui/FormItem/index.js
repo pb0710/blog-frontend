@@ -1,6 +1,7 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useCallback, useImperativeHandle } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
+import { useRenderCount } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
 	root: {
@@ -9,35 +10,93 @@ const useStyles = makeStyles({
 		justifyContent: 'space-between',
 		flexDirection: 'column',
 		width: '100%',
-		'&>label': {
-			padding: 4,
-			paddingBottom: 8,
-			paddingTop: 24
+		'&>span': {
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'space-between',
+			width: '100%',
+			height: 32,
+			overflow: 'hidden'
+		}
+	},
+	tip: {
+		color: 'red',
+		opacity: 0,
+		transform: 'translateX(120px)',
+		animation: '$enter 250ms forwards'
+	},
+	'@keyframes enter': {
+		from: {
+			opacity: 0,
+			transform: 'translateX(120px)'
+		},
+		to: {
+			opacity: 1,
+			transform: 'translateX(0)'
 		}
 	}
 })
 
-function FormItem(props) {
-	const { className, children, label, name, values, submitType = false, onClick = null } = props
+function FormItem(props, ref) {
+	const {
+		className,
+		children,
+		setFieldsValue,
+		label,
+		name,
+		initValue,
+		values = {},
+		submitType = false,
+		onClick = null,
+		errorTips = {},
+		setErrorTips = null,
+		validator = null,
+		trigger = false // 只是用来触发校验，值不影响结果
+	} = props
+
 	const classes = useStyles()
-	const labelName = label ? `${label}：` : null
+	const value = values[name] ?? ''
+	const errorTip = errorTips[name] ?? ''
 
 	// 传给表单控件的props
 	const controlProps = useMemo(() => {
-		return submitType
-			? { onClick }
-			: name
-			? {
-					name,
-					values: values,
-					value: values[name]
-			  }
-			: {}
+		return submitType ? { onClick } : name ? { name, values, value } : {}
 	}, [submitType, onClick, name, values])
+
+	const callback = useCallback(
+		desc => {
+			if (setErrorTips) {
+				const newTip = { [name]: desc || null }
+				setErrorTips(prev => ({ ...prev, ...newTip }))
+			}
+		},
+		[setErrorTips, name]
+	)
+
+	/**
+	 * 执行自定义校验
+	 * 触发时机为：首次渲染、当前表单项数据改变、手动触发
+	 */
+	useEffect(() => {
+		validator && validator(value, callback, values)
+	}, [value, trigger])
+
+	// 设置初始值
+	useEffect(() => {
+		if (setFieldsValue) {
+			setFieldsValue({
+				[name]: initValue
+			})
+		}
+	}, [setFieldsValue])
 
 	return (
 		<label className={clsx(classes.root, className)}>
-			{labelName}
+			{label && (
+				<span>
+					{label}：{errorTip && <span className={classes.tip}>{errorTip}</span>}
+				</span>
+			)}
 			{children && React.cloneElement(children, controlProps)}
 		</label>
 	)
