@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, Popup, List, ListItem } from 'ui'
-import { usePopupVisible } from 'ui/utils/hooks'
+// import { usePopupVisible } from 'ui/utils/hooks'
 import { flexCenter } from 'utils/styles'
 
 const useStyles = makeStyles({
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 export default function Search(props) {
 	const {} = props
 
-	const { popupRef, triggerRef, visible, handleShowPopup } = usePopupVisible({ clickPopupHide: true })
+	const { popupRef, triggerRef, visible, handleShowPopup } = Popup.usePopupVisible({ clickPopupHide: true })
 	const classes = useStyles()
 
 	const handleInput = value => {

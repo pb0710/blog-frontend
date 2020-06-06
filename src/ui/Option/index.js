@@ -2,7 +2,6 @@ import React, { useImperativeHandle } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
-import { useRipple } from '../utils/hooks'
 import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
@@ -38,7 +37,7 @@ export default React.forwardRef(function Option(props, ref) {
 		color: themeColors[color]
 	})
 
-	const { rippleRef, handleStart, handleStop } = useRipple()
+	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple()
 
 	useImperativeHandle(
 		ref,

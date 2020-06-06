@@ -1,7 +1,6 @@
-import React, { useMemo, useEffect, useCallback, useImperativeHandle } from 'react'
+import React, { useMemo, useEffect, useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import { useRenderCount } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
 	root: {
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
 		}
 	},
 	tip: {
-		color: 'red',
+		color: '#ff4d4f',
 		opacity: 0,
 		transform: 'translateX(120px)',
 		animation: '$enter 250ms forwards'

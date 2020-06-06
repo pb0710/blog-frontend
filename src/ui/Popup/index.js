@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { Paper } from 'ui'
 import clsx from 'clsx'
 import { TransitionGroup } from 'react-transition-group'
+import _usePopupVisible from './hooks'
 
 const useStyles = makeStyles({
 	root: {
@@ -70,9 +71,13 @@ const Window = forwardRef((props, ref) => {
 	)
 })
 
-const Popup = forwardRef((props, ref) => {
-	const { visible = false } = props
-	return <TransitionGroup component={null}>{visible && <Window ref={ref} {...props} />}</TransitionGroup>
-})
+const Popup = memo(
+	forwardRef((props, ref) => {
+		const { visible = false } = props
+		return <TransitionGroup component={null}>{visible && <Window ref={ref} {...props} />}</TransitionGroup>
+	})
+)
 
-export default memo(Popup)
+Popup.usePopupVisible = _usePopupVisible
+
+export default Popup

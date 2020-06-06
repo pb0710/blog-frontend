@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
 import TouchRipple from '../TouchRipple'
-import { useRipple } from '../utils/hooks'
 import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
@@ -56,7 +55,7 @@ function ListItem(props) {
 		bordered
 	})
 
-	const { rippleRef, handleStart, handleStop } = useRipple(rippleMuted)
+	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple(rippleMuted)
 
 	// 公用props
 	const commonProps = useMemo(

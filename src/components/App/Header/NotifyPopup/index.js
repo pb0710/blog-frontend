@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { IconButton, Popup, Button } from 'ui'
 import { NotifyIcon } from 'ui/utils/icons'
-import { usePopupVisible } from 'ui/utils/hooks'
+// import { usePopupVisible } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
 	root: {},
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 export default function NotifyPopup(props) {
 	const {} = props
 
-	const { popupRef, visible, handleShowPopup } = usePopupVisible()
+	const { popupRef, visible, handleShowPopup } = Popup.usePopupVisible()
 	const classes = useStyles()
 
 	return (

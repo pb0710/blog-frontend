@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { useDispatch } from 'react-redux'
 import { IconButton, Popup, Button, Link, Divider } from 'ui'
 import { UserIcon } from 'ui/utils/icons'
-import { usePopupVisible } from 'ui/utils/hooks'
+// import { usePopupVisible } from 'ui/utils/hooks'
 import { updateMaskVisibleAction } from 'store/actions'
 const avatar = 'https://lh3.googleusercontent.com/ogw/ADGmqu97NB7zYjkUdeIKAirM7m8dq1RQZZwyescNtVzX=s192-c-mo'
 
@@ -73,7 +73,7 @@ const useStyles = makeStyles({
 export default function UserPopup(props) {
 	const {} = props
 	const dispatch = useDispatch()
-	const { popupRef, visible, handleShowPopup, handleHidePopup } = usePopupVisible()
+	const { popupRef, visible, handleShowPopup, handleHidePopup } = Popup.usePopupVisible()
 	const classes = useStyles()
 
 	const handleRegister = e => {

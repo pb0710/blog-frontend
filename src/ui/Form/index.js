@@ -1,6 +1,7 @@
 import React, { memo, useState, useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
+import _useForm from './hooks'
 
 const useStyles = makeStyles({
 	root: {
@@ -83,26 +84,6 @@ function _Form(props) {
 				: children}
 		</form>
 	)
-}
-
-function _useForm() {
-	// 维护所有表单组件的值
-	const [values, setValues] = useState({})
-	const [trigger, setTrigger] = useState(false)
-
-	const getFieldValue = name => values[name]
-	const setFieldsValue = useCallback(newValues => {
-		setValues(prev => ({ ...prev, ...newValues }))
-	}, [])
-
-	const validateFields = (...names) => {
-		if (names.length === 0) {
-			// 校验全部
-			setTrigger(prev => !prev)
-		} else {
-		}
-	}
-	return { values, trigger, getFieldValue, setFieldsValue, validateFields }
 }
 
 const Form = memo(_Form)

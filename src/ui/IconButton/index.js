@@ -2,7 +2,6 @@ import React, { memo, forwardRef } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
-import { useRipple } from '../utils/hooks'
 import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
@@ -37,7 +36,7 @@ function IconButton(props, ref) {
 
 	const classes = useStyles({ focus, disabled, color: themeColors[color] })
 
-	const { rippleRef, handleStart, handleStop } = useRipple()
+	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple()
 
 	const beNull = value => (disabled ? null : value)
 
