@@ -18,11 +18,11 @@ export default function UserModal(props) {
 
 	const goToStep = step => {
 		switch (step) {
-			case 'register':
+			case 'REGISTER':
 				return <Register />
-			case 'login':
+			case 'LOGIN':
 				return <Login />
-			case 'sso':
+			case 'SSO':
 				return <SSO />
 			default:
 				console.error('无效的：', step)

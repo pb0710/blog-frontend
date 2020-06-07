@@ -2,12 +2,13 @@ import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { GroundGlass, IconButton } from 'ui'
-import { MenuSlimIcon, ApplicationIcon } from 'ui/utils/icons'
+import { MenuSlimIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
 import Branch from 'components/Branch'
 import Search from './Search'
 import UserPopup from './UserPopup'
+import AppsPopup from './AppsPopup'
 import NotifyPopup from './NotifyPopup'
 
 const useStyles = makeStyles({
@@ -57,9 +58,7 @@ export default function Header() {
 
 			<div className={classes.operationWrapper}>
 				<NotifyPopup />
-				<IconButton>
-					<ApplicationIcon />
-				</IconButton>
+				<AppsPopup />
 				<UserPopup />
 			</div>
 		</GroundGlass>

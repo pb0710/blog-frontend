@@ -2,9 +2,10 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, Button, Switch, Loading, Form, FormItem } from 'ui'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateMaskVisibleAction } from 'store/actions'
-import ModalHeader from '../ModalHeader'
+import * as actions from 'store/actions'
 import * as userApi from 'apis/user'
+import ModalHeader from '../ModalHeader'
+import Close from '../Close'
 
 const useStyles = makeStyles({
 	root: {
@@ -47,44 +48,34 @@ export default function Login(props) {
 	const classes = useStyles()
 	const form = Form.useForm()
 
-	const [loading, setLoading] = useState(false)
+	const userLogin = async values => {
+		const { username, password } = values
 
-	const userRegister = async values => {
-		setLoading(true)
-		const { username, password, nickname } = values
 		try {
-			await userApi.register(username, password, nickname)
-			alert('注册成功')
+			await userApi.login(username, password)
 		} catch (error) {
-			console.error(`注册失败，${error}`)
-			alert(`注册失败，${error}`)
+			console.error(`登录失败，${error}`)
+			alert(`登录失败，${error}`)
+			return
 		}
-		setLoading(false)
-	}
 
-	const handleQuit = () => {
-		dispatch(updateMaskVisibleAction(false))
+		try {
+			const result = await userApi.fetchBaseInfo(username)
+			dispatch(actions.updateAccountInfoAction({ ...values, ...result }))
+			dispatch(actions.updateMaskVisibleAction(false))
+		} catch (error) {
+			console.error(`获取账号信息失败，${error}`)
+			alert(`获取账号信息失败，${error}`)
+		}
 	}
 
 	const handleSubmit = values => {
 		console.log('values', values)
-		userRegister(values)
+		userLogin(values)
 	}
 
 	const handleSubmitFailed = (values, errors) => {
 		console.error('validate errors: ', errors)
-	}
-
-	// 校验两次输入密码相等
-	const validatePasswordEqual = async (value, callback, values) => {
-		const passwordVal = values.password || ''
-		if (!value) {
-			callback('必填')
-		} else if (value === passwordVal) {
-			callback()
-		} else {
-			callback('密码不一致')
-		}
 	}
 
 	const validateRequired = async (value, callback, values) => {
@@ -104,20 +95,9 @@ export default function Login(props) {
 				component: <Input className={classes.input} />
 			},
 			{
-				name: 'nickname',
-				label: '昵称',
-				component: <Input className={classes.input} />
-			},
-			{
 				name: 'password',
 				label: '密码',
 				validator: validateRequired,
-				component: <Input className={classes.input} type="password" />
-			},
-			{
-				name: 'password_confirm',
-				label: '确认密码',
-				validator: validatePasswordEqual,
 				component: <Input className={classes.input} type="password" />
 			}
 		],
@@ -126,7 +106,7 @@ export default function Login(props) {
 
 	return (
 		<div className={classes.root}>
-			<ModalHeader title="账户注册" loading={loading} />
+			<ModalHeader title="账号登陆" />
 			<Form className={classes.registerForm} form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
 				{formFields.map(item => (
 					<FormItem key={item.name} {...item}>
@@ -134,9 +114,9 @@ export default function Login(props) {
 					</FormItem>
 				))}
 				<div className={classes.operationsWrapper}>
-					<u onClick={handleQuit}>以后再说</u>
+					<Close desc="以后再说" />
 					<FormItem className={classes.submit} submitType={true}>
-						<Button color="primary">下一步</Button>
+						<Button color="primary">登录</Button>
 					</FormItem>
 				</div>
 			</Form>

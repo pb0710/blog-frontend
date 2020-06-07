@@ -47,7 +47,7 @@ export default function Register(props) {
 		try {
 			await userApi.register(username, password, nickname)
 			dispatch(actions.updateAccountInfoAction({ username, password, nickname }))
-			dispatch(actions.updateUserStepAction('sso'))
+			dispatch(actions.updateUserStepAction('SSO'))
 		} catch (error) {
 			console.error(`注册失败，${error}`)
 			alert(`注册失败，${error}`)
@@ -83,6 +83,10 @@ export default function Register(props) {
 		}
 	}
 
+	const handleInputPassword = useCallback(() => {
+		form.setFieldsValue({ password_confirm: '' })
+	}, [])
+
 	const formFields = useMemo(
 		() => [
 			{
@@ -100,7 +104,7 @@ export default function Register(props) {
 				name: 'password',
 				label: '密码',
 				validator: validateRequired,
-				component: <Input className={classes.input} type="password" />
+				component: <Input className={classes.input} type="password" onChange={handleInputPassword} />
 			},
 			{
 				name: 'password_confirm',
@@ -109,12 +113,12 @@ export default function Register(props) {
 				component: <Input className={classes.input} type="password" />
 			}
 		],
-		[]
+		[handleInputPassword]
 	)
 
 	return (
 		<div className={classes.root}>
-			<ModalHeader title="账户注册" />
+			<ModalHeader title="账号注册" />
 			<Form className={classes.registerForm} form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
 				{formFields.map(item => (
 					<FormItem key={item.name} {...item}>
