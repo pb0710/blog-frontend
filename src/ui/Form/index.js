@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 		alignItems: 'center',
 		justifyContent: 'space-around',
 		width: '100%',
-		height: 360,
+		minHeight: 120,
 		padding: 8
 	}
 })
@@ -34,7 +34,6 @@ function _Form(props) {
 	)
 
 	const handleSubmit = useCallback(() => {
-		console.log('test')
 		validateFields()
 		const errors = []
 		for (const [name, errorTip] of Object.entries(errorTips)) {

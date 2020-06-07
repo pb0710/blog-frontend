@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/styles'
 import { Input, Button, Switch, Loading, Form, FormItem } from 'ui'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateMaskVisibleAction } from 'store/actions'
+import ModalHeader from '../ModalHeader'
+import * as userApi from 'apis/user'
 
 const useStyles = makeStyles({
 	root: {
@@ -15,12 +17,8 @@ const useStyles = makeStyles({
 		overflow: 'hidden'
 		// border: '1px solid #000',
 	},
-	title: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		height: 160
+	registerForm: {
+		height: 400
 	},
 	input: {
 		width: '100%'
@@ -43,11 +41,26 @@ const useStyles = makeStyles({
 	}
 })
 
-export default function Register(props) {
+export default function Login(props) {
 	const {} = props
 	const dispatch = useDispatch()
 	const classes = useStyles()
 	const form = Form.useForm()
+
+	const [loading, setLoading] = useState(false)
+
+	const userRegister = async values => {
+		setLoading(true)
+		const { username, password, nickname } = values
+		try {
+			await userApi.register(username, password, nickname)
+			alert('注册成功')
+		} catch (error) {
+			console.error(`注册失败，${error}`)
+			alert(`注册失败，${error}`)
+		}
+		setLoading(false)
+	}
 
 	const handleQuit = () => {
 		dispatch(updateMaskVisibleAction(false))
@@ -55,23 +68,22 @@ export default function Register(props) {
 
 	const handleSubmit = values => {
 		console.log('values', values)
+		userRegister(values)
 	}
 
 	const handleSubmitFailed = (values, errors) => {
-		console.log('errors: ', errors)
+		console.error('validate errors: ', errors)
 	}
-
-	const handleFormChange = (targetName, targetValue, values) => {}
 
 	// 校验两次输入密码相等
 	const validatePasswordEqual = async (value, callback, values) => {
 		const passwordVal = values.password || ''
 		if (!value) {
-			callback('必填项！')
+			callback('必填')
 		} else if (value === passwordVal) {
 			callback()
 		} else {
-			callback('密码不一致！')
+			callback('密码不一致')
 		}
 	}
 
@@ -79,26 +91,48 @@ export default function Register(props) {
 		if (value) {
 			callback()
 		} else {
-			callback('必填项！')
+			callback('必填')
 		}
 	}
 
+	const formFields = useMemo(
+		() => [
+			{
+				name: 'username',
+				label: '用户名',
+				validator: validateRequired,
+				component: <Input className={classes.input} />
+			},
+			{
+				name: 'nickname',
+				label: '昵称',
+				component: <Input className={classes.input} />
+			},
+			{
+				name: 'password',
+				label: '密码',
+				validator: validateRequired,
+				component: <Input className={classes.input} type="password" />
+			},
+			{
+				name: 'password_confirm',
+				label: '确认密码',
+				validator: validatePasswordEqual,
+				component: <Input className={classes.input} type="password" />
+			}
+		],
+		[]
+	)
+
 	return (
 		<div className={classes.root}>
-			<div className={classes.title}>
-				<h1>账户注册</h1>
-				{/* <Loading type="bounce" color="primary" /> */}
-			</div>
-			<Form form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed} onChange={handleFormChange}>
-				<FormItem label="用户名" name="username" validator={validateRequired}>
-					<Input className={classes.input} />
-				</FormItem>
-				<FormItem label="密码" name="password" validator={validateRequired}>
-					<Input className={classes.input} type="password" />
-				</FormItem>
-				<FormItem label="确认密码" name="password_confirm" validator={validatePasswordEqual}>
-					<Input className={classes.input} type="password" />
-				</FormItem>
+			<ModalHeader title="账户注册" loading={loading} />
+			<Form className={classes.registerForm} form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
+				{formFields.map(item => (
+					<FormItem key={item.name} {...item}>
+						{item.component}
+					</FormItem>
+				))}
 				<div className={classes.operationsWrapper}>
 					<u onClick={handleQuit}>以后再说</u>
 					<FormItem className={classes.submit} submitType={true}>

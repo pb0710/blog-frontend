@@ -26,7 +26,7 @@ instance.interceptors.response.use(
 			if (status === 'OK') {
 				return Promise.resolve(payload)
 			} else {
-				return Promise.reject('request failed')
+				return Promise.reject(payload)
 			}
 		} else {
 			console.error(`响应状态：${status}`)

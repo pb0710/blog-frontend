@@ -3,12 +3,12 @@ import { Method } from 'common/constants'
 
 /**
  * 获取用户基本信息
- * @param {*} userId 用户ID
+ * @param {*} username 用户名
  */
-export const fetchBaseInfo = userId =>
+export const fetchBaseInfo = username =>
 	request({
 		url: `user/base_info`,
-		params: { userId }
+		params: { username }
 	})
 
 /**
