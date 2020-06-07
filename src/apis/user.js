@@ -38,11 +38,11 @@ export const login = (username, password) =>
 
 /**
  * 登出
- * @param {string} userId 用户ID
+ * @param {string} username 用户ID
  */
-export const logout = userId =>
+export const logout = username =>
 	request({
 		url: `user/logout`,
 		method: Method.POST,
-		data: { userId }
+		data: { username }
 	})

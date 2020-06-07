@@ -5,7 +5,7 @@ export const step = handleActions(
 	{
 		UPDATE_USER_STEP: (state, action) => action.payload
 	},
-	'LOGIN'
+	''
 )
 
 // 用户数据

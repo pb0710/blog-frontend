@@ -118,7 +118,7 @@ export default function Register(props) {
 
 	return (
 		<div className={classes.root}>
-			<ModalHeader title="账号注册" />
+			<ModalHeader title="用户注册" />
 			<Form className={classes.registerForm} form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
 				{formFields.map(item => (
 					<FormItem key={item.name} {...item}>

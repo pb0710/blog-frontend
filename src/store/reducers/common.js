@@ -13,5 +13,5 @@ export const maskVisible = handleActions(
 	{
 		UPDATE_MASK_VISIBLE: (state, action) => action.payload
 	},
-	true
+	false
 )

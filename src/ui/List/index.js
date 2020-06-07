@@ -10,7 +10,7 @@ const useStyles = makeStyles({
 		minHeight: 40,
 		margin: 0,
 		padding: 0,
-		border: ({ bordered }) => (bordered ? '1px solid #e2e2e2' : 0),
+		border: ({ bordered }) => (bordered ? '1px solid #dadce0' : 0),
 		borderRadius: 2
 	}
 })

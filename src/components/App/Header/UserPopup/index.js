@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { useDispatch } from 'react-redux'
-import { IconButton, Popup, Button, Link, Divider } from 'ui'
-import { UserIcon } from 'ui/utils/icons'
-// import { usePopupVisible } from 'ui/utils/hooks'
-import { updateMaskVisibleAction } from 'store/actions'
-const avatar = 'https://lh3.googleusercontent.com/ogw/ADGmqu97NB7zYjkUdeIKAirM7m8dq1RQZZwyescNtVzX=s192-c-mo'
+import { useDispatch, useSelector } from 'react-redux'
+import { IconButton, Popup, Button, Link, List, ListItem } from 'ui'
+import { UserIcon, WriteIcon } from 'ui/utils/icons'
+import * as actions from 'store/actions'
+import * as userApi from 'apis/user'
+const defaultAvatar = 'https://lh3.googleusercontent.com/ogw/ADGmqu97NB7zYjkUdeIKAirM7m8dq1RQZZwyescNtVzX=s192-c-mo'
 
 const useStyles = makeStyles({
 	root: {},
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 		alignItems: 'center',
 		flexDirection: 'column',
 		width: '100%',
-		height: 240,
+		height: 296,
 		padding: 16,
 		'&>img': {
 			width: 80,
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
 			color: '#777'
 		}
 	},
-	accountSetting: {
+	setting: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -58,15 +58,44 @@ const useStyles = makeStyles({
 			background: '#f8f8f8'
 		}
 	},
-	articleUpload: {
-		padding: 16
+	articleWrapper: {
+		width: '100%',
+		borderLeft: 0,
+		borderRight: 0,
+		borderRadius: 0
 	},
-	accountOperators: {
+	articleListItem: {
+		boxSizing: 'border-box',
+		height: 48,
+		color: '#3c4043',
+		fontWeight: 500,
+		width: '100%',
+		padding: '0 40px',
+		'&>i': {
+			height: 15,
+			fontSize: 15,
+			marginRight: 16
+		}
+	},
+	account: {
+		boxSizing: 'border-box',
 		display: 'flex',
-		justifyContent: 'space-between',
+		justifyContent: 'center',
 		alignItems: 'center',
 		width: 200,
-		padding: 16
+		height: 64,
+
+		'&>*': {
+			margin: '0 16px',
+			width: 80
+		}
+	},
+	logout: {
+		border: '1px solid #dadce0',
+		background: '#fff',
+		'&:hover': {
+			background: '#f8f8f8'
+		}
 	}
 })
 
@@ -75,11 +104,38 @@ export default function UserPopup(props) {
 	const dispatch = useDispatch()
 	const { popupRef, visible, handleShowPopup, handleHidePopup } = Popup.usePopupVisible()
 	const classes = useStyles()
+	const accountInfo = useSelector(state => state.user.accountInfo)
+	const { isOnline = false, nickname, username, avatar } = accountInfo
+
+	const showUserModal = e => {
+		handleHidePopup(e)
+		dispatch(actions.updateMaskVisibleAction(true))
+	}
 
 	const handleRegister = e => {
-		handleHidePopup(e)
-		dispatch(updateMaskVisibleAction(true))
+		showUserModal(e)
+		dispatch(actions.updateUserStepAction('REGISTER'))
 	}
+
+	const handleLogin = e => {
+		showUserModal(e)
+		dispatch(actions.updateUserStepAction('LOGIN'))
+	}
+
+	const handleLogout = useCallback(
+		e => {
+			;(async () => {
+				const { username } = accountInfo
+				try {
+					await userApi.logout(username)
+				} catch (error) {
+					console.error(`登出失败：${error}`)
+				}
+			})()
+			dispatch(actions.updateAccountInfoAction({}))
+		},
+		[accountInfo]
+	)
 
 	return (
 		<div className={classes.root}>
@@ -88,25 +144,38 @@ export default function UserPopup(props) {
 			</IconButton>
 			<Popup className={classes.popup} ref={popupRef} visible={visible}>
 				<div className={classes.userInfo}>
-					<img src={avatar} />
+					<img src={avatar ?? defaultAvatar} />
 					<div className={classes.accountInfo}>
-						<h3>这是用户昵称</h3>
-						<span>1234567890@gmail.com</span>
+						<h3>{nickname ?? '尚未登录...'}</h3>
+						<span>{username ?? '匿名访客'}</span>
 					</div>
-					<Link className={classes.accountSetting} to="/setting" onClick={handleHidePopup}>
+					<Link className={classes.setting} to="/setting" onClick={handleHidePopup}>
 						管理您的账号
 					</Link>
 				</div>
-				<Divider />
-				<Link className={classes.articleUpload} to="/article_upload">
-					<Button color="primary" onClick={handleHidePopup}>
-						发布文章
-					</Button>
-				</Link>
-				<Divider />
-				<div className={classes.accountOperators}>
-					<Button color="primary">登录</Button>
-					<Button onClick={handleRegister}>注册</Button>
+				<List className={classes.articleWrapper} bordered={true}>
+					<Link to="/article_upload">
+						<ListItem className={classes.articleListItem} rippleMuted={true} onClick={handleHidePopup}>
+							<i>
+								<WriteIcon />
+							</i>
+							发布一篇文章
+						</ListItem>
+					</Link>
+				</List>
+				<div className={classes.account}>
+					{isOnline ? (
+						<Button className={classes.logout} rippleMuted={true} onClick={handleLogout}>
+							退出
+						</Button>
+					) : (
+						<>
+							<Button onClick={handleRegister}>注册</Button>
+							<Button color="primary" onClick={handleLogin}>
+								登录
+							</Button>
+						</>
+					)}
 				</div>
 			</Popup>
 		</div>

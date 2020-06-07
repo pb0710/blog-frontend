@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 		height: 640,
 		padding: 16,
 		overflow: 'hidden'
-		// border: '1px solid #000',
 	},
 	registerForm: {
 		height: 400
@@ -106,7 +105,7 @@ export default function Login(props) {
 
 	return (
 		<div className={classes.root}>
-			<ModalHeader title="账号登陆" />
+			<ModalHeader title="用户登陆" />
 			<Form className={classes.registerForm} form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
 				{formFields.map(item => (
 					<FormItem key={item.name} {...item}>

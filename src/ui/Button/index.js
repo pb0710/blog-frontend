@@ -33,11 +33,11 @@ const useStyles = makeStyles({
 })
 
 export default React.memo(function Button(props) {
-	const { children, className, onClick, color = 'default', disabled = false } = props
+	const { children, className, onClick, color = 'default', disabled = false, rippleMuted = false } = props
 
 	const classes = useStyles({ disabled, color: themeColors[color] })
 
-	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple()
+	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple(rippleMuted)
 
 	const beNull = value => (disabled ? null : value)
 
