@@ -11,9 +11,7 @@ const useStyles = makeStyles({
 	container: {
 		width: 1048,
 		padding: '0 16px',
-		margin: 0,
-		position: 'absolute',
-		top: 0
+		margin: 0
 	},
 	banner: {
 		width: '100%',

@@ -11,8 +11,7 @@ const useStyles = makeStyles({
 		width: '100%',
 		minHeight: '100vh',
 		maxHeight: ({ maskVisible }) => (maskVisible ? '100vh' : 'none'),
-		overflowX: 'hidden',
-		overflowY: 'auto'
+		overflow: 'hidden'
 	}
 })
 
