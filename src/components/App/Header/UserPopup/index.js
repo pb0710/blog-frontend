@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
+import clsx from 'clsx'
 import { IconButton, Popup, Button, Link, List, ListItem } from 'ui'
 import { UserIcon, WriteIcon } from 'ui/utils/icons'
 import * as actions from 'store/actions'
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 		alignItems: 'center',
 		flexDirection: 'column',
 		width: '100%',
-		height: 296,
+		height: 240,
 		padding: 16,
 		'&>img': {
 			width: 80,
@@ -62,14 +63,39 @@ const useStyles = makeStyles({
 		width: '100%',
 		borderLeft: 0,
 		borderRight: 0,
-		borderRadius: 0
+		borderRadius: 0,
+		border: '1px solid #e8eaed'
 	},
-	articleListItem: {
+	counts: {
 		boxSizing: 'border-box',
-		height: 48,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		width: '100%',
+		height: 56,
+		padding: '0 40px'
+	},
+	countTag: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-around',
+		alignItems: 'center',
+		height: '100%',
+		'&>span': {
+			fontSize: 12,
+			color: '#777'
+		},
+		'&>p': {
+			margin: 0,
+			fontWeight: 500
+		}
+	},
+	write: {
+		boxSizing: 'border-box',
+		width: '100%',
+		height: 56,
 		color: '#3c4043',
 		fontWeight: 500,
-		width: '100%',
 		padding: '0 40px',
 		'&>i': {
 			height: 15,
@@ -122,20 +148,38 @@ export default function UserPopup(props) {
 		dispatch(actions.updateUserStepAction('LOGIN'))
 	}
 
-	const handleLogout = useCallback(
-		e => {
-			;(async () => {
-				const { username } = accountInfo
-				try {
-					await userApi.logout(username)
-				} catch (error) {
-					console.error(`登出失败：${error}`)
-				}
-			})()
-			dispatch(actions.updateAccountInfoAction({}))
-		},
-		[accountInfo]
-	)
+	const handleLogout = useCallback(() => {
+		;(async () => {
+			const { username } = accountInfo
+			try {
+				await userApi.logout(username)
+			} catch (error) {
+				console.error(`登出失败：${error}`)
+			}
+		})()
+		dispatch(actions.updateAccountInfoAction({}))
+	}, [accountInfo])
+
+	const countsInfo = useMemo(() => {
+		const { level = '--', articleNum = '--', collections = '--' } = accountInfo
+		return [
+			{
+				key: 'level',
+				name: '等级',
+				count: level
+			},
+			{
+				key: 'articleNum',
+				name: '文章',
+				count: articleNum
+			},
+			{
+				key: 'collections',
+				name: '收藏',
+				count: collections
+			}
+		]
+	}, [accountInfo])
 
 	return (
 		<div className={classes.root}>
@@ -154,14 +198,26 @@ export default function UserPopup(props) {
 					</Link>
 				</div>
 				<List className={classes.articleWrapper} bordered={true}>
-					<Link to="/article_upload">
-						<ListItem className={classes.articleListItem} rippleMuted={true} onClick={handleHidePopup}>
-							<i>
-								<WriteIcon />
-							</i>
-							发布一篇文章
-						</ListItem>
-					</Link>
+					<ListItem className={classes.counts} rippleMuted={true} onClick={handleHidePopup}>
+						{countsInfo.map(({ key, name, count }) => (
+							<div key={key} className={classes.countTag}>
+								<span>{name}</span>
+								<p>{count}</p>
+							</div>
+						))}
+					</ListItem>
+					<ListItem
+						className={classes.write}
+						linked={true}
+						to="/article_upload"
+						rippleMuted={true}
+						onClick={handleHidePopup}
+					>
+						<i>
+							<WriteIcon />
+						</i>
+						发布一篇文章
+					</ListItem>
 				</List>
 				<div className={classes.account}>
 					{isOnline ? (
