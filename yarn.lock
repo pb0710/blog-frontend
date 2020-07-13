@@ -11805,7 +11805,7 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sylas-react-ui@^1.0.0:
+sylas-react-ui@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/sylas-react-ui/-/sylas-react-ui-1.0.1.tgz#1d066c1e97413a46949a1c56d138e8f0e2e70364"
   integrity sha512-0onS9AbHLQYGzuvOhC3d1Rk2yq7xqZKhrTC8rXIFsKtb/Les2oTiE23w6ThUitapcOMcZ4eANwYeiw7Y8JbHNQ==

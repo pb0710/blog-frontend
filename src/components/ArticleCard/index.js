@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Divider, Link, Tag } from 'sylas-react-ui'
-import { EyesIcon } from 'ui/utils/icons'
+import { EyeOutlined } from '@ant-design/icons'
 
 const useStyles = makeStyles({
 	root: {
@@ -107,7 +107,7 @@ export default memo(function ArticleCard(props) {
 				<Divider className={classes.divider} />
 				<div className={classes.infoFooter}>
 					<div className={classes.views}>
-						<EyesIcon />
+						<EyeOutlined />
 						<span>{views}</span>
 					</div>
 					<div className={classes.tagsWrapper}>

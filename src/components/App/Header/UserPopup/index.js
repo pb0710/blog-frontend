@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import { Button, Popup, Link, List } from 'sylas-react-ui'
-import { UserIcon, WriteIcon } from 'ui/utils/icons'
+import { UserOutlined, EditOutlined } from '@ant-design/icons'
 import * as actions from 'store/actions'
 import * as userApi from 'apis/user'
 const defaultAvatar = 'https://lh3.googleusercontent.com/ogw/ADGmqu97NB7zYjkUdeIKAirM7m8dq1RQZZwyescNtVzX=s192-c-mo'
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 		flexDirection: 'column',
 		alignItems: 'center',
 		top: 56,
-		right: 24,
+		right: 32,
 		overflowY: 'auto'
 	},
 	userInfo: {
@@ -98,12 +98,12 @@ const useStyles = makeStyles({
 		height: 56,
 		color: '#3c4043',
 		fontWeight: 500,
-		padding: '0 40px',
-		'&>i': {
-			height: 15,
-			fontSize: 15,
-			marginRight: 16
-		}
+		padding: '0 40px'
+	},
+	createWrite: {
+		height: 15,
+		fontSize: 15,
+		marginRight: 16
 	},
 	account: {
 		boxSizing: 'border-box',
@@ -186,9 +186,9 @@ export default function UserPopup(props) {
 	return (
 		<div className={classes.root}>
 			<Button.Icon focus={visible} onClick={handleShowPopup}>
-				<UserIcon />
+				<UserOutlined />
 			</Button.Icon>
-			<Popup className={classes.popup} ref={popupRef} visible={visible}>
+			<Popup className={classes.popup} ref={popupRef} visible={visible} direction="top-right">
 				<div className={classes.userInfo}>
 					<img src={avatar ?? defaultAvatar} />
 					<div className={classes.accountInfo}>
@@ -215,9 +215,7 @@ export default function UserPopup(props) {
 						rippleMuted={true}
 						onClick={handleHidePopup}
 					>
-						<i>
-							<WriteIcon />
-						</i>
+						<EditOutlined className={classes.createWrite} />
 						发布一篇文章
 					</List.Item>
 				</List>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import { CloseOutlineIcon } from '../utils/icons'
+import { CloseOutlined } from '@ant-design/icons'
 import themeColors from '../utils/themeColors'
 
 const useStyles = makeStyles({
@@ -36,14 +36,7 @@ const useStyles = makeStyles({
 })
 
 export default function Tag(props) {
-	const {
-		className,
-		children,
-		color = 'primary',
-		bordered = false,
-		closeable = false,
-		onClose = null
-	} = props
+	const { className, children, color = 'primary', bordered = false, closeable = false, onClose = null } = props
 
 	const classes = useStyles({
 		bordered,
@@ -53,11 +46,7 @@ export default function Tag(props) {
 	return (
 		<div className={clsx(classes.root, className)}>
 			{children}
-			{closeable && (
-				<i onClick={onClose}>
-					<CloseOutlineIcon />
-				</i>
-			)}
+			{closeable && <CloseOutlined onClick={onClose} />}
 		</div>
 	)
 }

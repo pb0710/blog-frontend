@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@ant-design/icons": "^4.2.1",
 		"@material-ui/styles": "^4.9.6",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
@@ -22,7 +23,7 @@
 		"redux-actions": "^2.6.5",
 		"redux-logger": "^3.0.6",
 		"redux-saga": "^1.1.3",
-		"sylas-react-ui": "^1.0.0",
+		"sylas-react-ui": "^1.0.1",
 		"uuid": "^7.0.3"
 	},
 	"devDependencies": {

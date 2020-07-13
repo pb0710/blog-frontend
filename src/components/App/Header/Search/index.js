@@ -43,7 +43,7 @@ export default function Search(props) {
 				onClick={handleShowPopup}
 				onChange={handleInput}
 			/>
-			<Popup ref={popupRef} className={classes.searchResult} visible={visible}>
+			<Popup ref={popupRef} className={classes.searchResult} visible={visible} direction="top">
 				<List bordered={false}>
 					<List.Item rippleMuted hovered linked to="/">
 						时代发生地方

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Paper } from 'sylas-react-ui'
 import { NavMenu } from 'ui'
-import { ArrowLeftBoldIcon } from 'ui/utils/icons'
+import { SwapLeftOutlined } from '@ant-design/icons'
 import navMap from 'common/navMap'
 import { updateDrawerOpenedAction } from 'store/actions'
 import Branch from 'components/Branch'
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 		position: 'absolute',
 		right: 8,
 		top: 6,
-		fontSize: 14
+		fontSize: 16
 	}
 })
 
@@ -60,7 +60,7 @@ export default function Sider() {
 			<div className={classes.topbar}>
 				<Branch />
 				<Button.Icon className={classes.closeDrawerIcon} onClick={handleHideDrawer}>
-					<ArrowLeftBoldIcon />
+					<SwapLeftOutlined />
 				</Button.Icon>
 			</div>
 			<NavMenu menuOptions={navMap} />

@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { Paper, Button } from 'sylas-react-ui'
-import { MenuSlimIcon } from 'ui/utils/icons'
+import { Button, GroundGlass } from 'sylas-react-ui'
+import { MenuOutlined } from '@ant-design/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
 import Branch from 'components/Branch'
@@ -47,10 +47,10 @@ export default function Header() {
 	}, [])
 
 	return (
-		<Paper className={classes.root}>
+		<GroundGlass className={classes.root}>
 			<div className={classes.navWrapper}>
 				<Button.Icon onClick={handleShowDrawer}>
-					<MenuSlimIcon />
+					<MenuOutlined />
 				</Button.Icon>
 				<Branch />
 			</div>
@@ -62,6 +62,6 @@ export default function Header() {
 				<AppsPopup />
 				<UserPopup />
 			</div>
-		</Paper>
+		</GroundGlass>
 	)
 }

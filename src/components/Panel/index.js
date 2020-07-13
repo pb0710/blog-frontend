@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Paper, Divider } from 'sylas-react-ui'
-import { MessageIcon } from 'ui/utils/icons'
+import { MessageOutlined } from '@ant-design/icons'
 
 const useStyles = makeStyles({
 	root: {
@@ -37,7 +37,7 @@ export default function Panel(props) {
 	return (
 		<Paper className={classes.root}>
 			<h2>
-				<MessageIcon />
+				<MessageOutlined />
 				<span className={classes.title}>{title}</span>
 			</h2>
 			<Divider className={classes.divider} />
