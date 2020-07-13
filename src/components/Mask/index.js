@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateMaskVisibleAction } from 'store/actions'
-import { GroundGlass } from 'ui'
+import { Paper } from 'sylas-react-ui'
 
 const useStyles = makeStyles({
 	root: {
@@ -50,8 +50,8 @@ export default function Mask(props) {
 	}, [closable])
 
 	return maskVisible ? (
-		<GroundGlass className={classes.root} onClick={handleHideMask}>
+		<Paper className={classes.root} onClick={handleHideMask}>
 			{children}
-		</GroundGlass>
+		</Paper>
 	) : null
 }

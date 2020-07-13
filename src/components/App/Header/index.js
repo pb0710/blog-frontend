@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { GroundGlass, IconButton } from 'ui'
+import { Paper, Button } from 'sylas-react-ui'
 import { MenuSlimIcon } from 'ui/utils/icons'
 import { flexCenter } from 'utils/styles'
 import { updateDrawerOpenedAction } from 'store/actions'
@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 		width: '100%',
 		height: 52,
 		padding: '0 16px',
+		borderRadius: 0,
 		boxShadow: '0 1px 2px rgba(26,26,26,.1)',
 		transition: 'width 250ms ease-out',
 		zIndex: 70
@@ -46,11 +47,11 @@ export default function Header() {
 	}, [])
 
 	return (
-		<GroundGlass className={classes.root}>
+		<Paper className={classes.root}>
 			<div className={classes.navWrapper}>
-				<IconButton onClick={handleShowDrawer}>
+				<Button.Icon onClick={handleShowDrawer}>
 					<MenuSlimIcon />
-				</IconButton>
+				</Button.Icon>
 				<Branch />
 			</div>
 
@@ -61,6 +62,6 @@ export default function Header() {
 				<AppsPopup />
 				<UserPopup />
 			</div>
-		</GroundGlass>
+		</Paper>
 	)
 }

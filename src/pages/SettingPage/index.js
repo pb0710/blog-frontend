@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Container } from 'ui'
+import { Container } from 'sylas-react-ui'
 import UserSetting from './UserSetting'
 import AppearanceSetting from './AppearanceSetting'
 import LanguageSetting from './LanguageSetting'

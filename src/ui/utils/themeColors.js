@@ -5,7 +5,7 @@ export default {
 		bright: '#fcfcfe',
 		dim: '#e8e8e8',
 		text: '#303133',
-		ripple: '#606266',
+		ripple: '#606266'
 	},
 	primary: {
 		name: 'primary',
@@ -13,7 +13,7 @@ export default {
 		bright: '#66b1ff',
 		dim: '#3a8ee6',
 		text: '#ffffff',
-		ripple: '#ecf5ff',
+		ripple: '#ecf5ff'
 	},
 	success: {
 		name: 'success',
@@ -21,7 +21,7 @@ export default {
 		bright: '#85ce61',
 		dim: '#5daf34',
 		text: '#ffffff',
-		ripple: '#f0f9eb',
+		ripple: '#f0f9eb'
 	},
 	warning: {
 		name: 'warning',
@@ -29,7 +29,7 @@ export default {
 		bright: '#ebb563',
 		dim: '#cf9236',
 		text: '#ffffff',
-		ripple: '#fdf6ec',
+		ripple: '#fdf6ec'
 	},
 	error: {
 		name: 'error',
@@ -37,7 +37,7 @@ export default {
 		bright: '#f78989',
 		dim: '#dd6161',
 		text: '#ffffff',
-		ripple: '#fef0f0',
+		ripple: '#fef0f0'
 	},
 	transparent: {
 		name: 'transparent',

@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
-import { IconButton, Popup, Button, Link, List, ListItem } from 'ui'
+import { Button, Popup, Link, List } from 'sylas-react-ui'
 import { UserIcon, WriteIcon } from 'ui/utils/icons'
 import * as actions from 'store/actions'
 import * as userApi from 'apis/user'
@@ -15,6 +15,8 @@ const useStyles = makeStyles({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		top: 56,
+		right: 24,
 		overflowY: 'auto'
 	},
 	userInfo: {
@@ -183,9 +185,9 @@ export default function UserPopup(props) {
 
 	return (
 		<div className={classes.root}>
-			<IconButton focus={visible} onClick={handleShowPopup}>
+			<Button.Icon focus={visible} onClick={handleShowPopup}>
 				<UserIcon />
-			</IconButton>
+			</Button.Icon>
 			<Popup className={classes.popup} ref={popupRef} visible={visible}>
 				<div className={classes.userInfo}>
 					<img src={avatar ?? defaultAvatar} />
@@ -198,15 +200,15 @@ export default function UserPopup(props) {
 					</Link>
 				</div>
 				<List className={classes.articleWrapper} bordered={true}>
-					<ListItem className={classes.counts} rippleMuted={true} onClick={handleHidePopup}>
+					<List.Item className={classes.counts} rippleMuted={true} onClick={handleHidePopup}>
 						{countsInfo.map(({ key, name, count }) => (
 							<div key={key} className={classes.countTag}>
 								<span>{name}</span>
 								<p>{count}</p>
 							</div>
 						))}
-					</ListItem>
-					<ListItem
+					</List.Item>
+					<List.Item
 						className={classes.write}
 						linked={true}
 						to="/article_upload"
@@ -217,7 +219,7 @@ export default function UserPopup(props) {
 							<WriteIcon />
 						</i>
 						发布一篇文章
-					</ListItem>
+					</List.Item>
 				</List>
 				<div className={classes.account}>
 					{isOnline ? (

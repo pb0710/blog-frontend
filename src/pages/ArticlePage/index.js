@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'
 import ArticleDetail from 'components/ArticleDetail'
 import * as articleApi from 'apis/article'
-import { Paper } from 'ui'
+import { Paper } from 'sylas-react-ui'
 
 const useStyles = makeStyles({
 	root: {},

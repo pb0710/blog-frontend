@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
-import { Paper, List, ListItem } from 'ui'
+import { Paper, List } from 'sylas-react-ui'
 
 const useStyles = makeStyles({
 	root: {
@@ -17,8 +17,8 @@ const useStyles = makeStyles({
 		}
 	},
 	paper: {
-		width: '100%',
-		borderRadius: 2
+		boxSizing: 'border-box',
+		width: '100%'
 	},
 	listItem: {
 		display: 'flex',
@@ -42,10 +42,10 @@ function SettingSection(props) {
 			<Paper className={classes.paper}>
 				<List bordered={false}>
 					{optionsList.map(({ id, name, component }) => (
-						<ListItem key={id} className={classes.listItem} rippleMuted={true}>
+						<List.Item key={id} className={classes.listItem} rippleMuted={true}>
 							<span>{name}</span>
 							{component}
-						</ListItem>
+						</List.Item>
 					))}
 				</List>
 			</Paper>

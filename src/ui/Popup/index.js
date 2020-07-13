@@ -1,6 +1,6 @@
 import React, { memo, forwardRef, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper } from 'ui'
+import { Paper } from 'sylas-react-ui'
 import clsx from 'clsx'
 import { TransitionGroup } from 'react-transition-group'
 import _usePopupVisible from './hooks'

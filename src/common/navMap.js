@@ -11,7 +11,7 @@ const navMap = [
 		path: '/',
 		icon: null,
 		component: <HomePage />,
-		child: null
+		childs: null
 	},
 	{
 		id: 1,
@@ -19,7 +19,7 @@ const navMap = [
 		path: '/article',
 		icon: null,
 		component: null,
-		child: [
+		childs: [
 			{
 				id: 0,
 				name: '全部',
@@ -70,7 +70,7 @@ const navMap = [
 		path: '/document',
 		icon: null,
 		component: <ArticlePage />,
-		child: null
+		childs: null
 	},
 	{
 		id: 3,
@@ -78,7 +78,7 @@ const navMap = [
 		path: '/setting',
 		icon: null,
 		component: <SettingPage />,
-		child: null
+		childs: null
 	}
 ]
 

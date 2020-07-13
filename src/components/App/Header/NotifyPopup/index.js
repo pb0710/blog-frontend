@@ -1,12 +1,13 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { IconButton, Popup, Button } from 'ui'
+import { Button, Popup } from 'sylas-react-ui'
 import { NotifyIcon } from 'ui/utils/icons'
 // import { usePopupVisible } from 'ui/utils/hooks'
 
 const useStyles = makeStyles({
 	root: {},
 	notifyPopop: {
+		top: 56,
 		right: 120
 	}
 })
@@ -19,9 +20,9 @@ export default function NotifyPopup(props) {
 
 	return (
 		<div className={classes.root}>
-			<IconButton focus={visible} onClick={handleShowPopup}>
+			<Button.Icon focus={visible} onClick={handleShowPopup}>
 				<NotifyIcon />
-			</IconButton>
+			</Button.Icon>
 			<Popup className={classes.notifyPopop} ref={popupRef} visible={visible}>
 				notify
 				<Button>说的方法第三方</Button>

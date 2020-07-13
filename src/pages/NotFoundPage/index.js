@@ -2,7 +2,7 @@ import React, { memo, useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useHistory } from 'react-router-dom'
 import { flexCenter } from 'utils/styles'
-import { Button, Link } from 'ui'
+import { Button, Link } from 'sylas-react-ui'
 
 const useStyles = makeStyles({
 	root: {

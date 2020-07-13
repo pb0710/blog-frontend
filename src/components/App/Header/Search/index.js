@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Input, Popup, List, ListItem } from 'ui'
+import { Input, Popup, List } from 'sylas-react-ui'
 // import { usePopupVisible } from 'ui/utils/hooks'
 import { flexCenter } from 'utils/styles'
 
@@ -36,7 +36,7 @@ export default function Search(props) {
 
 	return (
 		<div className={classes.root}>
-			<Input
+			<Input.Search
 				ref={triggerRef}
 				className={classes.searchInput}
 				type="search"
@@ -45,15 +45,15 @@ export default function Search(props) {
 			/>
 			<Popup ref={popupRef} className={classes.searchResult} visible={visible}>
 				<List bordered={false}>
-					<ListItem rippleMuted={true} linked={true} to="/">
+					<List.Item rippleMuted hovered linked to="/">
 						时代发生地方
-					</ListItem>
-					<ListItem rippleMuted={true} linked={true} to="/article/frontend">
+					</List.Item>
+					<List.Item rippleMuted hovered linked to="/article/frontend">
 						时代发生地方
-					</ListItem>
-					<ListItem rippleMuted={true} linked={true} to="/setting">
+					</List.Item>
+					<List.Item rippleMuted hovered linked to="/setting">
 						时代发生地方
-					</ListItem>
+					</List.Item>
 				</List>
 			</Popup>
 		</div>

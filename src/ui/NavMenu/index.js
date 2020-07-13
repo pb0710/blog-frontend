@@ -88,7 +88,7 @@ export default function NavMenu(props) {
 
 	return (
 		<List className={classes.root} bordered={false}>
-			{menuOptions.map(({ id, name, path, child, icon }) => {
+			{menuOptions.map(({ id, name, path, childs, icon }) => {
 				const opened = childOpenStatus[id]
 
 				return (
@@ -98,20 +98,20 @@ export default function NavMenu(props) {
 							activeClassName={classes.navItemActived}
 							bordered={false}
 							to={path}
-							linked={!child}
-							onClick={child ? () => handleToggleChildOpen(id) : null}
+							linked={!childs}
+							onClick={childs ? () => handleToggleChildOpen(id) : null}
 						>
 							{icon}
 							<span>{name}</span>
-							{child && (
+							{childs && (
 								<i className={clsx(classes.arrowIcon, opened && classes.arrowIconSelected)}>
 									<ArrowDownBoldIcon />
 								</i>
 							)}
 						</ListItem>
-						{child && (
+						{childs && (
 							<Collapse className={classes.childWrapper} visible={opened} bordered={false}>
-								{child.map(({ id, name, path: childPath, icon }) => (
+								{childs.map(({ id, name, path: childPath, icon }) => (
 									<ListItem
 										key={id}
 										className={classes.childNavItem}

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Loading } from 'ui'
+import { Loading } from 'sylas-react-ui'
 
 const useStyles = makeStyles({
 	root: {
@@ -20,7 +20,7 @@ export default memo(function ModalHeader(props) {
 	return (
 		<div className={classes.root}>
 			<h1>{title}</h1>
-			{loading && <Loading type="bounce" color="primary" />}
+			{loading && <Loading.Bounce />}
 		</div>
 	)
 })

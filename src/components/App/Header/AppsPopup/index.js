@@ -1,11 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { IconButton, Popup } from 'ui'
+import { Button, Popup } from 'sylas-react-ui'
 import { ApplicationIcon } from 'ui/utils/icons'
 
 const useStyles = makeStyles({
 	root: {},
 	notifyPopop: {
+		top: 56,
 		right: 72
 	}
 })
@@ -18,9 +19,9 @@ export default function AppsPopup(props) {
 
 	return (
 		<div className={classes.root}>
-			<IconButton focus={visible} onClick={handleShowPopup}>
+			<Button.Icon focus={visible} onClick={handleShowPopup}>
 				<ApplicationIcon />
-			</IconButton>
+			</Button.Icon>
 			<Popup className={classes.notifyPopop} ref={popupRef} visible={visible}>
 				APPS
 			</Popup>

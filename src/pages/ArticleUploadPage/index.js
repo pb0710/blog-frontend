@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'
 import * as articleApi from 'apis/article'
-import { Paper, Input } from 'ui'
+import { Paper, Input } from 'sylas-react-ui'
 
 const useStyles = makeStyles({
 	root: {},

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Input, Button, Switch, Loading, Form, FormItem } from 'ui'
+import { Input, Button, Switch, Loading, Form, FormItem } from 'sylas-react-ui'
 import { useSelector, useDispatch } from 'react-redux'
 import * as actions from 'store/actions'
 import * as userApi from 'apis/user'

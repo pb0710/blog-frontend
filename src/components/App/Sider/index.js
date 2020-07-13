@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
-import { IconButton, Paper, NavMenu } from 'ui'
+import { Button, Paper } from 'sylas-react-ui'
+import { NavMenu } from 'ui'
 import { ArrowLeftBoldIcon } from 'ui/utils/icons'
 import navMap from 'common/navMap'
 import { updateDrawerOpenedAction } from 'store/actions'
@@ -58,9 +59,9 @@ export default function Sider() {
 		<Paper className={classes.root}>
 			<div className={classes.topbar}>
 				<Branch />
-				<IconButton className={classes.closeDrawerIcon} onClick={handleHideDrawer}>
+				<Button.Icon className={classes.closeDrawerIcon} onClick={handleHideDrawer}>
 					<ArrowLeftBoldIcon />
-				</IconButton>
+				</Button.Icon>
 			</div>
 			<NavMenu menuOptions={navMap} />
 		</Paper>

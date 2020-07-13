@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Input, Button, Switch, Loading, Form, FormItem } from 'ui'
+import { Input, Button, Switch, Loading, Form } from 'sylas-react-ui'
 import { useSelector, useDispatch } from 'react-redux'
 import * as actions from 'store/actions'
 import * as userApi from 'apis/user'
@@ -108,15 +108,15 @@ export default function Login(props) {
 			<ModalHeader title="用户登陆" />
 			<Form className={classes.registerForm} form={form} onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
 				{formFields.map(item => (
-					<FormItem key={item.name} {...item}>
+					<Form.Item key={item.name} {...item}>
 						{item.component}
-					</FormItem>
+					</Form.Item>
 				))}
 				<div className={classes.operationsWrapper}>
 					<Close desc="以后再说" />
-					<FormItem className={classes.submit} submitType={true}>
+					<Form.Item className={classes.submit} submitType={true}>
 						<Button color="primary">登录</Button>
-					</FormItem>
+					</Form.Item>
 				</div>
 			</Form>
 		</div>

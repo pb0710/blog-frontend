@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Divider } from 'ui'
+import { Paper, Divider } from 'sylas-react-ui'
 import { MessageIcon } from 'ui/utils/icons'
 
 const useStyles = makeStyles({

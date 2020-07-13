@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Divider, Link, Tag } from 'ui'
+import { Divider, Link, Tag } from 'sylas-react-ui'
 import { EyesIcon } from 'ui/utils/icons'
 
 const useStyles = makeStyles({

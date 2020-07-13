@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Select, Option, Switch } from 'ui'
+import { Switch } from 'sylas-react-ui'
 import SettingSection from 'components/SettingSection'
 
 const useStyles = makeStyles({

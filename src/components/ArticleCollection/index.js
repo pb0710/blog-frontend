@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Paper, Loading } from 'ui'
+import { Paper, Loading } from 'sylas-react-ui'
 import ArticleCard from 'components/ArticleCard'
 
 const useStyles = makeStyles({
@@ -58,7 +58,7 @@ export default memo(function ArticleCollection(props) {
 					</div>
 				) : (
 					<div className={classes.loadingWrapper}>
-						<Loading color="primary" />
+						<Loading.Bounce />
 					</div>
 				)}
 			</Paper>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/styles'
-import { Link } from 'ui'
+import { Link } from 'sylas-react-ui'
 import { flexCenter } from 'utils/styles'
 
 const useStyles = makeStyles({
