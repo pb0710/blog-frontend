@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'

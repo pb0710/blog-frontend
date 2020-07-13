@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
@@ -150,7 +150,7 @@ export default function UserPopup(props) {
 		dispatch(actions.updateUserStepAction('LOGIN'))
 	}
 
-	const handleLogout = useCallback(() => {
+	const handleLogout = React.useCallback(() => {
 		;(async () => {
 			const { username } = accountInfo
 			try {
@@ -162,7 +162,7 @@ export default function UserPopup(props) {
 		dispatch(actions.updateAccountInfoAction({}))
 	}, [accountInfo])
 
-	const countsInfo = useMemo(() => {
+	const countsInfo = React.useMemo(() => {
 		const { level = '--', articleNum = '--', collections = '--' } = accountInfo
 		return [
 			{

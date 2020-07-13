@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import themeColors from '../utils/themeColors'
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 	}
 })
 
-const Input = forwardRef((props, ref) => {
+const Input = React.forwardRef((props, ref) => {
 	const {
 		className,
 		inputClassName,
@@ -64,8 +64,8 @@ const Input = forwardRef((props, ref) => {
 		onClick = null
 	} = props
 
-	const [inputVal, setInputVal] = useState('')
-	const [focus, setFocus] = useState(false)
+	const [inputVal, setInputVal] = React.useState('')
+	const [focus, setFocus] = React.useState(false)
 
 	const classes = useStyles({
 		color: themeColors[color],
@@ -76,7 +76,7 @@ const Input = forwardRef((props, ref) => {
 
 	const beNull = inputVal => (disabled ? null : inputVal)
 
-	const handleFocusInput = useCallback(
+	const handleFocusInput = React.useCallback(
 		beNull(() => {
 			onFocus && onFocus()
 			setFocus(true)
@@ -84,7 +84,7 @@ const Input = forwardRef((props, ref) => {
 		[]
 	)
 
-	const handleBlurInput = useCallback(
+	const handleBlurInput = React.useCallback(
 		beNull(() => {
 			onBlur && onBlur()
 			setFocus(false)
@@ -92,7 +92,7 @@ const Input = forwardRef((props, ref) => {
 		[]
 	)
 
-	const handleChangeInput = useCallback(
+	const handleChangeInput = React.useCallback(
 		e => {
 			const keywords = e.target.value
 			setInputVal(keywords)
@@ -101,11 +101,11 @@ const Input = forwardRef((props, ref) => {
 		[onChange, values]
 	)
 
-	const handleSearch = useCallback(() => {
+	const handleSearch = React.useCallback(() => {
 		onSearch && onSearch(inputVal)
 	}, [inputVal])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		setInputVal(value)
 	}, [value])
 
@@ -132,4 +132,4 @@ const Input = forwardRef((props, ref) => {
 	)
 })
 
-export default memo(Input)
+export default React.memo(Input)

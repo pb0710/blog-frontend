@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
@@ -39,7 +39,7 @@ export default React.forwardRef(function Option(props, ref) {
 
 	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple()
 
-	useImperativeHandle(
+	React.useImperativeHandle(
 		ref,
 		() => ({
 			value,

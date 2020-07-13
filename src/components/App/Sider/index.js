@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Paper } from 'sylas-react-ui'
@@ -51,7 +51,7 @@ export default function Sider() {
 	const drawerOpened = useSelector(state => state.drawerOpened)
 	const classes = useStyles({ drawerOpened })
 
-	const handleHideDrawer = useCallback(() => {
+	const handleHideDrawer = React.useCallback(() => {
 		dispatch(updateDrawerOpenedAction(false))
 	}, [])
 

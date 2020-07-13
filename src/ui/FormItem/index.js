@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 
@@ -58,11 +58,11 @@ function FormItem(props, ref) {
 	const errorTip = errorTips[name] ?? ''
 
 	// 传给表单控件的props
-	const controlProps = useMemo(() => {
+	const controlProps = React.useMemo(() => {
 		return submitType ? { onClick } : name ? { name, values, value } : {}
 	}, [submitType, onClick, name, values])
 
-	const callback = useCallback(
+	const callback = React.useCallback(
 		desc => {
 			if (setErrorTips) {
 				const newTip = { [name]: desc || null }
@@ -76,12 +76,12 @@ function FormItem(props, ref) {
 	 * 执行自定义校验
 	 * 触发时机为：首次渲染、当前表单项数据改变、手动触发
 	 */
-	useEffect(() => {
+	React.useEffect(() => {
 		validator && validator(value, callback, values)
 	}, [value, trigger])
 
 	// 设置初始值
-	useEffect(() => {
+	React.useEffect(() => {
 		if (setFieldsValue) {
 			setFieldsValue({
 				[name]: initValue
@@ -96,7 +96,7 @@ function FormItem(props, ref) {
 					{label}：{errorTip && <span className={classes.tip}>{errorTip}</span>}
 				</span>
 			)}
-			{children && React.cloneElement(children, controlProps)}
+			{children && React.React.cloneElement(children, controlProps)}
 		</label>
 	)
 }

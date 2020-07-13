@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Switch } from 'sylas-react-ui'
 import SettingSection from 'components/SettingSection'
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 export default function UserSetting() {
 	const classes = useStyles()
 
-	const optionsList = useMemo(
+	const optionsList = React.useMemo(
 		() => [
 			{
 				id: 0,

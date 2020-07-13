@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
@@ -58,7 +58,7 @@ function ListItem(props) {
 	const { rippleRef, handleStart, handleStop } = TouchRipple.useRipple(rippleMuted)
 
 	// 公用props
-	const commonProps = useMemo(
+	const commonProps = React.useMemo(
 		() => ({
 			className: clsx(classes.root, className),
 			onClick,

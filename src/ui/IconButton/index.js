@@ -1,4 +1,4 @@
-import React, { memo, forwardRef } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import TouchRipple from '../TouchRipple'
@@ -56,4 +56,4 @@ function IconButton(props, ref) {
 	)
 }
 
-export default memo(forwardRef(IconButton))
+export default React.memo(React.forwardRef(IconButton))

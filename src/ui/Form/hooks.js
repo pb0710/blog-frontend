@@ -1,12 +1,12 @@
-import { useState, useCallback } from 'react'
+import React from 'react'
 
 export default function _useForm() {
 	// 维护所有表单组件的值
-	const [values, setValues] = useState({})
-	const [trigger, setTrigger] = useState(false)
+	const [values, setValues] = React.useState({})
+	const [trigger, setTrigger] = React.useState(false)
 
 	const getFieldValue = name => values[name]
-	const setFieldsValue = useCallback(newValues => {
+	const setFieldsValue = React.useCallback(newValues => {
 		setValues(prev => ({ ...prev, ...newValues }))
 	}, [])
 

@@ -1,4 +1,4 @@
-import React, { memo, forwardRef, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Paper } from 'sylas-react-ui'
 import clsx from 'clsx'
@@ -47,11 +47,11 @@ const useStyles = makeStyles({
 	}
 })
 
-const Window = forwardRef((props, ref) => {
+const Window = React.forwardRef((props, ref) => {
 	const { children, className, onClick = null, in: inProp, onExited = () => {}, timeout = 150 } = props
 	const classes = useStyles()
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!inProp) {
 			const exitTimer = setTimeout(onExited, timeout)
 			return () => {
@@ -71,8 +71,8 @@ const Window = forwardRef((props, ref) => {
 	)
 })
 
-const Popup = memo(
-	forwardRef((props, ref) => {
+const Popup = React.memo(
+	React.forwardRef((props, ref) => {
 		const { visible = false } = props
 		return <TransitionGroup component={null}>{visible && <Window ref={ref} {...props} />}</TransitionGroup>
 	})

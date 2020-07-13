@@ -1,4 +1,4 @@
-import React, { memo, Children, cloneElement, useState, useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import _useForm from './hooks'
@@ -20,9 +20,9 @@ function _Form(props) {
 	const { values = {}, setFieldsValue, validateFields, trigger } = form
 	const classes = useStyles()
 	// 维护所有表单组件的校验提示
-	const [errorTips, setErrorTips] = useState({})
+	const [errorTips, setErrorTips] = React.useState({})
 
-	const handleChange = useCallback(
+	const handleChange = React.useCallback(
 		e => {
 			const { name, value } = e.target
 			if (name) {
@@ -33,7 +33,7 @@ function _Form(props) {
 		[values, setFieldsValue]
 	)
 
-	const handleSubmit = useCallback(() => {
+	const handleSubmit = React.useCallback(() => {
 		validateFields()
 		const errors = []
 		for (const [name, errorTip] of Object.entries(errorTips)) {
@@ -52,12 +52,12 @@ function _Form(props) {
 	// 查找表单提交组件（如果是提交组件，传递onClick和values）
 	const getSubmitElement = child => {
 		if (child?.type?.name === 'FormItem' && child?.props?.submitType) {
-			return cloneElement(child, { onClick: handleSubmit })
+			return React.cloneElement(child, { onClick: handleSubmit })
 		} else if (child.props.children) {
 			const childsChildren = child.props.children
 			// 考虑到不同层级的child.props.children为多个的情况
 			if (childsChildren.length > 1) {
-				const newChildren = Children.map(childsChildren, item => {
+				const newChildren = React.Children.map(childsChildren, item => {
 					// 只取FormItem下拥有submitType的作为提交组件
 					if (item?.type?.name === 'FormItem') {
 						return getSubmitElement(item)
@@ -65,7 +65,7 @@ function _Form(props) {
 						return item
 					}
 				})
-				return cloneElement(child, { children: newChildren })
+				return React.cloneElement(child, { children: newChildren })
 			} else {
 				return getSubmitElement(childsChildren)
 			}
@@ -75,12 +75,12 @@ function _Form(props) {
 	return (
 		<form className={clsx(classes.root, className)} onChange={handleChange}>
 			{children && typeof children === 'object'
-				? Children.map(children, child => {
+				? React.Children.map(children, child => {
 						const submitElement = getSubmitElement(child)
 						return submitElement
 							? submitElement
 							: child?.type?.name === 'FormItem'
-							? cloneElement(child, { setFieldsValue, values, errorTips, setErrorTips, trigger })
+							? React.cloneElement(child, { setFieldsValue, values, errorTips, setErrorTips, trigger })
 							: child
 				  })
 				: children}
@@ -88,7 +88,7 @@ function _Form(props) {
 	)
 }
 
-const Form = memo(_Form)
+const Form = React.memo(_Form)
 Form.useForm = _useForm
 
 export default Form

@@ -1,11 +1,11 @@
-import { useRef, useState, useContext, useEffect, useCallback, useMemo } from 'react'
+import React from 'react'
 
 /**
  * Boolean State
  * @param {boolean} defaultValue 默认值
  */
 export function useBoolean(defaultValue) {
-	const [boolean, setBoolean] = useState(defaultValue)
+	const [boolean, setBoolean] = React.useState(defaultValue)
 
 	const setTrue = () => {
 		setBoolean(true)
@@ -25,10 +25,10 @@ export function useBoolean(defaultValue) {
  * @param {boolean} muted 禁用状态
  */
 export function useCoordinate(muted) {
-	const [x, setX] = useState()
-	const [y, setY] = useState()
+	const [x, setX] = React.useState()
+	const [y, setY] = React.useState()
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const getPageXY = e => {
 			setX(e.clientX)
 			setY(e.clientY)
@@ -46,9 +46,9 @@ export function useCoordinate(muted) {
 
 // 获取组件渲染次数
 export function useRenderCount() {
-	const count = useRef(0)
+	const count = React.useRef(0)
 
-	useEffect(() => {
+	React.useEffect(() => {
 		count.current++
 	})
 	return count.current

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, Button, Switch, Loading, Form, FormItem } from 'sylas-react-ui'
 import { useSelector, useDispatch } from 'react-redux'
@@ -37,7 +37,7 @@ export default function SSO(props) {
 	const dispatch = useDispatch()
 	const classes = useStyles()
 	const accountInfo = useSelector(state => state.user.accountInfo)
-	const [remain, setRemain] = useState(5)
+	const [remain, setRemain] = React.useState(5)
 
 	const userLogin = async accountInfo => {
 		const { username, password } = accountInfo
@@ -60,7 +60,7 @@ export default function SSO(props) {
 		}
 	}
 
-	const handleLogin = useCallback(() => {
+	const handleLogin = React.useCallback(() => {
 		userLogin(accountInfo)
 	}, [accountInfo])
 
@@ -69,7 +69,7 @@ export default function SSO(props) {
 	}
 
 	// 自动登陆倒计时
-	useEffect(() => {
+	React.useEffect(() => {
 		let isUnmounted = false
 		;(async () => {
 			const oneSecond = 1000

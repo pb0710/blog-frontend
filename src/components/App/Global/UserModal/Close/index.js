@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch } from 'react-redux'
 import * as actions from 'store/actions'
@@ -18,7 +18,7 @@ export default function Close(props) {
 	const dispatch = useDispatch()
 	const classes = useStyles()
 
-	const handleClose = useCallback(() => {
+	const handleClose = React.useCallback(() => {
 		dispatch(actions.updateMaskVisibleAction(false))
 		onClose && onClose()
 	}, [onClose])

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Select } from 'sylas-react-ui'
 import SettingSection from 'components/SettingSection'

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Loading } from 'sylas-react-ui'
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 	}
 })
 
-export default memo(function ModalHeader(props) {
+export default React.memo(function ModalHeader(props) {
 	const { title, loading = false } = props
 
 	const classes = useStyles()

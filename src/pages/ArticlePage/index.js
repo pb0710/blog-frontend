@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useParams } from 'react-router-dom'
 import FlexablePage from 'components/FlexablePage'
@@ -34,8 +34,8 @@ const useStyles = makeStyles({
 export default function ArticlePage(props) {
 	const {} = props
 	const { id } = useParams()
-	const [article, setArticle] = useState('')
-	const [backgroundImage, setBackgroundImage] = useState('')
+	const [article, setArticle] = React.useState('')
+	const [backgroundImage, setBackgroundImage] = React.useState('')
 	const classes = useStyles()
 
 	const fetchArticleDetail = async () => {
@@ -48,7 +48,7 @@ export default function ArticlePage(props) {
 		}
 	}
 
-	useEffect(() => {
+	React.useEffect(() => {
 		fetchArticleDetail()
 	}, [])
 

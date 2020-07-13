@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import GroundGlass from '../GroundGlass'
@@ -131,18 +131,18 @@ export default function Dialog(props) {
 		maskClosable = false
 	} = props
 
-	const modalRef = useRef()
+	const modalRef = React.useRef()
 
-	const [originX, setOriginX] = useState()
-	const [originY, setOriginY] = useState()
+	const [originX, setOriginX] = React.useState()
+	const [originY, setOriginY] = React.useState()
 
 	const classes = useStyles({ originX, originY })
 	const count = useRenderCount()
 	const { x, y } = useCoordinate(visible)
 
-	const maskLeave = useMemo(() => (count === 0 ? false : !visible), [visible])
+	const maskLeave = React.useMemo(() => (count === 0 ? false : !visible), [visible])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const element = modalRef.current
 		const top = element.offsetTop
 		const left = element.offsetLeft

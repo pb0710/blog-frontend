@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react'
+import React from 'react'
 import { judgeElementContains } from '../utils'
 
 /**
@@ -9,24 +9,24 @@ import { judgeElementContains } from '../utils'
  * 	@param {boolean} clickTriggerHide 再次点击触发Popup的按钮，Popup是否移出
  */
 export default function usePopupVisible({ clickPopupHide = false, blurHide = true } = {}) {
-	const triggerRef = useRef()
-	const popupRef = useRef()
-	const [visible, setVisible] = useState(false)
+	const triggerRef = React.useRef()
+	const popupRef = React.useRef()
+	const [visible, setVisible] = React.useState(false)
 
 	// 展示Popup
-	const handleShowPopup = useCallback(() => {
+	const handleShowPopup = React.useCallback(() => {
 		setVisible(true)
 	}, [])
 
 	// 移出Popup（事件对象 e 必传）
-	const handleHidePopup = useCallback(e => {
+	const handleHidePopup = React.useCallback(e => {
 		// 阻止冒泡，防止触发handlePopupBlur
 		e?.nativeEvent && e.nativeEvent.stopImmediatePropagation()
 		setVisible(false)
 	}, [])
 
 	// 点击document，对popup展示状态的处理
-	const handlePopupBlur = useCallback(
+	const handlePopupBlur = React.useCallback(
 		e => {
 			const targetElement = e.target
 			let nextVisible = true
@@ -50,7 +50,7 @@ export default function usePopupVisible({ clickPopupHide = false, blurHide = tru
 		[clickPopupHide]
 	)
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (blurHide) {
 			// 全局绑定Popup 失焦事件
 			visible && document.addEventListener('click', handlePopupBlur)

@@ -6,7 +6,7 @@ import { throttle } from 'utils'
  * @param  {...promise} promises
  */
 export function useSuspense(...promises) {
-	const wrapPromise = useCallback(promise => {
+	const wrapPromise = React.useCallback(promise => {
 		let status = 'pending'
 		let result
 		let suspenser = promise.then(
@@ -33,7 +33,7 @@ export function useSuspense(...promises) {
 		}
 	}, [])
 
-	return useCallback(
+	return React.useCallback(
 		promises.map(promise => wrapPromise(promise)),
 		[]
 	)
@@ -43,11 +43,11 @@ export function useSuspense(...promises) {
  * 维护一个Boolean
  */
 export function useBoolean() {
-	const [boolean, setBoolean] = useState(false)
+	const [boolean, setBoolean] = React.useState(false)
 
-	const setTrue = useCallback(() => setBoolean(true), [])
-	const setFalse = useCallback(() => setBoolean(false), [])
-	const toggleBoolean = useCallback(() => setBoolean(prev => !prev), [])
+	const setTrue = React.useCallback(() => setBoolean(true), [])
+	const setFalse = React.useCallback(() => setBoolean(false), [])
+	const toggleBoolean = React.useCallback(() => setBoolean(prev => !prev), [])
 
 	return { boolean, setTrue, setFalse, toggleBoolean }
 }
@@ -57,14 +57,14 @@ export function useBoolean() {
  * @param {object} options
  */
 export function useMouseWheel({ throttleInterval } = {}) {
-	const [down, setDown] = useState(false)
+	const [down, setDown] = React.useState(false)
 
-	const handleMouseWheel = useCallback(
+	const handleMouseWheel = React.useCallback(
 		throttle(e => setDown(e.wheelDelta < 0), throttleInterval),
 		[throttleInterval]
 	)
 
-	useEffect(() => {
+	React.useEffect(() => {
 		document.addEventListener('mousewheel', handleMouseWheel)
 		return () => {
 			document.removeEventListener('mousewheel', handleMouseWheel)
@@ -80,11 +80,11 @@ export function useMouseWheel({ throttleInterval } = {}) {
  * @param {boolean} immediate 是否立即执行
  */
 export function useAsync(promise, immediate = true) {
-	const [pending, setPending] = useState(false)
-	const [value, setValue] = useState(null)
-	const [error, setError] = useState(null)
+	const [pending, setPending] = React.useState(false)
+	const [value, setValue] = React.useState(null)
+	const [error, setError] = React.useState(null)
 
-	const execute = useCallback(() => {
+	const execute = React.useCallback(() => {
 		setPending(true)
 		setValue(null)
 		setError(null)
@@ -94,7 +94,7 @@ export function useAsync(promise, immediate = true) {
 			.finally(() => setPending(false))
 	}, [promise])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (immediate) {
 			execute()
 		}

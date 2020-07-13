@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateMaskVisibleAction } from 'store/actions'
@@ -45,7 +45,7 @@ export default function Mask(props) {
 	const maskVisible = useSelector(state => state.maskVisible)
 	const classes = useStyles()
 
-	const handleHideMask = useCallback(() => {
+	const handleHideMask = React.useCallback(() => {
 		closable && dispatch(updateMaskVisibleAction(false))
 	}, [closable])
 

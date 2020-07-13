@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useMemo, useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import Collapse from '../Collapse'
@@ -61,7 +61,7 @@ const useStyles = makeStyles({
 export default function NavMenu(props) {
 	const { color = 'primary', menuOptions = [], paddingLeft = 44 } = props
 
-	const defaultChildOpenStatus = useMemo(() => {
+	const defaultChildOpenStatus = React.useMemo(() => {
 		let defaultObj = {}
 		menuOptions.forEach(({ id }) => {
 			defaultObj[id] = false
@@ -69,14 +69,14 @@ export default function NavMenu(props) {
 		return defaultObj
 	}, [menuOptions])
 
-	const [childOpenStatus, setChildOpenStatus] = useState(defaultChildOpenStatus)
+	const [childOpenStatus, setChildOpenStatus] = React.useState(defaultChildOpenStatus)
 
 	const classes = useStyles({
 		paddingLeft,
 		color: themeColors[color]
 	})
 
-	const handleToggleChildOpen = useCallback(
+	const handleToggleChildOpen = React.useCallback(
 		id => {
 			setChildOpenStatus(prev => ({
 				...prev,
@@ -92,7 +92,7 @@ export default function NavMenu(props) {
 				const opened = childOpenStatus[id]
 
 				return (
-					<Fragment key={id}>
+					<React.Fragment key={id}>
 						<ListItem
 							className={classes.navItem}
 							activeClassName={classes.navItemActived}
@@ -126,7 +126,7 @@ export default function NavMenu(props) {
 								))}
 							</Collapse>
 						)}
-					</Fragment>
+					</React.Fragment>
 				)
 			})}
 		</List>

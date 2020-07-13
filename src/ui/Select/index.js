@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import { useEffect } from 'react'
@@ -72,9 +72,9 @@ export default function Select(props) {
 	const { className, children, color = 'primary', timeout = 200, onChange = null } = props
 
 	const { boolean: listVisible, setTrue: handleShowList, setFalse: handleHideList } = useBoolean(false)
-	const [values, setValues] = useState([])
-	const [childrens, setChildrens] = useState([])
-	const [selectedIndex, setSelectedIndex] = useState(0)
+	const [values, setValues] = React.useState([])
+	const [childrens, setChildrens] = React.useState([])
+	const [selectedIndex, setSelectedIndex] = React.useState(0)
 
 	const classes = useStyles({
 		listVisible,
@@ -82,9 +82,9 @@ export default function Select(props) {
 		color: themeColors[color]
 	})
 
-	const refs = useMemo(() => React.Children.map(children, () => React.createRef()), [children])
+	const refs = React.useMemo(() => React.React.Children.map(children, () => React.createRef()), [children])
 
-	const selected = useMemo(
+	const selected = React.useMemo(
 		() => ({
 			value: values[selectedIndex],
 			children: childrens[selectedIndex]
@@ -92,14 +92,14 @@ export default function Select(props) {
 		[values, childrens, selectedIndex]
 	)
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const values = refs.map(ref => ref.current.value)
 		const childrens = refs.map(ref => ref.current.children)
 		setValues(values)
 		setChildrens(childrens)
 	}, [refs])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		listVisible && document.addEventListener('click', handleHideList)
 		return () => {
 			document.removeEventListener('click', handleHideList)
@@ -129,8 +129,8 @@ export default function Select(props) {
 						{selected.children}
 					</Option>
 					{children &&
-						React.Children.map(children, (child, index) =>
-							React.cloneElement(child, {
+						React.React.Children.map(children, (child, index) =>
+							React.React.cloneElement(child, {
 								ref: refs[index],
 								handleChange,
 								isCurrent: index === selectedIndex,

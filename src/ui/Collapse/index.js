@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 
@@ -13,16 +13,13 @@ const useStyles = makeStyles({
 export default function Collapse(props) {
 	const { visible = false, children, className } = props
 
-	const containerRef = useRef()
+	const containerRef = React.useRef()
 
-	const [initialHeight, setinitialHeight] = useState()
+	const [initialHeight, setinitialHeight] = React.useState()
 
-	const height = useMemo(() => (visible ? initialHeight : initialHeight ? 0 : 'auto'), [
-		visible,
-		initialHeight
-	])
+	const height = React.useMemo(() => (visible ? initialHeight : initialHeight ? 0 : 'auto'), [visible, initialHeight])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const element = containerRef.current
 		const elementHeight = element?.offsetHeight
 		setinitialHeight(elementHeight)

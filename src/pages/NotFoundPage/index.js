@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useHistory } from 'react-router-dom'
 import { flexCenter } from 'utils/styles'
@@ -31,12 +31,12 @@ const useStyles = makeStyles({
 	}
 })
 
-export default memo(function NotFoundPagePage(props) {
+export default React.memo(function NotFoundPagePage(props) {
 	const {} = props
 	const history = useHistory()
 	const classes = useStyles()
 
-	const handleGoback = useCallback(() => {
+	const handleGoback = React.useCallback(() => {
 		history.goBack()
 	}, [history])
 

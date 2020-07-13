@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useRef, useState, useCallback } from 'react'
+import React from 'react'
 import { TransitionGroup } from 'react-transition-group'
 import { makeStyles } from '@material-ui/styles'
 import Ripple from './Ripple'
@@ -22,12 +22,12 @@ const TouchRipple = React.memo(
 	React.forwardRef((props, ref) => {
 		const { center = false, timeout, color } = props
 
-		const [ripples, setRipples] = useState([])
-		const key = useRef(0)
-		const container = useRef()
+		const [ripples, setRipples] = React.useState([])
+		const key = React.useRef(0)
+		const container = React.useRef()
 		const classes = useStyles()
 
-		const addRipple = useCallback(
+		const addRipple = React.useCallback(
 			(rippleX, rippleY, rippleSize) => {
 				setRipples(oldRipples => [
 					...oldRipples,
@@ -45,7 +45,7 @@ const TouchRipple = React.memo(
 			[color, timeout]
 		)
 
-		const start = useCallback(
+		const start = React.useCallback(
 			e => {
 				const element = container.current
 
@@ -81,11 +81,11 @@ const TouchRipple = React.memo(
 			[addRipple, center]
 		)
 
-		const stop = useCallback(() => {
+		const stop = React.useCallback(() => {
 			setRipples(oldRipples => (oldRipples.length > 0 ? oldRipples.slice(1) : oldRipples))
 		}, [])
 
-		useImperativeHandle(ref, () => ({ start, stop }), [start, stop])
+		React.useImperativeHandle(ref, () => ({ start, stop }), [start, stop])
 
 		return (
 			<span ref={container} className={classes.root}>

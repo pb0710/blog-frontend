@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Paper, Loading } from 'sylas-react-ui'
 import ArticleCard from 'components/ArticleCard'
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 	}
 })
 
-export default memo(function ArticleCollection(props) {
+export default React.memo(function ArticleCollection(props) {
 	const { articleList } = props
 
 	const classes = useStyles()

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Input, Button, Switch, Loading, Form } from 'sylas-react-ui'
 import { useSelector, useDispatch } from 'react-redux'
@@ -83,11 +83,11 @@ export default function Register(props) {
 		}
 	}
 
-	const handleInputPassword = useCallback(() => {
+	const handleInputPassword = React.useCallback(() => {
 		form.setFieldsValue({ password_confirm: '' })
 	}, [])
 
-	const formFields = useMemo(
+	const formFields = React.useMemo(
 		() => [
 			{
 				name: 'username',

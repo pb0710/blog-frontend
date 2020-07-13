@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import * as articleApi from 'apis/article'
 import ArticleCollection from 'components/ArticleCollection'
@@ -10,10 +10,10 @@ const useStyles = makeStyles({
 	root: {}
 })
 
-export default memo(function ArticleListPage(props) {
+export default React.memo(function ArticleListPage(props) {
 	const { sort } = props
 
-	const [articleList, setArticleList] = useState([])
+	const [articleList, setArticleList] = React.useState([])
 	const classes = useStyles()
 
 	const getArticleList = async () => {
@@ -25,7 +25,7 @@ export default memo(function ArticleListPage(props) {
 		}
 	}
 
-	useEffect(() => {
+	React.useEffect(() => {
 		getArticleList()
 	}, [])
 

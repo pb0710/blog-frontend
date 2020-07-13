@@ -23,13 +23,7 @@ const useStyles = makeStyles({
 })
 
 export default React.memo(function Progress(props) {
-	const {
-		className,
-		percent = 0,
-		color = 'primary',
-		trailColor = 'rgba(0,0,0,0)',
-		fixed = true
-	} = props
+	const { className, percent = 0, color = 'primary', trailColor = 'rgba(0,0,0,0)', fixed = true } = props
 
 	const fixedStyles = fixed
 		? {

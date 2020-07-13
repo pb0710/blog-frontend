@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { Divider, Link, Tag } from 'sylas-react-ui'
 import { EyeOutlined } from '@ant-design/icons'
@@ -81,10 +81,10 @@ const useStyles = makeStyles({
 	}
 })
 
-export default memo(function ArticleCard(props) {
+export default React.memo(function ArticleCard(props) {
 	const { id, sort = '', title = '', imageUrl = '', viewsCount = '', tags = [] } = props
 
-	const views = useMemo(
+	const views = React.useMemo(
 		() => (viewsCount.toString().length > 3 ? `${Number(viewsCount / 1000).toFixed(1)}K` : viewsCount),
 		[viewsCount]
 	)

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, GroundGlass } from 'sylas-react-ui'
@@ -42,7 +42,7 @@ export default function Header() {
 	const dispatch = useDispatch()
 	const classes = useStyles({ drawerOpened })
 
-	const handleShowDrawer = useCallback(() => {
+	const handleShowDrawer = React.useCallback(() => {
 		dispatch(updateDrawerOpenedAction(true))
 	}, [])
 

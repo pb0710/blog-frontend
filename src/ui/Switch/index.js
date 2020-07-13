@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { v4 as uuid } from 'uuid'
 import themeColors from '../utils/themeColors'
@@ -46,17 +46,11 @@ const useStyles = makeStyles({
 })
 
 export default React.memo(function Switch(props) {
-	const {
-		defaultChecked = true,
-		color = 'primary',
-		disabled = false,
-		label,
-		onChange = () => {}
-	} = props
+	const { defaultChecked = true, color = 'primary', disabled = false, label, onChange = () => {} } = props
 
 	const id = `switch-${uuid()}-${label}`
 
-	const [checked, setChecked] = useState(defaultChecked)
+	const [checked, setChecked] = React.useState(defaultChecked)
 
 	const classes = useStyles({
 		checked,

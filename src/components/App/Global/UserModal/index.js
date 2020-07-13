@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import { useSelector } from 'react-redux'
 import Mask from 'components/Mask'
@@ -16,7 +16,7 @@ export default function UserModal(props) {
 	const classes = useStyles()
 	const userStep = useSelector(state => state.user.step)
 
-	const goToStep = useMemo(() => {
+	const goToStep = React.useMemo(() => {
 		switch (userStep) {
 			case 'REGISTER':
 				return <Register />

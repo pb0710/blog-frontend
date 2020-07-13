@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/styles'
 import clsx from 'clsx'
 import themeColors from '../../utils/themeColors'
@@ -53,10 +53,10 @@ export default function Ripple(props) {
 		top: rippleY - rippleSize / 2
 	}
 
-	const [leave, setLeave] = useState(false)
+	const [leave, setLeave] = React.useState(false)
 	const classes = useStyles({ styles, timeout, color: themeColors[color] })
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!visible) {
 			setLeave(true)
 			const timer = setTimeout(onExited, timeout)
