@@ -1,0 +1,30 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+
+$border: 1px solid getColor('light', 'divider');
+$siderWidth: 24rem;
+
+.sider {
+  position: fixed;
+  left: 0;
+  z-index: getZIndex('sider');
+  width: $siderWidth;
+  height: 100vh;
+  border-right: $border;
+  background: getColor('light', 'background');
+  transition: transform getDuration('normal') ease-out;
+  transform: translateX(-$siderWidth);
+
+  &.in {
+    transform: translateX(0);
+  }
+
+  > .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 5rem;
+    // border-bottom: $border;
+  }
+}

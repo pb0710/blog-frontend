@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+@mixin glass {
+  background: rgba(getColor('light', 'background'), 0.7);
+
+  backdrop-filter: saturate(50%) blur(20px);
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin inputBase {
+  outline: none;
+  border: none;
+
+  &textarea {
+    resize: none;
+  }
+}

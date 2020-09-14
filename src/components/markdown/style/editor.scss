@@ -1,0 +1,80 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+
+$divider: getColor('light', 'divider');
+
+.markdown_editor {
+  height: calc(100vh - 6rem);
+
+  > .header_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    width: 100%;
+    height: 5rem;
+
+    .tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-width: 144px;
+    }
+
+    .publish {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.6rem;
+
+      > strong {
+        margin-left: 8px;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  > .content {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 4rem);
+    border-top: 1px solid $divider;
+    font-size: 1.4rem;
+
+    $articlePadding: 1rem 1.5rem;
+
+    > article {
+      width: 50%;
+      height: 100%;
+
+      &:first-child {
+        border-right: 1px solid $divider;
+      }
+    }
+
+    > .editor {
+      border: none;
+
+      > textarea {
+        padding: $articlePadding;
+        width: 100%;
+        height: 100%;
+        resize: none;
+
+        @include inputBase;
+      }
+    }
+
+    > .preview {
+      overflow-y: auto;
+      padding: $articlePadding;
+      background: getColor('light', 'background');
+
+      code {
+        font-size: 1.3rem;
+        font-family: 'Roboto Mono';
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: getZIndex('header');
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #dedede;
+  background: getColor('light', 'background');
+
+  @include glass;
+}

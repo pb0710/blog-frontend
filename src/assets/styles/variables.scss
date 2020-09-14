@@ -1,0 +1,51 @@
+$theme: (
+  highlight: #fa233b
+);
+
+$colors: (
+  light: (
+    background: #fff,
+    backgroundVariant: #f8f8f8,
+    textPrimary: #000000f2,
+    textSecondary: #3c3c4399,
+    divider: rgba(#000, 0.1),
+    dividerVariant: rgba(#000, 0.14)
+  ),
+  black: (
+    background: #fff,
+    backgroundVariant: #f8f8f8,
+    textPrimary: #000000f2,
+    textSecondary: #3c3c4399,
+    divider: rgba(#000, 0.1),
+    dividerVariant: rgba(#000, 0.14)
+  )
+);
+
+$zIndex: (
+  header: 100,
+  footer: 200,
+  sider: 300,
+  modal: 400
+);
+
+$duration: (
+  fast: 150ms,
+  normal: 250ms,
+  slow: 350ms
+);
+
+@function getTheme($key) {
+  @return map-get($theme, $key);
+}
+
+@function getColor($style, $key) {
+  @return map-get(map-get($colors, $style), $key);
+}
+
+@function getZIndex($key) {
+  @return map-get($zIndex, $key);
+}
+
+@function getDuration($key) {
+  @return map-get($duration, $key);
+}
