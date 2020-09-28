@@ -1,0 +1,14 @@
+@use 'src/assets/styles/variables' as *;
+
+.panel {
+  min-height: 20rem;
+  width: 100%;
+  border: 1px solid getColor('light', 'divider');
+  border-radius: 4px;
+  background: getColor('light', 'background');
+}
+
+.affix {
+  position: sticky;
+  top: 7rem;
+}

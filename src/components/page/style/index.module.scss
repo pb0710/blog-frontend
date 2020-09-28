@@ -1,0 +1,47 @@
+@use 'src/assets/styles/variables' as *;
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background: getColor('light', 'background');
+}
+
+.stable_page {
+  padding-top: 5rem;
+
+  @extend .page;
+}
+
+.flexible_page {
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+  // transition: width getDuration('normal') ease-out;
+
+  @extend .page;
+
+  .container {
+    padding-right: 21rem;
+    width: 110rem;
+  }
+
+  .full_width {
+    width: 100%;
+  }
+
+  &.narrowing {
+    width: calc(100vw - 24rem);
+  }
+}
+
+.full_screen_page {
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  z-index: getZIndex('modal');
+  // width: 100vw;
+  // height: 100vh;
+
+  @extend .page;
+}

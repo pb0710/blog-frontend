@@ -1,0 +1,30 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+
+.not_found_page {
+  @include flexCenter;
+
+  > .prompt {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32rem;
+    height: 12rem;
+
+    > .operation {
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+
+      > .go_back {
+        background: getColor('light', 'background');
+        box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+
+        &:hover {
+          background: getColor('light', 'backgroundVariant');
+        }
+      }
+    }
+  }
+}

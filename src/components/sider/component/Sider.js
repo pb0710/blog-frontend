@@ -5,6 +5,7 @@ import { LeftOutlined } from '@ant-design/icons'
 import style from '../style/index.module.scss'
 import * as action from '@/components/sider/store/action'
 import clsx from 'clsx'
+import NavMenu from './NavMenu'
 
 export default function Sider() {
   const dispatch = useDispatch()
@@ -19,10 +20,11 @@ export default function Sider() {
   return (
     <aside className={asideCls}>
       <div className={style.top}>
-        <Button.Icon onClick={hanldeCloseDrawer}>
+        <Button.Icon className={style.drawerControl} onClick={hanldeCloseDrawer}>
           <LeftOutlined />
         </Button.Icon>
       </div>
+      <NavMenu />
     </aside>
   )
 }

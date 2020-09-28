@@ -1,4 +1,4 @@
-import axios from 'axios'
+import request from '@/utils/request'
 
 /**
  * 上传图片
@@ -6,7 +6,7 @@ import axios from 'axios'
  * @param {object} formData 图像FormData
  */
 export const uploadImage = formData =>
-  axios({
+  request({
     url: `file/upload_image`,
     method: 'POST',
     data: formData,

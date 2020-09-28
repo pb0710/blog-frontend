@@ -7,6 +7,12 @@
   padding: 1rem;
   border-radius: 4px;
   background: getColor('light', 'backgroundVariant');
+
+  code {
+    font-size: 1.3rem;
+    font-family: 'Roboto Mono';
+    line-height: 1.75em;
+  }
 }
 
 .uploader {

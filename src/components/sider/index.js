@@ -1,1 +1,1 @@
-export { default as Header } from './component/Header'
+export { default as Sider } from './component/Sider'

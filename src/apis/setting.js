@@ -1,11 +1,11 @@
-import axios from 'axios'
+import request from '@/utils/request'
 
 /**
  * 获取用户配置
  * @param {string} userId 用户ID
  */
 export const fetchOptions = userId =>
-  axios({
+  request({
     url: `setting/options`,
     params: { userId }
   })
@@ -17,7 +17,7 @@ export const fetchOptions = userId =>
  * 	@param {object} options 用户配置
  */
 export const updateOptions = ({ userId, options = {} } = {}) =>
-  axios({
+  request({
     url: `setting/update_options`,
     method: 'POST',
     data: { userId, options }

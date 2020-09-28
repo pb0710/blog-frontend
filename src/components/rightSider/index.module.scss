@@ -1,0 +1,15 @@
+.right_sider {
+  position: absolute;
+  top: 7rem;
+  right: calc(50% - 550px);
+  width: 20rem;
+  height: calc(100% - 7rem);
+
+  &.narrowing {
+    right: calc(50% - 67rem);
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+}

@@ -1,11 +1,11 @@
-import axios from 'axios'
+import request from '@/utils/request'
 
 /**
  * 抓取文章列表
  * @param {string} sort 文章分类 不传时获取全部
  */
 export const fetchList = sort =>
-  axios({
+  request({
     url: `article/list`,
     params: { sort }
   })
@@ -15,7 +15,7 @@ export const fetchList = sort =>
  * @param {string} articleId 文章ID
  */
 export const fetchDetail = articleId =>
-  axios({
+  request({
     url: `article/detail`,
     params: { articleId }
   })
@@ -27,7 +27,7 @@ export const fetchDetail = articleId =>
  * 	@param {string} articleDetail 文章详情
  */
 export const addArticle = ({ userId, articleDetail = {} }) =>
-  axios({
+  request({
     url: `article/add`,
     method: 'POST',
     data: { userId, articleDetail }

@@ -1,0 +1,24 @@
+@use 'src/assets/styles/variables' as *;
+
+.menu {
+  .level1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .level2 {
+    padding-left: 4rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  .level3 {
+    font-size: 1.4rem;
+  }
+
+  .active {
+    li {
+      color: getTheme('highlight');
+    }
+  }
+}

@@ -7,6 +7,11 @@
   src: url('../fonts/RobotoMono-Regular.ttf');
 }
 
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 #app {
   box-sizing: border-box;
   color: getColor('light', 'textPrimary');
@@ -23,6 +28,6 @@
   }
 
   code {
-    font-family: Menlo, Consolas, SF mono, Monaco, 'Courier New', monospace;
+    font-family: Roboto Mono, Menlo, Consolas, SF mono, Monaco, 'Courier New', monospace;
   }
 }

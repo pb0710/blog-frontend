@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <header className={style.header}>
-      <Button.Icon onClick={handleToggleDrawer}>
+      <Button.Icon className={style.drawerControl} onClick={handleToggleDrawer}>
         <MenuOutlined />
       </Button.Icon>
     </header>
