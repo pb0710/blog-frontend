@@ -8,6 +8,7 @@ import { RightSider } from '@/components/rightSider'
 import Home from '@/pages/home/Home'
 import NotFound from '@/pages/notFound/NotFound'
 import { Panel, Affix } from '@/components/base'
+import { AuthorCard } from '@/components/author'
 
 export default function App() {
   return (
@@ -33,6 +34,9 @@ export default function App() {
       <RightSider>
         <Switch>
           <Route exact path="/upload" />
+          <Route exact path="/detail/:id">
+            <AuthorCard />
+          </Route>
           <Route>
             <Panel></Panel>
             <Panel></Panel>

@@ -2,7 +2,13 @@
   padding: 1rem;
   padding-top: 5rem;
 
-  .article_container {
+  .article_wrapper {
     padding: 1rem;
+
+    .bg_pic {
+      margin-top: 1rem;
+      width: 100%;
+      border-radius: 4px;
+    }
   }
 }
