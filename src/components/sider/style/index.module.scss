@@ -13,7 +13,7 @@ $siderWidth: 24rem;
   height: 100vh;
   border-right: $border;
   background: getColor('light', 'background');
-  // transition: transform getDuration('normal') ease-out;
+  transition: transform getDuration('normal') ease-out;
   transform: translateX(-$siderWidth);
 
   &.in {

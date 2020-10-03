@@ -1,13 +1,21 @@
 import React from 'react'
 import { Menu } from 'sylas-react-ui'
-import { NavLink } from 'react-router-dom'
+import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
+import {
+  HomeOutlined,
+  ReadOutlined,
+  FormOutlined,
+  ControlOutlined,
+  LinkOutlined
+} from '@ant-design/icons'
 
 function Nav(props) {
-  const { navKey, level, to, title } = props
+  const { id, level, to, title, icon } = props
   return (
     <NavLink to={to}>
-      <Menu.Item key={navKey} className={style[`level${level}`]}>
+      <Menu.Item id={id} className={style[`level${level}`]}>
+        {icon && <span className={style.icon}>{icon}</span>}
         {title}
       </Menu.Item>
     </NavLink>
@@ -15,57 +23,132 @@ function Nav(props) {
 }
 
 export default function NavMenu() {
+  const menu = Menu.useMenu()
+  const { pathname } = useLocation()
+
   const navs = [
     {
-      navKey: 0,
+      id: '0',
       level: 1,
       to: '/',
-      title: '主页'
+      title: '主页',
+      icon: <HomeOutlined />
     },
     {
-      navKey: 1,
+      id: '1',
       level: 1,
-      to: '/upload',
-      title: '发布'
-    },
-    {
-      navKey: 3,
-      level: 1,
-      to: '/detail',
-      title: '文章'
-    },
-    {
-      navKey: 2,
-      level: 1,
-      title: '发布',
+      to: '/articles',
+      title: '文章',
+      icon: <ReadOutlined />,
       child: [
         {
-          navKey: 20,
+          id: '10',
           level: 2,
-          to: '/',
+          to: '/frontend',
+          title: 'Web前端'
+        },
+        {
+          id: '11',
+          level: 2,
+          to: '/mobile',
+          title: '移动端'
+        },
+        {
+          id: '12',
+          level: 2,
+          to: '/backend',
+          title: '服务端'
+        },
+        {
+          id: '13',
+          level: 2,
+          to: '/computer_science',
+          title: '计算机通用'
+        },
+        {
+          id: '14',
+          level: 2,
+          to: '/engineering',
+          title: '工程化'
+        }
+      ]
+    },
+    {
+      id: '2',
+      level: 1,
+      to: '/upload',
+      title: '发布',
+      icon: <FormOutlined />
+    },
+    {
+      id: '3',
+      level: 1,
+      title: '文档聚合',
+      icon: <LinkOutlined />,
+      child: [
+        {
+          id: '30',
+          level: 2,
+          to: '/submenu0',
           title: '子菜单0'
         },
         {
-          navKey: 21,
+          id: '31',
           level: 2,
-          to: '/',
+          to: '/submenu1',
           title: '子菜单1'
         }
       ]
+    },
+    {
+      id: '4',
+      level: 1,
+      to: '/options',
+      title: '设置',
+      icon: <ControlOutlined />
     }
   ]
 
+  React.useEffect(() => {
+    function selectMenu(nav) {
+      const match = matchPath(pathname, {
+        path: nav.to,
+        exact: true
+      })
+      match && menu.setCurrentKey(nav.id)
+    }
+    navs.forEach(nav => {
+      nav.child
+        ? nav.child.forEach(subNav => {
+            const to = nav.to + subNav.to
+            selectMenu({ ...subNav, to })
+          })
+        : selectMenu(nav)
+    })
+  }, [pathname])
+
   return (
-    <Menu className={style.menu}>
+    <Menu className={style.menu} menu={menu}>
       {navs.map(nav =>
         nav.child ? (
-          <Menu.SubMenu key={nav.navKey} className={style.level1} title={nav.title}>
-            {nav.child.map(child => (
-              <Nav key={child.navKey} {...child} />
-            ))}
+          <Menu.SubMenu
+            key={nav.id}
+            className={style.level1}
+            title={
+              <>
+                {nav.icon && <span className={style.icon}>{nav.icon}</span>}
+                {nav.title}
+              </>
+            }
+            opened
+          >
+            {nav.child.map(child => {
+              child = { ...child, to: nav.to + child.to }
+              return <Nav key={child.id} {...child} />
+            })}
           </Menu.SubMenu>
         ) : (
-          <Nav key={nav.navKey} {...nav} />
+          <Nav key={nav.id} {...nav} />
         )
       )}
     </Menu>

@@ -1,6 +1,11 @@
 @use 'src/assets/styles/variables' as *;
 
 .menu {
+  .icon {
+    margin-right: 2rem;
+    font-size: 1.7rem;
+  }
+
   .level1 {
     font-weight: bold;
     font-size: 1.5rem;

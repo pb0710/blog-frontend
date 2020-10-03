@@ -20,6 +20,11 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route
             exact
+            path="/articles/:sort"
+            component={React.lazy(() => import('@/pages/articleList/ArticleList'))}
+          />
+          <Route
+            exact
             path="/detail/:id"
             component={React.lazy(() => import('@/pages/articleDetail/ArticleDetail'))}
           />

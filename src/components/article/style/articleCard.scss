@@ -16,7 +16,7 @@ $fast: getDuration('fast');
     transition: transform $fast ease-out, box-shadow $fast ease-out;
 
     &:hover {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
       transform: translateY(-0.2rem);
     }
 

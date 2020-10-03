@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   padding-top: 5rem;
-  // transition: width getDuration('normal') ease-out;
+  transition: width getDuration('normal') ease-out;
 
   @extend .page;
 

@@ -1,0 +1,14 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+
+.article_list_page {
+  padding: 1rem;
+  padding-top: 5rem;
+
+  .article_list {
+    display: flex;
+    flex-flow: wrap;
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
