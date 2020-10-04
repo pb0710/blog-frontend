@@ -1,0 +1,15 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+@use 'login';
+
+.modal_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: getZIndex('modal');
+  width: 100vw;
+  height: 100vh;
+
+  @include flexCenter;
+  @include glass;
+}

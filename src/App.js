@@ -9,10 +9,14 @@ import Home from '@/pages/home/Home'
 import NotFound from '@/pages/notFound/NotFound'
 import { Panel, Affix } from '@/components/base'
 import { AuthorCard } from '@/components/author'
+import { Modal } from '@/components/modal'
+import { useSelector } from 'react-redux'
 
 export default function App() {
+  const { visible } = useSelector(state => state.modal)
   return (
     <div className={style.app}>
+      {visible && <Modal />}
       <Header />
       <Sider />
       <React.Suspense fallback={<Loading.Bounce />}>

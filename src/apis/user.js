@@ -4,11 +4,7 @@ import request from '@/utils/request'
  * 获取用户基本信息
  * @param {*} username 用户名
  */
-export const fetchBaseInfo = username =>
-  request({
-    url: `user/base_info`,
-    params: { username }
-  })
+export const fetchUserProfile = () => request.get(`user/sign_status`)
 
 /**
  * 注册
@@ -16,11 +12,11 @@ export const fetchBaseInfo = username =>
  * @param {string} password 密码
  * @param {string} nickname 昵称
  */
-export const register = (username, password, nickname) =>
+export const register = (username, password, profile) =>
   request({
     url: `user/register`,
     method: 'POST',
-    data: { username, password, nickname }
+    data: { username, password, profile }
   })
 
 /**
@@ -30,7 +26,7 @@ export const register = (username, password, nickname) =>
  */
 export const login = (username, password) =>
   request({
-    url: `user/login`,
+    url: `user/sign_in`,
     method: 'POST',
     data: { username, password }
   })
@@ -39,9 +35,8 @@ export const login = (username, password) =>
  * 登出
  * @param {string} username 用户ID
  */
-export const logout = username =>
+export const logout = () =>
   request({
-    url: `user/logout`,
-    method: 'POST',
-    data: { username }
+    url: `user/sign_out`,
+    method: 'POST'
   })

@@ -1,5 +1,7 @@
 @use 'src/assets/styles/variables' as *;
 @use 'src/assets/styles/mixins' as *;
+@use 'userProfile';
+@use 'appCenter';
 
 .header {
   position: fixed;
@@ -9,7 +11,7 @@
   align-items: center;
   padding: 0 1rem;
   width: 100%;
-  height: 50px;
+  height: 5rem;
   border-bottom: 1px solid #dedede;
   background: getColor('light', 'background');
 
@@ -18,5 +20,16 @@
   > .drawerControl {
     position: absolute;
     left: 1rem;
+  }
+
+  > .tool_bar {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+
+    > .btn {
+      margin-right: 1rem;
+    }
   }
 }

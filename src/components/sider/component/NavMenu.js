@@ -57,7 +57,7 @@ export default function NavMenu() {
           id: '12',
           level: 2,
           to: '/backend',
-          title: '服务端'
+          title: '后端'
         },
         {
           id: '13',

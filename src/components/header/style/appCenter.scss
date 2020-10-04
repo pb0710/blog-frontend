@@ -1,0 +1,11 @@
+@use 'src/assets/styles/variables' as *;
+
+.app_center {
+  top: 6rem;
+  right: 8rem;
+  padding: 1rem;
+  min-height: 0;
+  width: 30rem;
+  height: 30rem;
+  border: 1px solid getColor('light', 'divider');
+}

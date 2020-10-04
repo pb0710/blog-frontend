@@ -1,0 +1,58 @@
+@use 'src/assets/styles/variables' as *;
+@use 'src/assets/styles/mixins' as *;
+
+$highlight: getTheme('highlight');
+$divider: getColor('light', 'divider');
+$shadow: 1px 4px 24px rgba(#000000, 0.1);
+
+.login_wrapper {
+  position: relative;
+  padding: 1rem;
+  width: 33rem;
+  border: 1px solid $divider;
+  border-radius: 1rem;
+  background: getColor('light', 'background');
+  box-shadow: $shadow;
+
+  .close {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .avatar_wrapper {
+    height: 12rem;
+
+    @include flexCenter;
+
+    > img {
+      width: 7rem;
+      height: 7rem;
+      border: 1px solid $divider;
+      border-radius: 50%;
+      background: #aaa;
+      box-shadow: $shadow;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+
+    .register {
+      margin-left: 11rem;
+      color: getColor('light', 'textSecondary');
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color getDuration('normal');
+
+      &:hover {
+        color: $highlight;
+      }
+    }
+  }
+}
