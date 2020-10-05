@@ -6,7 +6,7 @@ $highlight: getTheme('highlight');
 $divider: getColor('light', 'divider');
 $shadow: 1px 4px 24px rgba(#000000, 0.1);
 
-.login_wrapper {
+.register_wrapper {
   position: relative;
   padding: 1rem;
   width: 33rem;
@@ -16,39 +16,18 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
   box-shadow: $shadow;
 
   @include withTitle;
+  @include withClose;
 
-  .avatar_wrapper {
-    height: 12rem;
-
-    @include flexCenter;
-
-    > img {
-      width: 7rem;
-      height: 7rem;
-      border: 1px solid $divider;
-      border-radius: 50%;
-      box-shadow: $shadow;
-    }
+  .header {
+    height: 6rem;
   }
 
-  .footer {
+  .footer_bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-direction: row-reverse;
     padding-right: 1rem;
     padding-bottom: 1rem;
     width: 100%;
-
-    .register {
-      margin-left: 11rem;
-      color: getColor('light', 'textSecondary');
-      text-decoration: underline;
-      cursor: pointer;
-      transition: color getDuration('normal');
-
-      &:hover {
-        color: $highlight;
-      }
-    }
   }
 }

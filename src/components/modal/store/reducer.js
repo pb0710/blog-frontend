@@ -6,3 +6,10 @@ export const visible = handleActions(
   },
   false
 )
+
+export const content = handleActions(
+  {
+    UPDATE_MODAL_CONTENT: (state, action) => action.payload
+  },
+  null
+)

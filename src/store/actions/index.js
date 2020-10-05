@@ -6,6 +6,8 @@ export const userLogin = createAction('USER_LOGIN')
 
 export const userLogout = createAction('USER_LOGOUT')
 
+export const userRegister = createAction('USER_REGISTER')
+
 export const updateOnline = createAction('UPDATE_ONLINE')
 
 export const updateUserProfile = createAction('UPDATE_USER_PROFILE')

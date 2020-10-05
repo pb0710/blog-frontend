@@ -1,15 +1,27 @@
 @use 'src/assets/styles/variables' as *;
 @use 'src/assets/styles/mixins' as *;
 @use 'login';
+@use 'register';
+@use 'profile';
 
 .modal_wrapper {
   position: fixed;
   top: 0;
   left: 0;
   z-index: getZIndex('modal');
+  display: flex;
   width: 100vw;
   height: 100vh;
 
   @include flexCenter;
-  @include glass;
+
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    @include glass;
+  }
 }

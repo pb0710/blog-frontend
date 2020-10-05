@@ -44,6 +44,17 @@ function* logout() {
   }
 }
 
+function* register({ username, password, profile }) {
+  try {
+    const { message } = yield userApi.register(username, password, profile)
+    if (message === 'ok') {
+      yield put(commonAction.userLogin({ username, password }))
+    }
+  } catch (err) {
+    console.error('注册失败', err)
+  }
+}
+
 function* initUserSaga() {
   yield takeEvery('INIT_USER', function* (action) {
     yield initUser(action.payload)
@@ -62,6 +73,12 @@ function* logoutSaga() {
   })
 }
 
+function* registerSaga() {
+  yield takeEvery('USER_REGISTER', function* (action) {
+    yield register(action.payload)
+  })
+}
+
 export default function* () {
-  yield all([spawn(initUserSaga), spawn(loginSaga), spawn(logoutSaga)])
+  yield all([spawn(initUserSaga), spawn(loginSaga), spawn(logoutSaga), spawn(registerSaga)])
 }

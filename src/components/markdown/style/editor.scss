@@ -13,6 +13,7 @@ $divider: getColor('light', 'divider');
     padding: 0 1rem;
     width: 100%;
     height: 5rem;
+    background: getColor('light', 'backgroundVariant');
 
     .tools {
       display: flex;
@@ -38,7 +39,7 @@ $divider: getColor('light', 'divider');
     display: flex;
     overflow: hidden;
     width: 100%;
-    height: calc(100% - 4rem);
+    height: calc(100% - 5rem);
     border-top: 1px solid $divider;
     font-size: 1.4rem;
 

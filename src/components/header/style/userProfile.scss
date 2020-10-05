@@ -1,5 +1,7 @@
 @use 'src/assets/styles/variables' as *;
 
+$divider: getColor('light', 'divider');
+
 .user_profile {
   top: 6rem;
   right: 3rem;
@@ -7,5 +9,5 @@
   min-height: 0;
   width: 28rem;
   height: 32rem;
-  border: 1px solid getColor('light', 'divider');
+  border: 1px solid $divider;
 }

@@ -15,6 +15,7 @@ export default function ArticleDetail() {
   const [bgPic, setBgPic] = React.useState('')
 
   React.useEffect(() => {
+    console.log('1111')
     ;(async () => {
       try {
         const { payload: detail } = await articleApi.fetchDetail(id)

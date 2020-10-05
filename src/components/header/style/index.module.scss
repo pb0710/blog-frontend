@@ -2,6 +2,7 @@
 @use 'src/assets/styles/mixins' as *;
 @use 'userProfile';
 @use 'appCenter';
+@use 'search';
 
 .header {
   position: fixed;
@@ -24,12 +25,17 @@
 
   > .tool_bar {
     position: absolute;
-    right: 0;
+    right: 1rem;
     display: flex;
     align-items: center;
 
     > .btn {
       margin-right: 1rem;
+    }
+
+    > .go_login {
+      margin-left: 1rem;
+      @extend.btn;
     }
   }
 }

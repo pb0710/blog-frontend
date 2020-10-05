@@ -1,12 +1,21 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
-import Login from './Login'
+import * as action from '../store/action'
 
-export default function Modal(props) {
-  const { children } = props
+export default function Modal() {
+  const dispatch = useDispatch()
+  const { content } = useSelector(state => state.modal)
+
+  const handleClose = () => {
+    dispatch(action.updateModalVisible(false))
+    dispatch(action.updateModalContent(null))
+  }
+
   return (
     <div className={style.modal_wrapper}>
-      <Login />
+      <div className={style.mask} onClick={handleClose}></div>
+      {content}
     </div>
   )
 }
