@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Form, Input, Button, Switch, Loading } from 'sylas-react-ui'
-import { ArrowLeftOutlined } from '@ant-design/icons'
+import { CloseOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
 import * as userApi from '@/apis/user'
 import * as commonAction from '@/store/actions'
@@ -11,6 +11,11 @@ import Register from './Register'
 export default function Login(props) {
   const dispatch = useDispatch()
   const form = Form.useForm()
+
+  const handleClose = () => {
+    dispatch(action.updateModalVisible(false))
+    dispatch(action.updateModalContent(null))
+  }
 
   const handleGoRegister = () => {
     dispatch(action.updateModalContent(<Register />))
@@ -26,6 +31,9 @@ export default function Login(props) {
   return (
     <div className={style.login_wrapper}>
       <h1>用户登陆</h1>
+      <Button.Icon className={style.close} onClick={handleClose}>
+        <CloseOutlined />
+      </Button.Icon>
       <div className={style.avatar_wrapper}>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3zmPVUxq5RLPmklOaGEL6Txo6L6hw3guQeQ&usqp=CAU" />
         {/* <Loading.Bounce /> */}

@@ -9,6 +9,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 .register_wrapper {
   position: relative;
   padding: 1rem;
+  padding-top: 6rem;
   width: 33rem;
   border: 1px solid $divider;
   border-radius: 1rem;
@@ -17,10 +18,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 
   @include withTitle;
   @include withClose;
-
-  .header {
-    height: 6rem;
-  }
+  @include withReturn;
 
   .footer_bar {
     display: flex;

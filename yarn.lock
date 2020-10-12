@@ -1592,10 +1592,10 @@
     "@svgr/plugin-svgo" "^4.3.1"
     loader-utils "^1.2.3"
 
-"@testing-library/dom@^7.23.0":
-  version "7.24.1"
-  resolved "https://registry.npm.taobao.org/@testing-library/dom/download/@testing-library/dom-7.24.1.tgz?cache=0&sync_timestamp=1599118386362&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40testing-library%2Fdom%2Fdownload%2F%40testing-library%2Fdom-7.24.1.tgz#0e8acd042070f2c1b183fbfe5c0d38b3194ad3c0"
-  integrity sha1-DorNBCBw8sGxg/v+XA04sxlK08A=
+"@testing-library/dom@^7.24.2":
+  version "7.24.5"
+  resolved "https://registry.npm.taobao.org/@testing-library/dom/download/@testing-library/dom-7.24.5.tgz#862124eec8c37ad184716379f09742476b23815d"
+  integrity sha1-hiEk7sjDetGEcWN58JdCR2sjgV0=
   dependencies:
     "@babel/code-frame" "^7.10.4"
     "@babel/runtime" "^7.10.3"
@@ -1619,18 +1619,18 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@^11.0.2":
-  version "11.0.2"
-  resolved "https://registry.npm.taobao.org/@testing-library/react/download/@testing-library/react-11.0.2.tgz#4588cc537085907bd1d98b531eb247dbbf57b1cc"
-  integrity sha1-RYjMU3CFkHvR2YtTHrJH279Xscw=
+"@testing-library/react@^11.0.4":
+  version "11.0.4"
+  resolved "https://registry.npm.taobao.org/@testing-library/react/download/@testing-library/react-11.0.4.tgz#c84082bfe1593d8fcd475d46baee024452f31dee"
+  integrity sha1-yECCv+FZPY/NR11Guu4CRFLzHe4=
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@testing-library/dom" "^7.23.0"
+    "@testing-library/dom" "^7.24.2"
 
-"@testing-library/user-event@^12.1.4":
-  version "12.1.4"
-  resolved "https://registry.npm.taobao.org/@testing-library/user-event/download/@testing-library/user-event-12.1.4.tgz#a1f257dd2ec5fc19ca5d96ef2d096f6f5888e67a"
-  integrity sha1-ofJX3S7F/BnKXZbvLQlvb1iI5no=
+"@testing-library/user-event@^12.1.7":
+  version "12.1.7"
+  resolved "https://registry.npm.taobao.org/@testing-library/user-event/download/@testing-library/user-event-12.1.7.tgz#67a81ee04e81b4abca8931804655d364fbb93c10"
+  integrity sha1-Z6ge4E6BtKvKiTGARlXTZPu5PBA=
   dependencies:
     "@babel/runtime" "^7.10.2"
 
@@ -7198,10 +7198,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-to-jsx@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.npm.taobao.org/markdown-to-jsx/download/markdown-to-jsx-7.0.0.tgz?cache=0&sync_timestamp=1599445167184&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmarkdown-to-jsx%2Fdownload%2Fmarkdown-to-jsx-7.0.0.tgz#66c57f69d1b22a710f862496b0bfde11b452a7d9"
-  integrity sha1-ZsV/adGyKnEPhiSWsL/eEbRSp9k=
+markdown-to-jsx@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.npm.taobao.org/markdown-to-jsx/download/markdown-to-jsx-7.0.1.tgz#7b3be496f30701f09e9308c4efabf0177ecd9251"
+  integrity sha1-ezvklvMHAfCekwjE76vwF37NklE=
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -9396,10 +9396,10 @@ react-scripts@3.4.3:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-syntax-highlighter@^13.5.3:
-  version "13.5.3"
-  resolved "https://registry.npm.taobao.org/react-syntax-highlighter/download/react-syntax-highlighter-13.5.3.tgz#9712850f883a3e19eb858cf93fad7bb357eea9c6"
-  integrity sha1-lxKFD4g6PhnrhYz5P617s1fuqcY=
+react-syntax-highlighter@^15.1.0:
+  version "15.1.0"
+  resolved "https://registry.npm.taobao.org/react-syntax-highlighter/download/react-syntax-highlighter-15.1.0.tgz#06f1d6877b1964061da58cb8a547c1c522ce30e7"
+  integrity sha1-BvHWh3sZZAYdpYy4pUfBxSLOMOc=
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "^10.1.1"
@@ -10706,10 +10706,10 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sylas-react-ui@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/sylas-react-ui/-/sylas-react-ui-1.1.0.tgz#8c47ef88642a3ab2745f923267d747f76652e713"
-  integrity sha512-WIDLqlpfc9tCM9SOtdbbKlUgMqUXE8ymWogUZP6Desf2amPRQkBKoE7qB0m11zp3+YYeXkMsss1l1SssJAlugw==
+sylas-react-ui@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npm.taobao.org/sylas-react-ui/download/sylas-react-ui-1.1.1.tgz?cache=0&sync_timestamp=1602209991231&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsylas-react-ui%2Fdownload%2Fsylas-react-ui-1.1.1.tgz#6b8f89b7135fbcef15bf7329750d9beec12c4a66"
+  integrity sha1-a4+JtxNfvO8Vv3MpdQ2b7sEsSmY=
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@material-ui/styles" "^4.10.0"

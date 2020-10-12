@@ -1,6 +1,6 @@
 import React from 'react'
 import { MarkdownEditor } from '@/components/markdown'
-import style from './style/index.module.scss'
+import style from '../style/index.module.scss'
 import { FlexiblePage } from '@/components/page'
 
 export default function ArticleUpload() {

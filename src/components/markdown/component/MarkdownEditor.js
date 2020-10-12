@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'sylas-react-ui'
-import { TableOutlined, CodeOutlined, SendOutlined } from '@ant-design/icons'
+import { NumberOutlined, EditOutlined, SendOutlined } from '@ant-design/icons'
 import { insertTemp, followScroll, getPosition, setPosition } from '../util'
 import style from '../style/index.module.scss'
 import Uploader from './Uploader'
@@ -8,6 +8,9 @@ import Editor from './Editor'
 import Preview from './Preview'
 import * as temp from '../temp'
 import * as fileApi from '@/apis/file'
+import { useDispatch, useSelector } from 'react-redux'
+import * as modalAction from '@/components/modal/store/action'
+import { ArticleInfo } from '@/pages/articleUpload'
 
 const area = {
   EDITOR: 'editor',
@@ -15,7 +18,13 @@ const area = {
 }
 
 function MarkdownEditor() {
-  const [content, setContent] = React.useState('')
+  const dispatch = useDispatch()
+  const {
+    userProfile: { userId }
+  } = useSelector(state => state)
+  const online = useSelector(state => state.online)
+
+  const [content, setContent] = React.useState(temp.markdownDemo)
   const editorRef = React.useRef()
   const previewRef = React.useRef()
   // 鼠标悬停区域
@@ -47,9 +56,11 @@ function MarkdownEditor() {
 
   const uploadFiles = async formData => {
     try {
-      const remoteUrls = await fileApi.uploadImage(formData)
-      const imgTemp = remoteUrls.map(url => `  \n![](${url})`)
-      setContent(content => content + imgTemp.join(''))
+      const { message, payload: remotePicUrls } = await fileApi.uploadImage(formData)
+      if (message === 'ok') {
+        const imgTemp = remotePicUrls.map(url => `  \n![](${url})`).join('')
+        setContent(content => content + imgTemp)
+      }
     } catch (err) {
       console.error(`图片上传失败——${err}`)
     }
@@ -57,25 +68,30 @@ function MarkdownEditor() {
 
   const handleFilesChange = async formData => {
     if (!formData) return
-    // formData.set('userId', userId)
+    formData.set('userId', userId)
     uploadFiles(formData)
   }
 
   const handleInsertTable = () => {
     const position = getPosition(editorRef.current)
     const targetPos = position.start + temp.table.length
-    console.log('position.start: ', position.start)
-    console.log('targetPos: ', targetPos)
     setPosition(editorRef.current, targetPos)
     setContent(prev => insertTemp(prev, position.start, temp.table))
   }
 
-  const handleInsertLink = () => {
-    setContent(prev => prev + temp.link)
+  const handleInsertCode = () => {
+    console.log('content', content)
+    setContent(prev => prev + temp.codeBlock)
   }
 
-  const handleInsertCode = () => {
-    setContent(prev => prev + temp.codeBlock)
+  const handlePublish = () => {
+    console.log('content', content)
+    if (!content || content.length < 20) {
+      alert('文章字数少于20')
+      return
+    }
+    dispatch(modalAction.updateModalContent(<ArticleInfo content={content} />))
+    dispatch(modalAction.updateModalVisible(true))
   }
 
   const editorProps = {
@@ -99,16 +115,21 @@ function MarkdownEditor() {
         <div className={style.tools}>
           <Uploader format="formdata" onChange={handleFilesChange} />
           <Button.Icon onClick={handleInsertTable}>
-            <TableOutlined />
+            <NumberOutlined />
           </Button.Icon>
           <Button.Icon onClick={handleInsertCode}>
-            <CodeOutlined />
+            <EditOutlined />
           </Button.Icon>
         </div>
-        <Button className={style.publish} color="primary">
-          <SendOutlined />
-          <strong>发布</strong>
-        </Button>
+        <div className={style.operation}>
+          {online ? (
+            <Button className={style.publish} color="primary" onClick={handlePublish}>
+              发布
+            </Button>
+          ) : (
+            '登录账号即可发布文章...'
+          )}
+        </div>
       </div>
       <section className={style.content}>
         <Editor ref={editorRef} {...editorProps} />
@@ -118,4 +139,4 @@ function MarkdownEditor() {
   )
 }
 
-export default React.memo(MarkdownEditor)
+export default MarkdownEditor

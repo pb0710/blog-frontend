@@ -9,13 +9,14 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 .login_wrapper {
   position: relative;
   padding: 1rem;
-  width: 33rem;
+  width: 34rem;
   border: 1px solid $divider;
   border-radius: 1rem;
   background: getColor('light', 'background');
   box-shadow: $shadow;
 
   @include withTitle;
+  @include withClose;
 
   .avatar_wrapper {
     height: 12rem;
@@ -25,7 +26,6 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
     > img {
       width: 7rem;
       height: 7rem;
-      border: 1px solid $divider;
       border-radius: 50%;
       box-shadow: $shadow;
     }
@@ -35,12 +35,12 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 1rem;
+    padding-right: 2rem;
     padding-bottom: 1rem;
     width: 100%;
 
     .register {
-      margin-left: 11rem;
+      margin-left: 12rem;
       color: getColor('light', 'textSecondary');
       text-decoration: underline;
       cursor: pointer;

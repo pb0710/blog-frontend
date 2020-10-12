@@ -11,6 +11,7 @@ function _Editor(props, ref) {
         onMouseEnter={props.handleEnterEditor}
         onMouseLeave={props.handleLeave}
         onScroll={props.handleScrollEditor}
+        placeholder="支持 markdown、text 格式..."
       ></textarea>
     </article>
   )

@@ -22,7 +22,7 @@ function Content() {
         <Route
           exact
           path="/upload"
-          component={React.lazy(() => import('@/pages/articleUpload/ArticleUpload'))}
+          component={React.lazy(() => import('@/pages/articleUpload/component/ArticleUpload'))}
         />
         <Route component={NotFound} />
       </Switch>

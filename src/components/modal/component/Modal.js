@@ -8,8 +8,10 @@ export default function Modal() {
   const { content } = useSelector(state => state.modal)
 
   const handleClose = () => {
-    dispatch(action.updateModalVisible(false))
-    dispatch(action.updateModalContent(null))
+    if (false) {
+      dispatch(action.updateModalVisible(false))
+      dispatch(action.updateModalContent(null))
+    }
   }
 
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import { ArrowLeftOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, CloseOutlined } from '@ant-design/icons'
 import * as action from '../store/action'
 import * as commonAction from '@/store/actions'
 import Login from './Login'
@@ -13,6 +13,11 @@ export default function Register() {
 
   const handleReturn = () => {
     dispatch(action.updateModalContent(<Login />))
+  }
+
+  const handleClose = () => {
+    dispatch(action.updateModalVisible(false))
+    dispatch(action.updateModalContent(null))
   }
 
   const handleCreateAccount = values => {
@@ -27,8 +32,11 @@ export default function Register() {
   return (
     <div className={style.register_wrapper}>
       <h1>创建账号</h1>
-      <Button.Icon className={style.close} onClick={handleReturn}>
+      <Button.Icon className={style.return} onClick={handleReturn}>
         <ArrowLeftOutlined />
+      </Button.Icon>
+      <Button.Icon className={style.close} onClick={handleClose}>
+        <CloseOutlined />
       </Button.Icon>
       <div className={style.header}></div>
       <Form onFinished={handleCreateAccount}>

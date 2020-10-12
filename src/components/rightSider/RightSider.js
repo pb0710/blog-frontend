@@ -10,20 +10,25 @@ export default function RightSider() {
   const { drawerOpened } = useSelector(state => state.sider)
   const rightSiderCls = clsx([style.right_sider, drawerOpened && style.narrowing])
   return (
-    <aside className={rightSiderCls}>
-      <Switch>
-        <Route exact path="/upload" />
-        <Route exact path="/detail/:id">
+    <Switch>
+      <Route exact path="/upload" />
+      <Route exact path="/detail/:id">
+        <aside className={rightSiderCls}>
           <AuthorCard />
-        </Route>
-        <Route>
+          <Affix>
+            <Panel></Panel>
+          </Affix>
+        </aside>
+      </Route>
+      <Route>
+        <aside className={rightSiderCls}>
           <Panel></Panel>
           <Panel></Panel>
           <Affix>
             <Panel></Panel>
           </Affix>
-        </Route>
-      </Switch>
-    </aside>
+        </aside>
+      </Route>
+    </Switch>
   )
 }
