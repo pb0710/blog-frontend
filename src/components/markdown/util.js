@@ -10,21 +10,6 @@ export function getlang(str) {
   }
 }
 
-/**
- * 读取二进制文件为base64
- * @param file 二进制
- */
-export function readFile(file) {
-  return new Promise(resolve => {
-    const fileReader = new FileReader()
-    fileReader.readAsDataURL(file)
-    fileReader.onload = () => {
-      const base64 = fileReader.result
-      resolve(base64)
-    }
-  })
-}
-
 export function insertTemp(str, index, target) {
   const start = str.substr(0, index)
   const end = str.substr(index, str.length)

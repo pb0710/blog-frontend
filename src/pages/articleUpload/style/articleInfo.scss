@@ -24,11 +24,11 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
     z-index: 1;
     width: 16rem;
     height: 10rem;
-    border-radius: 4px;
+    border-radius: 6px;
     box-shadow: $shadow;
     cursor: pointer;
 
-    .pic_mask {
+    .pic_cover {
       position: absolute;
       width: 100%;
       height: 100%;

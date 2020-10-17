@@ -5,7 +5,7 @@ import * as modalAction from '@/components/modal/store/action'
 
 function* _fetchUser() {
   try {
-    const { message, payload } = yield userApi.fetchUserProfile()
+    const { message, payload } = yield userApi.fetchStatus()
     if (message === 'ok') {
       yield put(commonAction.updateOnline(true))
       yield put(commonAction.updateUserProfile(payload))

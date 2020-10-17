@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import AspectRatio from './AspectRatio'
+import { AspectRatio } from '@/components/base'
 
 export default function ArticleCard(props) {
   const {
@@ -23,7 +23,7 @@ export default function ArticleCard(props) {
         <AspectRatio aspectRatio={4 / 3}>
           <Link to={aritcleLink}>
             <div className={style.cover}>
-              <img src={backgroundImage} />
+              <img src={backgroundImage} alt="cover_pic" />
             </div>
           </Link>
           <div className={style.bottom}>

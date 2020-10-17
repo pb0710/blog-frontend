@@ -3,26 +3,43 @@ import style from '../style/index.module.scss'
 import { useSelector } from 'react-redux'
 import { Panel } from '@/components/base'
 import { List } from 'sylas-react-ui'
-import { UserOutlined, LikeOutlined, EyeOutlined } from '@ant-design/icons'
+import { LikeOutlined, EyeOutlined } from '@ant-design/icons'
 import clsx from 'clsx'
+import { Link } from 'react-router-dom'
+import { useFetch } from '@/utils/hooks'
+import * as userApi from '@/apis/user'
 
 export default function AuthorCard() {
-  const { detail } = useSelector(state => state.article)
+  const {
+    detail,
+    detail: { author }
+  } = useSelector(state => state.article)
+
+  const fetchProfile = React.useCallback(
+    async () => (author ? await userApi.fetchProfile(author) : {}),
+    [author]
+  )
+  const {
+    data: { message, payload }
+  } = useFetch(fetchProfile, {})
+
+  const profile = message === 'ok' ? payload : {}
 
   const avatarItemCls = clsx(style.item, style.name_wrapper)
 
   return (
     <Panel className={style.author_card}>
       <List>
-        <List.Item className={avatarItemCls}>
-          <div className={style.avatar}>
-            <UserOutlined />
-          </div>
-          <div className={style.right_wrapper}>
-            <p className={style.name}>{detail.author}</p>
-            <div className={style.introduce}>时代发生的方式方法地方</div>
-          </div>
-        </List.Item>
+        <Link to="/">
+          <List.Item className={avatarItemCls}>
+            <div className={style.avatar}>
+              <img src={profile.avatar} alt="avatar" />
+            </div>
+            <div className={style.right_wrapper}>
+              <p className={style.name}>{profile.nickname}</p>
+            </div>
+          </List.Item>
+        </Link>
         <List.Item className={style.item}>
           <LikeOutlined />
           <span>获赞：2048</span>

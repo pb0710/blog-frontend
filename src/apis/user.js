@@ -1,10 +1,19 @@
 import request from '@/utils/request'
 
 /**
+ * 获取用户登陆信息和基本信息
+ */
+export const fetchStatus = () => request.get(`user/sign_status`)
+
+/**
  * 获取用户基本信息
  * @param {*} username 用户名
  */
-export const fetchUserProfile = () => request.get(`user/sign_status`)
+export const fetchProfile = username =>
+  request({
+    url: `user/profile`,
+    params: { username }
+  })
 
 /**
  * 注册

@@ -10,8 +10,9 @@ $fast: getDuration('fast');
 
   .article_card {
     position: relative;
+    overflow: hidden;
     border: $divider;
-    border-radius: 4px;
+    border-radius: 6px;
     background: getColor('light', 'background');
     transition: transform $fast ease-out, box-shadow $fast ease-out;
 
@@ -27,8 +28,6 @@ $fast: getDuration('fast');
       > img {
         width: 100%;
         height: 100%;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
         background: getColor('light', 'divider');
         vertical-align: text-top;
 

@@ -1,14 +1,13 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Button, Popup } from 'sylas-react-ui'
-import { UserOutlined } from '@ant-design/icons'
-import { useDispatch } from 'react-redux'
+import clsx from 'clsx'
+import { useDispatch, useSelector } from 'react-redux'
 import * as commonAction from '@/store/actions'
-import * as userApi from '@/apis/user'
 
-export default function UserProfile(props) {
-  const {} = props
+export default function UserProfile() {
   const dispatch = useDispatch()
+  const { avatar } = useSelector(state => state.userProfile)
 
   const { popupRef, visible, handleShowPopup } = Popup.usePopupVisible()
 
@@ -16,11 +15,13 @@ export default function UserProfile(props) {
     dispatch(commonAction.userLogout())
   }
 
+  const avatarCls = clsx(style.user_avatar, visible && style.active)
+
   return (
     <>
-      <Button.Icon className={style.btn} focus={visible} onClick={handleShowPopup}>
-        <UserOutlined />
-      </Button.Icon>
+      <div className={avatarCls} onClick={handleShowPopup}>
+        <img src={avatar ?? 'default'} alt="avatar" />
+      </div>
       <Popup
         className={style.user_profile}
         ref={popupRef}

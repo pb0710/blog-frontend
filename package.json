@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
     "@testing-library/user-event": "^12.1.7",
+    "ahooks": "^2.7.0",
     "axios": "^0.20.0",
     "border.css": "^0.10.0",
     "clsx": "^1.1.1",
@@ -18,7 +19,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-syntax-highlighter": "^15.1.0",
+    "react-syntax-highlighter": "^15.2.1",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
@@ -30,10 +31,12 @@
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "customize-cra": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
+    "prettier": "^2.1.2",
     "pretty-quick": "^3.0.2",
     "react-app-rewired": "^2.1.6",
-    "sass": "^1.26.10"
+    "sass": "^1.27.0"
   },
   "scripts": {
     "start": "react-app-rewired start",

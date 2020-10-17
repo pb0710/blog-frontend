@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './style/index.module.scss'
+import style from '../style/index.module.scss'
 import clsx from 'clsx'
 
 export default function Panel(props) {
