@@ -2,47 +2,51 @@
 @use 'src/assets/styles/mixins' as *;
 
 .author_card {
-  padding: 1rem;
-  padding-bottom: 0;
+	padding: 1rem;
+	padding-bottom: 0;
 
-  .item {
-    padding: 0;
+	.item {
+		padding-left: 1rem;
 
-    > span {
-      margin-left: 1rem;
-      font-size: 1.4rem;
-    }
+		svg {
+			font-size: 2rem;
+		}
 
-    &.name_wrapper {
-      padding: 1rem;
-      height: 10rem;
+		> span {
+			margin-left: 1rem;
+			font-size: 1.4rem;
+		}
 
-      > .avatar {
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
+		&.name_wrapper {
+			padding: 1rem;
+			height: 10rem;
 
-        @include flexCenter;
-        > img {
-          width: 100%;
-          height: 100%;
-          border-radius: inherit;
-          vertical-align: text-top;
+			> .avatar {
+				width: 5rem;
+				height: 5rem;
+				border-radius: 50%;
 
-          object-fit: cover;
-        }
-      }
+				@include flexCenter;
+				> img {
+					width: 100%;
+					height: 100%;
+					border-radius: inherit;
+					vertical-align: text-top;
 
-      > .right_wrapper {
-        margin-left: 2rem;
-        width: 12rem;
+					object-fit: cover;
+				}
+			}
 
-        .name {
-          color: getColor('light', 'textPrimary');
-          font-weight: bold;
-          font-size: 1.6rem;
-        }
-      }
-    }
-  }
+			> .right_wrapper {
+				margin-left: 2rem;
+				width: 12rem;
+
+				.name {
+					color: getColor('light', 'textPrimary');
+					font-weight: bold;
+					font-size: 1.6rem;
+				}
+			}
+		}
+	}
 }

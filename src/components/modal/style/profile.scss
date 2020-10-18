@@ -29,7 +29,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 		width: 10rem;
 		height: 10rem;
 		border-radius: 50%;
-		box-shadow: $shadow;
+		// box-shadow: $shadow;
 		cursor: pointer;
 
 		@include flexCenter;
@@ -49,9 +49,11 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 			height: 100%;
 			border-radius: inherit;
 			color: #fff;
-			font-size: 3rem;
 
 			@include flexCenter;
+			> svg {
+				font-size: 4rem;
+			}
 			&:hover {
 				backdrop-filter: blur(24px);
 			}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from 'sylas-react-ui'
-import { NumberOutlined, EditOutlined } from '@ant-design/icons'
 import { insertTemp, followScroll, getPosition, setPosition } from '../util'
 import style from '../style/index.module.scss'
 import { Uploader } from '@/components/base'
@@ -11,6 +10,8 @@ import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
 import * as modalAction from '@/components/modal/store/action'
 import { ArticleInfo } from '@/pages/articleUpload'
+import CodeIcon from '@material-ui/icons/Code'
+import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined'
 
 const area = {
 	EDITOR: 'editor',
@@ -113,11 +114,11 @@ function MarkdownEditor() {
 			<div className={style.header_bar}>
 				<div className={style.tools}>
 					<Uploader format="formdata" multiple onChange={handleFilesChange} />
-					<Button.Icon onClick={handleInsertTable}>
-						<NumberOutlined />
-					</Button.Icon>
 					<Button.Icon onClick={handleInsertCode}>
-						<EditOutlined />
+						<CodeIcon />
+					</Button.Icon>
+					<Button.Icon onClick={handleInsertTable}>
+						<ViewModuleOutlinedIcon />
 					</Button.Icon>
 				</div>
 				<div className={style.operation}>

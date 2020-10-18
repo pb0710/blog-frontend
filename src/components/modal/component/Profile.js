@@ -2,22 +2,23 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import { CloseOutlined, ArrowLeftOutlined, UserAddOutlined } from '@ant-design/icons'
+import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
+import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined'
+import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
 import * as action from '../store/action'
 import * as commonAction from '@/store/actions'
 import * as fileApi from '@/apis/file'
 import Register from './Register'
 import { useBoolean } from '@/utils/hooks'
 import { Uploader } from '@/components/base'
+import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 
 export default function Profile(props) {
 	const { account } = props
 
 	const dispatch = useDispatch()
 	const { online } = useSelector(state => state)
-	const [avatarSrc, setAvatarSrc] = React.useState(
-		'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3zmPVUxq5RLPmklOaGEL6Txo6L6hw3guQeQ&usqp=CAU'
-	)
+	const [avatarSrc, setAvatarSrc] = React.useState(defaultAvatar)
 	const { state: visible, setTrue: handleShowUpload, setFalse: handleHideUpload } = useBoolean(false)
 
 	const handleReturn = () => {
@@ -62,17 +63,17 @@ export default function Profile(props) {
 		<div className={style.profile_wrapper}>
 			<h1>完善个人信息</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
-				<ArrowLeftOutlined />
+				<ArrowBackOutlinedIcon />
 			</Button.Icon>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlined />
+				<CloseOutlinedIcon />
 			</Button.Icon>
 			<Uploader format="formdata" onChange={handleAddAvatar}>
 				<div className={style.avatar_wrapper} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
 					<img alt="avatar" src={avatarSrc} />
 					{visible && (
 						<div className={style.upload_cover}>
-							<UserAddOutlined />
+							<PersonAddOutlinedIcon />
 						</div>
 					)}
 				</div>

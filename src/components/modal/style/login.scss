@@ -7,48 +7,48 @@ $divider: getColor('light', 'divider');
 $shadow: 1px 4px 24px rgba(#000000, 0.1);
 
 .login_wrapper {
-  position: relative;
-  padding: 1rem;
-  width: 34rem;
-  border: 1px solid $divider;
-  border-radius: 1rem;
-  background: getColor('light', 'background');
-  box-shadow: $shadow;
+	position: relative;
+	padding: 1rem;
+	width: 34rem;
+	border: 1px solid $divider;
+	border-radius: 1rem;
+	background: getColor('light', 'background');
+	box-shadow: $shadow;
 
-  @include withTitle;
-  @include withClose;
+	@include withTitle;
+	@include withClose;
 
-  .avatar_wrapper {
-    height: 12rem;
+	.avatar_wrapper {
+		height: 12rem;
 
-    @include flexCenter;
+		@include flexCenter;
 
-    > img {
-      width: 7rem;
-      height: 7rem;
-      border-radius: 50%;
-      box-shadow: $shadow;
-    }
-  }
+		> img {
+			width: 7rem;
+			height: 7rem;
+			border-radius: 50%;
+			// box-shadow: $shadow;
+		}
+	}
 
-  .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
-    width: 100%;
+	.footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-right: 2rem;
+		padding-bottom: 1rem;
+		width: 100%;
 
-    .register {
-      margin-left: 12rem;
-      color: getColor('light', 'textSecondary');
-      text-decoration: underline;
-      cursor: pointer;
-      transition: color getDuration('normal');
+		.register {
+			margin-left: 12rem;
+			color: getColor('light', 'textSecondary');
+			text-decoration: underline;
+			cursor: pointer;
+			transition: color getDuration('normal');
 
-      &:hover {
-        color: $highlight;
-      }
-    }
-  }
+			&:hover {
+				color: $highlight;
+			}
+		}
+	}
 }

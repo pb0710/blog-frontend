@@ -7,52 +7,54 @@ $divider: getColor('light', 'divider');
 $shadow: 1px 4px 24px rgba(#000000, 0.1);
 
 .article_info {
-  position: relative;
-  padding: 1rem;
-  padding-top: 4rem;
-  width: 36rem;
-  border: 1px solid $divider;
-  border-radius: 1rem;
-  background: getColor('light', 'background');
-  box-shadow: $shadow;
+	position: relative;
+	padding: 1rem;
+	padding-top: 4rem;
+	width: 36rem;
+	border: 1px solid $divider;
+	border-radius: 1rem;
+	background: getColor('light', 'background');
+	box-shadow: $shadow;
 
-  @include withTitle;
-  @include withClose;
+	@include withTitle;
+	@include withClose;
 
-  .pic_wrapper {
-    position: relative;
-    z-index: 1;
-    width: 16rem;
-    height: 10rem;
-    border-radius: 6px;
-    box-shadow: $shadow;
-    cursor: pointer;
+	.pic_wrapper {
+		position: relative;
+		z-index: 1;
+		width: 16rem;
+		height: 10rem;
+		border-radius: 6px;
+		box-shadow: $shadow;
+		cursor: pointer;
 
-    .pic_cover {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      color: #fff;
-      font-size: 3rem;
+		.pic_cover {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border-radius: inherit;
+			color: #fff;
 
-      @include flexCenter;
-      &:hover {
-        backdrop-filter: blur(24px);
-      }
-    }
+			@include flexCenter;
+			> svg {
+				font-size: 4rem;
+			}
+			&:hover {
+				backdrop-filter: blur(24px);
+			}
+		}
 
-    .title_pic {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      vertical-align: text-top;
+		.title_pic {
+			width: 100%;
+			height: 100%;
+			border-radius: inherit;
+			vertical-align: text-top;
 
-      object-fit: cover;
-    }
-  }
+			object-fit: cover;
+		}
+	}
 
-  .add {
-    margin-top: 1rem;
-  }
+	.add {
+		margin-top: 1rem;
+	}
 }

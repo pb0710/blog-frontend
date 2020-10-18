@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Button } from 'sylas-react-ui'
-import { PictureOutlined } from '@ant-design/icons'
+import PanoramaOutlinedIcon from '@material-ui/icons/PanoramaOutlined'
 import { readFile } from '../util'
 
 const dataFormat = {
@@ -14,7 +14,7 @@ function Uploader(props) {
 		classes,
 		children = (
 			<Button.Icon>
-				<PictureOutlined />
+				<PanoramaOutlinedIcon />
 			</Button.Icon>
 		),
 		format = dataFormat.BASE_64,
