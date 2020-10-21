@@ -10,6 +10,7 @@ import Register from './Register'
 import { useBoolean } from '@/utils/hooks'
 import { Uploader } from '@/components/base'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
+import { message } from '@/components/global'
 
 export default function Profile(props) {
 	const { account } = props
@@ -17,7 +18,7 @@ export default function Profile(props) {
 	const dispatch = useDispatch()
 	const { online } = useSelector(state => state)
 	const [avatarSrc, setAvatarSrc] = React.useState(defaultAvatar)
-	const { state: visible, setTrue: handleShowUpload, setFalse: handleHideUpload } = useBoolean(false)
+	const [visible, { setTrue: handleShowUpload, setFalse: handleHideUpload }] = useBoolean(false)
 
 	const handleReturn = () => {
 		dispatch(action.updateModalContent(<Register />))
@@ -54,6 +55,7 @@ export default function Profile(props) {
 			}
 		} catch (err) {
 			console.error(`图片上传失败——${err}`)
+			message.error(err)
 		}
 	}
 

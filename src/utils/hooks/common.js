@@ -1,17 +1,17 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 
 export function useBoolean(initial) {
-  const [state, setState] = useState(initial)
-  const setTrue = () => {
-    setState(true)
-  }
-  const setFalse = () => {
-    setState(false)
-  }
-  const setToggle = () => {
-    setState(prev => !prev)
-  }
-  return { state, setTrue, setFalse, setToggle }
+	const [state, setState] = useState(initial)
+	const setTrue = () => {
+		setState(true)
+	}
+	const setFalse = () => {
+		setState(false)
+	}
+	const setToggle = () => {
+		setState(prev => !prev)
+	}
+	return [state, { setTrue, setFalse, setToggle }]
 }
 
 /**
@@ -22,21 +22,21 @@ export function useBoolean(initial) {
  *  @param {boolean} immutable 是否只请求一次
  */
 export function useFetch(promiseApi, initData, immutable) {
-  const [data, setData] = useState(initData)
-  const [error, setError] = useState()
-  const [loading, setLoading] = useState(false)
+	const [data, setData] = useState(initData)
+	const [error, setError] = useState()
+	const [loading, setLoading] = useState(false)
 
-  const excute = useCallback(() => {
-    setLoading(true)
-    promiseApi()
-      .then(res => setData(res))
-      .catch(err => setError(err))
-      .finally(() => setLoading(false))
-  }, [promiseApi])
+	const excute = useCallback(() => {
+		setLoading(true)
+		promiseApi()
+			.then(res => setData(res))
+			.catch(err => setError(err))
+			.finally(() => setLoading(false))
+	}, [promiseApi])
 
-  useEffect(() => {
-    if (!immutable) excute()
-  }, [excute, immutable])
+	useEffect(() => {
+		if (!immutable) excute()
+	}, [excute, immutable])
 
-  return { data, error, loading, excute }
+	return { data, error, loading, excute }
 }

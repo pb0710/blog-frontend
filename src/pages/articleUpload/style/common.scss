@@ -1,19 +1,22 @@
 @mixin withTitle {
-  > h1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    transform: translateY(-10rem);
-  }
+	> h1 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		transform: translateY(-10rem);
+	}
 }
 
 @mixin withClose {
-  .close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-  }
+	.close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+
+		> svg {
+			font-size: 2rem;
+		}
+	}
 }

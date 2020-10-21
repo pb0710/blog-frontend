@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import * as modalAction from '@/components/global/store/action'
 import { ArticleInfo } from '@/pages/articleUpload'
 import { Code, ViewModuleOutlined } from '@material-ui/icons'
+import { message } from '@/components/global'
 
 const area = {
 	EDITOR: 'editor',
@@ -62,6 +63,7 @@ function MarkdownEditor() {
 			}
 		} catch (err) {
 			console.error(`图片上传失败——${err}`)
+			message.error(err)
 		}
 	}
 
@@ -112,12 +114,12 @@ function MarkdownEditor() {
 		<div className={style.markdown_editor}>
 			<div className={style.header_bar}>
 				<div className={style.tools}>
+					<Button.Icon onClick={handleInsertTable}>
+						<ViewModuleOutlined />
+					</Button.Icon>
 					<Uploader format="formdata" multiple onChange={handleFilesChange} />
 					<Button.Icon onClick={handleInsertCode}>
 						<Code />
-					</Button.Icon>
-					<Button.Icon onClick={handleInsertTable}>
-						<ViewModuleOutlined />
 					</Button.Icon>
 				</div>
 				<div className={style.operation}>

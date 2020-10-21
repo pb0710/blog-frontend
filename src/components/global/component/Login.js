@@ -7,9 +7,9 @@ import * as commonAction from '@/store/actions'
 import * as action from '../store/action'
 import Register from './Register'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
-import Tips from './Tips'
+import { message } from '@/components/global'
 
-export default function Login(props) {
+export default function Login() {
 	const dispatch = useDispatch()
 	const form = Form.useForm()
 
@@ -28,8 +28,7 @@ export default function Login(props) {
 		console.log('values: ', values)
 		const { username, password } = values
 		if (!username || !password) {
-			dispatch(action.updatePromptVisible(true))
-			dispatch(action.updatePromptContent(<Tips type="fail">请输入完整</Tips>))
+			message.error('请输入完整的账号和密码')
 			return
 		}
 		dispatch(commonAction.userLogin({ username, password }))

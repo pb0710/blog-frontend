@@ -2,6 +2,7 @@ import { all, spawn, put, select, takeEvery, takeLatest } from 'redux-saga/effec
 import * as userApi from '@/apis/user'
 import * as commonAction from '@/store/actions'
 import * as modalAction from '@/components/global/store/action'
+import { message } from '@/components/global'
 
 function* _fetchUser() {
 	try {
@@ -12,6 +13,7 @@ function* _fetchUser() {
 		}
 	} catch (err) {
 		console.error('获取用户失败', err)
+		message.error(err)
 	}
 }
 
@@ -31,6 +33,7 @@ function* login({ username, password }) {
 		}
 	} catch (err) {
 		console.error('登录失败', err)
+		message.error(err)
 	}
 }
 
@@ -41,6 +44,7 @@ function* logout() {
 		yield put(commonAction.updateUserProfile({}))
 	} catch (err) {
 		console.error('退出登陆失败', err)
+		message.error(err)
 	}
 }
 
@@ -52,6 +56,7 @@ function* register({ username, password, profile }) {
 		}
 	} catch (err) {
 		console.error('注册失败', err)
+		message.error(err)
 	}
 }
 

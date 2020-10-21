@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import { Home, LibraryBooksOutlined, Create, Settings, ExploreOutlined } from '@material-ui/icons'
+import { Home, LibraryBooks, Create, Settings, Explore } from '@material-ui/icons'
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
@@ -33,7 +33,7 @@ export default function NavMenu() {
 			level: 1,
 			to: '/articles',
 			title: '文章',
-			icon: <LibraryBooksOutlined />,
+			icon: <LibraryBooks />,
 			child: [
 				{
 					id: '10',
@@ -78,7 +78,7 @@ export default function NavMenu() {
 			id: '3',
 			level: 1,
 			title: '文档聚合',
-			icon: <ExploreOutlined />,
+			icon: <Explore />,
 			child: [
 				{
 					id: '30',

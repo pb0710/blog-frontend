@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
 import { CloseOutlined, ArrowBackOutlined } from '@material-ui/icons'
+import { message } from '@/components/global'
 import * as action from '../store/action'
 import Login from './Login'
 import Profile from './Profile'
@@ -22,7 +23,10 @@ export default function Register() {
 	const handleCreateAccount = values => {
 		const { username, password } = values
 
-		// if (!username || !password) return //TODO:
+		if (!username || !password) {
+			message.error('请输入完整的账号和密码')
+			return
+		}
 
 		const account = { username, password }
 		dispatch(action.updateModalContent(<Profile account={account} />))

@@ -1,0 +1,62 @@
+#message_wrapper {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	z-index: getZIndex('modal');
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 0;
+	padding: 1rem;
+	transform: translateX(-50%);
+
+	.message {
+		margin-bottom: 1rem;
+		padding: 0 1.2rem;
+		min-width: 12rem;
+		height: 3.6rem;
+		border-radius: 0.6rem;
+		box-shadow: 1px 4px 24px rgba(#000000, 0.1);
+		color: white;
+		font-weight: bold;
+		font-size: 1.4rem;
+		cursor: pointer;
+		animation: slide-in getDuration('normal') ease-out;
+
+		@include flexCenter;
+
+		&.info {
+			background: #409eff;
+		}
+
+		&.success {
+			background: #67c23a;
+		}
+
+		&.error {
+			background: #f56c6c;
+		}
+
+		&.warning {
+			background: #e6a23c;
+		}
+
+		> svg {
+			margin-right: 1rem;
+			font-size: 1.8rem;
+
+			@include flexCenter;
+		}
+
+		@keyframes slide-in {
+			from {
+				opacity: 0;
+				transform: translateY(-1rem);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	}
+}

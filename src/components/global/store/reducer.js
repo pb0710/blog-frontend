@@ -13,17 +13,3 @@ export const modalContent = handleActions(
 	},
 	null
 )
-
-export const promptVisible = handleActions(
-	{
-		UPDATE_PROMPT_VISIBLE: (state, action) => action.payload
-	},
-	false
-)
-
-export const promptContent = handleActions(
-	{
-		UPDATE_PROMPT_CONTENT: (state, action) => action.payload
-	},
-	null
-)

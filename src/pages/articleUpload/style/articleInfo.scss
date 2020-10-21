@@ -7,7 +7,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 .article_info {
 	position: relative;
 	padding: 1rem;
-	padding-top: 4rem;
+	padding-top: 5rem;
 	width: 36rem;
 	border: 1px solid $divider;
 	border-radius: 1rem;
@@ -50,6 +50,10 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 
 			object-fit: cover;
 		}
+	}
+
+	.sort {
+		width: 16rem;
 	}
 
 	.add {
