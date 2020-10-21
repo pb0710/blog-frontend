@@ -1,8 +1,9 @@
 $divider: getColor('light', 'divider');
 
 .search {
-	top: 6rem;
-	right: 13rem;
+	position: absolute;
+	top: 5rem;
+	right: -1rem;
 	padding: 1rem;
 	min-height: 0;
 	width: 30rem;

@@ -59,7 +59,7 @@ const Message = React.memo(props => {
 				break
 		}
 		return (
-			<li className={clsx(style.message, typeCls)} onClick={() => remove(id)}>
+			<li className={clsx(style.message, typeCls)} onClick={() => remove(props)}>
 				{messageIcon}
 				<span>{content}</span>
 			</li>

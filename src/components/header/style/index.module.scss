@@ -32,7 +32,9 @@
 		align-items: center;
 
 		> .btn {
+			position: relative;
 			margin-right: 1rem;
+
 			> svg {
 				font-size: 2rem;
 			}
