@@ -1,6 +1,4 @@
-@use 'src/assets/styles/variables' as *;
-@use 'src/assets/styles/mixins' as *;
-@use './menu.scss';
+@import './menu.scss';
 
 $border: 1px solid getColor('light', 'divider');
 $siderWidth: 24rem;

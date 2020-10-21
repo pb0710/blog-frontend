@@ -4,12 +4,12 @@ import { Button } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
 import * as commonAction from '@/store/actions'
 import * as action from '@/components/sider/store/action'
-import * as modalAction from '@/components/modal/store/action'
+import * as modalAction from '@/components/global/store/action'
 import AppCenter from './AppCenter'
 import Search from './Search'
 import UserProfile from './UserProfile'
-import { Login } from '@/components/modal'
-import MenuOutlinedIcon from '@material-ui/icons/MenuOutlined'
+import { Login } from '@/components/global'
+import { MenuOutlined } from '@material-ui/icons'
 
 export default function Header() {
 	const dispatch = useDispatch()
@@ -31,7 +31,7 @@ export default function Header() {
 	return (
 		<header className={style.header}>
 			<Button.Icon className={style.drawerControl} onClick={handleToggleDrawer}>
-				<MenuOutlinedIcon />
+				<MenuOutlined />
 			</Button.Icon>
 			<div className={style.tool_bar}>
 				<Search />

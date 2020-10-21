@@ -2,9 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined'
-import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined'
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
+import { PersonAddOutlined, ArrowBackOutlined, CloseOutlined } from '@material-ui/icons'
 import * as action from '../store/action'
 import * as commonAction from '@/store/actions'
 import * as fileApi from '@/apis/file'
@@ -63,17 +61,17 @@ export default function Profile(props) {
 		<div className={style.profile_wrapper}>
 			<h1>完善个人信息</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
-				<ArrowBackOutlinedIcon />
+				<ArrowBackOutlined />
 			</Button.Icon>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlinedIcon />
+				<CloseOutlined />
 			</Button.Icon>
 			<Uploader format="formdata" onChange={handleAddAvatar}>
 				<div className={style.avatar_wrapper} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
 					<img alt="avatar" src={avatarSrc} />
 					{visible && (
 						<div className={style.upload_cover}>
-							<PersonAddOutlinedIcon />
+							<PersonAddOutlined />
 						</div>
 					)}
 				</div>

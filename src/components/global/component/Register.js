@@ -2,8 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
-import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined'
+import { CloseOutlined, ArrowBackOutlined } from '@material-ui/icons'
 import * as action from '../store/action'
 import Login from './Login'
 import Profile from './Profile'
@@ -33,10 +32,10 @@ export default function Register() {
 		<div className={style.register_wrapper}>
 			<h1>创建账号</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
-				<ArrowBackOutlinedIcon />
+				<ArrowBackOutlined />
 			</Button.Icon>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlinedIcon />
+				<CloseOutlined />
 			</Button.Icon>
 			<div className={style.header}></div>
 			<Form onFinished={handleCreateAccount}>

@@ -2,11 +2,7 @@ import React from 'react'
 import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined'
-import CreateIcon from '@material-ui/icons/Create'
-import SettingsIcon from '@material-ui/icons/Settings'
-import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined'
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance'
+import { Home, LibraryBooksOutlined, Create, Settings, ExploreOutlined } from '@material-ui/icons'
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
@@ -30,14 +26,14 @@ export default function NavMenu() {
 			level: 1,
 			to: '/',
 			title: '主页',
-			icon: <AccountBalanceIcon />
+			icon: <Home />
 		},
 		{
 			id: '1',
 			level: 1,
 			to: '/articles',
 			title: '文章',
-			icon: <LibraryBooksOutlinedIcon />,
+			icon: <LibraryBooksOutlined />,
 			child: [
 				{
 					id: '10',
@@ -76,13 +72,13 @@ export default function NavMenu() {
 			level: 1,
 			to: '/upload',
 			title: '发布',
-			icon: <CreateIcon />
+			icon: <Create />
 		},
 		{
 			id: '3',
 			level: 1,
 			title: '文档聚合',
-			icon: <ExploreOutlinedIcon />,
+			icon: <ExploreOutlined />,
 			child: [
 				{
 					id: '30',
@@ -103,7 +99,7 @@ export default function NavMenu() {
 			level: 1,
 			to: '/options',
 			title: '设置',
-			icon: <SettingsIcon />
+			icon: <Settings />
 		}
 	]
 

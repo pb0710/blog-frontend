@@ -1,27 +1,26 @@
-@use 'src/assets/styles/variables' as *;
-@use './editor.scss';
+@import './editor.scss';
 
 .code_wrapper {
-  display: block;
-  overflow-x: auto;
-  padding: 1rem;
-  border-radius: 6px;
-  background: getColor('light', 'backgroundVariant');
+	display: block;
+	overflow-x: auto;
+	padding: 1rem;
+	border-radius: 6px;
+	background: getColor('light', 'backgroundVariant');
 
-  code {
-    font-size: 1.3rem;
-    font-family: 'Roboto Mono';
-    line-height: 1.75em;
-  }
+	code {
+		font-size: 1.3rem;
+		font-family: 'Roboto Mono';
+		line-height: 1.75em;
+	}
 }
 
 .pic {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 
-  > img {
-    max-width: 80%;
-    max-height: 500px;
-  }
+	> img {
+		max-width: 80%;
+		max-height: 500px;
+	}
 }

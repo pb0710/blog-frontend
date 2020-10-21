@@ -1,6 +1,4 @@
-@use 'src/assets/styles/variables' as *;
-@use 'src/assets/styles/mixins' as *;
-@use 'common' as *;
+@import 'common';
 
 $highlight: getTheme('highlight');
 $divider: getColor('light', 'divider');

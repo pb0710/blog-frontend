@@ -1,33 +1,45 @@
-@use 'responsive';
-@use 'link';
-@use 'variables' as *;
+@import 'responsive';
 
 @font-face {
-  font-family: 'Roboto Mono';
-  src: url('../fonts/RobotoMono-Regular.ttf');
+	font-family: 'Roboto Mono';
+	src: url('../fonts/RobotoMono-Regular.ttf');
 }
 
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
-#app {
-  box-sizing: border-box;
-  color: getColor('light', 'textPrimary');
-  text-align: center;
-  font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
+#root {
+	box-sizing: border-box;
+	color: getColor('light', 'textPrimary');
+	font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
 
-  code {
-    font-family: Roboto Mono, Menlo, Consolas, SF mono, Monaco, 'Courier New', monospace;
-  }
+	code {
+		font-family: Roboto Mono, Menlo, Consolas, SF mono, Monaco, 'Courier New', monospace;
+	}
+
+	a,
+	a:link,
+	a:visited,
+	a:hover,
+	a:active {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.app {
+		position: relative;
+		display: flex;
+		flex-direction: row-reverse;
+	}
 }

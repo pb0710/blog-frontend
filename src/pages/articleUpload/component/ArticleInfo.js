@@ -1,10 +1,9 @@
 import React from 'react'
-import AddPhotoAlternateOutlinedIcon from '@material-ui/icons/AddPhotoAlternateOutlined'
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
+import { AddPhotoAlternateOutlined, CloseOutlined } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Input, Select } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
-import * as modalAction from '@/components/modal/store/action'
+import * as modalAction from '@/components/global/store/action'
 import * as articleApi from '@/apis/article'
 import * as fileApi from '@/apis/file'
 import { useBoolean } from '@/utils/hooks'
@@ -60,7 +59,7 @@ export default function ArticleInfo(props) {
 		<div className={style.article_info}>
 			<h1>添加文章</h1>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlinedIcon />
+				<CloseOutlined />
 			</Button.Icon>
 			<Form onFinished={handleAddArticle}>
 				<Form.Item label="题图">
@@ -68,7 +67,7 @@ export default function ArticleInfo(props) {
 						<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
 							{visible && (
 								<div className={style.pic_cover}>
-									<AddPhotoAlternateOutlinedIcon />
+									<AddPhotoAlternateOutlined />
 								</div>
 							)}
 							<img className={style.title_pic} src={picSrc} alt="article_pic" />

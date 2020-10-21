@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'sylas-react-ui'
-import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined'
+import { ArrowBackOutlined } from '@material-ui/icons'
 import style from '../style/index.module.scss'
 import * as action from '@/components/sider/store/action'
 import clsx from 'clsx'
@@ -21,7 +21,7 @@ export default function Sider() {
 		<aside className={asideCls}>
 			<div className={style.top}>
 				<Button.Icon className={style.drawerControl} onClick={hanldeCloseDrawer}>
-					<ArrowBackOutlinedIcon />
+					<ArrowBackOutlined />
 				</Button.Icon>
 			</div>
 			<NavMenu />

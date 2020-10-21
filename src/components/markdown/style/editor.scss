@@ -1,6 +1,3 @@
-@use 'src/assets/styles/variables' as *;
-@use 'src/assets/styles/mixins' as *;
-
 $divider: getColor('light', 'divider');
 
 .markdown_editor {

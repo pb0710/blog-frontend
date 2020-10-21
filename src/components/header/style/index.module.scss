@@ -1,8 +1,6 @@
-@use 'src/assets/styles/variables' as *;
-@use 'src/assets/styles/mixins' as *;
-@use 'userProfile';
-@use 'appCenter';
-@use 'search';
+@import 'userProfile';
+@import 'appCenter';
+@import 'search';
 
 .header {
 	position: fixed;

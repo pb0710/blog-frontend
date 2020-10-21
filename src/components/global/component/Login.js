@@ -1,12 +1,13 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Form, Input, Button, Loading } from 'sylas-react-ui'
-import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined'
+import { CloseOutlined } from '@material-ui/icons'
 import { useDispatch } from 'react-redux'
 import * as commonAction from '@/store/actions'
 import * as action from '../store/action'
 import Register from './Register'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
+import Tips from './Tips'
 
 export default function Login(props) {
 	const dispatch = useDispatch()
@@ -26,7 +27,11 @@ export default function Login(props) {
 	const handleSubmit = values => {
 		console.log('values: ', values)
 		const { username, password } = values
-		if (!username || !password) return
+		if (!username || !password) {
+			dispatch(action.updatePromptVisible(true))
+			dispatch(action.updatePromptContent(<Tips type="fail">请输入完整</Tips>))
+			return
+		}
 		dispatch(commonAction.userLogin({ username, password }))
 	}
 
@@ -34,10 +39,10 @@ export default function Login(props) {
 		<div className={style.login_wrapper}>
 			<h1>用户登陆</h1>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlinedIcon />
+				<CloseOutlined />
 			</Button.Icon>
 			<div className={style.avatar_wrapper}>
-				<img src={avatarSrc} />
+				<img alt="avatar" src={avatarSrc} />
 				{/* <Loading.Bounce /> */}
 			</div>
 			<Form form={form} onFinished={handleSubmit}>

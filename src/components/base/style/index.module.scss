@@ -1,21 +1,20 @@
-@use 'src/assets/styles/variables' as *;
-@use 'aspectRatio.scss';
+@import 'aspectRatio.scss';
 
 .panel {
-  min-height: 20rem;
-  width: 100%;
-  border: 1px solid getColor('light', 'divider');
-  border-radius: 6px;
-  background: getColor('light', 'background');
+	min-height: 20rem;
+	width: 100%;
+	border: 1px solid getColor('light', 'divider');
+	border-radius: 6px;
+	background: getColor('light', 'background');
 }
 
 .affix {
-  position: sticky;
-  top: 7rem;
+	position: sticky;
+	top: 7rem;
 }
 
 .uploader {
-  > input {
-    display: none;
-  }
+	> input {
+		display: none;
+	}
 }

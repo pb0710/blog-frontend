@@ -8,10 +8,9 @@ import Preview from './Preview'
 import * as temp from '../temp'
 import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
-import * as modalAction from '@/components/modal/store/action'
+import * as modalAction from '@/components/global/store/action'
 import { ArticleInfo } from '@/pages/articleUpload'
-import CodeIcon from '@material-ui/icons/Code'
-import ViewModuleOutlinedIcon from '@material-ui/icons/ViewModuleOutlined'
+import { Code, ViewModuleOutlined } from '@material-ui/icons'
 
 const area = {
 	EDITOR: 'editor',
@@ -115,10 +114,10 @@ function MarkdownEditor() {
 				<div className={style.tools}>
 					<Uploader format="formdata" multiple onChange={handleFilesChange} />
 					<Button.Icon onClick={handleInsertCode}>
-						<CodeIcon />
+						<Code />
 					</Button.Icon>
 					<Button.Icon onClick={handleInsertTable}>
-						<ViewModuleOutlinedIcon />
+						<ViewModuleOutlined />
 					</Button.Icon>
 				</div>
 				<div className={style.operation}>
@@ -127,7 +126,7 @@ function MarkdownEditor() {
 							发布
 						</Button>
 					) : (
-						'登录账号即可发布文章...'
+						'登录完成后可发布文章...'
 					)}
 				</div>
 			</div>

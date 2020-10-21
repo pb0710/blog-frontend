@@ -1,0 +1,52 @@
+.prompt_wrapper {
+	position: fixed;
+	top: -6rem;
+	left: 0;
+	z-index: getZIndex('modal');
+	width: 100vw;
+	opacity: 0;
+	transition: transform getDuration('slow') ease-in-out, opacity getDuration('slow');
+
+	@include flexCenter;
+
+	.tips_wrapper {
+		padding: 0 2rem;
+		min-width: 12rem;
+		height: 4rem;
+		border: 1px solid getColor('light', 'divider');
+		border-radius: 0.6rem;
+		box-shadow: 1px 4px 24px rgba(#000000, 0.1);
+		color: getTheme('highlight');
+		font-weight: bold;
+		font-size: 1.5rem;
+		cursor: pointer;
+
+		@include flexCenter;
+
+		&.success {
+			color: #67c23a;
+		}
+
+		&.fail {
+			color: #f56c6c;
+		}
+
+		&.warning {
+			color: #e6a23c;
+		}
+
+		> .icon {
+			margin-right: 1rem;
+			svg {
+				font-size: 2rem;
+
+				@include flexCenter;
+			}
+		}
+	}
+
+	&.slide_in {
+		opacity: 1;
+		transform: translateY(8rem);
+	}
+}

@@ -1,18 +1,16 @@
-@use 'src/assets/styles/variables' as *;
-
 .right_sider {
-  position: absolute;
-  top: 7rem;
-  right: calc(50% - 55rem);
-  width: 24rem;
-  height: calc(100% - 7rem);
-  transition: right getDuration('normal') ease-out;
+	position: absolute;
+	top: 7rem;
+	right: calc(50% - 55rem);
+	width: 24rem;
+	height: calc(100% - 7rem);
+	transition: right getDuration('normal') ease-out;
 
-  &.narrowing {
-    right: calc(50% - 67rem);
-  }
+	&.narrowing {
+		right: calc(50% - 67rem);
+	}
 
-  section {
-    margin-bottom: 2rem;
-  }
+	section {
+		margin-bottom: 2rem;
+	}
 }

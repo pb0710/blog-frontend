@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Button, Popup } from 'sylas-react-ui'
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
+import { SearchOutlined } from '@material-ui/icons'
 
 export default function Search(props) {
 	const { popupRef, visible, handleShowPopup } = Popup.usePopupVisible()
@@ -9,7 +9,7 @@ export default function Search(props) {
 	return (
 		<>
 			<Button.Icon className={style.btn} focus={visible} onClick={handleShowPopup}>
-				<SearchOutlinedIcon />
+				<SearchOutlined />
 			</Button.Icon>
 			<Popup className={style.search} ref={popupRef} visible={visible} scaleOrigin="top-right">
 				search

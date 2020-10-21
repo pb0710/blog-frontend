@@ -1,14 +1,12 @@
-@use 'src/assets/styles/variables' as *;
-
 $divider: getColor('light', 'divider');
 
 .search {
-  top: 6rem;
-  right: 13rem;
-  padding: 1rem;
-  min-height: 0;
-  width: 30rem;
-  height: 30rem;
-  border: 1px solid $divider;
-  border-radius: 0.6rem;
+	top: 6rem;
+	right: 13rem;
+	padding: 1rem;
+	min-height: 0;
+	width: 30rem;
+	height: 30rem;
+	border: 1px solid $divider;
+	border-radius: 0.6rem;
 }

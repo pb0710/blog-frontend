@@ -1,43 +1,40 @@
-@use 'src/assets/styles/variables' as *;
-@use 'src/assets/styles/mixins' as *;
-
 $divider: getColor('light', 'divider');
 
 .user_avatar {
-  margin-right: 1rem;
-  width: 4rem;
-  height: 4rem;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: border getDuration('normal');
+	margin-right: 1rem;
+	width: 4rem;
+	height: 4rem;
+	border: 2px solid transparent;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: border getDuration('normal');
 
-  @include flexCenter;
-  &:hover {
-    border: 2px solid getTheme('highlight');
-  }
+	@include flexCenter;
+	&:hover {
+		border: 2px solid getTheme('highlight');
+	}
 
-  &.active {
-    border: 2px solid getTheme('highlight');
-  }
+	&.active {
+		border: 2px solid getTheme('highlight');
+	}
 
-  > img {
-    width: calc(100% - 4px);
-    height: calc(100% - 4px);
-    border-radius: inherit;
-    vertical-align: text-top;
+	> img {
+		width: calc(100% - 4px);
+		height: calc(100% - 4px);
+		border-radius: inherit;
+		vertical-align: text-top;
 
-    object-fit: cover;
-  }
+		object-fit: cover;
+	}
 }
 
 .user_profile {
-  top: 6rem;
-  right: 3rem;
-  padding: 1rem;
-  min-height: 0;
-  width: 28rem;
-  height: 32rem;
-  border: 1px solid $divider;
-  border-radius: 0.6rem;
+	top: 6rem;
+	right: 3rem;
+	padding: 1rem;
+	min-height: 0;
+	width: 28rem;
+	height: 32rem;
+	border: 1px solid $divider;
+	border-radius: 0.6rem;
 }
