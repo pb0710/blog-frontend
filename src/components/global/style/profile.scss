@@ -1,23 +1,22 @@
 @import 'common';
 
-$highlight: getTheme('highlight');
-$divider: getColor('light', 'divider');
-$shadow: 1px 4px 24px rgba(#000000, 0.1);
+$highlight: get_theme('primary');
+$divider: get_color('light', 'divider');
 
 .profile_wrapper {
 	position: relative;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	padding: 1rem;
+	padding: 4rem 1rem 2rem 1rem;
 	width: 36rem;
 	border: 1px solid $divider;
-	border-radius: 1rem;
-	background: getColor('light', 'background');
-	box-shadow: $shadow;
+	border-radius: 0.6rem;
+	background: get_color('light', 'background');
+	box-shadow: $default_shadow;
 
-	@include withTitle;
-	@include withClose;
+	@include with_title;
+	@include with_close;
 	@include withReturn;
 
 	.avatar_wrapper {
@@ -27,10 +26,9 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 		width: 10rem;
 		height: 10rem;
 		border-radius: 50%;
-		// box-shadow: $shadow;
 		cursor: pointer;
 
-		@include flexCenter;
+		@include flex_center;
 
 		> img {
 			width: 100%;
@@ -48,7 +46,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 			border-radius: inherit;
 			color: #fff;
 
-			@include flexCenter;
+			@include flex_center;
 			> svg {
 				font-size: 4rem;
 			}

@@ -10,6 +10,7 @@ import Search from './Search'
 import UserProfile from './UserProfile'
 import { Login } from '@/components/global'
 import { MenuOutlined } from '@material-ui/icons'
+import Branch from './Branch'
 
 export default function Header() {
 	const dispatch = useDispatch()
@@ -30,9 +31,10 @@ export default function Header() {
 
 	return (
 		<header className={style.header}>
-			<Button.Icon className={style.drawerControl} onClick={handleToggleDrawer}>
+			<Button.Icon className={style.drawer_control} onClick={handleToggleDrawer}>
 				<MenuOutlined />
 			</Button.Icon>
+			<Branch />
 			<div className={style.tool_bar}>
 				<Search />
 				<AppCenter />

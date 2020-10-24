@@ -61,27 +61,19 @@ function* register({ username, password, profile }) {
 }
 
 function* initUserSaga() {
-	yield takeEvery('INIT_USER', function* (action) {
-		yield initUser(action.payload)
-	})
+	yield takeEvery('INIT_USER', action => initUser(action.payload))
 }
 
 function* loginSaga() {
-	yield takeLatest('USER_LOGIN', function* (action) {
-		yield login(action.payload)
-	})
+	yield takeLatest('USER_LOGIN', action => login(action.payload))
 }
 
 function* logoutSaga() {
-	yield takeLatest('USER_LOGOUT', function* (action) {
-		yield logout(action.payload)
-	})
+	yield takeLatest('USER_LOGOUT', action => logout(action.payload))
 }
 
 function* registerSaga() {
-	yield takeEvery('USER_REGISTER', function* (action) {
-		yield register(action.payload)
-	})
+	yield takeEvery('USER_REGISTER', action => register(action.payload))
 }
 
 export default function* () {

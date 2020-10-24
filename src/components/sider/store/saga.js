@@ -1,18 +1,16 @@
-import { all, fork, put, takeEvery, select } from 'redux-saga/effects'
+import { all, spawn, put, takeEvery, select } from 'redux-saga/effects'
 
 function* toggleDrawer() {
-  const { drawerOpened } = yield select()
-  yield put({ type: 'UPDATE_DRAWER', payload: !drawerOpened })
+	const { drawerOpened } = yield select()
+	yield put({ type: 'UPDATE_DRAWER', payload: !drawerOpened })
 }
 
 // ------------------------------saga---------------watch----------------------------------------
 
 function* toggleDrawerSaga() {
-  yield takeEvery('TOGGLE_DRAWER', function* (action) {
-    yield toggleDrawer()
-  })
+	yield takeEvery('TOGGLE_DRAWER', action => toggleDrawer())
 }
 
 export default function* () {
-  yield all([fork(toggleDrawerSaga)])
+	yield all([spawn(toggleDrawerSaga)])
 }

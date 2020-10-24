@@ -1,29 +1,27 @@
 @import 'common';
 
-$highlight: getTheme('highlight');
-$divider: getColor('light', 'divider');
-$shadow: 1px 4px 24px rgba(#000000, 0.1);
+$highlight: get_theme('primary');
+$divider: get_color('light', 'divider');
 
 .register_wrapper {
 	position: relative;
 	padding: 1rem;
-	padding-top: 6rem;
-	width: 33rem;
+	padding-top: 7rem;
+	width: 34rem;
 	border: 1px solid $divider;
-	border-radius: 1rem;
-	background: getColor('light', 'background');
-	box-shadow: $shadow;
+	border-radius: 0.6rem;
+	background: get_color('light', 'background');
+	box-shadow: $default_shadow;
 
-	@include withTitle;
-	@include withClose;
+	@include with_title;
+	@include with_close;
 	@include withReturn;
 
 	.footer_bar {
 		display: flex;
 		align-items: center;
 		flex-direction: row-reverse;
-		padding-right: 1rem;
-		padding-bottom: 1rem;
+		padding: 1rem 2rem;
 		width: 100%;
 	}
 }

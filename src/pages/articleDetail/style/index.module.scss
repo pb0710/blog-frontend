@@ -1,14 +1,15 @@
 .article_detail {
-  padding: 1rem;
-  padding-top: 5rem;
+	padding: 1rem;
+	padding-top: 5rem;
 
-  .article_wrapper {
-    padding: 1rem;
+	.article_wrapper {
+		padding: 1rem;
 
-    .bg_pic {
-      margin-top: 1rem;
-      width: 100%;
-      border-radius: 6px;
-    }
-  }
+		.bg_pic {
+			margin-top: 1rem;
+			width: 100%;
+			border: 1px solid get_color('light', 'divider');
+			border-radius: 0.6rem;
+		}
+	}
 }

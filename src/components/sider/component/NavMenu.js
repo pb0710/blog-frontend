@@ -32,7 +32,7 @@ export default function NavMenu() {
 			id: '1',
 			level: 1,
 			to: '/articles',
-			title: '文章',
+			title: '全部文章',
 			icon: <LibraryBooks />,
 			child: [
 				{
@@ -136,7 +136,6 @@ export default function NavMenu() {
 								{nav.title}
 							</>
 						}
-						opened
 					>
 						{nav.child.map(child => {
 							child = { ...child, to: nav.to + child.to }

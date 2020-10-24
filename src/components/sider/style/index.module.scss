@@ -1,17 +1,17 @@
 @import './menu.scss';
 
-$border: 1px solid getColor('light', 'divider');
+$border: 1px solid get_color('light', 'divider');
 $siderWidth: 24rem;
 
 .sider {
 	position: fixed;
 	left: 0;
-	z-index: getZIndex('sider');
+	z-index: $z_sider;
 	width: $siderWidth;
 	height: 100vh;
 	border-right: $border;
-	background: getColor('light', 'background');
-	transition: transform getDuration('normal') ease-out;
+	background: get_color('light', 'background');
+	transition: transform $normal ease-out;
 	transform: translateX(-$siderWidth);
 
 	&.in {
@@ -23,11 +23,11 @@ $siderWidth: 24rem;
 		align-items: center;
 		justify-content: space-between;
 		margin-bottom: 1rem;
-		padding: 0 1rem;
+		padding: 0 1rem 0 2.4rem;
 		height: 5rem;
 		border-bottom: $border;
 
-		> .drawerControl {
+		> .drawer_control {
 			position: absolute;
 			right: 1rem;
 

@@ -1,11 +1,11 @@
 $theme: (
-	highlight: #409eff,
-	// highlight: #67c23a,
-	// highlight: #e6a23c,
-	// highlight: #f56c6c,
+	primary: #409eff,
+	success: #67c23a,
+	warning: #e6a23c,
+	error: #f56c6c
 );
 
-$colors: (
+$color: (
 	light: (
 		background: #fff,
 		backgroundVariant: #f8f8f8,
@@ -24,31 +24,15 @@ $colors: (
 	)
 );
 
-$zIndex: (
-	header: 100,
-	footer: 200,
-	sider: 300,
-	modal: 400
-);
+$z_header: 100;
+$z_footer: 200;
+$z_sider: 300;
+$z_modal: 400;
 
-$duration: (
-	fast: 150ms,
-	normal: 250ms,
-	slow: 350ms
-);
+$fast: 150ms;
+$normal: 250ms;
+$slow: 350ms;
 
-@function getTheme($key) {
-	@return map-get($theme, $key);
-}
-
-@function getColor($style, $key) {
-	@return map-get(map-get($colors, $style), $key);
-}
-
-@function getZIndex($key) {
-	@return map-get($zIndex, $key);
-}
-
-@function getDuration($key) {
-	@return map-get($duration, $key);
-}
+$small_shadow: 0 1px 4px rgba(#000000, 0.1);
+$default_shadow: 1px 4px 24px rgba(#000000, 0.1);
+$large_shadow: 0 4px 32px rgba(#000000, 0.1);

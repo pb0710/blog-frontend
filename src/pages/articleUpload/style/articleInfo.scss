@@ -1,8 +1,7 @@
 @import 'common';
 
-$highlight: getTheme('highlight');
-$divider: getColor('light', 'divider');
-$shadow: 1px 4px 24px rgba(#000000, 0.1);
+$highlight: get_theme('primary');
+$divider: get_color('light', 'divider');
 
 .article_info {
 	position: relative;
@@ -10,12 +9,12 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 	padding-top: 5rem;
 	width: 36rem;
 	border: 1px solid $divider;
-	border-radius: 1rem;
-	background: getColor('light', 'background');
-	box-shadow: $shadow;
+	border-radius: 0.6rem;
+	background: get_color('light', 'background');
+	box-shadow: $default_shadow;
 
-	@include withTitle;
-	@include withClose;
+	@include with_title;
+	@include with_close;
 
 	.pic_wrapper {
 		position: relative;
@@ -23,7 +22,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 		width: 16rem;
 		height: 10rem;
 		border-radius: 6px;
-		box-shadow: $shadow;
+		box-shadow: $default_shadow;
 		cursor: pointer;
 
 		.pic_cover {
@@ -33,7 +32,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 			border-radius: inherit;
 			color: #fff;
 
-			@include flexCenter;
+			@include flex_center;
 			> svg {
 				font-size: 4rem;
 			}
@@ -57,6 +56,7 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 	}
 
 	.add {
-		margin-top: 1rem;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
 	}
 }

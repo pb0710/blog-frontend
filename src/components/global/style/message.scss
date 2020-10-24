@@ -2,7 +2,7 @@
 	position: fixed;
 	top: 0;
 	left: 50%;
-	z-index: getZIndex('modal');
+	z-index: $z_modal;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -16,14 +16,14 @@
 		min-width: 12rem;
 		height: 3.6rem;
 		border-radius: 0.6rem;
-		box-shadow: 1px 4px 24px rgba(#000000, 0.1);
+		box-shadow: $default_shadow;
 		color: white;
 		font-weight: bold;
 		font-size: 1.4rem;
 		cursor: pointer;
-		animation: slide-in getDuration('normal') ease-out;
+		animation: slide-in $normal ease-out;
 
-		@include flexCenter;
+		@include flex_center;
 
 		&.info {
 			background: #409eff;
@@ -45,7 +45,7 @@
 			margin-right: 1rem;
 			font-size: 1.8rem;
 
-			@include flexCenter;
+			@include flex_center;
 		}
 
 		@keyframes slide-in {

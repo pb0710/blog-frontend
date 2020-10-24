@@ -1,6 +1,6 @@
-$divider: getColor('light', 'divider');
-$theme: getTheme('highlight');
-$textSecondary: getColor('light', 'textSecondary');
+$divider: get_color('light', 'divider');
+$text_secondary: get_color('light', 'text_secondary');
+$highlight: get_theme('primary');
 
 .user_avatar {
 	position: relative;
@@ -10,15 +10,15 @@ $textSecondary: getColor('light', 'textSecondary');
 	height: 4rem;
 	border: 2px solid transparent;
 	border-radius: 50%;
-	transition: border getDuration('normal');
+	transition: border $normal;
 
-	@include flexCenter;
+	@include flex_center;
 	&:hover {
-		border: 2px solid $theme;
+		border: 2px solid $highlight;
 	}
 
 	&.active {
-		border: 2px solid $theme;
+		border: 2px solid $highlight;
 	}
 
 	> img {
@@ -59,7 +59,7 @@ $textSecondary: getColor('light', 'textSecondary');
 		}
 
 		> span {
-			color: $textSecondary;
+			color: $text_secondary;
 		}
 
 		.contact_wrapper {
@@ -68,7 +68,7 @@ $textSecondary: getColor('light', 'textSecondary');
 			width: 60%;
 
 			svg {
-				color: $textSecondary;
+				color: $text_secondary;
 				font-size: 2rem;
 			}
 		}

@@ -28,7 +28,7 @@ const MessageContainer = () => {
 	return (
 		<ul id={style.message_wrapper}>
 			{msgList.map((msg, index) => (
-				<Message key={index} remove={remove} {...msg} />
+				<Message key={msg.id} remove={remove} {...msg} />
 			))}
 		</ul>
 	)

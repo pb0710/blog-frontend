@@ -128,7 +128,7 @@ function MarkdownEditor() {
 							发布
 						</Button>
 					) : (
-						'登录完成后可发布文章...'
+						'登录成功后可发布文章...'
 					)}
 				</div>
 			</div>

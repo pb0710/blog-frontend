@@ -1,5 +1,4 @@
-$divider: 1px solid getColor('light', 'divider');
-$fast: getDuration('fast');
+$divider: 1px solid get_color('light', 'divider');
 
 .article_card_wrapper {
 	padding: 1rem;
@@ -11,11 +10,11 @@ $fast: getDuration('fast');
 		overflow: hidden;
 		border: $divider;
 		border-radius: 6px;
-		background: getColor('light', 'background');
+		background: get_color('light', 'background');
 		transition: transform $fast ease-out, box-shadow $fast ease-out;
 
 		&:hover {
-			box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+			box-shadow: $large_shadow;
 			transform: translateY(-0.2rem);
 		}
 
@@ -26,7 +25,7 @@ $fast: getDuration('fast');
 			> img {
 				width: 100%;
 				height: 100%;
-				background: getColor('light', 'divider');
+				background: get_color('light', 'divider');
 				vertical-align: text-top;
 
 				object-fit: cover;
@@ -41,7 +40,7 @@ $fast: getDuration('fast');
 
 			> .title {
 				margin: 0;
-				color: getColor('light', 'textPrimary');
+				color: get_color('light', 'textPrimary');
 				text-align: left;
 				font-size: 1.2rem;
 
@@ -57,7 +56,7 @@ $fast: getDuration('fast');
 				right: 1rem;
 				bottom: 1rem;
 				margin: 0;
-				color: getColor('light', 'textSecondary');
+				color: get_color('light', 'textSecondary');
 				font-size: 1.2rem;
 			}
 		}

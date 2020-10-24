@@ -3,9 +3,9 @@
 .panel {
 	min-height: 20rem;
 	width: 100%;
-	border: 1px solid getColor('light', 'divider');
+	border: 1px solid get_color('light', 'divider');
 	border-radius: 6px;
-	background: getColor('light', 'background');
+	background: get_color('light', 'background');
 }
 
 .affix {

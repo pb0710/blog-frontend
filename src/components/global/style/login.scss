@@ -1,31 +1,29 @@
 @import 'common';
 
-$highlight: getTheme('highlight');
-$divider: getColor('light', 'divider');
-$shadow: 1px 4px 24px rgba(#000000, 0.1);
+$highlight: get_theme('primary');
+$divider: get_color('light', 'divider');
 
 .login_wrapper {
 	position: relative;
 	padding: 1rem;
 	width: 34rem;
 	border: 1px solid $divider;
-	border-radius: 1rem;
-	background: getColor('light', 'background');
-	box-shadow: $shadow;
+	border-radius: 0.6rem;
+	background: get_color('light', 'background');
+	box-shadow: $default_shadow;
 
-	@include withTitle;
-	@include withClose;
+	@include with_title;
+	@include with_close;
 
 	.avatar_wrapper {
 		height: 12rem;
 
-		@include flexCenter;
+		@include flex_center;
 
 		> img {
 			width: 7rem;
 			height: 7rem;
 			border-radius: 50%;
-			// box-shadow: $shadow;
 		}
 	}
 
@@ -33,16 +31,15 @@ $shadow: 1px 4px 24px rgba(#000000, 0.1);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-right: 2rem;
-		padding-bottom: 1rem;
+		padding: 1rem 2rem 2rem 0;
 		width: 100%;
 
 		.register {
 			margin-left: 12rem;
-			color: getColor('light', 'textSecondary');
+			color: get_color('light', 'textSecondary');
 			text-decoration: underline;
 			cursor: pointer;
-			transition: color getDuration('normal');
+			transition: color $normal;
 
 			&:hover {
 				color: $highlight;

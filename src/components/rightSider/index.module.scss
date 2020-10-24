@@ -4,7 +4,7 @@
 	right: calc(50% - 55rem);
 	width: 24rem;
 	height: calc(100% - 7rem);
-	transition: right getDuration('normal') ease-out;
+	transition: right $normal ease-out;
 
 	&.narrowing {
 		right: calc(50% - 67rem);

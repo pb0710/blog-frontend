@@ -4,7 +4,7 @@
 		> svg {
 			font-size: 2rem;
 
-			@include flexCenter;
+			@include flex_center;
 		}
 	}
 
@@ -26,7 +26,7 @@
 
 	.active {
 		li {
-			color: getTheme('highlight');
+			color: get_theme('primary');
 		}
 	}
 }

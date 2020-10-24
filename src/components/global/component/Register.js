@@ -25,7 +25,7 @@ export default function Register() {
 
 		if (!username || !password) {
 			message.error('请输入完整的账号和密码')
-			return
+			// return
 		}
 
 		const account = { username, password }

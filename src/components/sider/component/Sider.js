@@ -6,6 +6,7 @@ import style from '../style/index.module.scss'
 import * as action from '@/components/sider/store/action'
 import clsx from 'clsx'
 import NavMenu from './NavMenu'
+import { Branch } from '@/components/header'
 
 export default function Sider() {
 	const dispatch = useDispatch()
@@ -20,7 +21,8 @@ export default function Sider() {
 	return (
 		<aside className={asideCls}>
 			<div className={style.top}>
-				<Button.Icon className={style.drawerControl} onClick={hanldeCloseDrawer}>
+				<Branch />
+				<Button.Icon className={style.drawer_control} onClick={hanldeCloseDrawer}>
 					<ArrowBackOutlined />
 				</Button.Icon>
 			</div>

@@ -1,0 +1,46 @@
+$highlight: get_theme('primary');
+
+.header {
+	position: fixed;
+	top: 0;
+	z-index: $z_header;
+	display: flex;
+	align-items: center;
+	padding: 0 1rem 0 7rem;
+	width: 100%;
+	height: 5rem;
+	border-bottom: 1px solid get_color('light', 'divider');
+	background: get_color('light', 'background');
+
+	@include glass;
+
+	> .drawer_control {
+		position: absolute;
+		left: 1rem;
+
+		> svg {
+			font-size: 2rem;
+		}
+	}
+
+	> .tool_bar {
+		position: absolute;
+		right: 1rem;
+		display: flex;
+		align-items: center;
+
+		> .btn {
+			position: relative;
+			margin-right: 1rem;
+
+			> svg {
+				font-size: 2rem;
+			}
+		}
+
+		> .go_login {
+			margin-left: 1rem;
+			@extend.btn;
+		}
+	}
+}

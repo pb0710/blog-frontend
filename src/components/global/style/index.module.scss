@@ -7,12 +7,12 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: getZIndex('modal');
+	z-index: $z_modal;
 	display: flex;
 	width: 100vw;
 	height: 100vh;
 
-	@include flexCenter;
+	@include flex_center;
 
 	.mask {
 		position: absolute;

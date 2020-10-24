@@ -12,7 +12,7 @@ body {
 
 #root {
 	box-sizing: border-box;
-	color: getColor('light', 'textPrimary');
+	color: get_color('light', 'textPrimary');
 	font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
 
 	-webkit-font-smoothing: antialiased;
