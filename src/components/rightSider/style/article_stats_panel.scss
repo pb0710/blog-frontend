@@ -1,0 +1,20 @@
+.article_stats_panel {
+	cursor: pointer;
+
+	li {
+		color: get_color('light', 'text_secondary');
+
+		&.active {
+			color: get_theme('primary');
+		}
+
+		span:last-child {
+			font-weight: bold;
+		}
+	}
+
+	svg {
+		margin-right: 2rem;
+		font-size: 2rem;
+	}
+}

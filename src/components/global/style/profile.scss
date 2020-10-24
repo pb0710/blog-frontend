@@ -17,7 +17,7 @@ $divider: get_color('light', 'divider');
 
 	@include with_title;
 	@include with_close;
-	@include withReturn;
+	@include with_return;
 
 	.avatar_wrapper {
 		position: relative;

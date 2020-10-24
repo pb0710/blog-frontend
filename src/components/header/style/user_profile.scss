@@ -62,17 +62,6 @@ $highlight: get_theme('primary');
 			color: $text_secondary;
 		}
 
-		.contact_wrapper {
-			display: flex;
-			justify-content: space-between;
-			width: 60%;
-
-			svg {
-				color: $text_secondary;
-				font-size: 2rem;
-			}
-		}
-
 		.divider {
 			margin: 1.6rem 0;
 		}

@@ -7,6 +7,7 @@ import * as action from '@/components/sider/store/action'
 import * as modalAction from '@/components/global/store/action'
 import AppCenter from './AppCenter'
 import Search from './Search'
+import Notification from './Notification'
 import UserProfile from './UserProfile'
 import { Login } from '@/components/global'
 import { MenuOutlined } from '@material-ui/icons'
@@ -37,6 +38,7 @@ export default function Header() {
 			<Branch />
 			<div className={style.tool_bar}>
 				<Search />
+				<Notification />
 				<AppCenter />
 				{online ? (
 					<UserProfile />

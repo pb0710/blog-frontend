@@ -41,7 +41,7 @@ export default function Login() {
 				<CloseOutlined />
 			</Button.Icon>
 			<div className={style.avatar_wrapper}>
-				<img alt="avatar" src={avatarSrc} />
+				<img alt="" src={avatarSrc} />
 				{/* <Loading.Bounce /> */}
 			</div>
 			<Form form={form} onFinished={handleSubmit}>

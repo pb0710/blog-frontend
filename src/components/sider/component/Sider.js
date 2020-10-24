@@ -16,7 +16,7 @@ export default function Sider() {
 		dispatch(action.updateDrawer(false))
 	}
 
-	const asideCls = clsx([style.sider, drawerOpened && style.in])
+	const asideCls = clsx(style.sider, drawerOpened && style.in)
 
 	return (
 		<aside className={asideCls}>

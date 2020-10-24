@@ -7,18 +7,18 @@ import { useParams } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
 
 export default function ArticleList() {
-  const { sort } = useParams()
-  const fetchArticles = React.useCallback(() => articleApi.fetchList(sort), [sort])
-  const { data } = useFetch(fetchArticles, {})
-  const articles = data.message === 'ok' ? data.payload : []
+	const { sort } = useParams()
+	const fetchArticles = React.useCallback(() => articleApi.fetchList(sort), [sort])
+	const { data } = useFetch(fetchArticles, {})
+	const articles = data.message === 'ok' ? data.payload : []
 
-  return (
-    <FlexiblePage className={style.article_list_page}>
-      <article className={style.article_list}>
-        {articles.map(article => (
-          <ArticleCard key={article.id} {...article} />
-        ))}
-      </article>
-    </FlexiblePage>
-  )
+	return (
+		<FlexiblePage className={style.article_list_page}>
+			<article className={style.article_list}>
+				{articles.map(article => (
+					<ArticleCard key={article.id} {...article} />
+				))}
+			</article>
+		</FlexiblePage>
+	)
 }

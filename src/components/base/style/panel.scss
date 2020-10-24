@@ -1,0 +1,7 @@
+.panel {
+	min-height: 4rem;
+	width: 100%;
+	border: 1px solid get_color('light', 'divider');
+	border-radius: 6px;
+	background: get_color('light', 'background');
+}

@@ -69,7 +69,7 @@ export default function ArticleInfo(props) {
 								<AddPhotoAlternateOutlined />
 							</div>
 						)}
-						<img className={style.title_pic} src={picSrc} alt="article_pic" />
+						<img className={style.title_pic} src={picSrc} alt="" />
 					</div>
 				</Uploader>
 			)

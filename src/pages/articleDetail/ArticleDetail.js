@@ -7,6 +7,7 @@ import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
 import * as action from './store/action'
 import { message } from '@/components/global'
+import { Tag } from 'sylas-react-ui'
 
 export default function ArticleDetail() {
 	const dispatch = useDispatch()
@@ -32,7 +33,19 @@ export default function ArticleDetail() {
 	return (
 		<FlexiblePage className={style.article_detail}>
 			<section className={style.article_wrapper}>
-				<img className={style.bg_pic} src={bgPic} />
+				<img className={style.bg_pic} src={bgPic} alt="" />
+				<div className={style.info}>
+					<div>
+						<span>2020年9月23日</span>
+						<span>总字数 {markdown.length}</span>
+						<span>阅读次数 98</span>
+					</div>
+					<div className={style.tags_wrapper}>
+						<Tag>sdfd</Tag>
+						<Tag>xxx</Tag>
+						<Tag>前端</Tag>
+					</div>
+				</div>
 				<Markdown>{markdown}</Markdown>
 			</section>
 		</FlexiblePage>

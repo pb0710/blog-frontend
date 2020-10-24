@@ -11,5 +11,29 @@
 			border: 1px solid get_color('light', 'divider');
 			border-radius: 0.6rem;
 		}
+
+		.info {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 5rem;
+
+			> div:first-child {
+				> span {
+					margin-right: 3rem;
+					color: get_color('light', 'text_secondary');
+					font-size: 1.3rem;
+				}
+			}
+
+			.tags_wrapper {
+				display: flex;
+
+				> div {
+					margin-left: 2rem;
+				}
+			}
+		}
 	}
 }

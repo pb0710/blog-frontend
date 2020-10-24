@@ -15,7 +15,7 @@ export default function ArticleCard(props) {
 				<AspectRatio aspectRatio={4 / 3}>
 					<Link to={aritcleLink}>
 						<div className={style.cover}>
-							<img src={backgroundImage} alt="cover_pic" />
+							<img src={backgroundImage} alt="" />
 						</div>
 					</Link>
 					<div className={style.bottom}>

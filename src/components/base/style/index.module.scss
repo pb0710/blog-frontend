@@ -1,12 +1,5 @@
-@import 'aspectRatio.scss';
-
-.panel {
-	min-height: 20rem;
-	width: 100%;
-	border: 1px solid get_color('light', 'divider');
-	border-radius: 6px;
-	background: get_color('light', 'background');
-}
+@import 'aspect_ratio';
+@import 'panel';
 
 .affix {
 	position: sticky;

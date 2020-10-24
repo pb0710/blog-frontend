@@ -70,7 +70,7 @@ export default function Profile(props) {
 			</Button.Icon>
 			<Uploader format="formdata" onChange={handleAddAvatar}>
 				<div className={style.avatar_wrapper} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
-					<img alt="avatar" src={avatarSrc} />
+					<img alt="" src={avatarSrc} />
 					{visible && (
 						<div className={style.upload_cover}>
 							<PersonAddOutlined />

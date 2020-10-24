@@ -1,0 +1,13 @@
+$divider: get_color('light', 'divider');
+
+.notification {
+	position: absolute;
+	top: 5rem;
+	right: -1rem;
+	padding: 1rem;
+	min-height: 0;
+	width: 30rem;
+	height: 30rem;
+	border: 1px solid $divider;
+	border-radius: 0.6rem;
+}

@@ -36,7 +36,7 @@ $divider: get_color('light', 'divider');
 
 		.register {
 			margin-left: 12rem;
-			color: get_color('light', 'textSecondary');
+			color: get_color('light', 'text_secondary');
 			text-decoration: underline;
 			cursor: pointer;
 			transition: color $normal;

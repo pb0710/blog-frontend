@@ -1,1 +1,1 @@
-export { default as RightSider } from './RightSider'
+export { default as RightSider } from './component/RightSider'
