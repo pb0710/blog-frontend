@@ -1,0 +1,23 @@
+.account {
+	> li {
+		&.profile {
+			padding: 1rem 2rem;
+			height: 8rem;
+		}
+	}
+
+	.avatar_wrapper {
+		display: flex;
+		align-items: center;
+
+		> img {
+			margin-right: 2rem;
+			width: 5rem;
+			height: 5rem;
+			border-radius: 50%;
+			vertical-align: text-top;
+
+			object-fit: cover;
+		}
+	}
+}

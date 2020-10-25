@@ -1,5 +1,5 @@
-export { default as StablePage } from './StablePage'
+export { default as StablePage } from './component/StablePage'
 
-export { default as FlexiblePage } from './FlexiblePage'
+export { default as FlexiblePage } from './component/FlexiblePage'
 
-export { default as FullScreenPage } from './FullScreenPage'
+export { default as FullScreenPage } from './component/FullScreenPage'

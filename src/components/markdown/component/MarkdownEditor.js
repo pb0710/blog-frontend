@@ -9,7 +9,7 @@ import * as temp from '../temp'
 import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
 import * as modalAction from '@/components/global/store/action'
-import { ArticleInfo } from '@/pages/articleUpload'
+import { ArticleInfo } from '@/views/articleUpload'
 import { Code, ViewModuleOutlined } from '@material-ui/icons'
 import { message } from '@/components/global'
 
@@ -117,7 +117,7 @@ function MarkdownEditor() {
 					<Button.Icon onClick={handleInsertTable}>
 						<ViewModuleOutlined />
 					</Button.Icon>
-					<Uploader format="formdata" multiple onChange={handleFilesChange} />
+					<Uploader multiple onChange={handleFilesChange} />
 					<Button.Icon onClick={handleInsertCode}>
 						<Code />
 					</Button.Icon>

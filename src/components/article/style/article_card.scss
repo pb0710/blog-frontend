@@ -9,8 +9,9 @@ $divider: 1px solid get_color('light', 'divider');
 		position: relative;
 		overflow: hidden;
 		border: $divider;
-		border-radius: 6px;
+		border-radius: 0.6rem;
 		background: get_color('light', 'background');
+		box-shadow: $small_shadow;
 		transition: transform $fast ease-out, box-shadow $fast ease-out;
 
 		&:hover {

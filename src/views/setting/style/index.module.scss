@@ -1,0 +1,22 @@
+@import 'options';
+@import 'account';
+@import 'banner';
+
+$divider: 1px solid get_color('light', 'divider');
+
+.setting_page {
+	padding-top: 6rem;
+	background: get_color('light', 'background_variant');
+
+	.form {
+		justify-content: unset;
+		padding-bottom: 5rem;
+		height: unset;
+	}
+
+	> div:first-child {
+		padding: 1rem;
+		width: 64rem;
+		border-radius: 0.6rem;
+	}
+}

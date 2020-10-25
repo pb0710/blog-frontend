@@ -2,6 +2,7 @@
 	min-height: 4rem;
 	width: 100%;
 	border: 1px solid get_color('light', 'divider');
-	border-radius: 6px;
+	border-radius: 0.6rem;
 	background: get_color('light', 'background');
+	box-shadow: $small_shadow;
 }

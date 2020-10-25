@@ -16,7 +16,7 @@ function Nav(props) {
 	)
 }
 
-export default function NavMenu() {
+function NavMenu() {
 	const menu = Menu.useMenu()
 	const { pathname } = useLocation()
 
@@ -32,7 +32,7 @@ export default function NavMenu() {
 			id: '1',
 			level: 1,
 			to: '/articles',
-			title: '全部文章',
+			title: '文章分类',
 			icon: <LibraryBooks />,
 			child: [
 				{
@@ -77,7 +77,7 @@ export default function NavMenu() {
 		{
 			id: '3',
 			level: 1,
-			title: '文档聚合',
+			title: '指路',
 			icon: <Explore />,
 			child: [
 				{
@@ -97,7 +97,7 @@ export default function NavMenu() {
 		{
 			id: '4',
 			level: 1,
-			to: '/options',
+			to: '/setting',
 			title: '设置',
 			icon: <Settings />
 		}
@@ -149,3 +149,5 @@ export default function NavMenu() {
 		</Menu>
 	)
 }
+
+export default NavMenu

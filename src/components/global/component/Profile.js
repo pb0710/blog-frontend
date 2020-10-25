@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
-import { Button, Form, Input } from 'sylas-react-ui'
+import { Button, Form, Input, Select } from 'sylas-react-ui'
 import { PersonAddOutlined, ArrowBackOutlined, CloseOutlined } from '@material-ui/icons'
 import * as action from '../store/action'
 import * as commonAction from '@/store/actions'
@@ -68,7 +68,7 @@ export default function Profile(props) {
 			<Button.Icon className={style.close} onClick={handleClose}>
 				<CloseOutlined />
 			</Button.Icon>
-			<Uploader format="formdata" onChange={handleAddAvatar}>
+			<Uploader onChange={handleAddAvatar}>
 				<div className={style.avatar_wrapper} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
 					<img alt="" src={avatarSrc} />
 					{visible && (
@@ -79,8 +79,17 @@ export default function Profile(props) {
 				</div>
 			</Uploader>
 			<Form onFinished={handleRegister}>
-				<Form.Item label="昵称" name="nickname">
-					<Input placeholder="数字、字母或中文字符" />
+				<Form.Item label="名称" name="nickname">
+					<Input placeholder="你的名字（必填）" />
+				</Form.Item>
+				<Form.Item label="性别" name="gender" initialValue="male">
+					<Select>
+						<Select.Option value="male">男</Select.Option>
+						<Select.Option value="female">女</Select.Option>
+					</Select>
+				</Form.Item>
+				<Form.Item label="个人简介" name="selfIntroduction">
+					<Input placeholder="技能、兴趣爱好（选填）" />
 				</Form.Item>
 				<Button htmlType="submit" color="primary">
 					去登录

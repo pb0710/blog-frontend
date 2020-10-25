@@ -42,7 +42,7 @@ $divider: get_color('light', 'divider');
 		border-top: 1px solid $divider;
 		font-size: 1.4rem;
 
-		$articlePadding: 1rem 1.5rem;
+		$article_padding: 1rem 1.5rem;
 
 		> article {
 			width: 50%;
@@ -57,7 +57,7 @@ $divider: get_color('light', 'divider');
 			border: none;
 
 			> textarea {
-				padding: $articlePadding;
+				padding: $article_padding;
 				width: 100%;
 				height: 100%;
 				font-size: 1.5rem;
@@ -69,22 +69,8 @@ $divider: get_color('light', 'divider');
 
 		> .preview {
 			overflow-y: auto;
-			padding: $articlePadding;
+			padding: $article_padding;
 			background: get_color('light', 'background');
-
-			p,
-			ul > li,
-			ol > li {
-				line-height: 1.75em;
-			}
-
-			a {
-				color: get_theme('primary');
-
-				&:hover {
-					text-decoration: underline;
-				}
-			}
 		}
 	}
 }

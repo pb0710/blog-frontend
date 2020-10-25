@@ -8,43 +8,45 @@ import { getlang } from '../util'
 const Fragment = props => <>{props.children}</>
 
 const Img = props => (
-  <span className={style.pic}>
-    <img alt="" {...props} />
-  </span>
+	<span className={style.pic}>
+		<img alt="" {...props} />
+	</span>
 )
 
 const Pre = props => <pre className={style.code_wrapper}>{props.children}</pre>
 
 // 防止 SyntaxHighlighter 大量重渲染
 const Highlight = React.memo(props => {
-  const { language, children } = props
-  return (
-    <SyntaxHighlighter PreTag={Fragment} style={github} language={language}>
-      {children}
-    </SyntaxHighlighter>
-  )
+	const { language, children } = props
+	return (
+		<SyntaxHighlighter PreTag={Fragment} style={github} language={language}>
+			{children}
+		</SyntaxHighlighter>
+	)
 })
 
 function Code(props) {
-  const { children, className } = props
-  return <Highlight language={getlang(className)}>{children}</Highlight>
+	const { children, className } = props
+	return <Highlight language={getlang(className)}>{children}</Highlight>
 }
 
 function Markdown(props) {
-  return (
-    <MarkdownToJSX
-      options={{
-        disableParsingRawHTML: true,
-        overrides: {
-          code: Code,
-          pre: Pre,
-          img: Img
-        }
-      }}
-    >
-      {props.children}
-    </MarkdownToJSX>
-  )
+	return (
+		<div className={style.markdown_wrapper}>
+			<MarkdownToJSX
+				options={{
+					disableParsingRawHTML: true,
+					overrides: {
+						code: Code,
+						pre: Pre,
+						img: Img
+					}
+				}}
+			>
+				{props.children}
+			</MarkdownToJSX>
+		</div>
+	)
 }
 
 export default React.memo(Markdown)

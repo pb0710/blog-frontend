@@ -53,7 +53,7 @@ export default function Login() {
 				</Form.Item>
 				<div className={style.footer}>
 					<span className={style.register} onClick={handleGoRegister}>
-						立即注册
+						没有账号？点击注册
 					</span>
 					<Button htmlType="submit" color="primary">
 						确认登录

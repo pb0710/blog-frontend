@@ -17,7 +17,7 @@ function Uploader(props) {
 				<PanoramaOutlined />
 			</Button.Icon>
 		),
-		format = dataFormat.BASE_64,
+		format = dataFormat.FORM_DATA,
 		onChange,
 		...rest
 	} = props
@@ -41,7 +41,8 @@ function Uploader(props) {
 			Array.prototype.forEach.call(files, file => {
 				formData.append('image', file)
 			})
-			onChange && onChange(formData)
+
+			if (formData.get('image') && onChange) onChange(formData)
 		}
 	}
 

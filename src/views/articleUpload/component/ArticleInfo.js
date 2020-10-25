@@ -62,7 +62,7 @@ export default function ArticleInfo(props) {
 			label: '题图',
 			name: 'pic',
 			component: (
-				<Uploader format="formdata" onChange={handleAddPic}>
+				<Uploader onChange={handleAddPic}>
 					<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
 						{visible && (
 							<div className={style.pic_cover}>
@@ -113,7 +113,7 @@ export default function ArticleInfo(props) {
 					</Form.Item>
 				))}
 				<Button className={style.add} htmlType="submit" color="primary">
-					确认添加
+					发布文章
 				</Button>
 			</Form>
 		</div>
