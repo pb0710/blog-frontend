@@ -6,9 +6,9 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import { Uploader } from '@/components/base'
-import { Fingerprint, AccessibilityNew, Face, Wc, DescriptionOutlined } from '@material-ui/icons'
+import { Fingerprint, EmojiPeople, Face, Wc, DescriptionOutlined, SwapHoriz } from '@material-ui/icons'
 import * as fileApi from '@/apis/file'
-import { message } from '@/components/global'
+import { msg } from '@/components/base'
 import * as commonAction from '@/store/actions'
 
 function Account() {
@@ -30,8 +30,8 @@ function Account() {
 					)
 				}
 				throw message
-			} catch (error) {
-				message.error('图片上传失败')
+			} catch (err) {
+				msg.error('图片上传失败')
 			}
 		},
 		[dispatch, profile]
@@ -52,14 +52,17 @@ function Account() {
 				<div className={avatarOptCls}>
 					<img alt="" src={avatar ?? defaultAvatar} />
 					<Uploader onChange={handleChangeAvatar}>
-						<Button color="primary">更换</Button>
+						<Button color="primary">
+							<SwapHoriz />
+							更换
+						</Button>
 					</Uploader>
 				</div>
 			)
 		},
 		{
-			icon: <AccessibilityNew />,
-			title: '名称',
+			icon: <EmojiPeople />,
+			title: '昵称',
 			name: 'nickname',
 			initialValue: nickname,
 			component: <Input placeholder="你的名字（必填）" />

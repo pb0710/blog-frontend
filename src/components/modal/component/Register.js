@@ -2,8 +2,8 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import { CloseOutlined, ArrowBackOutlined } from '@material-ui/icons'
-import { message } from '@/components/global'
+import { CloseOutlined, ArrowBackOutlined, ChevronRight } from '@material-ui/icons'
+import { msg } from '@/components/base'
 import * as action from '../store/action'
 import Login from './Login'
 import Profile from './Profile'
@@ -12,24 +12,21 @@ export default function Register() {
 	const dispatch = useDispatch()
 
 	const handleReturn = () => {
-		dispatch(action.updateModalContent(<Login />))
+		dispatch(action.updateModal(true, <Login />))
 	}
 
 	const handleClose = () => {
-		dispatch(action.updateModalVisible(false))
-		dispatch(action.updateModalContent(null))
+		dispatch(action.updateModal(false, null))
 	}
 
 	const handleCreateAccount = values => {
 		const { username, password } = values
 
 		if (!username || !password) {
-			message.error('请输入完整的账号和密码')
+			msg.error('请输入完整的账号和密码')
 			// return
 		}
-
-		const account = { username, password }
-		dispatch(action.updateModalContent(<Profile account={account} />))
+		dispatch(action.updateModal(true, <Profile account={{ username, password }} />))
 	}
 
 	return (
@@ -55,6 +52,7 @@ export default function Register() {
 				<div className={style.footer_bar}>
 					<Button color="default" htmlType="submit">
 						下一步
+						<ChevronRight />
 					</Button>
 				</div>
 			</Form>

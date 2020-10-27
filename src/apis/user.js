@@ -16,10 +16,20 @@ export const fetchProfile = username =>
 	})
 
 /**
+ * 保存用户基本信息
+ */
+export const saveProfile = profile =>
+	request({
+		url: `user/save_profile`,
+		method: 'POST',
+		data: profile
+	})
+
+/**
  * 注册
- * @param {string} username 用户名
- * @param {string} password 密码
- * @param {string} nickname 名称
+ * @param {String} username 用户名
+ * @param {String} password 密码
+ * @param {String} nickname 名称
  */
 export const register = (username, password, profile) =>
 	request({
@@ -30,8 +40,8 @@ export const register = (username, password, profile) =>
 
 /**
  * 登陆
- * @param {string} username 用户名
- * @param {string} password 密码
+ * @param {String} username 用户名
+ * @param {String} password 密码
  */
 export const login = (username, password) =>
 	request({
@@ -42,7 +52,7 @@ export const login = (username, password) =>
 
 /**
  * 登出
- * @param {string} username 用户ID
+ * @param {String} username 用户ID
  */
 export const logout = () =>
 	request({

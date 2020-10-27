@@ -5,10 +5,10 @@ import { v4 as uuid } from 'uuid'
 import clsx from 'clsx'
 import { Info, Warning, Error, CheckCircle } from '@material-ui/icons'
 
-// add 方法需要对外暴露
+// 组件的 add 方法需要对外暴露
 let add
 
-const MessageContainer = () => {
+function MessageContainer() {
 	// { id, content, type, duration }
 	const [msgList, setMsgList] = React.useState([])
 
@@ -18,8 +18,16 @@ const MessageContainer = () => {
 
 	add = msg => {
 		const newMsg = { ...msg, id: uuid() }
-		const duration = msg.duration || 3000
-		setMsgList(prev => [...prev, newMsg])
+		const duration = msg.duration || 2500
+
+		setMsgList(prev => {
+			prev.forEach(item => {
+				if (item.content === newMsg.content && item.type === newMsg.type) {
+					remove(item)
+				}
+			})
+			return [...prev, newMsg]
+		})
 		setTimeout(() => {
 			remove(newMsg)
 		}, duration)
@@ -27,7 +35,7 @@ const MessageContainer = () => {
 
 	return (
 		<ul id={style.message_wrapper}>
-			{msgList.map((msg, index) => (
+			{msgList.map(msg => (
 				<Message key={msg.id} remove={remove} {...msg} />
 			))}
 		</ul>
@@ -35,41 +43,43 @@ const MessageContainer = () => {
 }
 
 const Message = React.memo(props => {
-	const { type, content, id, remove } = props
-	function render() {
-		let messageIcon
-		let typeCls
+	const { type, content, remove } = props
+	const distinguishType = () => {
 		switch (type) {
 			case 'success':
-				messageIcon = <CheckCircle />
-				typeCls = style.success
-				break
+				return {
+					messageIcon: <CheckCircle />,
+					typeCls: style.success
+				}
 			case 'warning':
-				messageIcon = <Warning />
-				typeCls = style.warning
-				break
+				return {
+					messageIcon: <Warning />,
+					typeCls: style.warning
+				}
 			case 'error':
-				messageIcon = <Error />
-				typeCls = style.error
-				break
-
+				return {
+					messageIcon: <Error />,
+					typeCls: style.error
+				}
 			default:
-				messageIcon = <Info />
-				typeCls = style.info
-				break
+				return {
+					messageIcon: <Info />,
+					typeCls: style.info
+				}
 		}
-		return (
-			<li className={clsx(style.message, typeCls)} onClick={() => remove(props)}>
-				{messageIcon}
-				<span>{content}</span>
-			</li>
-		)
 	}
-	return render()
+	const { messageIcon, typeCls } = distinguishType()
+	const messageCls = clsx(style.message, typeCls)
+	return (
+		<li className={messageCls} onClick={() => remove(props)}>
+			{messageIcon}
+			<span>{content}</span>
+		</li>
+	)
 })
 
 // MessageContainer append 到 #root 外，确保唯一且不会触发业务组件树渲染
-;(() => {
+{
 	let elem = document.querySelector('#extra-container')
 	if (!elem) {
 		elem = document.createElement('div')
@@ -77,20 +87,20 @@ const Message = React.memo(props => {
 		document.body.append(elem)
 	}
 	ReactDOM.render(<MessageContainer />, elem)
-})()
+}
 
 const message = {
 	info(content, duration) {
-		add({ content, duration, type: 'info' })
+		add({ type: 'info', content, duration })
 	},
 	success(content, duration) {
-		add({ content, duration, type: 'success' })
+		add({ type: 'success', content, duration })
 	},
 	warning(content, duration) {
-		add({ content, duration, type: 'warning' })
+		add({ type: 'warning', content, duration })
 	},
 	error(content, duration) {
-		add({ content, duration, type: 'error' })
+		add({ type: 'error', content, duration })
 	}
 }
 

@@ -3,7 +3,7 @@ import { Header } from '@/components/header'
 import { Sider } from '@/components/sider'
 import { RightSider } from '@/components/rightSider'
 import { Content } from '@/components/content'
-import { Modal } from '@/components/global'
+import { Modal } from '@/components/modal'
 
 export default function App() {
 	return (

@@ -8,8 +8,8 @@ import AuthorPanel from './AuthorPanel'
 import ArticleStatsPanel from './ArticleStatsPanel'
 
 function RightSider() {
-	const { drawerOpened } = useSelector(state => state.sider)
-	const rightSiderCls = clsx(style.right_sider, drawerOpened && style.narrowing)
+	const opened = useSelector(state => state.sider.drawerOpened)
+	const rightSiderCls = clsx(style.right_sider, opened && style.narrowing)
 	return (
 		<Switch>
 			<Route exact path="/upload" />

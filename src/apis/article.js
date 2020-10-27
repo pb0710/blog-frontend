@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 /**
  * 抓取文章列表
- * @param {string} sort 分类 不传时获取全部
+ * @param {String} sort 分类 不传时获取全部
  */
 export const fetchList = sort =>
 	request({
@@ -12,7 +12,7 @@ export const fetchList = sort =>
 
 /**
  * 抓取文章详情
- * @param {string} articleId 文章ID
+ * @param {String} articleId 文章ID
  */
 export const fetchDetail = articleId =>
 	request({
@@ -22,9 +22,9 @@ export const fetchDetail = articleId =>
 
 /**
  * 添加文章
- * @param {object} opt
- * 	@param {string} userId 用户ID
- * 	@param {string} articleDetail 文章详情
+ * @param {Object} opt
+ * 	@param {String} userId 用户ID
+ * 	@param {String} articleDetail 文章详情
  */
 export const addArticle = ({ userId, articleDetail = {} }) =>
 	request({

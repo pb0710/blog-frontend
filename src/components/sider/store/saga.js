@@ -1,4 +1,5 @@
 import { all, spawn, put, takeEvery, select } from 'redux-saga/effects'
+import TYPE from '@/common/actionTypes'
 
 function* toggleDrawer() {
 	const { drawerOpened } = yield select()
@@ -8,7 +9,7 @@ function* toggleDrawer() {
 // ------------------------------saga---------------watch----------------------------------------
 
 function* toggleDrawerSaga() {
-	yield takeEvery('TOGGLE_DRAWER', action => toggleDrawer())
+	yield takeEvery(TYPE.TOGGLE_DRAWER, action => toggleDrawer())
 }
 
 export default function* () {

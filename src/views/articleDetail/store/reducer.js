@@ -1,8 +1,9 @@
 import { handleActions } from 'redux-actions'
+import TYPE from '@/common/actionTypes'
 
 export const detail = handleActions(
-  {
-    UPDATE_ARTICLE_DETAIL: (state, action) => action.payload
-  },
-  {}
+	{
+		[TYPE.UPDATE_ARTICLE_DETAIL]: (state, action) => action.payload
+	},
+	{}
 )

@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import * as common from './common'
 import * as sider from '@/components/sider/store/reducer'
-import * as global from '@/components/global/store/reducer'
+import * as modal from '@/components/modal/store/reducer'
 import * as article from '@/views/articleDetail/store/reducer'
+import * as setting from '@/views/setting/store/reducer'
 
 export default combineReducers({
 	...common,
 	sider: combineReducers(sider),
-	global: combineReducers(global),
-	article: combineReducers(article)
+	modal: combineReducers(modal),
+	article: combineReducers(article),
+	...setting
 })

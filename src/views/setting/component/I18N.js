@@ -2,14 +2,16 @@ import React from 'react'
 import Options from './Options'
 import { Select } from 'sylas-react-ui'
 import { Translate } from '@material-ui/icons'
+import { useSelector } from 'react-redux'
 
 function I18N() {
+	const { language } = useSelector(state => state.setting)
 	const i18nOpts = [
 		{
 			icon: <Translate />,
 			title: '语言',
 			name: 'language',
-			initialValue: 'zh-CN',
+			initialValue: language,
 			component: (
 				<Select>
 					<Select.Option value="zh-CN">简体中文</Select.Option>

@@ -19,6 +19,9 @@ axios.interceptors.request.use(
 instance.interceptors.response.use(
 	res => {
 		if (res.status !== 200) return Promise.reject(res)
+		if (res.data.message !== 'ok') {
+			return Promise.reject(res.data.message)
+		}
 
 		return Promise.resolve(res.data)
 	},

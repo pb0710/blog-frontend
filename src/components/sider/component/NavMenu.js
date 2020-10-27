@@ -2,7 +2,8 @@ import React from 'react'
 import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import { Home, LibraryBooks, Create, Settings, Explore } from '@material-ui/icons'
+import { Home, LibraryBooks, Create, Settings, Explore, Info } from '@material-ui/icons'
+import { useSelector } from 'react-redux'
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
@@ -17,6 +18,7 @@ function Nav(props) {
 }
 
 function NavMenu() {
+	const opened = useSelector(state => state.setting.menuDefaultOpened)
 	const menu = Menu.useMenu()
 	const { pathname } = useLocation()
 
@@ -70,13 +72,6 @@ function NavMenu() {
 		{
 			id: '2',
 			level: 1,
-			to: '/upload',
-			title: '发布',
-			icon: <Create />
-		},
-		{
-			id: '3',
-			level: 1,
 			title: '指路',
 			icon: <Explore />,
 			child: [
@@ -95,11 +90,25 @@ function NavMenu() {
 			]
 		},
 		{
+			id: '3',
+			level: 1,
+			to: '/upload',
+			title: '写文章',
+			icon: <Create />
+		},
+		{
 			id: '4',
 			level: 1,
 			to: '/setting',
 			title: '设置',
 			icon: <Settings />
+		},
+		{
+			id: '5',
+			level: 1,
+			to: '/about',
+			title: '关于',
+			icon: <Info />
 		}
 	]
 
@@ -130,6 +139,7 @@ function NavMenu() {
 					<Menu.SubMenu
 						key={nav.id}
 						className={style.level1}
+						opened={opened}
 						title={
 							<>
 								{nav.icon && <span className={style.icon}>{nav.icon}</span>}
@@ -150,4 +160,4 @@ function NavMenu() {
 	)
 }
 
-export default NavMenu
+export default React.memo(NavMenu)

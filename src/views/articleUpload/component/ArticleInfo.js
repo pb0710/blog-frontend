@@ -1,14 +1,14 @@
 import React from 'react'
-import { AddPhotoAlternateOutlined, CloseOutlined } from '@material-ui/icons'
+import { AddPhotoAlternateOutlined, CloseOutlined, AddCircle } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Input, Select } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
-import * as modalAction from '@/components/global/store/action'
+import * as modalAction from '@/components/modal/store/action'
 import * as articleApi from '@/apis/article'
 import * as fileApi from '@/apis/file'
 import { useBoolean } from '@/utils/hooks'
 import { Uploader } from '@/components/base'
-import { message } from '@/components/global'
+import { msg } from '@/components/base'
 import defaultArticleBg from '@/assets/images/default_article_bg.jpg'
 
 export default function ArticleInfo(props) {
@@ -26,10 +26,10 @@ export default function ArticleInfo(props) {
 		try {
 			await articleApi.addArticle({ userId, articleDetail })
 			handleClose()
-			message.success('添加成功')
+			msg.success('添加成功')
 		} catch (err) {
 			console.error('添加文章失败', err)
-			message.error(err)
+			msg.error(err)
 		}
 	}
 
@@ -53,8 +53,7 @@ export default function ArticleInfo(props) {
 	}
 
 	const handleClose = () => {
-		dispatch(modalAction.updateModalVisible(false))
-		dispatch(modalAction.updateModalContent(null))
+		dispatch(modalAction.updateModal(false, null))
 	}
 
 	const formItems = [
@@ -113,6 +112,7 @@ export default function ArticleInfo(props) {
 					</Form.Item>
 				))}
 				<Button className={style.add} htmlType="submit" color="primary">
+					<AddCircle />
 					发布文章
 				</Button>
 			</Form>

@@ -3,12 +3,12 @@
  * @param file 二进制
  */
 export function readFile(file) {
-  return new Promise(resolve => {
-    const fileReader = new FileReader()
-    fileReader.readAsDataURL(file)
-    fileReader.onload = () => {
-      const base64 = fileReader.result
-      resolve(base64)
-    }
-  })
+	return new Promise(resolve => {
+		const fileReader = new FileReader()
+		fileReader.readAsDataURL(file)
+		fileReader.onload = () => {
+			const base64 = fileReader.result
+			resolve(base64)
+		}
+	})
 }

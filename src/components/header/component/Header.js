@@ -4,26 +4,25 @@ import { Button } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
 import * as commonAction from '@/store/actions'
 import * as action from '@/components/sider/store/action'
-import * as modalAction from '@/components/global/store/action'
+import * as modalAction from '@/components/modal/store/action'
 import AppCenter from './AppCenter'
 import Search from './Search'
 import Notification from './Notification'
 import UserProfile from './UserProfile'
-import { Login } from '@/components/global'
+import { Login } from '@/components/modal'
 import { MenuOutlined } from '@material-ui/icons'
 import Branch from './Branch'
 
 export default function Header() {
 	const dispatch = useDispatch()
-	const { online } = useSelector(state => state)
+	const online = useSelector(state => state.online)
 
 	const handleToggleDrawer = () => {
 		dispatch(action.updateDrawer(true))
 	}
 
 	const handleGoLogin = () => {
-		dispatch(modalAction.updateModalContent(<Login />))
-		dispatch(modalAction.updateModalVisible(true))
+		dispatch(modalAction.updateModal(true, <Login />))
 	}
 
 	React.useEffect(() => {

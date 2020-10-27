@@ -8,10 +8,10 @@ import Preview from './Preview'
 import * as temp from '../temp'
 import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
-import * as modalAction from '@/components/global/store/action'
+import * as modalAction from '@/components/modal/store/action'
 import { ArticleInfo } from '@/views/articleUpload'
-import { Code, ViewModuleOutlined } from '@material-ui/icons'
-import { message } from '@/components/global'
+import { Code, ViewModuleOutlined, AddCircle } from '@material-ui/icons'
+import { msg } from '@/components/base'
 
 const area = {
 	EDITOR: 'editor',
@@ -20,10 +20,12 @@ const area = {
 
 function MarkdownEditor() {
 	const dispatch = useDispatch()
-	const { userId } = useSelector(state => state.userProfile)
+	const userId = useSelector(state => state.userProfile.userId)
 	const online = useSelector(state => state.online)
+	const { useMarkdownGuide } = useSelector(state => state.setting)
 
-	const [content, setContent] = React.useState(temp.markdownDemo)
+	const defaultContent = useMarkdownGuide ? temp.markdownDemo : ''
+	const [content, setContent] = React.useState(defaultContent)
 	const editorRef = React.useRef()
 	const previewRef = React.useRef()
 	// 鼠标悬停区域
@@ -63,7 +65,7 @@ function MarkdownEditor() {
 			}
 		} catch (err) {
 			console.error(`图片上传失败——${err}`)
-			message.error(err)
+			msg.error('上传失败')
 		}
 	}
 
@@ -88,12 +90,16 @@ function MarkdownEditor() {
 	const handlePublish = () => {
 		console.log('content', content)
 		if (!content || content.length < 20) {
-			alert('文章字数少于20')
+			msg.error('文章字数少于20')
 			return
 		}
-		dispatch(modalAction.updateModalContent(<ArticleInfo content={content} />))
-		dispatch(modalAction.updateModalVisible(true))
+		dispatch(modalAction.updateModal(true, <ArticleInfo content={content} />))
 	}
+
+	// 默认focus textarea
+	React.useEffect(() => {
+		editorRef.current.focus()
+	}, [])
 
 	const editorProps = {
 		content,
@@ -125,6 +131,7 @@ function MarkdownEditor() {
 				<div className={style.operation}>
 					{online ? (
 						<Button className={style.publish} color="primary" onClick={handlePublish}>
+							<AddCircle />
 							发布
 						</Button>
 					) : (

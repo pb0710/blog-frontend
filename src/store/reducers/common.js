@@ -1,9 +1,10 @@
 import { handleActions } from 'redux-actions'
+import TYPE from '@/common/actionTypes'
 
 // 用户登陆状态
 export const online = handleActions(
 	{
-		UPDATE_ONLINE: (state, action) => action.payload
+		[TYPE.UPDATE_ONLINE]: (state, action) => action.payload
 	},
 	false
 )
@@ -11,7 +12,10 @@ export const online = handleActions(
 // 用户信息
 export const userProfile = handleActions(
 	{
-		UPDATE_USER_PROFILE: (state, action) => action.payload
+		[TYPE.UPDATE_USER_PROFILE]: (state, action) => action.payload
 	},
-	{}
+	{
+		gender: 'male',
+		selfIntroduction: ''
+	}
 )

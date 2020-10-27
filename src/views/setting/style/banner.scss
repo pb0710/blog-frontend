@@ -7,7 +7,12 @@
 	height: 4rem;
 	border-radius: 0.6rem;
 	background: get_theme('warning');
+	box-shadow: $default_shadow;
 	color: get_color('light', 'background');
+
+	> span {
+		font-weight: bold;
+	}
 
 	> div {
 		cursor: pointer;

@@ -6,7 +6,7 @@ import { FlexiblePage } from '@/components/page'
 import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
 import * as action from './store/action'
-import { message } from '@/components/global'
+import { msg } from '@/components/base'
 import { Tag } from 'sylas-react-ui'
 
 export default function ArticleDetail() {
@@ -25,7 +25,7 @@ export default function ArticleDetail() {
 				dispatch(action.setDetail(detail))
 			} catch (err) {
 				console.error(err)
-				message.error(err)
+				msg.error(err)
 			}
 		})()
 	}, [dispatch, id])

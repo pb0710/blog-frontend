@@ -17,9 +17,9 @@ export function useBoolean(initial) {
 /**
  * 异步请求hooks
  * @param {promise} promiseApi 异步请求函数
- * @param {object} options
+ * @param {Object} options
  *  @param {unknown} initData 默认值
- *  @param {boolean} immutable 是否只请求一次
+ *  @param {Boolean} immutable 是否只请求一次
  */
 export function useFetch(promiseApi, initData, immutable) {
 	const [data, setData] = useState(initData)

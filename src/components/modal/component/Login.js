@@ -7,28 +7,48 @@ import * as commonAction from '@/store/actions'
 import * as action from '../store/action'
 import Register from './Register'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
-import { message } from '@/components/global'
+import { msg } from '@/components/base'
+import * as userApi from '@/apis/user'
+import { useBoolean } from '@/utils/hooks'
+import { debounce } from '@/utils'
 
 export default function Login() {
 	const dispatch = useDispatch()
-	const form = Form.useForm()
+	const changeInterval = 400
 
 	const [avatarSrc, setAvatarSrc] = React.useState(defaultAvatar)
+	const [loading, { setTrue, setFalse }] = useBoolean(false)
 
 	const handleClose = () => {
-		dispatch(action.updateModalVisible(false))
-		dispatch(action.updateModalContent(null))
+		dispatch(action.updateModal(false, null))
 	}
 
 	const handleGoRegister = () => {
-		dispatch(action.updateModalContent(<Register />))
+		dispatch(action.updateModal(true, <Register />))
 	}
+
+	const handleValuesChange = debounce(values => {
+		if (values.username) {
+			;(async () => {
+				setTrue()
+				try {
+					const { message, payload } = await userApi.fetchProfile(values.username)
+					if (message === 'ok') {
+						setAvatarSrc(payload.avatar)
+					}
+				} catch (err) {
+					setAvatarSrc(defaultAvatar)
+				}
+				setFalse(false)
+			})()
+		}
+	}, changeInterval)
 
 	const handleSubmit = values => {
 		console.log('values: ', values)
 		const { username, password } = values
 		if (!username || !password) {
-			message.error('请输入完整的账号和密码')
+			msg.error('请输入完整的账号和密码')
 			return
 		}
 		dispatch(commonAction.userLogin({ username, password }))
@@ -40,11 +60,8 @@ export default function Login() {
 			<Button.Icon className={style.close} onClick={handleClose}>
 				<CloseOutlined />
 			</Button.Icon>
-			<div className={style.avatar_wrapper}>
-				<img alt="" src={avatarSrc} />
-				{/* <Loading.Bounce /> */}
-			</div>
-			<Form form={form} onFinished={handleSubmit}>
+			<div className={style.avatar_wrapper}>{loading ? <Loading.Bounce /> : <img alt="" src={avatarSrc} />}</div>
+			<Form onFinished={handleSubmit} onValuesChange={handleValuesChange}>
 				<Form.Item label="用户名" name="username">
 					<Input placeholder="用户名" />
 				</Form.Item>

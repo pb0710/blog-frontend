@@ -1,6 +1,6 @@
 import localCfg from './local'
-console.log('localCfg: ', localCfg)
 import remoteCfg from './remote'
+console.log('localCfg: ', localCfg)
 
 const env = process.env.REACT_APP_PROXY_ENV
 console.log('env: ', env)

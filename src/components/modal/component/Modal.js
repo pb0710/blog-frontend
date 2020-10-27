@@ -6,20 +6,19 @@ import * as action from '../store/action'
 export default function Modal(props) {
 	const { allowClose } = props
 	const dispatch = useDispatch()
-	const { modalVisible, modalContent } = useSelector(state => state.global)
+	const { visible, content } = useSelector(state => state.modal)
 
 	const handleClose = () => {
 		if (allowClose) {
-			dispatch(action.updateModalVisible(false))
-			dispatch(action.updateModalContent(null))
+			dispatch(action.updateModal(false, null))
 		}
 	}
 
 	return (
-		modalVisible && (
+		visible && (
 			<div className={style.modal_wrapper}>
 				<div className={style.mask} onClick={handleClose}></div>
-				{modalContent}
+				{content}
 			</div>
 		)
 	)

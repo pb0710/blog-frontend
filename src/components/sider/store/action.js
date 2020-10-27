@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions'
+import TYPE from '@/common/actionTypes'
 
-export const toggleDrawer = createAction('TOGGLE_DRAWER')
+export const toggleDrawer = createAction(TYPE.TOGGLE_DRAWER)
 
-export const updateDrawer = createAction('UPDATE_DRAWER', opened => opened)
+export const updateDrawer = createAction(TYPE.UPDATE_DRAWER)
