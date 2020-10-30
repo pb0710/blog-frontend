@@ -8,36 +8,42 @@ import * as articleApi from '@/apis/article'
 import * as action from './store/action'
 import { msg } from '@/components/base'
 import { Tag } from 'sylas-react-ui'
+import { useFetch } from '@/utils/hooks'
 
 export default function ArticleDetail() {
 	const dispatch = useDispatch()
 	const { id } = useParams()
 
-	const [markdown, setMarkdown] = React.useState('')
-	const [bgPic, setBgPic] = React.useState('')
+	const { data, error, loading } = useFetch(articleApi.fetchDetail, {
+		initData: {
+			content: '',
+			backgroundImage: ''
+		},
+		immutable: false,
+		defaultParams: [id]
+	})
 
 	React.useEffect(() => {
-		;(async () => {
-			try {
-				const { payload: detail } = await articleApi.fetchDetail(id)
-				setMarkdown(detail.content)
-				setBgPic(detail.backgroundImage)
-				dispatch(action.setDetail(detail))
-			} catch (err) {
-				console.error(err)
-				msg.error(err)
-			}
-		})()
-	}, [dispatch, id])
+		if (data.content || data.backgroundImage) {
+			dispatch(action.setDetail(data))
+		}
+		if (error) {
+			msg.error(error)
+		}
+	}, [data, dispatch, error])
 
 	return (
 		<FlexiblePage className={style.article_detail}>
 			<section className={style.article_wrapper}>
-				<img className={style.bg_pic} src={bgPic} alt="" />
+				{loading ? (
+					<div className={style.bg_skeleton}></div>
+				) : (
+					<img className={style.bg_pic} src={data.backgroundImage} alt="" />
+				)}
 				<div className={style.info}>
 					<div>
 						<span>2020年9月23日</span>
-						<span>总字数 {markdown.length}</span>
+						<span>总字数 {data.content.length}</span>
 						<span>阅读次数 98</span>
 					</div>
 					<div className={style.tags_wrapper}>
@@ -46,7 +52,7 @@ export default function ArticleDetail() {
 						<Tag>前端</Tag>
 					</div>
 				</div>
-				<Markdown>{markdown}</Markdown>
+				<Markdown>{data.content}</Markdown>
 			</section>
 		</FlexiblePage>
 	)

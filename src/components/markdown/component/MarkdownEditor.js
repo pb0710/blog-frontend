@@ -10,7 +10,7 @@ import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
 import * as modalAction from '@/components/modal/store/action'
 import { ArticleInfo } from '@/views/articleUpload'
-import { Code, ViewModuleOutlined, AddCircle } from '@material-ui/icons'
+import { Code, ViewModuleOutlined, Send } from '@material-ui/icons'
 import { msg } from '@/components/base'
 
 const area = {
@@ -22,7 +22,7 @@ function MarkdownEditor() {
 	const dispatch = useDispatch()
 	const userId = useSelector(state => state.userProfile.userId)
 	const online = useSelector(state => state.online)
-	const { useMarkdownGuide } = useSelector(state => state.setting)
+	const { useMarkdownGuide, theme } = useSelector(state => state.setting)
 
 	const defaultContent = useMarkdownGuide ? temp.markdownDemo : ''
 	const [content, setContent] = React.useState(defaultContent)
@@ -57,12 +57,10 @@ function MarkdownEditor() {
 
 	const uploadFiles = async formData => {
 		try {
-			const { message, payload } = await fileApi.uploadImage(formData)
-			if (message === 'ok') {
-				const toPicTemp = picSrc => `  \n![](${picSrc})`
-				const remotePic = Array.isArray(payload) ? payload.map(toPicTemp).join('') : toPicTemp(payload)
-				setContent(content => content + remotePic)
-			}
+			const payload = await fileApi.uploadImage(formData)
+			const toPicTemp = picSrc => `  \n![](${picSrc})`
+			const remotePic = Array.isArray(payload) ? payload.map(toPicTemp).join('') : toPicTemp(payload)
+			setContent(content => content + remotePic)
 		} catch (err) {
 			console.error(`图片上传失败——${err}`)
 			msg.error('上传失败')
@@ -130,8 +128,7 @@ function MarkdownEditor() {
 				</div>
 				<div className={style.operation}>
 					{online ? (
-						<Button className={style.publish} color="primary" onClick={handlePublish}>
-							<AddCircle />
+						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<Send />}>
 							发布
 						</Button>
 					) : (

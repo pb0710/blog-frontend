@@ -14,10 +14,18 @@ function Appearance() {
 			initialValue: theme,
 			component: (
 				<Select>
-					<Select.Option value="primary">蔚蓝</Select.Option>
-					<Select.Option value="success">葱绿</Select.Option>
-					<Select.Option value="warning">金黄</Select.Option>
-					<Select.Option value="error">粉红</Select.Option>
+					<Select.Option color={theme} value="primary">
+						蔚蓝
+					</Select.Option>
+					<Select.Option color={theme} value="success">
+						葱绿
+					</Select.Option>
+					<Select.Option color={theme} value="warning">
+						金黄
+					</Select.Option>
+					<Select.Option color={theme} value="error">
+						粉红
+					</Select.Option>
 				</Select>
 			)
 		},
@@ -26,21 +34,21 @@ function Appearance() {
 			title: '夜间模式',
 			name: 'nightMode',
 			initialValue: nightMode,
-			component: <Switch />
+			component: <Switch color={theme} />
 		},
 		{
 			icon: <MenuOpen />,
 			title: '默认收起侧边栏',
 			name: 'drawerDefaultClosed',
 			initialValue: drawerDefaultClosed,
-			component: <Switch />
+			component: <Switch color={theme} />
 		},
 		{
 			icon: <FormatLineSpacing />,
 			title: '默认展开所有子菜单',
 			name: 'menuDefaultOpened',
 			initialValue: menuDefaultOpened,
-			component: <Switch />
+			component: <Switch color={theme} />
 		}
 	]
 	return <Options heading="外观" opts={appearanceOpts} />

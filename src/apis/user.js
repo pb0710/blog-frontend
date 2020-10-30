@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 /**
- * 获取用户登陆信息和基本信息
+ * 获取用户登录信息和基本信息
  */
 export const fetchStatus = () => request.get(`user/sign_status`)
 
@@ -39,7 +39,7 @@ export const register = (username, password, profile) =>
 	})
 
 /**
- * 登陆
+ * 登录
  * @param {String} username 用户名
  * @param {String} password 密码
  */

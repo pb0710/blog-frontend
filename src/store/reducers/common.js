@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import TYPE from '@/common/actionTypes'
 
-// 用户登陆状态
+// 用户登录状态
 export const online = handleActions(
 	{
 		[TYPE.UPDATE_ONLINE]: (state, action) => action.payload

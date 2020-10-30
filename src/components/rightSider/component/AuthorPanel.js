@@ -11,17 +11,20 @@ import * as userApi from '@/apis/user'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 
 export default function AuthorPanel() {
-	const {
-		detail,
-		detail: { author }
-	} = useSelector(state => state.article)
+	const detail = useSelector(state => state.article.detail)
+	const theme = useSelector(state => state.setting.theme)
+	const { author } = detail
 
-	const fetchProfile = React.useCallback(async () => (author ? await userApi.fetchProfile(author) : {}), [author])
-	const {
-		data: { message, payload }
-	} = useFetch(fetchProfile, {})
+	const { data, excute } = useFetch(userApi.fetchProfile, {
+		initData: {},
+		immutable: true
+	})
 
-	const profile = message === 'ok' ? payload : {}
+	React.useEffect(() => {
+		if (author) {
+			excute(author)
+		}
+	}, [author, excute])
 
 	const avatarItemCls = clsx(style.item, style.name_wrapper)
 
@@ -31,10 +34,10 @@ export default function AuthorPanel() {
 				<Link to="/">
 					<List.Item className={avatarItemCls}>
 						<div className={style.avatar}>
-							<img src={profile.avatar ?? defaultAvatar} alt="" />
+							<img src={data.avatar ?? defaultAvatar} alt="" />
 						</div>
 						<div className={style.right_wrapper}>
-							<p className={style.name}>{profile.nickname}</p>
+							<p className={style.name}>{data.nickname}</p>
 						</div>
 					</List.Item>
 				</Link>
@@ -53,7 +56,7 @@ export default function AuthorPanel() {
 			</div>
 			<Divider />
 			<div className={style.footer}>
-				<Button color="primary">关注TA</Button>
+				<Button color={theme}>关注TA</Button>
 			</div>
 		</Panel>
 	)

@@ -17,10 +17,6 @@ $highlight: get_theme('primary');
 	> .drawer_control {
 		position: absolute;
 		left: 1rem;
-
-		> svg {
-			font-size: 2rem;
-		}
 	}
 
 	> .tool_bar {
@@ -31,7 +27,7 @@ $highlight: get_theme('primary');
 
 		> .btn {
 			position: relative;
-			margin-right: 1rem;
+			margin-right: 0.5rem;
 
 			> svg {
 				font-size: 2rem;

@@ -50,9 +50,8 @@ export default function Register() {
 					<Input placeholder="再输一次" />
 				</Form.Item>
 				<div className={style.footer_bar}>
-					<Button color="default" htmlType="submit">
+					<Button color="default" htmlType="submit" suffixes={<ChevronRight />}>
 						下一步
-						<ChevronRight />
 					</Button>
 				</div>
 			</Form>

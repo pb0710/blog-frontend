@@ -28,7 +28,7 @@ function Setting() {
 	const setting = useSelector(state => state.setting)
 	const saveInterval = 400
 
-	const handleOptionsSave = debounce(values => {
+	const handleOptionsSave = values => {
 		console.log('values: ', values)
 		const { nickname, gender, selfIntroduction } = values
 		const newProfile = { nickname, gender, selfIntroduction }
@@ -40,7 +40,7 @@ function Setting() {
 		if (!equal(setting, newSetting)) {
 			dispatch(action.saveSetting(newSetting))
 		}
-	}, saveInterval)
+	}
 
 	const handleGoLogin = () => {
 		dispatch(modalAction.updateModal(true, <Login />))
@@ -57,8 +57,8 @@ function Setting() {
 					</div>
 				</Banner>
 			)}
-			<Form className={style.form} onValuesChange={handleOptionsSave}>
-				{online && <Account />}
+			<Form className={style.form} onValuesChange={debounce(handleOptionsSave, saveInterval)}>
+				<Account />
 				<Appearance />
 				<I18N />
 				<Editor />

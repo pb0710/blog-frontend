@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../style/index.module.scss'
-import { Button, Divider, Popup } from 'sylas-react-ui'
+import { Button, Divider, Popup, Input } from 'sylas-react-ui'
 import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
 import * as commonAction from '@/store/actions'
@@ -10,18 +10,19 @@ export default function UserProfile() {
 	const dispatch = useDispatch()
 	const { avatar, nickname, username } = useSelector(state => state.userProfile)
 
-	const { popupRef, visible, handleShowPopup } = Popup.usePopupVisible()
+	const { ref, visible, show, hide } = Popup.usePopup()
 
 	const handleSignOut = () => {
 		dispatch(commonAction.userLogout())
+		hide()
 	}
 
 	const avatarCls = clsx(style.user_avatar, visible && style.active)
 
 	return (
-		<div className={avatarCls} onClick={handleShowPopup}>
+		<div className={avatarCls} onClick={show}>
 			<img src={avatar} alt="" />
-			<Popup className={style.user_profile} ref={popupRef} visible={visible} scaleOrigin="top-right">
+			<Popup className={style.user_profile} ref={ref} visible={visible} scaleOrigin="top-right">
 				<Link to="/">
 					<div className={style.large_avatar}>
 						<img src={avatar} alt="" />

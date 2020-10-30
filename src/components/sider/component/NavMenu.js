@@ -10,7 +10,7 @@ function Nav(props) {
 	return (
 		<NavLink to={to}>
 			<Menu.Item id={id} className={style[`level${level}`]}>
-				{icon && <span className={style.icon}>{icon}</span>}
+				{icon && React.cloneElement(icon, { className: style.icon })}
 				{title}
 			</Menu.Item>
 		</NavLink>
@@ -72,7 +72,7 @@ function NavMenu() {
 		{
 			id: '2',
 			level: 1,
-			title: '指路',
+			title: '文档',
 			icon: <Explore />,
 			child: [
 				{
@@ -142,7 +142,7 @@ function NavMenu() {
 						opened={opened}
 						title={
 							<>
-								{nav.icon && <span className={style.icon}>{nav.icon}</span>}
+								{nav.icon && React.cloneElement(nav.icon, { className: style.icon })}
 								{nav.title}
 							</>
 						}

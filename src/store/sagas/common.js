@@ -7,20 +7,17 @@ import TYPE from '@/common/actionTypes'
 
 function* fetchUser() {
 	try {
-		const { message, payload } = yield userApi.fetchStatus()
-		if (message === 'ok') {
-			yield put(commonAction.updateOnline(true))
-			yield put(
-				commonAction.updateUserProfile({
-					//TODO: gender & selfIntroduction
-					...payload,
-					gender: 'male',
-					selfIntroduction: ''
-				})
-			)
-			return
-		}
-		throw message
+		const payload = yield userApi.fetchStatus()
+		yield put(commonAction.updateOnline(true))
+		yield put(
+			commonAction.updateUserProfile({
+				//TODO: gender & selfIntroduction
+				...payload,
+				gender: 'male',
+				selfIntroduction: ''
+			})
+		)
+		return
 	} catch (err) {
 		console.error('获取用户失败', err)
 	}
@@ -32,16 +29,11 @@ function* initUser() {
 
 function* login({ username, password }) {
 	try {
-		const { message } = yield userApi.login(username, password)
-		if (message === 'ok') {
-			yield fetchUser()
-			const { online } = yield select()
-			if (online) {
-				yield put(modalAction.updateModalVisible(false))
-				return
-			}
-		}
-		throw message
+		yield userApi.login(username, password)
+		yield fetchUser()
+		yield put(commonAction.updateOnline(true))
+		yield put(modalAction.updateModal(false, null))
+		msg.success('登录成功')
 	} catch (err) {
 		console.error('登录失败', err)
 		msg.error(err)
@@ -53,18 +45,18 @@ function* logout() {
 		yield userApi.logout()
 		yield put(commonAction.updateOnline(false))
 		yield put(commonAction.updateUserProfile({}))
+		msg.success('已退出')
 	} catch (err) {
-		console.error('退出登陆失败', err)
+		console.error('退出登录失败', err)
 		msg.error(err)
 	}
 }
 
 function* register({ username, password, profile }) {
 	try {
-		const { message } = yield userApi.register(username, password, profile)
-		if (message === 'ok') {
-			yield put(commonAction.userLogin({ username, password }))
-		}
+		yield userApi.register(username, password, profile)
+		yield put(commonAction.userLogin({ username, password }))
+		msg.success('注册成功')
 	} catch (err) {
 		console.error('注册失败', err)
 		msg.error(err)
@@ -103,6 +95,6 @@ function* saveProfileSaga() {
 	yield takeEvery(TYPE.SAVE_PROILE, action => saveProfile(action.payload))
 }
 
-export default function* () {
+export default function* commonSaga() {
 	yield all([spawn(initUserSaga), spawn(loginSaga), spawn(logoutSaga), spawn(registerSaga), spawn(saveProfileSaga)])
 }

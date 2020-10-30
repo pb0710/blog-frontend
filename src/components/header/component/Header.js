@@ -16,6 +16,7 @@ import Branch from './Branch'
 export default function Header() {
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
+	const theme = useSelector(state => state.setting.theme)
 
 	const handleToggleDrawer = () => {
 		dispatch(action.updateDrawer(true))
@@ -42,7 +43,7 @@ export default function Header() {
 				{online ? (
 					<UserProfile />
 				) : (
-					<Button className={style.go_login} color="primary" onClick={handleGoLogin}>
+					<Button className={style.go_login} color={theme} onClick={handleGoLogin}>
 						登录
 					</Button>
 				)}

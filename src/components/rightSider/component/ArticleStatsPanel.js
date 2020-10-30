@@ -17,7 +17,7 @@ function ArticleStatsPanel() {
 					<ThumbUpRounded />
 					获赞：<span>2048</span>
 				</List.Item>
-				<List.Item className={clsx(style.item, style.active)} hovered ripple>
+				<List.Item className={style.item} hovered ripple>
 					<LocalOfferRounded />
 					被收藏次数：<span>{detail.views}</span>
 				</List.Item>

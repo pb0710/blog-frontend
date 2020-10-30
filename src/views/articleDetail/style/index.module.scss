@@ -5,12 +5,24 @@
 	.article_wrapper {
 		padding: 1rem;
 
-		.bg_pic {
+		.bg {
 			margin-top: 1rem;
 			width: 100%;
-			border: 1px solid get_color('light', 'divider');
 			border-radius: 0.6rem;
+		}
+
+		.bg_pic {
+			border: 1px solid get_color('light', 'divider');
 			box-shadow: $small_shadow;
+
+			@extend .bg;
+		}
+
+		.bg_skeleton {
+			height: 36rem;
+			background: get_color('light', 'background_variant');
+
+			@extend .bg;
 		}
 
 		.info {

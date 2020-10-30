@@ -12,6 +12,6 @@ function* toggleDrawerSaga() {
 	yield takeEvery(TYPE.TOGGLE_DRAWER, action => toggleDrawer())
 }
 
-export default function* () {
+export default function* siderSaga() {
 	yield all([spawn(toggleDrawerSaga)])
 }

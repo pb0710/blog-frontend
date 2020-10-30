@@ -18,6 +18,6 @@ function* updateModalSaga() {
 	yield takeLatest(TYPE.UPDATE_MODAL, action => updateModal(action.payload))
 }
 
-export default function* () {
+export default function* modalSaga() {
 	yield all([spawn(updateModalSaga)])
 }

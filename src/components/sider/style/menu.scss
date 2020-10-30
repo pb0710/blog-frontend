@@ -1,11 +1,6 @@
 .menu {
 	.icon {
 		margin-right: 2rem;
-		> svg {
-			font-size: 2rem;
-
-			@include flex_center;
-		}
 	}
 
 	.level1 {

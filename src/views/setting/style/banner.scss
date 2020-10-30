@@ -7,7 +7,7 @@
 	height: 4rem;
 	border-radius: 0.6rem;
 	background: get_theme('warning');
-	box-shadow: $default_shadow;
+	box-shadow: $large_shadow;
 	color: get_color('light', 'background');
 
 	> span {
@@ -26,10 +26,6 @@
 			&:hover {
 				text-decoration: underline;
 			}
-		}
-
-		> svg {
-			font-size: 2rem;
 		}
 	}
 }

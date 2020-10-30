@@ -1,19 +1,19 @@
 export function getlang(str) {
-  if (typeof str != 'string') return str
-  const [prefix, lang, ...rest] = str.split('-')
+	if (typeof str != 'string') return str
+	const [prefix, lang, ...rest] = str.split('-')
 
-  switch (lang) {
-    case 'js':
-      return 'javascript'
-    default:
-      return lang
-  }
+	switch (lang) {
+		case 'js':
+			return 'javascript'
+		default:
+			return lang
+	}
 }
 
 export function insertTemp(str, index, target) {
-  const start = str.substr(0, index)
-  const end = str.substr(index, str.length)
-  return start + target + end
+	const start = str.substr(0, index)
+	const end = str.substr(index, str.length)
+	return start + target + end
 }
 
 /**
@@ -34,15 +34,15 @@ export const getScrollbarHeight = elem => elem.clientHeight ** 2 / elem.scrollHe
  * @param target
  */
 export function followScroll(origin, target) {
-  if (!origin || !target) return
+	if (!origin || !target) return
 
-  const proportion = getScrollbarHeight(origin) / getScrollbarHeight(target)
-  const originPercent = origin.scrollTop / origin.scrollHeight
+	const proportion = getScrollbarHeight(origin) / getScrollbarHeight(target)
+	const originPercent = origin.scrollTop / origin.scrollHeight
 
-  const left = 0
-  const top = Math.round(target.scrollHeight * originPercent * proportion)
+	const left = 0
+	const top = Math.round(target.scrollHeight * originPercent * proportion)
 
-  target.scrollTo(left, top)
+	target.scrollTo(left, top)
 }
 
 /**
@@ -50,10 +50,10 @@ export function followScroll(origin, target) {
  * @param elem
  */
 export function getPosition(elem) {
-  return {
-    start: elem?.selectionStart || 0,
-    end: elem?.selectionEnd || 0
-  }
+	return {
+		start: elem?.selectionStart || 0,
+		end: elem?.selectionEnd || 0
+	}
 }
 
 /**
@@ -62,6 +62,6 @@ export function getPosition(elem) {
  * @param pos
  */
 export function setPosition(elem, pos) {
-  elem.focus()
-  elem.setSelectionRange(pos, pos)
+	elem.focus()
+	elem.setSelectionRange(pos, pos)
 }

@@ -1,14 +1,13 @@
-const { override, addWebpackAlias, useBabelRc, useEslintRc, adjustStyleLoaders } = require('customize-cra')
+/* eslint-disable react-hooks/rules-of-hooks */
+const { override, addWebpackAlias, useBabelRc, adjustStyleLoaders } = require('customize-cra')
 const path = require('path')
 
 const resolve = dir => path.join(__dirname, '.', dir)
 
 module.exports = override(
 	useBabelRc(),
-	useEslintRc(),
 	addWebpackAlias({
-		'@': resolve('src'),
-		config: resolve('config')
+		'@': resolve('src')
 	}),
 	adjustStyleLoaders(rule => {
 		if (rule.test.toString().includes('scss')) {

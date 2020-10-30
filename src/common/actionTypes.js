@@ -1,4 +1,4 @@
-export default {
+const actionTypes = {
 	INIT_USER: 'init_user',
 	USER_LOGIN: 'user_login',
 	USER_LOGOUT: 'user_logout',
@@ -15,3 +15,5 @@ export default {
 	TOGGLE_DRAWER: 'toggle_drawer',
 	UPDATE_DRAWER: 'update_drawer'
 }
+
+export default actionTypes

@@ -5,7 +5,7 @@ import { Translate } from '@material-ui/icons'
 import { useSelector } from 'react-redux'
 
 function I18N() {
-	const { language } = useSelector(state => state.setting)
+	const { language, theme } = useSelector(state => state.setting)
 	const i18nOpts = [
 		{
 			icon: <Translate />,
@@ -14,8 +14,12 @@ function I18N() {
 			initialValue: language,
 			component: (
 				<Select>
-					<Select.Option value="zh-CN">简体中文</Select.Option>
-					<Select.Option value="en-US">English</Select.Option>
+					<Select.Option color={theme} value="zh-CN">
+						简体中文
+					</Select.Option>
+					<Select.Option color={theme} value="en-US">
+						English
+					</Select.Option>
 				</Select>
 			)
 		}

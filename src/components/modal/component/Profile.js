@@ -17,6 +17,7 @@ export default function Profile(props) {
 
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
+	const theme = useSelector(state => state.setting.theme)
 	const [avatarSrc, setAvatarSrc] = React.useState(defaultAvatar)
 	const [visible, { setTrue: handleShowUpload, setFalse: handleHideUpload }] = useBoolean(false)
 
@@ -47,10 +48,8 @@ export default function Profile(props) {
 
 	const handleAddAvatar = async formData => {
 		try {
-			const { message, payload: remotePicUrl } = await fileApi.uploadImage(formData)
-			if (message === 'ok') {
-				setAvatarSrc(remotePicUrl)
-			}
+			const remotePicUrl = await fileApi.uploadImage(formData)
+			setAvatarSrc(remotePicUrl)
 		} catch (err) {
 			console.error(`图片上传失败——${err}`)
 			msg.error(err)
@@ -89,9 +88,8 @@ export default function Profile(props) {
 				<Form.Item label="个人简介" name="selfIntroduction">
 					<Input placeholder="技能、兴趣爱好（选填）" />
 				</Form.Item>
-				<Button htmlType="submit" color="primary">
+				<Button htmlType="submit" color={theme} suffixes={<CheckCircle />}>
 					完成
-					<CheckCircle />
 				</Button>
 			</Form>
 		</div>

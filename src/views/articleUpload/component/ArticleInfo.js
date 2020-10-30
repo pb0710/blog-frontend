@@ -1,5 +1,5 @@
 import React from 'react'
-import { AddPhotoAlternateOutlined, CloseOutlined, AddCircle } from '@material-ui/icons'
+import { AddPhotoAlternateOutlined, CloseOutlined, CheckCircle } from '@material-ui/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Input, Select } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
@@ -16,6 +16,7 @@ export default function ArticleInfo(props) {
 
 	const dispatch = useDispatch()
 	const { userId } = useSelector(state => state.userProfile)
+	const theme = useSelector(state => state.setting.theme)
 
 	const [visible, { setTrue: handleShowCover, setFalse: handleHideCover }] = useBoolean(false)
 	const [picSrc, setPicSrc] = React.useState(defaultArticleBg)
@@ -35,11 +36,9 @@ export default function ArticleInfo(props) {
 
 	const uploadImg = async formData => {
 		try {
-			const { message, payload: remotePicUrl } = await fileApi.uploadImage(formData)
-			if (message === 'ok') {
-				console.log('remotePicUrl', remotePicUrl)
-				setPicSrc(remotePicUrl)
-			}
+			const remotePicUrl = await fileApi.uploadImage(formData)
+			console.log('remotePicUrl', remotePicUrl)
+			setPicSrc(remotePicUrl)
 		} catch (err) {
 			console.error(`图片上传失败——${err}`)
 		}
@@ -111,8 +110,7 @@ export default function ArticleInfo(props) {
 						{item.component}
 					</Form.Item>
 				))}
-				<Button className={style.add} htmlType="submit" color="primary">
-					<AddCircle />
+				<Button className={style.add} htmlType="submit" color={theme} prefixes={<CheckCircle />}>
 					发布文章
 				</Button>
 			</Form>

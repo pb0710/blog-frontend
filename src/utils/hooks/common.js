@@ -16,27 +16,36 @@ export function useBoolean(initial) {
 
 /**
  * 异步请求hooks
- * @param {promise} promiseApi 异步请求函数
+ * @param {Promise} promiseApi 异步请求函数
  * @param {Object} options
- *  @param {unknown} initData 默认值
- *  @param {Boolean} immutable 是否只请求一次
+ *  @param {any} initData 默认值
+ *  @param {Boolean} immutable 请求是否不可变
+ *  @param {Array} defaultParams 默认请求参数
  */
-export function useFetch(promiseApi, initData, immutable) {
+export function useFetch(promiseApi, { initData, defaultParams = [], immutable }) {
 	const [data, setData] = useState(initData)
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
 
-	const excute = useCallback(() => {
-		setLoading(true)
-		promiseApi()
-			.then(res => setData(res))
-			.catch(err => setError(err))
-			.finally(() => setLoading(false))
-	}, [promiseApi])
+	let initialize = useRef(initData).current
+	let params = useRef(defaultParams).current
+
+	const excute = useCallback(
+		(...args) => {
+			setLoading(true)
+			setData(initialize)
+			setError()
+			promiseApi(...args)
+				.then(res => setData(res))
+				.catch(err => setError(err))
+				.finally(() => setLoading(false))
+		},
+		[initialize, promiseApi]
+	)
 
 	useEffect(() => {
-		if (!immutable) excute()
-	}, [excute, immutable])
+		if (!immutable) excute(...params)
+	}, [excute, immutable, params])
 
 	return { data, error, loading, excute }
 }
