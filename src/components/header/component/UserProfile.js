@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 export default function UserProfile() {
 	const dispatch = useDispatch()
 	const { avatar, nickname, username } = useSelector(state => state.userProfile)
+	const theme = useSelector(state => state.setting.theme)
 
 	const { ref, visible, show, hide } = Popup.usePopup()
 
@@ -17,7 +18,7 @@ export default function UserProfile() {
 		hide()
 	}
 
-	const avatarCls = clsx(style.user_avatar, visible && style.active)
+	const avatarCls = clsx(style[`user_avatar_${theme}`], visible && style.active)
 
 	return (
 		<div className={avatarCls} onClick={show}>

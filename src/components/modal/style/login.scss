@@ -1,6 +1,5 @@
 @import 'common';
 
-$highlight: get_theme('primary');
 $divider: get_color('light', 'divider');
 
 .login_wrapper {
@@ -34,7 +33,7 @@ $divider: get_color('light', 'divider');
 		padding: 1rem 2rem 2rem 0;
 		width: 100%;
 
-		.register {
+		@include use_themes('.go_register') {
 			margin-left: 4rem;
 			color: get_color('light', 'text_secondary');
 			text-decoration: underline;

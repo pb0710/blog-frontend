@@ -1,6 +1,5 @@
 @import 'common';
 
-$highlight: get_theme('primary');
 $divider: get_color('light', 'divider');
 
 .profile_wrapper {
@@ -48,11 +47,17 @@ $divider: get_color('light', 'divider');
 
 			@include flex_center;
 			> svg {
-				font-size: 4rem;
+				font-size: 4rem !important;
 			}
 			&:hover {
 				backdrop-filter: blur(24px);
 			}
+		}
+	}
+
+	.complete {
+		svg {
+			font-size: 1.6rem !important;
 		}
 	}
 }

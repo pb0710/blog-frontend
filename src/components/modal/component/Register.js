@@ -1,8 +1,8 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import { CloseOutlined, ArrowBackOutlined, ChevronRight } from '@material-ui/icons'
+import { CloseOutlined, ArrowBackOutlined } from '@material-ui/icons'
 import { msg } from '@/components/base'
 import * as action from '../store/action'
 import Login from './Login'
@@ -10,6 +10,7 @@ import Profile from './Profile'
 
 export default function Register() {
 	const dispatch = useDispatch()
+	const theme = useSelector(state => state.setting.theme)
 
 	const handleReturn = () => {
 		dispatch(action.updateModal(true, <Login />))
@@ -41,16 +42,16 @@ export default function Register() {
 			<div className={style.header}></div>
 			<Form onFinished={handleCreateAccount}>
 				<Form.Item label="用户名" name="username">
-					<Input placeholder="用户名" />
+					<Input color={theme} placeholder="用户名" />
 				</Form.Item>
 				<Form.Item label="密码" name="password">
-					<Input placeholder="密码" />
+					<Input color={theme} placeholder="密码" />
 				</Form.Item>
 				<Form.Item label="确认密码" name="password_confirm">
-					<Input placeholder="再输一次" />
+					<Input color={theme} placeholder="再输一次" />
 				</Form.Item>
 				<div className={style.footer_bar}>
-					<Button color="default" htmlType="submit" suffixes={<ChevronRight />}>
+					<Button color="default" htmlType="submit">
 						下一步
 					</Button>
 				</div>

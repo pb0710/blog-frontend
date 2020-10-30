@@ -49,7 +49,7 @@ function Setting() {
 	return (
 		<FlexiblePage className={style.setting_page}>
 			{online || (
-				<Banner>
+				<Banner theme={setting.theme}>
 					<span>登录账号以同步配置</span>
 					<div onClick={handleGoLogin}>
 						<span>去登录</span>

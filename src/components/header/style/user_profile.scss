@@ -1,8 +1,7 @@
 $divider: get_color('light', 'divider');
 $text_secondary: get_color('light', 'text_secondary');
-$highlight: get_theme('primary');
 
-.user_avatar {
+@include use_themes('.user_avatar') {
 	position: relative;
 	margin-right: 1rem;
 	min-height: 0;

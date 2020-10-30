@@ -77,18 +77,22 @@ export default function Profile(props) {
 			</Uploader>
 			<Form onFinished={handleRegister}>
 				<Form.Item label="名称" name="nickname">
-					<Input placeholder="你的名字（必填）" />
+					<Input color={theme} placeholder="你的名字（必填）" />
 				</Form.Item>
 				<Form.Item label="性别" name="gender" initialValue="male">
 					<Select>
-						<Select.Option value="male">男</Select.Option>
-						<Select.Option value="female">女</Select.Option>
+						<Select.Option color={theme} value="male">
+							男
+						</Select.Option>
+						<Select.Option color={theme} value="female">
+							女
+						</Select.Option>
 					</Select>
 				</Form.Item>
 				<Form.Item label="个人简介" name="selfIntroduction">
-					<Input placeholder="技能、兴趣爱好（选填）" />
+					<Input color={theme} placeholder="技能、兴趣爱好（选填）" />
 				</Form.Item>
-				<Button htmlType="submit" color={theme} suffixes={<CheckCircle />}>
+				<Button className={style.complete} htmlType="submit" color={theme} suffixes={<CheckCircle />}>
 					完成
 				</Button>
 			</Form>

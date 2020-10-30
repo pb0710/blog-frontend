@@ -8,8 +8,8 @@ import clsx from 'clsx'
 import { Uploader } from '@/components/base'
 import { Fingerprint, EmojiPeople, Face, Wc, DescriptionOutlined, ExitToApp } from '@material-ui/icons'
 import * as fileApi from '@/apis/file'
-import { msg } from '@/components/base'
 import * as commonAction from '@/store/actions'
+import { msg } from '@/components/base'
 
 function Account() {
 	const dispatch = useDispatch()
@@ -40,7 +40,7 @@ function Account() {
 		dispatch(commonAction.userLogout())
 	}
 
-	const usernameOptCls = clsx(style.option, style.username_wrapper)
+	const usernameOptCls = clsx(style.option, style[`username_wrapper_${theme}`])
 	const avatarOptCls = clsx(style.option, style.avatar_wrapper)
 
 	const accountOpts = [
@@ -80,9 +80,13 @@ function Account() {
 			name: 'gender',
 			initialValue: 'male',
 			component: (
-				<Select color={theme}>
-					<Select.Option value="male">男</Select.Option>
-					<Select.Option value="female">女</Select.Option>
+				<Select>
+					<Select.Option color={theme} value="male">
+						男
+					</Select.Option>
+					<Select.Option color={theme} value="female">
+						女
+					</Select.Option>
 				</Select>
 			)
 		},

@@ -68,16 +68,18 @@ export default function Login() {
 			<Button.Icon className={style.close} onClick={handleClose}>
 				<CloseOutlined />
 			</Button.Icon>
-			<div className={style.avatar_wrapper}>{loading ? <Loading.Bounce /> : <img src={avatar} alt="" />}</div>
+			<div className={style.avatar_wrapper}>
+				{loading ? <Loading.Bounce color={theme} /> : <img src={avatar} alt="" />}
+			</div>
 			<Form onFinished={handleSubmit} onValuesChange={debounce(handleValuesChange, fetchInterval)}>
 				<Form.Item label="用户名" name="username">
-					<Input placeholder="用户名" />
+					<Input color={theme} placeholder="用户名" />
 				</Form.Item>
 				<Form.Item label="密码" name="password">
-					<Input.Password placeholder="密码" />
+					<Input.Password color={theme} placeholder="密码" />
 				</Form.Item>
 				<div className={style.footer}>
-					<span className={style.register} onClick={handleGoRegister}>
+					<span className={style[`go_register_${theme}`]} onClick={handleGoRegister}>
 						没有账号？点击注册
 					</span>
 					<Button htmlType="submit" color={theme}>

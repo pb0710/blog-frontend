@@ -18,3 +18,12 @@
 		resize: none;
 	}
 }
+
+@mixin use_themes($base_name) {
+	@each $key, $value in $themes {
+		#{$base_name}_#{$key} {
+			$highlight: get_theme($key) !global;
+			@content;
+		}
+	}
+}

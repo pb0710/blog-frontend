@@ -1,4 +1,4 @@
-.banner {
+@include use_themes('.banner') {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -6,7 +6,7 @@
 	padding: 0 2rem;
 	height: 4rem;
 	border-radius: 0.6rem;
-	background: get_theme('warning');
+	background: $highlight;
 	box-shadow: $large_shadow;
 	color: get_color('light', 'background');
 

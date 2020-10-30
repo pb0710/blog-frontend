@@ -2,10 +2,12 @@ import React from 'react'
 import style from '../style/index.module.scss'
 import { Form, List } from 'sylas-react-ui'
 import clsx from 'clsx'
+import { useSelector } from 'react-redux'
 
 function Options(props) {
 	const { opts = [], heading, className } = props
 	const containerCls = clsx(style.container, className)
+	const theme = useSelector(state => state.setting.theme)
 
 	const renderComponent = c => (typeof c === 'function' ? c() : c)
 
@@ -24,7 +26,7 @@ function Options(props) {
 			<List className={containerCls}>
 				{opts.map((opt, index) => (
 					<List.Item key={index} className={opt.itemCls}>
-						{opt.icon}
+						{opt.icon && React.cloneElement(opt.icon, { className: style[`icon_${theme}`] })}
 						<span>{opt.title}</span>
 						{renderOption(opt)}
 					</List.Item>

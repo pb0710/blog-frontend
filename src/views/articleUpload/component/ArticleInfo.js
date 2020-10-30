@@ -75,18 +75,28 @@ export default function ArticleInfo(props) {
 		{
 			label: '标题',
 			name: 'title',
-			component: <Input placeholder="标题很重要" />
+			component: <Input color={theme} placeholder="标题很重要" />
 		},
 		{
 			label: '分类',
 			name: 'sort',
 			component: (
 				<Select className={style.sort}>
-					<Select.Option value="frontend">前端</Select.Option>
-					<Select.Option value="backend">后端</Select.Option>
-					<Select.Option value="mobile">移动端</Select.Option>
-					<Select.Option value="computer_science">计算机通用</Select.Option>
-					<Select.Option value="engineering">工程化</Select.Option>
+					<Select.Option color={theme} value="frontend">
+						前端
+					</Select.Option>
+					<Select.Option color={theme} value="backend">
+						后端
+					</Select.Option>
+					<Select.Option color={theme} value="mobile">
+						移动端
+					</Select.Option>
+					<Select.Option color={theme} value="computer_science">
+						计算机通用
+					</Select.Option>
+					<Select.Option color={theme} value="engineering">
+						工程化
+					</Select.Option>
 				</Select>
 			),
 			initialValue: 'frontend'
@@ -94,7 +104,7 @@ export default function ArticleInfo(props) {
 		{
 			label: '简介',
 			name: 'introduce',
-			component: <Input.TextArea placeholder="一句话概括..." />
+			component: <Input.TextArea color={theme} placeholder="一句话概括..." />
 		}
 	]
 

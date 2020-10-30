@@ -1,7 +1,7 @@
 @function get_theme($key) {
-	@return map-get($theme, $key);
+	@return map-get($themes, $key);
 }
 
 @function get_color($style, $key) {
-	@return map-get(map-get($color, $style), $key);
+	@return map-get(map-get($colors, $style), $key);
 }

@@ -1,16 +1,7 @@
 .account {
-	> li {
-		&.profile {
-			padding: 1rem 2rem;
-			height: 8rem;
-		}
-	}
-
-	.username_wrapper {
+	@include use_themes('.username_wrapper') {
 		display: flex;
 		align-items: center;
-
-		$highlight: get_theme('primary');
 
 		> span {
 			margin-right: 2rem;
@@ -20,6 +11,13 @@
 			border: 1px solid $highlight;
 			background: #fff;
 			color: $highlight;
+		}
+	}
+
+	> li {
+		&.profile {
+			padding: 1rem 2rem;
+			height: 8rem;
 		}
 	}
 

@@ -22,9 +22,9 @@ $divider: 1px solid get_color('light', 'divider');
 			padding: 0 2rem;
 			height: 5rem;
 
-			> svg {
+			@include use_themes('.icon') {
 				margin-right: 2rem;
-				color: get_theme('primary');
+				color: $highlight;
 				font-size: 2rem;
 			}
 

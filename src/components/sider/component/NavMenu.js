@@ -7,9 +7,10 @@ import { useSelector } from 'react-redux'
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
+	const theme = useSelector(state => state.setting.theme)
 	return (
 		<NavLink to={to}>
-			<Menu.Item id={id} className={style[`level${level}`]}>
+			<Menu.Item id={id} color={theme} className={style[`level${level}`]}>
 				{icon && React.cloneElement(icon, { className: style.icon })}
 				{title}
 			</Menu.Item>

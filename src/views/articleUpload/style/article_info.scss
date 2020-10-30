@@ -1,6 +1,5 @@
 @import 'common';
 
-$highlight: get_theme('primary');
 $divider: get_color('light', 'divider');
 
 .article_info {
@@ -34,7 +33,7 @@ $divider: get_color('light', 'divider');
 
 			@include flex_center;
 			> svg {
-				font-size: 4rem;
+				font-size: 4rem !important;
 			}
 			&:hover {
 				backdrop-filter: blur(24px);
@@ -58,5 +57,9 @@ $divider: get_color('light', 'divider');
 	.add {
 		margin-top: 2rem;
 		margin-bottom: 1rem;
+
+		svg {
+			font-size: 1.6rem !important;
+		}
 	}
 }

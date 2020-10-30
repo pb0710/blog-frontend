@@ -4,13 +4,15 @@ import { Switch, Route } from 'react-router-dom'
 import Home from '@/views/home/Home'
 import NotFound from '@/views/notFound/NotFound'
 import { Loading } from 'sylas-react-ui'
+import { useSelector } from 'react-redux'
 
 function Content() {
+	const theme = useSelector(state => state.setting.theme)
 	return (
 		<React.Suspense
 			fallback={(() => (
 				<section className={style.loading_wrapper}>
-					<Loading.Line />
+					<Loading.Line color={theme} />
 				</section>
 			))()}
 		>
