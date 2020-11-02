@@ -30,14 +30,16 @@ export default function Profile(props) {
 	}
 
 	const handleRegister = values => {
-		if (!values.nickname || !account) {
-			return
-		}
+		if (!values.nickname || !account) return
+
 		const userInfo = {
 			username: account.username,
 			password: account.password,
 			profile: {
-				nickname: values.nickname
+				avatar: avatarSrc,
+				nickname: values.nickname,
+				gender: values.gender,
+				selfIntroduction: values.selfIntroduction
 			}
 		}
 		dispatch(commonAction.userRegister(userInfo))

@@ -12,7 +12,7 @@
 		}
 
 		.bg_pic {
-			border: 1px solid get_color('light', 'divider');
+			border: 1px solid $divider;
 			box-shadow: $small_shadow;
 
 			@extend .bg;
@@ -20,7 +20,7 @@
 
 		.bg_skeleton {
 			height: 36rem;
-			background: get_color('light', 'background_variant');
+			background: $background_variant;
 
 			@extend .bg;
 		}
@@ -35,7 +35,7 @@
 			> div:first-child {
 				> span {
 					margin-right: 3rem;
-					color: get_color('light', 'text_secondary');
+					color: $text_secondary;
 					font-size: 1.3rem;
 				}
 			}

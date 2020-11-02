@@ -11,7 +11,7 @@ import { Branch } from '@/components/header'
 export default function Sider() {
 	const dispatch = useDispatch()
 	const opened = useSelector(state => state.sider.drawerOpened)
-	const defaultClosed = useSelector(state => state.setting.drawerDefaultClosed)
+	const defaultClosed = useSelector(state => state.setting.drawerDefaultOpened)
 
 	const hanldeClose = () => {
 		dispatch(action.updateDrawer(false))

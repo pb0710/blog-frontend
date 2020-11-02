@@ -1,22 +1,28 @@
-$divider: 1px solid get_color('light', 'divider');
-
 .article_card_wrapper {
 	padding: 1rem;
 	min-width: 20rem;
 	width: 25%;
 
-	.article_card {
+	@include use_themes('.article_card') {
 		position: relative;
 		overflow: hidden;
-		border: $divider;
+		border: 1px solid $divider;
 		border-radius: 0.6rem;
-		background: get_color('light', 'background');
+		background: $background;
 		box-shadow: $small_shadow;
 		transition: transform $fast ease-out, box-shadow $fast ease-out;
+
+		h3 {
+			transition: color $fast;
+		}
 
 		&:hover {
 			box-shadow: $large_shadow;
 			transform: translateY(-0.2rem);
+
+			h3 {
+				color: $highlight;
+			}
 		}
 
 		.cover {
@@ -26,7 +32,7 @@ $divider: 1px solid get_color('light', 'divider');
 			> img {
 				width: 100%;
 				height: 100%;
-				background: get_color('light', 'divider');
+				background: $background_variant;
 				vertical-align: text-top;
 
 				object-fit: cover;
@@ -41,7 +47,7 @@ $divider: 1px solid get_color('light', 'divider');
 
 			> .title {
 				margin: 0;
-				color: get_color('light', 'text_primary');
+				color: $text_primary;
 				text-align: left;
 				font-size: 1.2rem;
 
@@ -57,7 +63,7 @@ $divider: 1px solid get_color('light', 'divider');
 				right: 1rem;
 				bottom: 1rem;
 				margin: 0;
-				color: get_color('light', 'text_secondary');
+				color: $text_secondary !important;
 				font-size: 1.2rem;
 			}
 		}

@@ -1,6 +1,6 @@
 @import './menu.scss';
 
-$border: 1px solid get_color('light', 'divider');
+$border: 1px solid $divider;
 $sider_width: 24rem;
 
 .sider {
@@ -10,7 +10,7 @@ $sider_width: 24rem;
 	width: $sider_width;
 	height: 100vh;
 	border-right: $border;
-	background: get_color('light', 'background');
+	background: $background;
 	transition: transform $normal ease-out;
 	transform: translateX(-$sider_width);
 

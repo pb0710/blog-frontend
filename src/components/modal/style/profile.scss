@@ -1,6 +1,6 @@
 @import 'common';
 
-$divider: get_color('light', 'divider');
+$divider: $divider;
 
 .profile_wrapper {
 	position: relative;
@@ -11,7 +11,7 @@ $divider: get_color('light', 'divider');
 	width: 36rem;
 	border: 1px solid $divider;
 	border-radius: 0.6rem;
-	background: get_color('light', 'background');
+	background: $background;
 	box-shadow: $default_shadow;
 
 	@include with_title;

@@ -1,4 +1,4 @@
-$divider: get_color('light', 'divider');
+$divider: $divider;
 
 .markdown_editor {
 	height: calc(100vh - 5rem);
@@ -10,7 +10,7 @@ $divider: get_color('light', 'divider');
 		padding: 0 1rem;
 		width: 100%;
 		height: 5rem;
-		background: get_color('light', 'background_variant');
+		background: $background_variant;
 
 		.tools {
 			display: flex;
@@ -70,7 +70,7 @@ $divider: get_color('light', 'divider');
 		> .preview {
 			overflow-y: auto;
 			padding: $article_padding;
-			background: get_color('light', 'background');
+			background: $background;
 		}
 	}
 }

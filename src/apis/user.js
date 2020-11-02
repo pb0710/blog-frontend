@@ -1,13 +1,13 @@
 import request from '@/utils/request'
 
 /**
- * 获取用户登录信息和基本信息
+ * 获取用户账号信息、基本信息、用户设置
  */
-export const fetchStatus = () => request.get(`user/sign_status`)
+export const initData = () => request.get(`user/init_data`)
 
 /**
  * 获取用户基本信息
- * @param {*} username 用户名
+ * @param {String} username 用户名
  */
 export const fetchProfile = username =>
 	request({
@@ -17,6 +17,7 @@ export const fetchProfile = username =>
 
 /**
  * 保存用户基本信息
+ * @param {Object} profile 用户基本信息
  */
 export const saveProfile = profile =>
 	request({

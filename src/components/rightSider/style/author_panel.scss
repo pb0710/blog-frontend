@@ -36,7 +36,7 @@
 				width: 12rem;
 
 				.name {
-					color: get_color('light', 'text_primary');
+					color: $text_primary;
 					font-weight: bold;
 					font-size: 1.6rem;
 				}
@@ -52,7 +52,7 @@
 			margin: 0 0.4rem;
 
 			svg {
-				color: get_color('light', 'text_secondary');
+				color: $text_secondary;
 				font-size: 2rem;
 			}
 		}

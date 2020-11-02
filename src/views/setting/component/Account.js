@@ -6,14 +6,13 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import { Uploader } from '@/components/base'
-import { Fingerprint, EmojiPeople, Face, Wc, DescriptionOutlined, ExitToApp } from '@material-ui/icons'
+import { Fingerprint, FeaturedPlayListOutlined, FaceOutlined, Wc, ChatOutlined } from '@material-ui/icons'
 import * as fileApi from '@/apis/file'
 import * as commonAction from '@/store/actions'
 import { msg } from '@/components/base'
 
 function Account() {
 	const dispatch = useDispatch()
-	const online = useSelector(state => state.online)
 	const profile = useSelector(state => state.userProfile)
 	const theme = useSelector(state => state.setting.theme)
 	const { username, nickname, avatar } = profile
@@ -40,8 +39,9 @@ function Account() {
 		dispatch(commonAction.userLogout())
 	}
 
-	const usernameOptCls = clsx(style.option, style[`username_wrapper_${theme}`])
+	const usernameOptCls = clsx(style.option, style.username_wrapper)
 	const avatarOptCls = clsx(style.option, style.avatar_wrapper)
+	const btnCls = style[`btn_${theme}`]
 
 	const accountOpts = [
 		{
@@ -50,29 +50,18 @@ function Account() {
 			component: (
 				<div className={usernameOptCls}>
 					<span>{username ?? '尚未登录...'}</span>
-					<Button onClick={handleLogout}>退出</Button>
+					<Button className={btnCls} onClick={handleLogout}>
+						退出
+					</Button>
 				</div>
 			)
 		},
 		{
-			icon: <EmojiPeople />,
+			icon: <FeaturedPlayListOutlined />,
 			title: '昵称',
 			name: 'nickname',
 			initialValue: nickname,
 			component: <Input color={theme} placeholder="你的名字（必填）" />
-		},
-		{
-			itemCls: style.profile,
-			icon: <Face />,
-			title: '头像',
-			component: (
-				<div className={avatarOptCls}>
-					<img alt="" src={avatar ?? defaultAvatar} />
-					<Uploader onChange={handleChangeAvatar}>
-						<Button color={theme}>更换</Button>
-					</Uploader>
-				</div>
-			)
 		},
 		{
 			icon: <Wc />,
@@ -91,14 +80,28 @@ function Account() {
 			)
 		},
 		{
-			icon: <DescriptionOutlined />,
+			itemCls: style.profile,
+			icon: <FaceOutlined />,
+			title: '头像',
+			component: (
+				<div className={avatarOptCls}>
+					<img alt="" src={avatar ?? defaultAvatar} />
+					<Uploader onChange={handleChangeAvatar}>
+						<Button className={btnCls}>更换</Button>
+					</Uploader>
+				</div>
+			)
+		},
+		{
+			itemCls: style.description,
+			icon: <ChatOutlined />,
 			title: '个人简介',
 			name: 'selfIntroduction',
 			initialValue: '',
-			component: <Input color={theme} placeholder="技能、兴趣爱好（选填）" />
+			component: <Input.TextArea color={theme} placeholder="技能、兴趣爱好（选填）" />
 		}
 	]
-	return online && <Options className={style.account} heading="用户资料" opts={accountOpts} />
+	return <Options className={style.account} heading="用户资料" opts={accountOpts} />
 }
 
 export default Account

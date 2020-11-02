@@ -19,7 +19,7 @@ function Nav(props) {
 }
 
 function NavMenu() {
-	const opened = useSelector(state => state.setting.menuDefaultOpened)
+	const opened = useSelector(state => state.setting.menuDefaultExpansion)
 	const menu = Menu.useMenu()
 	const { pathname } = useLocation()
 

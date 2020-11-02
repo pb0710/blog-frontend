@@ -1,16 +1,16 @@
 .account {
-	@include use_themes('.username_wrapper') {
+	@include use_themes('.btn') {
+		border: 1px solid $highlight;
+		background: #fff;
+		color: $highlight;
+	}
+
+	.username_wrapper {
 		display: flex;
 		align-items: center;
 
 		> span {
 			margin-right: 2rem;
-		}
-
-		> button {
-			border: 1px solid $highlight;
-			background: #fff;
-			color: $highlight;
 		}
 	}
 
@@ -19,6 +19,14 @@
 			padding: 1rem 2rem;
 			height: 8rem;
 		}
+		&.description {
+			height: 6rem;
+
+			textarea {
+				resize: none;
+				transform: translateY(-0.5rem);
+			}
+		}
 	}
 
 	.avatar_wrapper {
@@ -26,7 +34,7 @@
 		align-items: center;
 
 		> img {
-			margin-right: 1rem;
+			margin-right: 2rem;
 			width: 5rem;
 			height: 5rem;
 			border-radius: 50%;

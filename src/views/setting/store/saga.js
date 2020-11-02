@@ -1,4 +1,4 @@
-import { all, spawn, takeEvery, select, put } from 'redux-saga/effects'
+import { all, spawn, takeEvery, put } from 'redux-saga/effects'
 import { msg } from '@/components/base'
 import TYPE from '@/common/actionTypes'
 import * as settingApi from '@/apis/setting'
@@ -18,11 +18,8 @@ function saveOnLocalStoage(setting) {
 }
 
 function* saveSetting(newSetting) {
-	console.log('newSetting: ', newSetting)
-	yield put(action.updateSetting(newSetting))
-	const { userId } = yield select(state => state.userProfile)
 	try {
-		yield settingApi.updateSetting(userId, newSetting)
+		yield settingApi.updateSetting(newSetting)
 		yield put(action.updateSetting(newSetting))
 		saveOnLocalStoage(newSetting)
 		msg.success('保存成功')

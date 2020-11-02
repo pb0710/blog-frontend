@@ -2,7 +2,7 @@
 	cursor: pointer;
 
 	li {
-		color: get_color('light', 'text_secondary');
+		color: $text_secondary;
 
 		&.active {
 			color: get_theme('primary');

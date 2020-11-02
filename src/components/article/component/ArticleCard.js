@@ -2,16 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import style from '../style/index.module.scss'
 import { AspectRatio } from '@/components/base'
+import { useSelector } from 'react-redux'
 
 export default function ArticleCard(props) {
-	const { id, author, sort, title, backgroundImage = 'https://iph.href.lu/200x200', views, tags = [] } = props
+	const { id, author, sort, title, backgroundImage, views, tags = [] } = props
+	const theme = useSelector(state => state.setting.theme)
 
 	const aritcleLink = `/detail/${id}`
 	const authorLink = `/user/${1}`
 
 	return (
 		<div className={style.article_card_wrapper}>
-			<div className={style.article_card}>
+			<div className={style[`article_card_${theme}`]}>
 				<AspectRatio aspectRatio={4 / 3}>
 					<Link to={aritcleLink}>
 						<div className={style.cover}>

@@ -1,5 +1,5 @@
 @mixin glass {
-	background: rgba(get_color('light', 'background'), 0.7);
+	background: rgba($background, 0.7);
 
 	backdrop-filter: saturate(50%) blur(20px);
 }

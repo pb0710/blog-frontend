@@ -1,15 +1,16 @@
 import React from 'react'
 import Options from './Options'
 import { Switch } from 'sylas-react-ui'
-import { ImportContactsRounded } from '@material-ui/icons'
+import { ChromeReaderModeOutlined } from '@material-ui/icons'
 import { useSelector } from 'react-redux'
 
 function Editor() {
-	const { useMarkdownGuide, theme } = useSelector(state => state.setting)
+	const theme = useSelector(state => state.setting.theme)
+	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
 	const editorOpts = [
 		{
-			icon: <ImportContactsRounded />,
-			title: '写作区添加 Markdown Demo 模版',
+			icon: <ChromeReaderModeOutlined />,
+			title: '展示 Markdown Demo',
 			name: 'useMarkdownGuide',
 			initialValue: useMarkdownGuide,
 			component: <Switch color={theme} />

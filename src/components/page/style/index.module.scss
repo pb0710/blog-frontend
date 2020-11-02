@@ -2,7 +2,7 @@
 	position: relative;
 	min-height: 100vh;
 	width: 100vw;
-	background: get_color('light', 'background');
+	background: $background;
 }
 
 .stable_page {

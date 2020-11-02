@@ -15,9 +15,9 @@ export const fetchSetting = userId =>
  * @param {String} userId 用户ID
  * @param {Object} setting 用户配置
  */
-export const updateSetting = (userId, setting = {}) =>
+export const updateSetting = (setting = {}) =>
 	request({
 		url: `setting/update`,
 		method: 'POST',
-		data: { userId, setting }
+		data: setting
 	})

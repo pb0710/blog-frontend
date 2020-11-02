@@ -33,6 +33,7 @@ function Setting() {
 		const { nickname, gender, selfIntroduction } = values
 		const newProfile = { nickname, gender, selfIntroduction }
 		const newSetting = omit(values, ['gender', 'selfIntroduction', 'nickname'])
+		console.log('newSetting: ', newSetting)
 
 		if (notEmpty(newProfile) && contain(profile, newProfile) && notEqual(profile, newProfile)) {
 			dispatch(commonAction.saveProfile(newProfile))
@@ -58,7 +59,7 @@ function Setting() {
 				</Banner>
 			)}
 			<Form className={style.form} onValuesChange={debounce(handleOptionsSave, saveInterval)}>
-				<Account />
+				{online && profile.username && <Account />}
 				<Appearance />
 				<I18N />
 				<Editor />

@@ -7,8 +7,8 @@
 	padding: 0 1rem 0 7rem;
 	width: 100%;
 	height: 5rem;
-	border-bottom: 1px solid get_color('light', 'divider');
-	background: get_color('light', 'background');
+	border-bottom: 1px solid $divider;
+	background: $background;
 
 	@include glass;
 

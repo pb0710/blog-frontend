@@ -18,7 +18,7 @@
 		overflow-x: auto;
 		padding: 1rem;
 		border-radius: 0.6rem;
-		background: get_color('light', 'background_variant');
+		background: $background_variant;
 
 		code {
 			font-size: 1.3rem;

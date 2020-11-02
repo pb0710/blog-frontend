@@ -2,11 +2,9 @@
 @import 'account';
 @import 'banner';
 
-$divider: 1px solid get_color('light', 'divider');
-
 .setting_page {
 	padding-top: 6rem;
-	background: get_color('light', 'background_variant');
+	background: $background_variant;
 
 	.form {
 		justify-content: unset;

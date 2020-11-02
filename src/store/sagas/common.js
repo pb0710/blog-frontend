@@ -2,21 +2,18 @@ import { all, spawn, put, select, takeEvery, takeLatest } from 'redux-saga/effec
 import * as userApi from '@/apis/user'
 import * as commonAction from '@/store/actions'
 import * as modalAction from '@/components/modal/store/action'
+import * as settingAction from '@/views/setting/store/action'
 import { msg } from '@/components/base'
 import TYPE from '@/common/actionTypes'
+import omit from 'omit.js'
 
-function* fetchUser() {
+function* fetchUserInfo() {
 	try {
-		const payload = yield userApi.fetchStatus()
+		const payload = yield userApi.initData()
+		const profile = omit(payload, ['setting'])
+		yield put(commonAction.updateUserProfile(profile))
+		yield put(settingAction.updateSetting(payload.setting))
 		yield put(commonAction.updateOnline(true))
-		yield put(
-			commonAction.updateUserProfile({
-				//TODO: gender & selfIntroduction
-				...payload,
-				gender: 'male',
-				selfIntroduction: ''
-			})
-		)
 		return
 	} catch (err) {
 		console.error('获取用户失败', err)
@@ -24,15 +21,15 @@ function* fetchUser() {
 }
 
 function* initUser() {
-	yield fetchUser()
+	yield fetchUserInfo()
 }
 
 function* login({ username, password }) {
 	try {
 		yield userApi.login(username, password)
-		yield fetchUser()
-		yield put(commonAction.updateOnline(true))
+		yield fetchUserInfo()
 		yield put(modalAction.updateModal(false, null))
+		yield put(commonAction.updateOnline(true))
 		msg.success('登录成功')
 	} catch (err) {
 		console.error('登录失败', err)
@@ -66,6 +63,7 @@ function* register({ username, password, profile }) {
 function* saveProfile(profile) {
 	const oldProfile = yield select(state => state.userProfile)
 	const newProfile = { ...oldProfile, ...profile }
+	console.log('newProfile: ', newProfile)
 	try {
 		yield userApi.saveProfile(newProfile)
 		yield put(commonAction.updateUserProfile(newProfile))

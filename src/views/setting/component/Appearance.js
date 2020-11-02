@@ -1,14 +1,16 @@
 import React from 'react'
 import Options from './Options'
-import { Brightness4Outlined, Palette, MenuOpen, FormatLineSpacing } from '@material-ui/icons'
+import { PaletteOutlined, MenuOpen, FormatLineSpacingOutlined } from '@material-ui/icons'
 import { Switch, Select } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 
 function Appearance() {
-	const { theme, nightMode, drawerDefaultClosed, menuDefaultOpened } = useSelector(state => state.setting)
+	const theme = useSelector(state => state.setting.theme)
+	const drawerDefaultOpened = useSelector(state => state.setting.drawerDefaultOpened)
+	const menuDefaultExpansion = useSelector(state => state.setting.menuDefaultExpansion)
 	const appearanceOpts = [
 		{
-			icon: <Palette />,
+			icon: <PaletteOutlined />,
 			title: '主题',
 			name: 'theme',
 			initialValue: theme,
@@ -30,24 +32,17 @@ function Appearance() {
 			)
 		},
 		{
-			icon: <Brightness4Outlined />,
-			title: '夜间模式',
-			name: 'nightMode',
-			initialValue: nightMode,
-			component: <Switch color={theme} />
-		},
-		{
 			icon: <MenuOpen />,
 			title: '默认收起侧边栏',
-			name: 'drawerDefaultClosed',
-			initialValue: drawerDefaultClosed,
+			name: 'drawerDefaultOpened',
+			initialValue: drawerDefaultOpened,
 			component: <Switch color={theme} />
 		},
 		{
-			icon: <FormatLineSpacing />,
+			icon: <FormatLineSpacingOutlined />,
 			title: '默认展开所有子菜单',
-			name: 'menuDefaultOpened',
-			initialValue: menuDefaultOpened,
+			name: 'menuDefaultExpansion',
+			initialValue: menuDefaultExpansion,
 			component: <Switch color={theme} />
 		}
 	]

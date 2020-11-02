@@ -15,11 +15,11 @@
 			width: 60%;
 
 			> .go_back {
-				background: get_color('light', 'background');
+				background: $background;
 				box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
 
 				&:hover {
-					background: get_color('light', 'background_variant');
+					background: $background_variant;
 				}
 			}
 		}

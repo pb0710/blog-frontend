@@ -1,5 +1,5 @@
-$divider: get_color('light', 'divider');
-$text_secondary: get_color('light', 'text_secondary');
+$divider: $divider;
+$text_secondary: $text_secondary;
 
 @include use_themes('.user_avatar') {
 	position: relative;

@@ -7,10 +7,9 @@ export const setting = handleActions(
 	},
 	{
 		theme: 'primary',
-		nightMode: false,
-		drawerDefaultClosed: false,
-		language: 'zh-CN',
-		useMarkdownGuide: false,
-		menuDefaultOpened: false
+		drawerDefaultOpened: false,
+		lang: 'zh-CN',
+		useMarkdownGuide: true,
+		menuDefaultExpansion: false
 	}
 )
