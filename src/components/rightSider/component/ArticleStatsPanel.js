@@ -4,12 +4,9 @@ import { useSelector } from 'react-redux'
 import { Panel } from '@/components/base'
 import { List } from 'sylas-react-ui'
 import { ForumRounded, ThumbUpRounded, LocalOfferRounded } from '@material-ui/icons'
-import clsx from 'clsx'
-import { useFetch } from '@/utils/hooks'
-import * as userApi from '@/apis/user'
 
 function ArticleStatsPanel() {
-	const { detail } = useSelector(state => state.article)
+	const detail = useSelector(state => state.article.detail)
 	return (
 		<Panel className={style.article_stats_panel}>
 			<List>

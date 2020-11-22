@@ -52,7 +52,6 @@ export default function Login() {
 	}
 
 	React.useEffect(() => {
-		console.log('set')
 		if (error) {
 			setAvatar(defaultAvatar)
 			return

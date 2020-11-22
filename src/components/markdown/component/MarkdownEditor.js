@@ -22,7 +22,8 @@ function MarkdownEditor() {
 	const dispatch = useDispatch()
 	const userId = useSelector(state => state.userProfile.userId)
 	const online = useSelector(state => state.online)
-	const { useMarkdownGuide, theme } = useSelector(state => state.setting)
+	const theme = useSelector(state => state.setting.theme)
+	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
 
 	const defaultContent = useMarkdownGuide ? temp.markdownDemo : ''
 	const [content, setContent] = React.useState(defaultContent)
@@ -114,18 +115,22 @@ function MarkdownEditor() {
 		handleLeave
 	}
 
+	const toolsBar = (
+		<div className={style.tools}>
+			<Button.Icon onClick={handleInsertTable}>
+				<ViewModuleOutlined />
+			</Button.Icon>
+			<Uploader multiple onChange={handleFilesChange} />
+			<Button.Icon onClick={handleInsertCode}>
+				<Code />
+			</Button.Icon>
+		</div>
+	)
+
 	return (
 		<div className={style.markdown_editor}>
 			<div className={style.header_bar}>
-				<div className={style.tools}>
-					<Button.Icon onClick={handleInsertTable}>
-						<ViewModuleOutlined />
-					</Button.Icon>
-					<Uploader multiple onChange={handleFilesChange} />
-					<Button.Icon onClick={handleInsertCode}>
-						<Code />
-					</Button.Icon>
-				</div>
+				{toolsBar}
 				<div className={style.operation}>
 					{online ? (
 						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<Send />}>
