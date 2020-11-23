@@ -102,10 +102,9 @@ const navs = [
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
-	const theme = useSelector(state => state.setting.theme)
 	return (
 		<NavLink to={to}>
-			<Menu.Item menuKey={id} color={theme} className={style[`level${level}`]}>
+			<Menu.Item menuKey={id} className={style[`level${level}`]}>
 				{icon && React.cloneElement(icon, { className: style.icon })}
 				{title}
 			</Menu.Item>
@@ -114,6 +113,7 @@ function Nav(props) {
 }
 
 function NavMenu() {
+	const theme = useSelector(state => state.setting.theme)
 	const { pathname } = useLocation()
 	const [currentKey, setCurrentKey] = useState('')
 
@@ -136,7 +136,7 @@ function NavMenu() {
 	}, [pathname])
 
 	return (
-		<Menu className={style.menu} openKey={currentKey}>
+		<Menu className={style.menu} openKey={currentKey} color={theme}>
 			{navs.map(nav =>
 				nav.child ? (
 					<Menu.Sub

@@ -1,11 +1,9 @@
 @mixin with_title {
-	> h1 {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
+	> h1:first-child {
+		margin: 0;
+		margin-bottom: 4rem;
 		text-align: center;
-		transform: translateY(-10rem);
+		font-size: 2.4rem;
 	}
 }
 

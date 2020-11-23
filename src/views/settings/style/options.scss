@@ -18,7 +18,7 @@
 
 		> li {
 			padding: 0 2rem;
-			height: 6rem;
+			min-height: 6rem;
 
 			@include use_themes('.icon') {
 				margin-right: 2rem;

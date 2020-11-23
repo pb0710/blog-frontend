@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input, Select } from 'sylas-react-ui'
 import CloseIcon from 'mdi-react/CloseIcon'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
-import PersonIcon from 'mdi-react/PersonIcon'
+import UserIcon from 'mdi-react/UserIcon'
 import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
 import * as action from '../store/action'
 import * as commonAction from '@/store/actions'
@@ -28,28 +28,31 @@ export default function Profile(props) {
 		dispatch(action.updateModal(true, <Register />))
 	}
 
-	const handleClose = () => {
+	const handleClose = useCallback(() => {
 		dispatch(action.updateModal(false, null))
-	}
+	}, [dispatch])
 
-	const handleRegister = values => {
-		if (!values.nickname || !account) return
+	const handleRegister = useCallback(
+		values => {
+			if (!values || !account) return
 
-		const userInfo = {
-			username: account.username,
-			password: account.password,
-			profile: {
-				avatar: avatarSrc,
-				nickname: values.nickname,
-				gender: values.gender,
-				selfIntroduction: values.selfIntroduction
+			const userInfo = {
+				username: account.username,
+				password: account.password,
+				profile: {
+					avatar: avatarSrc,
+					nickname: values.nickname,
+					gender: values.gender,
+					selfIntroduction: values.selfIntroduction
+				}
 			}
-		}
-		dispatch(commonAction.userRegister(userInfo))
-		if (online) {
-			handleClose()
-		}
-	}
+			dispatch(commonAction.userRegister(userInfo))
+			if (online) {
+				handleClose()
+			}
+		},
+		[account, avatarSrc, dispatch, handleClose, online]
+	)
 
 	const handleAddAvatar = async formData => {
 		try {
@@ -71,35 +74,42 @@ export default function Profile(props) {
 				<CloseIcon size={20} />
 			</Button.Icon>
 			<Uploader onChange={handleAddAvatar}>
-				<div className={style.avatar_wrapper} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
+				<div className={style.avatar_wrapper}>
 					<img alt="" src={avatarSrc} />
-					{visible && (
-						<div className={style.upload_cover}>
-							<PersonIcon size={20} />
-						</div>
-					)}
+					<div className={style.upload_cover} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
+						<UserIcon size={30} color={visible ? '#fff' : 'transparent'} />
+					</div>
 				</div>
 			</Uploader>
-			<Form onFinished={handleRegister}>
-				<Form.Item label="名称" name="nickname">
-					<Input color={theme} placeholder="你的名字（必填）" />
+			<Form onFinsh={handleRegister}>
+				<Form.Item
+					name="nickname"
+					rules={[
+						{
+							async validator(value) {
+								if (value < 4) {
+									return Promise.reject('昵称长度不能少于 4 位！')
+								}
+							}
+						}
+					]}
+				>
+					<Input color={theme} placeholder="昵称" initialValue="" />
 				</Form.Item>
-				<Form.Item label="性别" name="gender" initialValue="male">
-					<Select>
-						<Select.Option color={theme} value="male">
-							男
-						</Select.Option>
-						<Select.Option color={theme} value="female">
-							女
-						</Select.Option>
+				<Form.Item name="gender" initialValue="male">
+					<Select color={theme}>
+						<Select.Option value="male">男</Select.Option>
+						<Select.Option value="female">女</Select.Option>
 					</Select>
 				</Form.Item>
-				<Form.Item label="个人简介" name="selfIntroduction">
-					<Input color={theme} placeholder="技能、兴趣爱好（选填）" />
+				<Form.Item name="selfIntroduction" initialValue="">
+					<Input.Textarea color={theme} placeholder="个人简介" />
 				</Form.Item>
-				<Button className={style.complete} type="submit" color={theme} suffixes={<CheckCircleIcon size={20} />}>
-					完成
-				</Button>
+				<div className={style.footer_bar}>
+					<Button className={style.complete} type="submit" color={theme} suffixes={<CheckCircleIcon size={20} />}>
+						完成
+					</Button>
+				</div>
 			</Form>
 		</div>
 	)

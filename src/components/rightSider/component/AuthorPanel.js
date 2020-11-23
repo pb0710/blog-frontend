@@ -3,9 +3,8 @@ import style from '../style/index.module.scss'
 import { useSelector } from 'react-redux'
 import { Panel } from '@/components/base'
 import { List, Divider, Button } from 'sylas-react-ui'
-import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
 import MailOutlineIcon from 'mdi-react/MailOutlineIcon'
-import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
+import { GithubOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
@@ -53,10 +52,10 @@ export default function AuthorPanel() {
 					<WechatOutlined />
 				</Button.Icon>
 				<Button.Icon>
-					<ChatOutlineIcon size={20} />
+					<MailOutlineIcon size={20} />
 				</Button.Icon>
 				<Button.Icon>
-					<MailOutlineIcon size={20} />
+					<QqOutlined />
 				</Button.Icon>
 			</div>
 			<Divider />

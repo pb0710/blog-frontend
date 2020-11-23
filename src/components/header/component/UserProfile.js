@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../style/index.module.scss'
-import { Button, Divider, Popup, Input } from 'sylas-react-ui'
+import { Button, Divider, Popup } from 'sylas-react-ui'
 import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
 import * as commonAction from '@/store/actions'
@@ -34,7 +34,9 @@ export default function UserProfile() {
 				</Link>
 				<span>{username}</span>
 				<Divider className={style.divider} />
-				<Button onClick={handleSignOut}>退出</Button>
+				<Button light color={theme} onClick={handleSignOut}>
+					退出
+				</Button>
 			</Popup>
 		</div>
 	)

@@ -89,9 +89,8 @@ function MarkdownEditor() {
 	}
 
 	const handlePublish = () => {
-		console.log('content', content)
 		if (!content || content.length < 20) {
-			msg.error('文章字数少于20')
+			msg.error('文章长度少于20')
 			return
 		}
 		dispatch(modalAction.updateModal(true, <ArticleInfo content={content} />))

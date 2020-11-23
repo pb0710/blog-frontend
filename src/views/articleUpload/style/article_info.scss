@@ -1,38 +1,28 @@
 @import 'common';
 
 .article_info {
-	position: relative;
-	padding: 1rem;
-	padding-top: 5rem;
-	width: 36rem;
-	border: 1px solid $divider;
-	border-radius: 0.6rem;
+	width: 100%;
+	border-radius: inherit;
 	background: $background;
-	box-shadow: $default_shadow;
 
 	@include with_title;
 	@include with_close;
 
 	.pic_wrapper {
-		position: relative;
 		z-index: 1;
 		width: 16rem;
 		height: 10rem;
 		border-radius: 0.6rem;
-		box-shadow: $default_shadow;
 		cursor: pointer;
 
 		.pic_cover {
 			position: absolute;
-			width: 100%;
-			height: 100%;
+			width: 16rem;
+			height: 10rem;
 			border-radius: inherit;
 			color: #fff;
 
 			@include flex_center;
-			> svg {
-				font-size: 4rem !important;
-			}
 			&:hover {
 				backdrop-filter: blur(24px);
 			}
@@ -48,16 +38,8 @@
 		}
 	}
 
-	.sort {
-		width: 16rem;
-	}
-
-	.add {
-		margin-top: 2rem;
-		margin-bottom: 1rem;
-
-		svg {
-			font-size: 1.6rem !important;
-		}
+	.center_box {
+		display: flex;
+		justify-content: center;
 	}
 }

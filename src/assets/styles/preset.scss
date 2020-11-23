@@ -1,8 +1,15 @@
 @import 'responsive';
 
 @font-face {
-	font-family: 'Roboto Mono';
-	src: url('../fonts/RobotoMono-Regular.ttf');
+	font-style: normal;
+	font-family: 'SF Mono';
+	src: url('../fonts/SF-Mono-Medium.otf') format('opentype');
+}
+
+@font-face {
+	font-style: italic;
+	font-family: 'SF Mono';
+	src: url('../fonts/SF-Mono-MediumItalic.otf') format('opentype');
 }
 
 body {
@@ -25,7 +32,7 @@ body {
 	}
 
 	code {
-		font-family: Roboto Mono, Menlo, Consolas, SF mono, Monaco, 'Courier New', monospace;
+		font-family: SF Mono, Roboto Mono, Menlo, Consolas, Monaco, 'Courier New', monospace;
 	}
 
 	a,

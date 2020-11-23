@@ -19,7 +19,9 @@ export default function Modal(props) {
 		visible && (
 			<div className={style.modal_wrapper}>
 				<div className={style.mask} onClick={handleClose}></div>
-				<Popup visible={visible}>{content}</Popup>
+				<Popup className={style.content} visible={visible}>
+					{content}
+				</Popup>
 			</div>
 		)
 	)

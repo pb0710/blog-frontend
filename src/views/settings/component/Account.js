@@ -7,9 +7,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import { Uploader } from '@/components/base'
 import FingerprintIcon from 'mdi-react/FingerprintIcon'
-import FeatureHighlightIcon from 'mdi-react/FeatureHighlightIcon'
+import PersonIcon from 'mdi-react/PersonIcon'
+import FaceIcon from 'mdi-react/FaceIcon'
 import WcIcon from 'mdi-react/WcIcon'
-import ChatIcon from 'mdi-react/ChatIcon'
+import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
 import * as fileApi from '@/apis/file'
 import * as commonAction from '@/store/actions'
 import { msg } from '@/components/base'
@@ -53,18 +54,33 @@ function Account() {
 			component: (
 				<div className={usernameOptCls}>
 					<span>{username ?? '尚未登录...'}</span>
-					<Button className={btnCls} onClick={handleLogout}>
+					<Button className={btnCls} color="default" onClick={handleLogout}>
 						退出
 					</Button>
 				</div>
 			)
 		},
 		{
-			icon: <FeatureHighlightIcon size={20} />,
+			icon: <PersonIcon size={20} />,
 			title: '昵称',
 			name: 'nickname',
 			initialValue: nickname,
-			component: <Input color={theme} placeholder="你的名字（必填）" />
+			component: <Input color={theme} placeholder="你的名字" />
+		},
+		{
+			itemCls: style.profile,
+			icon: <FaceIcon size={20} />,
+			title: '头像',
+			component: (
+				<div className={avatarOptCls}>
+					<img alt="" src={avatar ?? defaultAvatar} />
+					<Uploader onChange={handleChangeAvatar}>
+						<Button className={btnCls} color="default">
+							更换
+						</Button>
+					</Uploader>
+				</div>
+			)
 		},
 		{
 			icon: <WcIcon size={20} />,
@@ -72,36 +88,19 @@ function Account() {
 			name: 'gender',
 			initialValue: 'male',
 			component: (
-				<Select>
-					<Select.Option color={theme} value="male">
-						男
-					</Select.Option>
-					<Select.Option color={theme} value="female">
-						女
-					</Select.Option>
+				<Select color={theme}>
+					<Select.Option value="male">男</Select.Option>
+					<Select.Option value="female">女</Select.Option>
 				</Select>
 			)
 		},
 		{
-			itemCls: style.profile,
-			icon: <FeatureHighlightIcon size={20} />,
-			title: '头像',
-			component: (
-				<div className={avatarOptCls}>
-					<img alt="" src={avatar ?? defaultAvatar} />
-					<Uploader onChange={handleChangeAvatar}>
-						<Button className={btnCls}>更换</Button>
-					</Uploader>
-				</div>
-			)
-		},
-		{
 			itemCls: style.description,
-			icon: <ChatIcon size={20} />,
+			icon: <ChatOutlineIcon size={20} />,
 			title: '个人简介',
 			name: 'selfIntroduction',
 			initialValue: '',
-			component: <Input.TextArea color={theme} placeholder="技能、兴趣爱好（选填）" />
+			component: <Input.Textarea color={theme} placeholder="技能、兴趣爱好" />
 		}
 	]
 	return <Options className={style.account} heading="用户资料" opts={accountOpts} />

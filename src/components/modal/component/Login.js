@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../style/index.module.scss'
-import { Form, Input, Button, Loading, CheckBox } from 'sylas-react-ui'
+import { Form, Input, Button, Loading } from 'sylas-react-ui'
 import CloseIcon from 'mdi-react/CloseIcon'
 import { useDispatch, useSelector } from 'react-redux'
 import * as commonAction from '@/store/actions'
@@ -10,12 +10,10 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { msg } from '@/components/base'
 import * as userApi from '@/apis/user'
 import { useFetch } from '@/utils/hooks'
-import { debounce } from '@/utils'
 
 export default function Login() {
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
-	const fetchInterval = 400
 
 	const [avatar, setAvatar] = React.useState(defaultAvatar)
 	const { loading, data, error, excute: fetchAvatar } = useFetch(userApi.fetchProfile, {
@@ -30,15 +28,6 @@ export default function Login() {
 	const handleGoRegister = () => {
 		dispatch(action.updateModal(true, <Register />))
 	}
-
-	const handleValuesChange = React.useCallback(
-		values => {
-			if (values.username) {
-				fetchAvatar(values.username)
-			}
-		},
-		[fetchAvatar]
-	)
 
 	const handleSubmit = values => {
 		console.log('values: ', values)
@@ -68,24 +57,67 @@ export default function Login() {
 				<CloseIcon size={20} />
 			</Button.Icon>
 			<div className={style.avatar_wrapper}>
-				{loading ? <Loading.Bounce color={theme} /> : <img src={avatar} alt="" />}
+				{loading ? (
+					<div>
+						<Loading color={theme} />
+					</div>
+				) : (
+					<img src={avatar} alt="" />
+				)}
 			</div>
-			<Form onFinish={handleSubmit} onValuesChange={debounce(handleValuesChange, fetchInterval)}>
-				<Form.Item label="用户名" name="username">
+			<Form onFinsh={handleSubmit}>
+				<Form.Item
+					name="username"
+					initialValue=""
+					rules={[
+						{
+							async validator(value) {
+								if (!value) {
+									return Promise.reject('用户名不能为空!')
+								}
+							}
+						},
+						{
+							async validator(value) {
+								const pattern = new RegExp('^[^\u4e00-\u9fa5]+$', 'i')
+								if (!pattern.test(value)) {
+									return Promise.reject('不能是汉字！')
+								}
+								fetchAvatar(value)
+							}
+						}
+					]}
+				>
 					<Input color={theme} placeholder="用户名" />
 				</Form.Item>
-				<Form.Item label="密码" name="password">
+				<Form.Item
+					name="password"
+					initialValue=""
+					rules={[
+						{
+							async validator(value) {
+								if (value.length < 6) {
+									return Promise.reject('密码长度不得少于 6 位！')
+								}
+							}
+						},
+						{
+							async validator(value) {
+								const pattern = new RegExp('^[a-z0-9]+$', 'i')
+								if (!pattern.test(value)) {
+									return Promise.reject('只能是数字或字母！')
+								}
+							}
+						}
+					]}
+				>
 					<Input type="password" color={theme} placeholder="密码" />
 				</Form.Item>
-				<Form.Item className={style.submit_wrapper}>
-					<Button className={style.submit} type="submit" color={theme}>
-						登录
-					</Button>
-				</Form.Item>
-				<div className={style.footer}>
-					<span className={style[`go_register_${theme}`]} onClick={handleGoRegister}>
-						没有账号？立即注册
-					</span>
+				<Button className={style.submit} type="submit" color={theme}>
+					登录
+				</Button>
+				<div className={style[`go_register_${theme}`]} onClick={handleGoRegister}>
+					没有账号-立即注册
 				</div>
 			</Form>
 		</div>
