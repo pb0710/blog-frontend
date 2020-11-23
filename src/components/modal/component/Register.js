@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
-import { CloseOutlined, ArrowBackOutlined } from '@material-ui/icons'
+import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
+import CloseIcon from 'mdi-react/CloseIcon'
 import { msg } from '@/components/base'
 import * as action from '../store/action'
 import Login from './Login'
@@ -34,10 +35,10 @@ export default function Register() {
 		<div className={style.register_wrapper}>
 			<h1>创建账号</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
-				<ArrowBackOutlined />
+				<ArrowBackIcon size={20} />
 			</Button.Icon>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlined />
+				<CloseIcon size={20} />
 			</Button.Icon>
 			<div className={style.header}></div>
 			<Form onFinished={handleCreateAccount}>
@@ -51,7 +52,7 @@ export default function Register() {
 					<Input color={theme} placeholder="再输一次" />
 				</Form.Item>
 				<div className={style.footer_bar}>
-					<Button color="default" htmlType="submit">
+					<Button type="submit" light>
 						下一步
 					</Button>
 				</div>

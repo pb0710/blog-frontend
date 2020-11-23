@@ -25,7 +25,7 @@ function Content() {
 					path="/upload"
 					component={React.lazy(() => import('@/views/articleUpload/component/ArticleUpload'))}
 				/>
-				<Route exact path="/setting" component={React.lazy(() => import('@/views/setting/component/Setting'))} />
+				<Route exact path="/setting" component={React.lazy(() => import('@/views/settings/component/Setting'))} />
 				<Route component={NotFound} />
 			</Switch>
 		</React.Suspense>

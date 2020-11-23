@@ -1,16 +1,111 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import { Home, LibraryBooks, Create, Settings, Explore, Info } from '@material-ui/icons'
+import HomeIcon from 'mdi-react/HomeIcon'
+import LibraryEditIcon from 'mdi-react/LibraryEditIcon'
+import ExploreIcon from 'mdi-react/ExploreIcon'
+import CreateIcon from 'mdi-react/CreateIcon'
+import SettingsIcon from 'mdi-react/SettingsIcon'
+import InfoCircleIcon from 'mdi-react/InfoCircleIcon'
 import { useSelector } from 'react-redux'
+
+const navs = [
+	{
+		id: '0',
+		level: 1,
+		to: '/',
+		title: '主页',
+		icon: <HomeIcon size={20} />
+	},
+	{
+		id: '1',
+		level: 1,
+		to: '/articles',
+		title: '文章分类',
+		icon: <LibraryEditIcon size={20} />,
+		child: [
+			{
+				id: '10',
+				level: 2,
+				to: '/frontend',
+				title: 'Web前端'
+			},
+			{
+				id: '11',
+				level: 2,
+				to: '/mobile',
+				title: '移动端'
+			},
+			{
+				id: '12',
+				level: 2,
+				to: '/backend',
+				title: '后端'
+			},
+			{
+				id: '13',
+				level: 2,
+				to: '/computer_science',
+				title: '计算机通用'
+			},
+			{
+				id: '14',
+				level: 2,
+				to: '/engineering',
+				title: '工程化'
+			}
+		]
+	},
+	{
+		id: '2',
+		level: 1,
+		title: '文档',
+		icon: <ExploreIcon size={20} />,
+		child: [
+			{
+				id: '30',
+				level: 2,
+				to: '/submenu0',
+				title: '子菜单0'
+			},
+			{
+				id: '31',
+				level: 2,
+				to: '/submenu1',
+				title: '子菜单1'
+			}
+		]
+	},
+	{
+		id: '3',
+		level: 1,
+		to: '/upload',
+		title: '写文章',
+		icon: <CreateIcon size={20} />
+	},
+	{
+		id: '4',
+		level: 1,
+		to: '/setting',
+		title: '设置',
+		icon: <SettingsIcon size={20} />
+	},
+	{
+		id: '5',
+		level: 1,
+		to: '/about',
+		title: '关于',
+		icon: <InfoCircleIcon size={20} />
+	}
+]
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
 	const theme = useSelector(state => state.setting.theme)
 	return (
 		<NavLink to={to}>
-			<Menu.Item id={id} color={theme} className={style[`level${level}`]}>
+			<Menu.Item menuKey={id} color={theme} className={style[`level${level}`]}>
 				{icon && React.cloneElement(icon, { className: style.icon })}
 				{title}
 			</Menu.Item>
@@ -19,99 +114,8 @@ function Nav(props) {
 }
 
 function NavMenu() {
-	const opened = useSelector(state => state.setting.menuDefaultExpansion)
-	const menu = Menu.useMenu()
 	const { pathname } = useLocation()
-
-	const navs = [
-		{
-			id: '0',
-			level: 1,
-			to: '/',
-			title: '主页',
-			icon: <Home />
-		},
-		{
-			id: '1',
-			level: 1,
-			to: '/articles',
-			title: '文章分类',
-			icon: <LibraryBooks />,
-			child: [
-				{
-					id: '10',
-					level: 2,
-					to: '/frontend',
-					title: 'Web前端'
-				},
-				{
-					id: '11',
-					level: 2,
-					to: '/mobile',
-					title: '移动端'
-				},
-				{
-					id: '12',
-					level: 2,
-					to: '/backend',
-					title: '后端'
-				},
-				{
-					id: '13',
-					level: 2,
-					to: '/computer_science',
-					title: '计算机通用'
-				},
-				{
-					id: '14',
-					level: 2,
-					to: '/engineering',
-					title: '工程化'
-				}
-			]
-		},
-		{
-			id: '2',
-			level: 1,
-			title: '文档',
-			icon: <Explore />,
-			child: [
-				{
-					id: '30',
-					level: 2,
-					to: '/submenu0',
-					title: '子菜单0'
-				},
-				{
-					id: '31',
-					level: 2,
-					to: '/submenu1',
-					title: '子菜单1'
-				}
-			]
-		},
-		{
-			id: '3',
-			level: 1,
-			to: '/upload',
-			title: '写文章',
-			icon: <Create />
-		},
-		{
-			id: '4',
-			level: 1,
-			to: '/setting',
-			title: '设置',
-			icon: <Settings />
-		},
-		{
-			id: '5',
-			level: 1,
-			to: '/about',
-			title: '关于',
-			icon: <Info />
-		}
-	]
+	const [currentKey, setCurrentKey] = useState('')
 
 	React.useEffect(() => {
 		function selectMenu(nav) {
@@ -119,7 +123,7 @@ function NavMenu() {
 				path: nav.to,
 				exact: true
 			})
-			match && menu.setCurrentKey(nav.id)
+			match && setCurrentKey(nav.id)
 		}
 		navs.forEach(nav => {
 			nav.child
@@ -129,18 +133,17 @@ function NavMenu() {
 				  })
 				: selectMenu(nav)
 		})
-		// FIXME: navs and menu cannot in deps
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [pathname])
 
 	return (
-		<Menu className={style.menu} menu={menu}>
+		<Menu className={style.menu} openKey={currentKey}>
 			{navs.map(nav =>
 				nav.child ? (
-					<Menu.SubMenu
+					<Menu.Sub
 						key={nav.id}
+						bordered={false}
+						menuKey={nav.id}
 						className={style.level1}
-						opened={opened}
 						title={
 							<>
 								{nav.icon && React.cloneElement(nav.icon, { className: style.icon })}
@@ -152,7 +155,7 @@ function NavMenu() {
 							child = { ...child, to: nav.to + child.to }
 							return <Nav key={child.id} {...child} />
 						})}
-					</Menu.SubMenu>
+					</Menu.Sub>
 				) : (
 					<Nav key={nav.id} {...nav} />
 				)

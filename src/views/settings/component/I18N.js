@@ -1,7 +1,7 @@
 import React from 'react'
 import Options from './Options'
 import { Select } from 'sylas-react-ui'
-import { Translate } from '@material-ui/icons'
+import TranslateIcon from 'mdi-react/TranslateIcon'
 import { useSelector } from 'react-redux'
 
 function I18N() {
@@ -9,7 +9,7 @@ function I18N() {
 	const lang = useSelector(state => state.setting.lang)
 	const i18nOpts = [
 		{
-			icon: <Translate />,
+			icon: <TranslateIcon size={20} />,
 			title: '语言',
 			name: 'lang',
 			initialValue: lang,

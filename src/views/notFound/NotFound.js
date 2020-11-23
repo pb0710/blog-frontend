@@ -19,7 +19,7 @@ export default function NotFound() {
 				<h1>页面找不到啦...</h1>
 
 				<div className={style.operation}>
-					<Button className={style.go_back} onClick={handleGoback}>
+					<Button light onClick={handleGoback}>
 						后退
 					</Button>
 					<Link to="/">

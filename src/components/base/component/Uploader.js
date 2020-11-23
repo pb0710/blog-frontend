@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Button } from 'sylas-react-ui'
-import { PanoramaOutlined } from '@material-ui/icons'
+import ImageOutlineIcon from 'mdi-react/ImageOutlineIcon'
 import { readFile } from '../util'
 
 const dataFormat = {
@@ -14,7 +14,7 @@ function Uploader(props) {
 		classes,
 		children = (
 			<Button.Icon>
-				<PanoramaOutlined />
+				<ImageOutlineIcon size={20} />
 			</Button.Icon>
 		),
 		format = dataFormat.FORM_DATA,

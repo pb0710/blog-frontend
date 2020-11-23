@@ -6,7 +6,10 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import { Uploader } from '@/components/base'
-import { Fingerprint, FeaturedPlayListOutlined, FaceOutlined, Wc, ChatOutlined } from '@material-ui/icons'
+import FingerprintIcon from 'mdi-react/FingerprintIcon'
+import FeatureHighlightIcon from 'mdi-react/FeatureHighlightIcon'
+import WcIcon from 'mdi-react/WcIcon'
+import ChatIcon from 'mdi-react/ChatIcon'
 import * as fileApi from '@/apis/file'
 import * as commonAction from '@/store/actions'
 import { msg } from '@/components/base'
@@ -45,7 +48,7 @@ function Account() {
 
 	const accountOpts = [
 		{
-			icon: <Fingerprint />,
+			icon: <FingerprintIcon size={20} />,
 			title: '用户名',
 			component: (
 				<div className={usernameOptCls}>
@@ -57,14 +60,14 @@ function Account() {
 			)
 		},
 		{
-			icon: <FeaturedPlayListOutlined />,
+			icon: <FeatureHighlightIcon size={20} />,
 			title: '昵称',
 			name: 'nickname',
 			initialValue: nickname,
 			component: <Input color={theme} placeholder="你的名字（必填）" />
 		},
 		{
-			icon: <Wc />,
+			icon: <WcIcon size={20} />,
 			title: '性别',
 			name: 'gender',
 			initialValue: 'male',
@@ -81,7 +84,7 @@ function Account() {
 		},
 		{
 			itemCls: style.profile,
-			icon: <FaceOutlined />,
+			icon: <FeatureHighlightIcon size={20} />,
 			title: '头像',
 			component: (
 				<div className={avatarOptCls}>
@@ -94,7 +97,7 @@ function Account() {
 		},
 		{
 			itemCls: style.description,
-			icon: <ChatOutlined />,
+			icon: <ChatIcon size={20} />,
 			title: '个人简介',
 			name: 'selfIntroduction',
 			initialValue: '',

@@ -2,7 +2,7 @@ import { all, spawn, put, select, takeEvery, takeLatest } from 'redux-saga/effec
 import * as userApi from '@/apis/user'
 import * as commonAction from '@/store/actions'
 import * as modalAction from '@/components/modal/store/action'
-import * as settingAction from '@/views/setting/store/action'
+import * as settingAction from '@/views/settings/store/action'
 import { msg } from '@/components/base'
 import TYPE from '@/common/actionTypes'
 import omit from 'omit.js'

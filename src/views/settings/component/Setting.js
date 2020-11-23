@@ -5,7 +5,7 @@ import { FlexiblePage } from '@/components/page'
 import { Login } from '@/components/modal'
 import { debounce, equal, notEmpty } from '@/utils'
 import { useDispatch, useSelector } from 'react-redux'
-import { Input } from '@material-ui/icons'
+import InputIcon from 'mdi-react/InputIcon'
 import Account from './Account'
 import Appearance from './Appearance'
 import I18N from './I18N'
@@ -54,7 +54,7 @@ function Setting() {
 					<span>登录账号以同步配置</span>
 					<div onClick={handleGoLogin}>
 						<span>去登录</span>
-						<Input />
+						<InputIcon size={20} />
 					</div>
 				</Banner>
 			)}

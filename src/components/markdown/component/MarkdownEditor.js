@@ -10,7 +10,9 @@ import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
 import * as modalAction from '@/components/modal/store/action'
 import { ArticleInfo } from '@/views/articleUpload'
-import { Code, ViewModuleOutlined, Send } from '@material-ui/icons'
+import ViewModuleOutlineIcon from 'mdi-react/ViewModuleOutlineIcon'
+import CodeIcon from 'mdi-react/CodeIcon'
+import SendIcon from 'mdi-react/SendIcon'
 import { msg } from '@/components/base'
 
 const area = {
@@ -118,11 +120,11 @@ function MarkdownEditor() {
 	const toolsBar = (
 		<div className={style.tools}>
 			<Button.Icon onClick={handleInsertTable}>
-				<ViewModuleOutlined />
+				<ViewModuleOutlineIcon size={20} />
 			</Button.Icon>
 			<Uploader multiple onChange={handleFilesChange} />
 			<Button.Icon onClick={handleInsertCode}>
-				<Code />
+				<CodeIcon size={20} />
 			</Button.Icon>
 		</div>
 	)
@@ -133,7 +135,7 @@ function MarkdownEditor() {
 				{toolsBar}
 				<div className={style.operation}>
 					{online ? (
-						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<Send />}>
+						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<SendIcon size={20} />}>
 							发布
 						</Button>
 					) : (

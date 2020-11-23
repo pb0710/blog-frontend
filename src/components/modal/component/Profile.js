@@ -2,7 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input, Select } from 'sylas-react-ui'
-import { PersonAddOutlined, ArrowBackOutlined, CloseOutlined, CheckCircle } from '@material-ui/icons'
+import CloseIcon from 'mdi-react/CloseIcon'
+import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
+import PersonIcon from 'mdi-react/PersonIcon'
+import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
 import * as action from '../store/action'
 import * as commonAction from '@/store/actions'
 import * as fileApi from '@/apis/file'
@@ -62,17 +65,17 @@ export default function Profile(props) {
 		<div className={style.profile_wrapper}>
 			<h1>完善个人资料</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
-				<ArrowBackOutlined />
+				<ArrowBackIcon size={20} />
 			</Button.Icon>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlined />
+				<CloseIcon size={20} />
 			</Button.Icon>
 			<Uploader onChange={handleAddAvatar}>
 				<div className={style.avatar_wrapper} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
 					<img alt="" src={avatarSrc} />
 					{visible && (
 						<div className={style.upload_cover}>
-							<PersonAddOutlined />
+							<PersonIcon size={20} />
 						</div>
 					)}
 				</div>
@@ -94,7 +97,7 @@ export default function Profile(props) {
 				<Form.Item label="个人简介" name="selfIntroduction">
 					<Input color={theme} placeholder="技能、兴趣爱好（选填）" />
 				</Form.Item>
-				<Button className={style.complete} htmlType="submit" color={theme} suffixes={<CheckCircle />}>
+				<Button className={style.complete} type="submit" color={theme} suffixes={<CheckCircleIcon size={20} />}>
 					完成
 				</Button>
 			</Form>

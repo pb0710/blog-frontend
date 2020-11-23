@@ -2,13 +2,12 @@
 
 .register_wrapper {
 	position: relative;
-	padding: 1rem;
+	padding: 4rem;
 	padding-top: 7rem;
-	width: 34rem;
+	width: 38rem;
 	border: 1px solid $divider;
 	border-radius: 0.6rem;
 	background: $background;
-	box-shadow: $default_shadow;
 
 	@include with_title;
 	@include with_close;
@@ -18,7 +17,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: row-reverse;
-		padding: 1rem 2rem;
+		padding-top: 2rem;
 		width: 100%;
 	}
 }

@@ -3,7 +3,9 @@ import style from '../style/index.module.scss'
 import { useSelector } from 'react-redux'
 import { Panel } from '@/components/base'
 import { List, Divider, Button } from 'sylas-react-ui'
-import { GitHub, Mail, Sms } from '@material-ui/icons'
+import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
+import MailOutlineIcon from 'mdi-react/MailOutlineIcon'
+import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
@@ -45,13 +47,16 @@ export default function AuthorPanel() {
 			<Divider />
 			<div className={style.contact_wrapper}>
 				<Button.Icon>
-					<Sms />
+					<GithubOutlined />
 				</Button.Icon>
 				<Button.Icon>
-					<GitHub />
+					<WechatOutlined />
 				</Button.Icon>
 				<Button.Icon>
-					<Mail />
+					<ChatOutlineIcon size={20} />
+				</Button.Icon>
+				<Button.Icon>
+					<MailOutlineIcon size={20} />
 				</Button.Icon>
 			</div>
 			<Divider />

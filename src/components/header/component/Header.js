@@ -7,10 +7,9 @@ import * as action from '@/components/sider/store/action'
 import * as modalAction from '@/components/modal/store/action'
 import AppCenter from './AppCenter'
 import Search from './Search'
-import Notification from './Notification'
 import UserProfile from './UserProfile'
 import { Login } from '@/components/modal'
-import { MenuOutlined } from '@material-ui/icons'
+import MenuIcon from 'mdi-react/MenuIcon'
 import Branch from './Branch'
 
 export default function Header() {
@@ -33,12 +32,11 @@ export default function Header() {
 	return (
 		<header className={style.header}>
 			<Button.Icon className={style.drawer_control} onClick={handleToggleDrawer}>
-				<MenuOutlined />
+				<MenuIcon size={20} />
 			</Button.Icon>
 			<Branch />
 			<div className={style.tool_bar}>
 				<Search />
-				<Notification />
 				<AppCenter />
 				{online ? (
 					<UserProfile />

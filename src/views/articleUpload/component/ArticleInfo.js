@@ -1,5 +1,7 @@
 import React from 'react'
-import { AddPhotoAlternateOutlined, CloseOutlined, CheckCircle } from '@material-ui/icons'
+import AddToPhotosIcon from 'mdi-react/AddToPhotosIcon'
+import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
+import CloseIcon from 'mdi-react/CloseIcon'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Input, Select } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
@@ -64,7 +66,7 @@ export default function ArticleInfo(props) {
 					<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
 						{visible && (
 							<div className={style.pic_cover}>
-								<AddPhotoAlternateOutlined />
+								<AddToPhotosIcon size={20} />
 							</div>
 						)}
 						<img className={style.title_pic} src={picSrc} alt="" />
@@ -112,7 +114,7 @@ export default function ArticleInfo(props) {
 		<div className={style.article_info}>
 			<h1>添加文章</h1>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlined />
+				<CloseIcon size={20} />
 			</Button.Icon>
 			<Form onFinished={handleAddArticle}>
 				{formItems.map(item => (
@@ -120,7 +122,7 @@ export default function ArticleInfo(props) {
 						{item.component}
 					</Form.Item>
 				))}
-				<Button className={style.add} htmlType="submit" color={theme} prefixes={<CheckCircle />}>
+				<Button className={style.add} htmlType="submit" color={theme} prefixes={<CheckCircleIcon size={20} />}>
 					发布文章
 				</Button>
 			</Form>

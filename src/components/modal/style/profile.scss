@@ -12,7 +12,6 @@ $divider: $divider;
 	border: 1px solid $divider;
 	border-radius: 0.6rem;
 	background: $background;
-	box-shadow: $default_shadow;
 
 	@include with_title;
 	@include with_close;

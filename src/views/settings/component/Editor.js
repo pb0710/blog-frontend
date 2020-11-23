@@ -1,7 +1,7 @@
 import React from 'react'
 import Options from './Options'
 import { Switch } from 'sylas-react-ui'
-import { ChromeReaderModeOutlined } from '@material-ui/icons'
+import ChromeReaderModeIcon from 'mdi-react/ChromeReaderModeIcon'
 import { useSelector } from 'react-redux'
 
 function Editor() {
@@ -9,7 +9,7 @@ function Editor() {
 	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
 	const editorOpts = [
 		{
-			icon: <ChromeReaderModeOutlined />,
+			icon: <ChromeReaderModeIcon size={20} />,
 			title: '展示 Markdown Demo',
 			name: 'useMarkdownGuide',
 			initialValue: useMarkdownGuide,

@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom'
 import style from '../style/index.module.scss'
 import { v4 as uuid } from 'uuid'
 import clsx from 'clsx'
-import { Info, Warning, Error, CheckCircle } from '@material-ui/icons'
+import InfoCircleIcon from 'mdi-react/InfoCircleIcon'
+import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
+import WarningCircleIcon from 'mdi-react/WarningCircleIcon'
+import ErrorIcon from 'mdi-react/ErrorIcon'
 
 // 组件的 add 方法需要对外暴露
 let add
@@ -48,22 +51,22 @@ const Message = React.memo(props => {
 		switch (type) {
 			case 'success':
 				return {
-					messageIcon: <CheckCircle />,
+					messageIcon: <CheckCircleIcon size={20} />,
 					typeCls: style.success
 				}
 			case 'warning':
 				return {
-					messageIcon: <Warning />,
+					messageIcon: <WarningCircleIcon size={20} />,
 					typeCls: style.warning
 				}
 			case 'error':
 				return {
-					messageIcon: <Error />,
+					messageIcon: <ErrorIcon size={20} />,
 					typeCls: style.error
 				}
 			default:
 				return {
-					messageIcon: <Info />,
+					messageIcon: <InfoCircleIcon size={20} />,
 					typeCls: style.info
 				}
 		}

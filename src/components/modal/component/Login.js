@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
-import { Form, Input, Button, Loading } from 'sylas-react-ui'
-import { CloseOutlined } from '@material-ui/icons'
+import { Form, Input, Button, Loading, CheckBox } from 'sylas-react-ui'
+import CloseIcon from 'mdi-react/CloseIcon'
 import { useDispatch, useSelector } from 'react-redux'
 import * as commonAction from '@/store/actions'
 import * as action from '../store/action'
@@ -65,25 +65,27 @@ export default function Login() {
 		<div className={style.login_wrapper}>
 			<h1>用户登录</h1>
 			<Button.Icon className={style.close} onClick={handleClose}>
-				<CloseOutlined />
+				<CloseIcon size={20} />
 			</Button.Icon>
 			<div className={style.avatar_wrapper}>
 				{loading ? <Loading.Bounce color={theme} /> : <img src={avatar} alt="" />}
 			</div>
-			<Form onFinished={handleSubmit} onValuesChange={debounce(handleValuesChange, fetchInterval)}>
+			<Form onFinish={handleSubmit} onValuesChange={debounce(handleValuesChange, fetchInterval)}>
 				<Form.Item label="用户名" name="username">
 					<Input color={theme} placeholder="用户名" />
 				</Form.Item>
 				<Form.Item label="密码" name="password">
-					<Input.Password color={theme} placeholder="密码" />
+					<Input type="password" color={theme} placeholder="密码" />
+				</Form.Item>
+				<Form.Item className={style.submit_wrapper}>
+					<Button className={style.submit} type="submit" color={theme}>
+						登录
+					</Button>
 				</Form.Item>
 				<div className={style.footer}>
 					<span className={style[`go_register_${theme}`]} onClick={handleGoRegister}>
-						没有账号？点击注册
+						没有账号？立即注册
 					</span>
-					<Button htmlType="submit" color={theme}>
-						登录
-					</Button>
 				</div>
 			</Form>
 		</div>
