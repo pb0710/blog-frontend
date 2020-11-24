@@ -14,7 +14,7 @@ $sider_width: 24rem;
 	transition: transform $normal ease-out;
 	transform: translateX(-$sider_width);
 
-	&.in {
+	&.open {
 		transform: translateX(0);
 	}
 

@@ -87,7 +87,7 @@ export default function Profile(props) {
 					rules={[
 						{
 							async validator(value) {
-								if (value < 4) {
+								if (value.length < 4) {
 									return Promise.reject('昵称长度不能少于 4 位！')
 								}
 							}

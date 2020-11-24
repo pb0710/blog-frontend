@@ -9,7 +9,6 @@ export const setting = handleActions(
 		theme: 'primary',
 		drawerDefaultOpened: false,
 		lang: 'zh-CN',
-		useMarkdownGuide: true,
-		menuDefaultExpansion: false
+		useMarkdownGuide: true
 	}
 )

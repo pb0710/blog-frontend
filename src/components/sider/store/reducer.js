@@ -6,5 +6,5 @@ export const drawerOpened = handleActions(
 	{
 		[TYPE.UPDATE_DRAWER]: (state, action) => action.payload
 	},
-	true
+	false
 )

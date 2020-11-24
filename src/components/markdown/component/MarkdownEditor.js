@@ -90,7 +90,7 @@ function MarkdownEditor() {
 
 	const handlePublish = () => {
 		if (!content || content.length < 20) {
-			msg.error('文章长度少于20')
+			msg.error('文章字数少于 20')
 			return
 		}
 		dispatch(modalAction.updateModal(true, <ArticleInfo content={content} />))
@@ -135,7 +135,7 @@ function MarkdownEditor() {
 				<div className={style.operation}>
 					{online ? (
 						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<SendIcon size={20} />}>
-							发布
+							去发布
 						</Button>
 					) : (
 						'登录成功后可发布文章...'

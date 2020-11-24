@@ -2,7 +2,9 @@
 	@include use_themes('.btn') {
 		border: 1px solid $highlight;
 		background: #fff;
-		color: $highlight;
+		&:hover {
+			background: #f8f8f8;
+		}
 	}
 
 	.username_wrapper {
@@ -10,22 +12,8 @@
 		align-items: center;
 
 		> span {
-			margin-right: 2rem;
-		}
-	}
-
-	> li {
-		&.profile {
-			padding: 1rem 2rem;
-			height: 8rem;
-		}
-		&.description {
-			height: 6rem;
-
-			textarea {
-				resize: none;
-				transform: translateY(-0.5rem);
-			}
+			margin-right: 3rem;
+			font-weight: 500;
 		}
 	}
 

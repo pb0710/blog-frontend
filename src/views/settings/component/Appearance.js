@@ -25,7 +25,7 @@ function Appearance() {
 		},
 		{
 			icon: <MenuOpenIcon size={20} />,
-			title: '默认收起侧边栏',
+			title: '默认展示侧边栏',
 			name: 'drawerDefaultOpened',
 			initialValue: drawerDefaultOpened,
 			component: <Switch color={theme} />

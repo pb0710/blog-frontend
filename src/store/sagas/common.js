@@ -63,7 +63,6 @@ function* register({ username, password, profile }) {
 function* saveProfile(profile) {
 	const oldProfile = yield select(state => state.userProfile)
 	const newProfile = { ...oldProfile, ...profile }
-	console.log('newProfile: ', newProfile)
 	try {
 		yield userApi.saveProfile(newProfile)
 		yield put(commonAction.updateUserProfile(newProfile))

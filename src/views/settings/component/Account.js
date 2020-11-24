@@ -19,7 +19,7 @@ function Account() {
 	const dispatch = useDispatch()
 	const profile = useSelector(state => state.userProfile)
 	const theme = useSelector(state => state.setting.theme)
-	const { username, nickname, avatar } = profile
+	const { username, nickname, avatar, gender, selfIntroduction } = profile
 
 	const handleChangeAvatar = React.useCallback(
 		async formData => {
@@ -54,7 +54,7 @@ function Account() {
 			component: (
 				<div className={usernameOptCls}>
 					<span>{username ?? '尚未登录...'}</span>
-					<Button className={btnCls} color="default" onClick={handleLogout}>
+					<Button className={btnCls} light color={theme} onClick={handleLogout}>
 						退出
 					</Button>
 				</div>
@@ -65,17 +65,25 @@ function Account() {
 			title: '昵称',
 			name: 'nickname',
 			initialValue: nickname,
+			rules: [
+				{
+					async validator(value) {
+						if (value.length < 4) {
+							return Promise.reject('昵称长度不能少于 4 位！')
+						}
+					}
+				}
+			],
 			component: <Input color={theme} placeholder="你的名字" />
 		},
 		{
-			itemCls: style.profile,
 			icon: <FaceIcon size={20} />,
 			title: '头像',
 			component: (
 				<div className={avatarOptCls}>
 					<img alt="" src={avatar ?? defaultAvatar} />
 					<Uploader onChange={handleChangeAvatar}>
-						<Button className={btnCls} color="default">
+						<Button className={btnCls} light color={theme}>
 							更换
 						</Button>
 					</Uploader>
@@ -86,7 +94,7 @@ function Account() {
 			icon: <WcIcon size={20} />,
 			title: '性别',
 			name: 'gender',
-			initialValue: 'male',
+			initialValue: gender,
 			component: (
 				<Select color={theme}>
 					<Select.Option value="male">男</Select.Option>
@@ -95,12 +103,11 @@ function Account() {
 			)
 		},
 		{
-			itemCls: style.description,
 			icon: <ChatOutlineIcon size={20} />,
 			title: '个人简介',
 			name: 'selfIntroduction',
-			initialValue: '',
-			component: <Input.Textarea color={theme} placeholder="技能、兴趣爱好" />
+			initialValue: selfIntroduction,
+			component: <Input.Textarea color={theme} placeholder="技能、兴趣爱好" style={{ resize: 'none' }} />
 		}
 	]
 	return <Options className={style.account} heading="用户资料" opts={accountOpts} />

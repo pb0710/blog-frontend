@@ -10,15 +10,17 @@
 	}
 
 	.container {
+		padding: 0 2rem;
 		min-height: 3rem;
 		border: 1px solid $divider;
 		border-radius: 0.6rem;
 		background: $background;
 		box-shadow: $small_shadow;
 
-		> li {
-			padding: 0 2rem;
-			min-height: 6rem;
+		.list_item {
+			display: flex;
+			justify-content: space-between;
+			padding: 1.6rem 0.8rem;
 
 			@include use_themes('.icon') {
 				margin-right: 2rem;
@@ -26,11 +28,13 @@
 				font-size: 2rem;
 			}
 
-			.option {
-				position: absolute;
-				right: 2rem;
+			> span:first-child {
+				display: inline-flex;
+				align-items: center;
+			}
+
+			.form_item {
 				margin: 0;
-				width: unset;
 			}
 		}
 	}

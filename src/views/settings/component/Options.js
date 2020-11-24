@@ -13,7 +13,7 @@ function Options(props) {
 
 	const renderOption = opt =>
 		opt.name ? (
-			<Form.Item className={style.option} name={opt.name} initialValue={opt.initialValue}>
+			<Form.Item className={style.form_item} {...opt}>
 				{renderComponent(opt.component)}
 			</Form.Item>
 		) : (
@@ -25,9 +25,11 @@ function Options(props) {
 			<h1>{heading}</h1>
 			<List className={containerCls}>
 				{opts.map((opt, index) => (
-					<List.Item key={index} className={opt.itemCls}>
-						{opt.icon && React.cloneElement(opt.icon, { className: style[`icon_${theme}`] })}
-						<span>{opt.title}</span>
+					<List.Item key={index} className={style.list_item}>
+						<span>
+							{opt.icon && React.cloneElement(opt.icon, { className: style[`icon_${theme}`] })}
+							<span>{opt.title}</span>
+						</span>
 						{renderOption(opt)}
 					</List.Item>
 				))}

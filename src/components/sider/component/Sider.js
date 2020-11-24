@@ -10,18 +10,20 @@ import { Branch } from '@/components/header'
 
 export default function Sider() {
 	const dispatch = useDispatch()
-	const opened = useSelector(state => state.sider.drawerOpened)
-	const defaultClosed = useSelector(state => state.setting.drawerDefaultOpened)
+	const drawerDefaultOpened = useSelector(state => state.setting.drawerDefaultOpened)
+	const drawerOpened = useSelector(state => state.sider.drawerOpened)
 
 	const hanldeClose = () => {
 		dispatch(action.updateDrawer(false))
 	}
 
 	React.useEffect(() => {
-		dispatch(action.updateDrawer(!defaultClosed))
-	}, [dispatch, defaultClosed])
+		dispatch(action.updateDrawer(drawerDefaultOpened))
+	}, [dispatch, drawerDefaultOpened])
 
-	const asideCls = clsx(style.sider, opened && style.in)
+	const asideCls = clsx(style.sider, {
+		[style.open]: drawerOpened
+	})
 
 	return (
 		<aside className={asideCls}>
