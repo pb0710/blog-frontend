@@ -6,9 +6,10 @@ import { useSelector } from 'react-redux'
 
 export default function ArticleCard(props) {
 	const { id, author, sort, title, backgroundImage, views, tags = [] } = props
+	console.log('sort: ', sort)
 	const theme = useSelector(state => state.setting.theme)
 
-	const aritcleLink = `/detail/${id}`
+	const aritcleLink = `/articles/${sort}/detail/${id}`
 	const authorLink = `/user/${1}`
 
 	return (

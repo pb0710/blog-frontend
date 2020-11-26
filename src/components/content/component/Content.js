@@ -19,7 +19,11 @@ function Content() {
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/articles/:sort" component={React.lazy(() => import('@/views/articleList/ArticleList'))} />
-				<Route exact path="/detail/:id" component={React.lazy(() => import('@/views/articleDetail/ArticleDetail'))} />
+				<Route
+					exact
+					path="/articles/:sort/detail/:id"
+					component={React.lazy(() => import('@/views/articleDetail/ArticleDetail'))}
+				/>
 				<Route
 					exact
 					path="/upload"

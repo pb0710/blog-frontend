@@ -1,7 +1,7 @@
 $divider: $divider;
 $text_secondary: $text_secondary;
 
-@include use_themes('.user_avatar') {
+.user_avatar {
 	position: relative;
 	margin-right: 1rem;
 	min-height: 0;

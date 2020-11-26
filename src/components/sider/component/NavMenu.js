@@ -121,7 +121,7 @@ function NavMenu() {
 		function selectMenu(nav) {
 			const match = matchPath(pathname, {
 				path: nav.to,
-				exact: true
+				exact: false
 			})
 			match && setCurrentKey(nav.id)
 		}

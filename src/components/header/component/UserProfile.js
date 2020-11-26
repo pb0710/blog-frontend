@@ -17,7 +17,7 @@ export default function UserProfile() {
 		hide()
 	}
 
-	const avatarCls = clsx(style[`user_avatar_${theme}`], {
+	const avatarCls = clsx(style.user_avatar, {
 		[style.active]: visible
 	})
 
