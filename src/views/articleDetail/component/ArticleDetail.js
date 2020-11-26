@@ -10,28 +10,30 @@ import { msg } from '@/components/base'
 import { Tag } from 'sylas-react-ui'
 import { useFetch } from '@/utils/hooks'
 import dayjs from 'dayjs'
-window.dayjs = dayjs
+
 export default function ArticleDetail() {
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
-	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0 } = useSelector(
-		state => state.article.detail
-	)
+	const detail = useSelector(state => state.article.detail)
+	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0 } = detail
 	const { id } = useParams()
 
 	const { data, error, loading } = useFetch(articleApi.fetchDetail, {
-		immutable: false,
 		defaultParams: [id]
 	})
 
 	React.useEffect(() => {
-		if (data) {
-			dispatch(action.setDetail(data))
+		if (data?.content) {
+			dispatch(action.updateDetail(data))
 		}
 		if (error) {
 			msg.error(error)
 		}
 	}, [data, dispatch, error])
+
+	React.useEffect(() => {
+		dispatch(action.increaseArticleViews(id))
+	}, [dispatch, id])
 
 	return (
 		<FlexiblePage className={style.article_detail}>

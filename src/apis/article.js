@@ -31,3 +31,14 @@ export const addArticle = (userId, articleDetail = {}) =>
 		method: 'POST',
 		data: { userId, articleDetail }
 	})
+
+/**
+ * 增加文章访问量
+ * @param {String} articleId 文章ID
+ */
+export const increaseArticleViews = articleId =>
+	request({
+		url: `article/increase_views`,
+		method: 'POST',
+		data: { articleId }
+	})
