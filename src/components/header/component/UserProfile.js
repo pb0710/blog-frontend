@@ -17,13 +17,9 @@ export default function UserProfile() {
 		hide()
 	}
 
-	const avatarCls = clsx(style.user_avatar, {
-		[style.active]: visible
-	})
-
 	return (
 		<>
-			<Button.Icon className={avatarCls} focus={visible} onClick={toggle}>
+			<Button.Icon className={style.user_avatar} focus={visible} onClick={toggle}>
 				<img src={avatar} alt="" />
 			</Button.Icon>
 			<Popup ref={popupRef} className={style.user_profile} visible={visible} scaleOrigin="top-right">

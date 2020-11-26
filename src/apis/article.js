@@ -42,3 +42,27 @@ export const increaseArticleViews = articleId =>
 		method: 'POST',
 		data: { articleId }
 	})
+
+/**
+ * 点赞文章
+ * @param {String} userId 用户ID
+ * @param {String} articleId 文章ID
+ */
+export const likeArticle = (userId, articleId) =>
+	request({
+		url: `article/likes`,
+		method: 'POST',
+		data: { userId, articleId }
+	})
+
+/**
+ * 取消点赞文章
+ * @param {String} userId 用户ID
+ * @param {String} articleId 文章ID
+ */
+export const dislikeArticle = (userId, articleId) =>
+	request({
+		url: `article/dislike`,
+		method: 'POST',
+		data: { userId, articleId }
+	})

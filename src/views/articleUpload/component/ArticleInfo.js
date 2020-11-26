@@ -10,7 +10,7 @@ import * as articleApi from '@/apis/article'
 import * as fileApi from '@/apis/file'
 import { useBoolean } from '@/utils/hooks'
 import { msg } from '@/components/base'
-import defaultArticleBg from '@/assets/images/default_article_bg.jpg'
+import defaultArticleBg from '@/assets/images/default_article_bg.png'
 import dayjs from 'dayjs'
 
 export default function ArticleInfo(props) {
