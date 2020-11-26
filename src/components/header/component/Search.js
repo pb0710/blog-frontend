@@ -13,7 +13,7 @@ export default function Search() {
 				<SearchIcon size={20} />
 			</Button.Icon>
 			<Popup ref={popupRef} className={style.search} visible={visible} scaleOrigin="top">
-				<Input color={theme} placeholder="搜索" />
+				<Input color={theme} placeholder="文章检索" />
 				<List>
 					<List.Item>result 1</List.Item>
 					<List.Item>result 2</List.Item>

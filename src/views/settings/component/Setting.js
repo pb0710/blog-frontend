@@ -40,7 +40,7 @@ function Setting() {
 		<FlexiblePage className={style.setting_page}>
 			{online || (
 				<Banner theme={setting.theme}>
-					<span>登录账号，开启设置云端同步</span>
+					<span>登录账号 开启设置云端同步</span>
 					<div onClick={handleGoLogin}>
 						<span>去登录</span>
 						<InputIcon size={20} />
@@ -53,7 +53,7 @@ function Setting() {
 					onFinsh={handleSaveProfile}
 					onValuesChange={debounce(profileForm.submit, saveInterval)}
 				>
-					<Account />
+					<Account form={profileForm} />
 				</Form>
 			)}
 			<Form

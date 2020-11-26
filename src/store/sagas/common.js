@@ -16,8 +16,7 @@ function* fetchUserInfo() {
 		yield put(commonAction.updateOnline(true))
 		return
 	} catch (err) {
-		console.error('获取用户失败', err)
-		msg.error('获取用户失败')
+		console.error('获取用户信息失败', err)
 	}
 }
 
@@ -43,10 +42,18 @@ function* logout() {
 		yield userApi.logout()
 		yield put(commonAction.updateOnline(false))
 		yield put(commonAction.updateUserProfile({}))
-		msg.success('已退出')
+		yield put(
+			settingAction.updateSetting({
+				theme: 'primary',
+				drawerDefaultOpened: false,
+				lang: 'zh-CN',
+				useMarkdownGuide: true
+			})
+		)
+		msg.success('签出成功')
 	} catch (err) {
-		console.error('退出登录失败', err)
-		msg.error('退出登录失败')
+		console.error('签出失败', err)
+		msg.error('签出失败')
 	}
 }
 
@@ -57,7 +64,7 @@ function* register({ username, password, profile }) {
 		msg.success('注册成功')
 	} catch (err) {
 		console.error('注册失败', err)
-		msg.error('注册失败')
+		msg.error(`注册失败 ${err}`)
 	}
 }
 

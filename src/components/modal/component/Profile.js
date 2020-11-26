@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
-import { Button, Form, Input, Select } from 'sylas-react-ui'
+import { Button, Form, Input, Select, Uploader } from 'sylas-react-ui'
 import CloseIcon from 'mdi-react/CloseIcon'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
 import UserIcon from 'mdi-react/UserIcon'
@@ -11,7 +11,6 @@ import * as commonAction from '@/store/actions'
 import * as fileApi from '@/apis/file'
 import Register from './Register'
 import { useBoolean } from '@/utils/hooks'
-import { Uploader } from '@/components/base'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { msg } from '@/components/base'
 
@@ -73,17 +72,20 @@ export default function Profile(props) {
 			<Button.Icon className={style.close} onClick={handleClose}>
 				<CloseIcon size={20} />
 			</Button.Icon>
-			<Uploader onChange={handleAddAvatar}>
-				<div className={style.avatar_wrapper}>
-					<img alt="" src={avatarSrc} />
-					<div className={style.upload_cover} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
-						<UserIcon size={30} color={visible ? '#fff' : 'transparent'} />
-					</div>
-				</div>
-			</Uploader>
 			<Form onFinsh={handleRegister}>
+				<Form.Item className={style.avatar_wrapper} name="avatar" initialValue={avatarSrc}>
+					<Uploader action={handleAddAvatar}>
+						<div className={style.avatar}>
+							<img src={avatarSrc} alt="" />
+							<div className={style.upload_cover} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
+								<UserIcon size={30} color={visible ? '#fff' : 'transparent'} />
+							</div>
+						</div>
+					</Uploader>
+				</Form.Item>
 				<Form.Item
 					name="nickname"
+					initialValue=""
 					rules={[
 						{
 							async validator(value) {
@@ -94,7 +96,7 @@ export default function Profile(props) {
 						}
 					]}
 				>
-					<Input color={theme} placeholder="昵称" initialValue="" />
+					<Input color={theme} placeholder="昵称" />
 				</Form.Item>
 				<Form.Item name="gender" initialValue="male">
 					<Select color={theme}>

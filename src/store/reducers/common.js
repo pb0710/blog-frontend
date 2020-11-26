@@ -14,8 +14,5 @@ export const userProfile = handleActions(
 	{
 		[TYPE.UPDATE_USER_PROFILE]: (state, action) => action.payload
 	},
-	{
-		gender: 'male',
-		selfIntroduction: ''
-	}
+	{}
 )

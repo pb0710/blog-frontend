@@ -60,7 +60,9 @@ export default function AuthorPanel() {
 			</div>
 			<Divider />
 			<div className={style.footer}>
-				<Button color={theme}>关注TA</Button>
+				<Button light color={theme}>
+					关注TA
+				</Button>
 			</div>
 		</Panel>
 	)

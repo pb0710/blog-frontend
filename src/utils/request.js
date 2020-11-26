@@ -16,23 +16,26 @@ axios.interceptors.request.use(
 	req => req,
 	err => Promise.reject('Request rejected', err)
 )
-const explain = '网络连接失败'
+const netError = '网络连接失败'
 
 instance.interceptors.response.use(
 	res => {
 		if (res.status !== 200) {
-			msg.error(`${explain}:${res.status}`)
+			msg.error(`${netError}:${res.status}`)
 			return Promise.reject(res)
 		}
 		if (res.data.message !== 'ok') {
-			msg.error(res.data.message ? `${explain}，${res.data.message}` : explain)
 			return Promise.reject(res.data.message)
 		}
 
 		return Promise.resolve(res.data.payload)
 	},
 	err => {
-		msg.error(explain)
+		if (err.response.status === 401) {
+			msg.info('尚未登录')
+			return Promise.reject(err)
+		}
+		msg.error(netError)
 		return Promise.reject(err)
 	}
 )

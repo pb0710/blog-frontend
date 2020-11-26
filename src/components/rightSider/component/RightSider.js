@@ -14,12 +14,11 @@ function RightSider() {
 		<Switch>
 			<Route exact path="/upload" />
 			<Route exact path="/setting" />
-			<Route exact path="/detail/:id">
+			<Route exact path="/articles/:sort/detail/:id">
 				<aside className={rightSiderCls}>
 					<AuthorPanel />
 					<Affix>
 						<ArticleStatsPanel />
-						<Panel></Panel>
 					</Affix>
 				</aside>
 			</Route>

@@ -12,39 +12,44 @@ $divider: $divider;
 	@include with_return;
 
 	.avatar_wrapper {
-		position: relative;
-		overflow: hidden;
-		margin-bottom: 1.6rem;
-		border-radius: 50%;
-		cursor: pointer;
+		display: flex;
+		justify-content: center;
 
-		@include flex_center;
-
-		> img {
-			width: 8rem;
-			height: 8rem;
-			border-radius: inherit;
-			vertical-align: text-top;
-
-			object-fit: cover;
-		}
-
-		> .upload_cover {
-			position: absolute;
-			width: 8rem;
-			height: 8rem;
-			border-radius: inherit;
-			color: #fff;
+		.avatar {
+			position: relative;
+			overflow: hidden;
+			border-radius: 50%;
+			cursor: pointer;
 
 			@include flex_center;
-			> svg {
-				font-size: 4rem !important;
+
+			> img {
+				width: 8rem;
+				height: 8rem;
+				border-radius: inherit;
+				vertical-align: text-top;
+
+				object-fit: cover;
 			}
-			&:hover {
-				backdrop-filter: blur(24px);
+
+			> .upload_cover {
+				position: absolute;
+				width: 8rem;
+				height: 8rem;
+				border-radius: inherit;
+				color: #fff;
+
+				@include flex_center;
+				> svg {
+					font-size: 4rem !important;
+				}
+				&:hover {
+					backdrop-filter: blur(24px);
+				}
 			}
 		}
 	}
+
 	.footer_bar {
 		display: flex;
 		justify-content: center;

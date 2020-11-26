@@ -6,6 +6,26 @@
 			background: #f8f8f8;
 		}
 	}
+	@include use_themes('.avatar_wrapper') {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+
+		> img {
+			width: 6rem;
+			height: 6rem;
+			border: 2px solid transparent;
+			border-radius: 50%;
+			vertical-align: text-top;
+			transition: border-color $normal;
+
+			object-fit: cover;
+
+			&:hover {
+				border: 2px solid $highlight;
+			}
+		}
+	}
 
 	.username_wrapper {
 		display: flex;
@@ -14,21 +34,6 @@
 		> span {
 			margin-right: 3rem;
 			font-weight: 500;
-		}
-	}
-
-	.avatar_wrapper {
-		display: flex;
-		align-items: center;
-
-		> img {
-			margin-right: 2rem;
-			width: 5rem;
-			height: 5rem;
-			border-radius: 50%;
-			vertical-align: text-top;
-
-			object-fit: cover;
 		}
 	}
 }

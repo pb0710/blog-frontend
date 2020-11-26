@@ -3,13 +3,12 @@ import AddToPhotosIcon from 'mdi-react/AddToPhotosIcon'
 import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
 import CloseIcon from 'mdi-react/CloseIcon'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Form, Input, Select } from 'sylas-react-ui'
+import { Button, Form, Input, Select, Uploader } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
 import * as modalAction from '@/components/modal/store/action'
 import * as articleApi from '@/apis/article'
 import * as fileApi from '@/apis/file'
 import { useBoolean } from '@/utils/hooks'
-import { Uploader } from '@/components/base'
 import { msg } from '@/components/base'
 import defaultArticleBg from '@/assets/images/default_article_bg.jpg'
 
@@ -23,22 +22,21 @@ export default function ArticleInfo(props) {
 	const [visible, { setTrue: handleShowCover, setFalse: handleHideCover }] = useBoolean(false)
 	const [picSrc, setPicSrc] = React.useState(defaultArticleBg)
 
-	const uploadImg = async formData => {
-		try {
-			const remotePicUrl = await fileApi.uploadImage(formData)
-			console.log('remotePicUrl', remotePicUrl)
-			setPicSrc(remotePicUrl)
-		} catch (err) {
-			console.error(`图片上传失败——${err}`)
-		}
-	}
-
-	const handleAddPic = async formData => {
-		console.log('formData: ', formData)
-		if (!formData) return
-		formData.append('userId', userId)
-		uploadImg(formData)
-	}
+	const handleAddPic = useCallback(
+		async formData => {
+			if (!formData) return
+			formData.append('userId', userId)
+			try {
+				const remotePicUrl = await fileApi.uploadImage(formData)
+				setPicSrc(remotePicUrl)
+				return remotePicUrl
+			} catch (err) {
+				console.error(`图片上传失败 ${err}`)
+				msg.error('图片上传失败')
+			}
+		},
+		[userId]
+	)
 
 	const handleClose = useCallback(() => {
 		dispatch(modalAction.updateModal(false, null))
@@ -46,38 +44,39 @@ export default function ArticleInfo(props) {
 
 	const handleAddArticle = useCallback(
 		async values => {
-			const { sort, title, introduce } = values
-			const articleDetail = { content, sort, title, introduce, backgroundImage: picSrc }
+			console.log('values: ', values)
+			const { pic, sort, title, introduce } = values
+			const articleDetail = { content, sort, title, introduce, backgroundImage: pic }
 			try {
 				await articleApi.addArticle({ userId, articleDetail })
 				handleClose()
 				msg.success('添加成功')
 			} catch (err) {
 				console.error('添加文章失败', err)
-				msg.error(err)
+				msg.error('添加文章失败')
 			}
 		},
-		[content, handleClose, picSrc, userId]
+		[content, handleClose, userId]
 	)
 
 	const formItems = [
 		{
 			name: 'pic',
+			initialValue: picSrc,
 			component: (
-				<div className={style.center_box}>
-					<Uploader onChange={handleAddPic}>
-						<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
-							<div className={style.pic_cover}>
-								<AddToPhotosIcon size={30} color={visible ? '#fff' : 'transparent'} />
-							</div>
-							<img className={style.title_pic} src={picSrc} alt="" />
+				<Uploader className={style.center_box} action={handleAddPic}>
+					<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
+						<div className={style.pic_cover}>
+							<AddToPhotosIcon size={30} color={visible ? '#fff' : 'transparent'} />
 						</div>
-					</Uploader>
-				</div>
+						<img className={style.title_pic} src={picSrc} alt="" />
+					</div>
+				</Uploader>
 			)
 		},
 		{
 			name: 'title',
+			initialValue: '',
 			rules: [
 				{
 					async validator(value) {
@@ -91,6 +90,7 @@ export default function ArticleInfo(props) {
 		},
 		{
 			name: 'sort',
+			initialValue: 'frontend',
 			component: (
 				<Select color={theme} description="文章类别">
 					<Select.Option value="frontend">前端</Select.Option>
@@ -99,11 +99,11 @@ export default function ArticleInfo(props) {
 					<Select.Option value="computer_science">计算机通用</Select.Option>
 					<Select.Option value="engineering">工程化</Select.Option>
 				</Select>
-			),
-			initialValue: 'frontend'
+			)
 		},
 		{
 			name: 'introduce',
+			initialValue: '',
 			rules: [
 				{
 					async validator(value) {

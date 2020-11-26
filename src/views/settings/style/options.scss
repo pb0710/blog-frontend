@@ -10,7 +10,7 @@
 	}
 
 	.container {
-		padding: 0 2rem;
+		padding: 0 1rem;
 		min-height: 3rem;
 		border: 1px solid $divider;
 		border-radius: 0.6rem;
@@ -20,7 +20,7 @@
 		.list_item {
 			display: flex;
 			justify-content: space-between;
-			padding: 1.6rem 0;
+			padding: 1.6rem 1rem;
 
 			@include use_themes('.icon') {
 				margin-right: 2rem;
@@ -34,6 +34,8 @@
 			}
 
 			.form_item {
+				display: inline-flex;
+				align-items: center;
 				margin: 0;
 			}
 		}

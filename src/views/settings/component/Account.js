@@ -1,16 +1,16 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import Options from './Options'
-import { Input, Button, Select } from 'sylas-react-ui'
+import { Input, Button, Select, Uploader } from 'sylas-react-ui'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
-import { Uploader } from '@/components/base'
 import FingerprintIcon from 'mdi-react/FingerprintIcon'
 import PersonIcon from 'mdi-react/PersonIcon'
 import FaceIcon from 'mdi-react/FaceIcon'
 import WcIcon from 'mdi-react/WcIcon'
 import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
+import UploadIcon from 'mdi-react/UploadIcon'
 import * as fileApi from '@/apis/file'
 import * as commonAction from '@/store/actions'
 import { msg } from '@/components/base'
@@ -32,6 +32,7 @@ function Account() {
 						avatar
 					})
 				)
+				return avatar
 			} catch (err) {
 				msg.error('图片上传失败')
 			}
@@ -44,7 +45,7 @@ function Account() {
 	}
 
 	const usernameOptCls = clsx(style.option, style.username_wrapper)
-	const avatarOptCls = clsx(style.option, style.avatar_wrapper)
+	const avatarOptCls = clsx(style.option, style[`avatar_wrapper_${theme}`])
 	const btnCls = style[`btn_${theme}`]
 
 	const accountOpts = [
@@ -79,15 +80,14 @@ function Account() {
 		{
 			icon: <FaceIcon size={20} />,
 			title: '头像',
+			name: 'avatar',
+			initialValue: avatar,
 			component: (
-				<div className={avatarOptCls}>
-					<img alt="" src={avatar ?? defaultAvatar} />
-					<Uploader onChange={handleChangeAvatar}>
-						<Button className={btnCls} light color={theme}>
-							更换
-						</Button>
-					</Uploader>
-				</div>
+				<Uploader action={handleChangeAvatar}>
+					<div className={avatarOptCls}>
+						<img src={avatar || defaultAvatar} alt="" />
+					</div>
+				</Uploader>
 			)
 		},
 		{
