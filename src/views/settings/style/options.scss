@@ -20,7 +20,7 @@
 		.list_item {
 			display: flex;
 			justify-content: space-between;
-			padding: 1.6rem 0.8rem;
+			padding: 1.6rem 0;
 
 			@include use_themes('.icon') {
 				margin-right: 2rem;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import { AspectRatio } from '@/components/base'
+import { AspectRatio } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 
 export default function ArticleCard(props) {

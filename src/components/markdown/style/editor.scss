@@ -7,7 +7,7 @@ $divider: $divider;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 1rem;
+		padding: 0 2rem;
 		width: 100%;
 		height: 5rem;
 		background: $background_variant;
@@ -27,7 +27,6 @@ $divider: $divider;
 			.publish {
 				display: flex;
 				align-items: center;
-				margin-right: 1rem;
 				font-weight: bold;
 				font-size: 1.4rem;
 			}

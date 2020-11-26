@@ -81,8 +81,8 @@ export default function ArticleInfo(props) {
 			rules: [
 				{
 					async validator(value) {
-						if (value.length < 6 || value.length > 24) {
-							return Promise.reject('标题长度限制为 6～24 位！')
+						if (value.length < 6 || value.length > 36) {
+							return Promise.reject('标题长度限制为 6～36 位！')
 						}
 					}
 				}

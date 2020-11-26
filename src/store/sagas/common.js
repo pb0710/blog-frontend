@@ -17,6 +17,7 @@ function* fetchUserInfo() {
 		return
 	} catch (err) {
 		console.error('获取用户失败', err)
+		msg.error('获取用户失败')
 	}
 }
 
@@ -33,7 +34,7 @@ function* login({ username, password }) {
 		msg.success('登录成功')
 	} catch (err) {
 		console.error('登录失败', err)
-		msg.error(err)
+		msg.error('登录失败')
 	}
 }
 
@@ -45,7 +46,7 @@ function* logout() {
 		msg.success('已退出')
 	} catch (err) {
 		console.error('退出登录失败', err)
-		msg.error(err)
+		msg.error('退出登录失败')
 	}
 }
 
@@ -56,7 +57,7 @@ function* register({ username, password, profile }) {
 		msg.success('注册成功')
 	} catch (err) {
 		console.error('注册失败', err)
-		msg.error(err)
+		msg.error('注册失败')
 	}
 }
 
@@ -68,6 +69,7 @@ function* saveProfile(profile) {
 		yield put(commonAction.updateUserProfile(newProfile))
 		msg.success('保存成功')
 	} catch (err) {
+		console.error('保存失败', err)
 		msg.error('保存失败')
 	}
 }

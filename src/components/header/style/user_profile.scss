@@ -7,62 +7,53 @@ $text_secondary: $text_secondary;
 	min-height: 0;
 	width: 4rem;
 	height: 4rem;
-	border: 2px solid transparent;
 	border-radius: 50%;
 	transition: border $normal;
 
-	@include flex_center;
-	&:hover {
-		border: 2px solid $highlight;
-	}
-
-	&.active {
-		border: 2px solid $highlight;
-	}
-
 	> img {
-		width: calc(100% - 4px);
-		height: calc(100% - 4px);
+		z-index: 1;
+		width: calc(100% - 0.8rem);
+		height: calc(100% - 0.8rem);
 		border-radius: inherit;
 		vertical-align: text-top;
 
 		object-fit: cover;
 	}
+}
 
-	.user_profile {
-		position: absolute;
-		top: 5rem;
-		right: -1rem;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		padding: 2rem;
-		min-height: 0;
-		width: 28rem;
-		border: 1px solid $divider;
-		border-radius: 0.6rem;
+.user_profile {
+	position: absolute;
+	top: 5rem;
+	right: 2rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 2rem;
+	min-height: 0;
+	width: 28rem;
+	border: 1px solid $divider;
+	border-radius: 0.6rem;
 
-		.large_avatar {
-			> img {
-				width: 8rem;
-				height: 8rem;
-				border-radius: 50%;
-				vertical-align: text-top;
+	.large_avatar {
+		> img {
+			width: 8rem;
+			height: 8rem;
+			border-radius: 50%;
+			vertical-align: text-top;
 
-				object-fit: cover;
-			}
+			object-fit: cover;
 		}
+	}
 
-		> h3 {
-			margin-bottom: 0.5rem;
-		}
+	> h3 {
+		margin-bottom: 0.5rem;
+	}
 
-		> span {
-			color: $text_secondary;
-		}
+	> span {
+		color: $text_secondary;
+	}
 
-		.divider {
-			margin: 1.6rem 0;
-		}
+	.divider {
+		margin: 1.6rem 0;
 	}
 }

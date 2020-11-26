@@ -6,12 +6,12 @@ import * as action from './action'
 
 function* saveSetting(newSetting) {
 	try {
-		yield put(action.updateSetting(newSetting))
 		const { online } = yield select()
 		if (online) {
 			yield settingApi.updateSetting(newSetting)
 			msg.success('保存成功')
 		}
+		yield put(action.updateSetting(newSetting))
 	} catch (err) {
 		msg.error('保存失败')
 	}

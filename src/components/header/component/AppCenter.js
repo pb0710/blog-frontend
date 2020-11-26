@@ -6,24 +6,26 @@ import { useSelector } from 'react-redux'
 
 export default function AppCenter() {
 	const theme = useSelector(state => state.setting.theme)
-	const { ref, visible, show } = Popup.usePopup()
+	const [visible, popupRef, { toggle }] = Popup.usePopup()
 
 	return (
-		<Button.Icon className={style.btn} focus={visible} onClick={show}>
-			<AppsIcon size={20} />
-			<Popup className={style.app_center} ref={ref} visible={visible} scaleOrigin="top-right">
+		<>
+			<Button.Icon className={style.btn} focus={visible} onClick={toggle}>
+				<AppsIcon size={20} />
+			</Button.Icon>
+			<Popup ref={popupRef} className={style.app_center} visible={visible} scaleOrigin="top-right">
 				<Tabs bordered={false} color={theme} activeKey="aa">
-					<Tabs.Panel tabKey="aa" title="aaa">
+					<Tabs.Panel className={style.tab} tabKey="aa" title="aaa">
 						<h1>aaa</h1>
 					</Tabs.Panel>
-					<Tabs.Panel tabKey="bb" title="bbb">
+					<Tabs.Panel className={style.tab} tabKey="bb" title="bbb">
 						<h1>bbb</h1>
 					</Tabs.Panel>
-					<Tabs.Panel tabKey="cc" title="ccc">
+					<Tabs.Panel className={style.tab} tabKey="cc" title="ccc">
 						<h1>ccc</h1>
 					</Tabs.Panel>
 				</Tabs>
 			</Popup>
-		</Button.Icon>
+		</>
 	)
 }

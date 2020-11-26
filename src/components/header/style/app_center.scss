@@ -1,10 +1,14 @@
 .app_center {
 	position: absolute;
 	top: 5rem;
-	right: -1rem;
-	padding: 2rem;
+	right: 2rem;
+	padding: 0;
 	min-height: 0;
 	width: 30rem;
 	border: 1px solid $divider;
 	border-radius: 0.6rem;
+
+	.tab {
+		padding: 2rem;
+	}
 }

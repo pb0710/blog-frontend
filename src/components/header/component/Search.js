@@ -6,12 +6,13 @@ import { useSelector } from 'react-redux'
 
 export default function Search() {
 	const theme = useSelector(state => state.setting.theme)
-	const { ref, visible, show } = Popup.usePopup()
-
+	const [visible, popupRef, { toggle }] = Popup.usePopup()
 	return (
-		<Button.Icon className={style.btn} focus={visible} onClick={show}>
-			<SearchIcon size={20} />
-			<Popup className={style.search} ref={ref} visible={visible} scaleOrigin="top-right">
+		<>
+			<Button.Icon className={style.btn} focus={visible} onClick={toggle}>
+				<SearchIcon size={20} />
+			</Button.Icon>
+			<Popup ref={popupRef} className={style.search} visible={visible} scaleOrigin="top">
 				<Input color={theme} placeholder="搜索" />
 				<List>
 					<List.Item>result 1</List.Item>
@@ -19,6 +20,6 @@ export default function Search() {
 					<List.Item>result 3</List.Item>
 				</List>
 			</Popup>
-		</Button.Icon>
+		</>
 	)
 }
