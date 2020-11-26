@@ -6,7 +6,7 @@ import { FlexiblePage } from '@/components/page'
 import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
 import * as action from '../store/action'
-import { msg } from '@/components/base'
+import { msg, Skeleton } from '@/components/base'
 import { Tag } from 'sylas-react-ui'
 import { useFetch } from '@/utils/hooks'
 import dayjs from 'dayjs'
@@ -35,29 +35,42 @@ export default function ArticleDetail() {
 		dispatch(action.increaseArticleViews(id))
 	}, [dispatch, id])
 
+	const infoElement = (
+		<div className={style.info}>
+			<div>
+				{dayjs(creationTime).isValid() && <span>{dayjs(creationTime).format('YYYY年MM月DD日HH:mm:ss')}</span>}
+				<span>总字数：{content.length}</span>
+				<span>阅读量：{views}</span>
+			</div>
+			<div className={style.tags_wrapper}>
+				{tags.map((tag, index) => (
+					<Tag key={index} color={theme}>
+						{tag}
+					</Tag>
+				))}
+			</div>
+		</div>
+	)
+
 	return (
 		<FlexiblePage className={style.article_detail}>
 			<section className={style.article_wrapper}>
 				{loading ? (
-					<div className={style.bg_skeleton}></div>
+					<Skeleton className={style.bg_skeleton}></Skeleton>
 				) : (
 					<img className={style.bg_pic} src={backgroundImage} alt="" />
 				)}
-				<div className={style.info}>
-					<div>
-						{dayjs(creationTime).isValid() && <span>{dayjs(creationTime).format('YYYY年MM月DD日HH:mm:ss')}</span>}
-						<span>总字数：{content.length}</span>
-						<span>阅读量：{views}</span>
+				{infoElement}
+				{loading ? (
+					<div className={style.content_skeleton}>
+						<Skeleton className={style.heading} />
+						<Skeleton className={style.content1} />
+						<Skeleton className={style.content2} />
+						<Skeleton className={style.content3} />
 					</div>
-					<div className={style.tags_wrapper}>
-						{tags.map((tag, index) => (
-							<Tag key={index} color={theme}>
-								{tag}
-							</Tag>
-						))}
-					</div>
-				</div>
-				<Markdown>{content}</Markdown>
+				) : (
+					<Markdown>{content}</Markdown>
+				)}
 			</section>
 		</FlexiblePage>
 	)

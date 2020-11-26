@@ -4,12 +4,16 @@
 	font-style: normal;
 	font-family: 'SF Mono';
 	src: url('../fonts/SF-Mono-Medium.otf') format('opentype');
+
+	font-display: block;
 }
 
 @font-face {
 	font-style: italic;
 	font-family: 'SF Mono';
 	src: url('../fonts/SF-Mono-RegularItalic.otf') format('opentype');
+
+	font-display: block;
 }
 
 body {

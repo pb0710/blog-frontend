@@ -6,4 +6,6 @@ export { default as Uploader } from './component/Uploader'
 
 export { default as AspectRatio } from './component/AspectRatio'
 
+export { default as Skeleton } from './component/Skeleton'
+
 export { default as msg } from './component/message'

@@ -2,6 +2,12 @@
 	padding: 1rem;
 	padding-top: 5rem;
 
+	&.fixed {
+		overflow: hidden;
+		padding-bottom: 0;
+		height: 100vh;
+	}
+
 	> div:first-child {
 		padding-right: 0;
 	}
@@ -11,5 +17,35 @@
 		flex-flow: wrap;
 		margin-top: 1rem;
 		width: 100%;
+	}
+
+	.skeleton_list {
+		min-height: calc(100vh - 7rem);
+
+		@extend .article_list;
+
+		.skeleton {
+			margin: 1rem;
+			min-width: 20rem;
+			width: calc(20% - 2rem);
+
+			.inner {
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+
+				> div {
+					margin-bottom: 1.6rem;
+
+					&:first-child {
+						height: 61.8%;
+					}
+					&:last-child {
+						margin-bottom: 0;
+						transform: translateX(-60%);
+					}
+				}
+			}
+		}
 	}
 }

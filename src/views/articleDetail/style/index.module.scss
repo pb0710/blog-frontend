@@ -48,5 +48,35 @@
 				}
 			}
 		}
+
+		.content_skeleton {
+			position: relative;
+			display: flex;
+			overflow: hidden;
+			flex-direction: column;
+			width: 100%;
+			background: $background;
+
+			> div {
+				margin-bottom: 2.4rem;
+				height: 2.4rem;
+			}
+
+			> .heading {
+				height: 4rem;
+				transform: translateX(-60%);
+			}
+
+			> .content1 {
+				transform: translateX(10%);
+			}
+			> .content2 {
+				width: 95%;
+			}
+			> .content3 {
+				margin-bottom: 0;
+				transform: translateX(-50%);
+			}
+		}
 	}
 }

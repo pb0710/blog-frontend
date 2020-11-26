@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { useSelector } from 'react-redux'
-import { Panel } from '@/components/base'
+import { Panel, Skeleton } from '@/components/base'
 import { List, Divider, Button } from 'sylas-react-ui'
 import MailOutlineIcon from 'mdi-react/MailOutlineIcon'
 import { GithubOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
@@ -38,7 +38,7 @@ export default function AuthorPanel() {
 							<img src={data.avatar ?? defaultAvatar} alt="" />
 						</div>
 						<div className={style.right_wrapper}>
-							<p className={style.name}>{data.nickname}</p>
+							{data.nickname ? <p className={style.name}>{data.nickname}</p> : <Skeleton />}
 						</div>
 					</List.Item>
 				</Link>

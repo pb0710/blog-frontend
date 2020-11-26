@@ -6,6 +6,7 @@ import ThumbUpOutlineIcon from 'mdi-react/ThumbUpOutlineIcon'
 import BookmarkAddOutlineIcon from 'mdi-react/BookmarkAddOutlineIcon'
 import ThumbUpIcon from 'mdi-react/ThumbUpIcon'
 import ForumOutlineIcon from 'mdi-react/ForumOutlineIcon'
+import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon'
 import * as articleApi from '@/apis/article'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
@@ -16,7 +17,7 @@ function ArticleStatsPanel() {
 	const theme = useSelector(state => state.setting.theme)
 	const { userId } = useSelector(state => state.userProfile)
 	const detail = useSelector(state => state.article.detail)
-	const { id: articleId, likes = [] } = detail
+	const { id: articleId, likes = [], views = 0 } = detail
 
 	const liked = likes.some(item => item?.toString?.() === userId?.toString?.())
 
@@ -56,10 +57,8 @@ function ArticleStatsPanel() {
 		[articleId, dispatch]
 	)
 
-	const handleToggleLike = React.useCallback(
-		() => (userId && articleId && liked ? handleDislike(userId, detail) : handleLike(userId, detail)),
-		[articleId, detail, handleDislike, handleLike, liked, userId]
-	)
+	const handleToggleLike = () =>
+		userId && articleId && liked ? handleDislike(userId, detail) : handleLike(userId, detail)
 
 	return (
 		<Panel className={style[`article_stats_panel_${theme}`]}>
@@ -76,11 +75,15 @@ function ArticleStatsPanel() {
 				</List.Item>
 				<List.Item className={style.item} hovered ripple bordered={false}>
 					<BookmarkAddOutlineIcon size={20} />
-					被收藏：<strong>999</strong>
+					收藏：<strong>0</strong>
 				</List.Item>
-				<List.Item className={style.item} hovered ripple bordered={false}>
+				<List.Item className={style.item} bordered={false}>
+					<EyeOutlineIcon size={20} />
+					阅读量：<strong>{views}</strong>
+				</List.Item>
+				<List.Item className={style.item} bordered={false}>
 					<ForumOutlineIcon size={20} />
-					评论数：<strong>999</strong>
+					评论数：<strong>0</strong>
 				</List.Item>
 			</List>
 		</Panel>
