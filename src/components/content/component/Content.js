@@ -22,7 +22,7 @@ function Content() {
 				<Route
 					exact
 					path="/articles/:sort/detail/:id"
-					component={React.lazy(() => import('@/views/articleDetail/ArticleDetail'))}
+					component={React.lazy(() => import('@/views/articleDetail/component/ArticleDetail'))}
 				/>
 				<Route
 					exact

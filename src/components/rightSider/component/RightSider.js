@@ -14,6 +14,7 @@ function RightSider() {
 		<Switch>
 			<Route exact path="/upload" />
 			<Route exact path="/setting" />
+			<Route exact path="/articles/:sort" />
 			<Route exact path="/articles/:sort/detail/:id">
 				<aside className={rightSiderCls}>
 					<AuthorPanel />

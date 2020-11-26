@@ -35,6 +35,10 @@ instance.interceptors.response.use(
 			msg.info('尚未登录')
 			return Promise.reject(err)
 		}
+		if (err.response.status === 500) {
+			msg.error('服务器内部错误')
+			return Promise.reject(err)
+		}
 		msg.error(netError)
 		return Promise.reject(err)
 	}

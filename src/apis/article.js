@@ -22,11 +22,10 @@ export const fetchDetail = articleId =>
 
 /**
  * 添加文章
- * @param {Object} opt
- * 	@param {String} userId 用户ID
- * 	@param {String} articleDetail 文章详情
+ * @param {String} userId 用户ID
+ * @param {String} articleDetail 文章详情
  */
-export const addArticle = ({ userId, articleDetail = {} }) =>
+export const addArticle = (userId, articleDetail = {}) =>
 	request({
 		url: `article/add`,
 		method: 'POST',

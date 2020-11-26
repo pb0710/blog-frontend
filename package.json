@@ -11,6 +11,7 @@
     "axios": "^0.21.0",
     "border.css": "^0.10.0",
     "clsx": "^1.1.1",
+    "dayjs": "^1.9.6",
     "markdown-to-jsx": "^7.1.0",
     "mdi-react": "^7.4.0",
     "omit.js": "^2.0.2",
@@ -29,8 +30,7 @@
     "styled-system": "^5.1.5",
     "sylas-react-ui": "^2.0.3",
     "url-join": "^4.0.1",
-    "uuid": "^8.3.1",
-    "yarn": "^1.22.10"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.12.7",

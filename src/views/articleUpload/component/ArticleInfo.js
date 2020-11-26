@@ -11,6 +11,7 @@ import * as fileApi from '@/apis/file'
 import { useBoolean } from '@/utils/hooks'
 import { msg } from '@/components/base'
 import defaultArticleBg from '@/assets/images/default_article_bg.jpg'
+import dayjs from 'dayjs'
 
 export default function ArticleInfo(props) {
 	const { content } = props
@@ -44,11 +45,17 @@ export default function ArticleInfo(props) {
 
 	const handleAddArticle = useCallback(
 		async values => {
-			console.log('values: ', values)
 			const { pic, sort, title, introduce } = values
-			const articleDetail = { content, sort, title, introduce, backgroundImage: pic }
+			const articleDetail = {
+				content,
+				sort,
+				title,
+				introduce,
+				backgroundImage: pic,
+				creationTime: dayjs().valueOf()
+			}
 			try {
-				await articleApi.addArticle({ userId, articleDetail })
+				await articleApi.addArticle(userId, articleDetail)
 				handleClose()
 				msg.success('添加成功')
 			} catch (err) {
