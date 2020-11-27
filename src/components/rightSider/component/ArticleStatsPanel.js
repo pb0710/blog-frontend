@@ -11,8 +11,10 @@ import * as articleApi from '@/apis/article'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
 import * as articleDetailAction from '@/views/articleDetail/store/action'
+import { useTranslation } from 'react-i18next'
 
 function ArticleStatsPanel() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
 	const { userId } = useSelector(state => state.userProfile)
@@ -71,19 +73,23 @@ function ArticleStatsPanel() {
 					onClick={handleToggleLike}
 				>
 					{liked ? <ThumbUpIcon size={20} /> : <ThumbUpOutlineIcon size={20} />}
-					获赞：<strong>{likes.length}</strong>
+					{t('article_detail.likes')}
+					<strong>{likes.length}</strong>
 				</List.Item>
 				<List.Item className={style.item} hovered ripple bordered={false}>
 					<BookmarkAddOutlineIcon size={20} />
-					收藏：<strong>0</strong>
+					{t('article_detail.collections')}
+					<strong>0</strong>
 				</List.Item>
 				<List.Item className={style.item} bordered={false}>
 					<EyeOutlineIcon size={20} />
-					阅读量：<strong>{views}</strong>
+					{t('article_detail.views')}
+					<strong>{views}</strong>
 				</List.Item>
 				<List.Item className={style.item} bordered={false}>
 					<ForumOutlineIcon size={20} />
-					评论数：<strong>0</strong>
+					{t('article_detail.comments')}
+					<strong>0</strong>
 				</List.Item>
 			</List>
 		</Panel>

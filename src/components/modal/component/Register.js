@@ -8,8 +8,10 @@ import CloseIcon from 'mdi-react/CloseIcon'
 import * as action from '../store/action'
 import Login from './Login'
 import Profile from './Profile'
+import { useTranslation } from 'react-i18next'
 
 export default function Register() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
 
@@ -30,7 +32,7 @@ export default function Register() {
 		{
 			async validator(value) {
 				if (value.length < 6) {
-					return Promise.reject('密码长度不得少于 6 位！')
+					return Promise.reject(t('modal.register.rule.password_length_limit'))
 				}
 			}
 		},
@@ -38,7 +40,7 @@ export default function Register() {
 			async validator(value) {
 				const pattern = new RegExp('^[a-z0-9]+$', 'i')
 				if (!pattern.test(value)) {
-					return Promise.reject('只能是数字或字母！')
+					return Promise.reject(t('modal.register.rule.number_or_alphabet'))
 				}
 			}
 		}
@@ -46,7 +48,7 @@ export default function Register() {
 
 	return (
 		<div className={style.register_wrapper}>
-			<h1>创建账号</h1>
+			<h1>{t('modal.register.heading')}</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
 				<ArrowBackIcon size={20} />
 			</Button.Icon>
@@ -62,21 +64,22 @@ export default function Register() {
 						{
 							async validator(value) {
 								if (!value) {
-									return Promise.reject('用户名不能为空!')
+									return Promise.reject(t('modal.register.rule.username_not_empty'))
 								}
 							}
 						},
 						{
 							async validator(value) {
+								if (!value) return
 								const pattern = new RegExp('^[^\u4e00-\u9fa5]+$', 'i')
 								if (!pattern.test(value)) {
-									return Promise.reject('不能是汉字！')
+									return Promise.reject(t('modal.register.rule.not_zh'))
 								}
 							}
 						}
 					]}
 				>
-					<Input color={theme} placeholder="用户名" />
+					<Input color={theme} placeholder={t('modal.register.username')} />
 				</Form.Item>
 				<Form.Item
 					name="password"
@@ -92,7 +95,7 @@ export default function Register() {
 						})
 					]}
 				>
-					<Input type="password" color={theme} placeholder="密码" />
+					<Input type="password" color={theme} placeholder={t('modal.register.password')} />
 				</Form.Item>
 				<Form.Item
 					name="passwordConfirm"
@@ -102,17 +105,17 @@ export default function Register() {
 						({ getFieldValue }) => ({
 							async validator(value) {
 								if (value !== getFieldValue('password')) {
-									return Promise.reject('两次输入的密码不一致！')
+									return Promise.reject(t('modal.register.rule.password_confirm_not_equal'))
 								}
 							}
 						})
 					]}
 				>
-					<Input type="password" color={theme} placeholder="确认密码" />
+					<Input type="password" color={theme} placeholder={t('modal.register.password_confirm')} />
 				</Form.Item>
 				<div className={style.footer_bar}>
 					<Button type="submit" color={theme} light suffixes={<ChevronDoubleRightIcon size={20} />}>
-						下一步
+						{t('modal.register.next')}
 					</Button>
 				</div>
 			</Form>

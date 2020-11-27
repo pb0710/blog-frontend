@@ -1,0 +1,152 @@
+{
+  "info": {
+    "not_login": "Not login"
+  },
+  "success": {
+    "add": "Added successfully",
+    "save": "Saved successfully",
+    "login": "Sign in successfully",
+    "logout": "Sign out successfully",
+    "register": "Registration successfully",
+    "upload": "Upload successfully"
+  },
+  "error": {
+    "add": "Added failed",
+    "save": "Saved failed",
+    "login": "Sign in failed",
+    "logout": "Sign out failed",
+    "register": "Registration failed",
+    "upload": "Upload failed",
+    "server_internal_error": "Server internal error",
+    "network_connection_failed": "Network connection failed"
+  },
+  "warning": {},
+  "sort": {
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend",
+    "computer_science": "Computer science",
+    "engineering": "Engineering"
+  },
+  "nav": {
+    "home": "Home",
+    "article_list": "Articles",
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend",
+    "computer_science": "Computer science",
+    "engineering": "Engineering",
+    "document": "Documents",
+    "submenu1": "Submenu1",
+    "submenu2": "Submenu2",
+    "write": "Write",
+    "settings": "Settings",
+    "about": "About"
+  },
+  "not_found": {
+    "page_not_found": "Page not found...",
+    "go_back": "Go back",
+    "go_home": "Go home"
+  },
+  "article_detail": {
+    "create_date": "YYYY-MM-DD",
+    "total_words": "Total words:",
+    "views": "Views:",
+    "subscribe": "Subscribe",
+    "comments": "Comments:",
+    "collections": "Collections:",
+    "likes": "Likes:"
+  },
+  "article_publish": {
+    "to_publish": "To publish",
+    "publish_prompt": "Publish the article after logging in successfully...",
+    "add_article": "Add article",
+    "title": "Title",
+    "sort": "Category",
+    "introduce": "Introduce",
+    "publish": "Publish",
+    "rule": {
+      "introduce_length_limit": "Article description length cannot exceed 150 characters!",
+      "title_length_limit": "Title length is limited to 6～36 characters!",
+      "content_length_limit": "Article less than 20 words"
+    }
+  },
+  "modal": {
+    "login": {
+      "heading": "Account sign in",
+      "login": "Sign in",
+      "have_not_account": "No account - register now",
+      "username": "Username",
+      "password": "Password",
+      "rule": {
+        "complete_account": "Please enter your complete account and password!",
+        "username_not_empty": "Username can not be empty!",
+        "not_zh": "It cannot be Chinese characters!",
+        "password_length_limit": "Password length must not be less than 6 digits!",
+        "number_or_alphabet": "It can only be numbers or letters!"
+      }
+    },
+    "register": {
+      "heading": "Create account",
+      "next": "Next",
+      "username": "Username",
+      "password": "Password",
+      "password_confirm": "Confirm password",
+      "rule": {
+        "username_not_empty": "Username can not be empty!",
+        "not_zh": "It cannot be Chinese characters!",
+        "password_length_limit": "Password length must not be less than 6 digits!",
+        "number_or_alphabet": "It can only be numbers or letters!",
+        "password_confirm_not_equal": "The two passwords entered are inconsistent!"
+      }
+    },
+    "profile": {
+      "heading": "Improve profile",
+      "complete": "Complete",
+      "nickname": "Nickname",
+      "gender": "Gender",
+      "self_introduction": "Self introduction",
+      "male": "Male",
+      "female": "Female",
+      "rule": {
+        "nickname_length_limit": "The length of the nickname cannot be less than 4 digits!"
+      }
+    }
+  },
+  "header": {
+    "login": "Sign in",
+    "logout": "Sign out"
+  },
+  "settings": {
+    "profile": {
+      "heading": "Account Profile",
+      "not_login": "Not logged in yet...",
+      "logout": "Sign out",
+      "username": "Username",
+      "nickname": "Nickname",
+      "avatar": "Avatar",
+      "gender": "Gender",
+      "self_introduction": "Self introduction",
+      "your_name": "Your name",
+      "skills_and_hobbies": "Skills and hobbies",
+      "male": "Male",
+      "female": "Female",
+      "rule": {
+        "nickname_length_limit": "The length of the nickname cannot be less than 4 digits!"
+      }
+    },
+    "auto_sync": "Sign account automatic synchronization settings.",
+    "go_login": "Sign in",
+    "appearance": "Appearance",
+    "i18n": "Internationalization",
+    "article": "Article",
+    "theme": "theme",
+    "primary": "Ocean",
+    "success": "Grassland",
+    "warning": "Mango",
+    "error": "Coral",
+    "default_open_drawer": "Default display sidebar",
+    "language": "language",
+    "show_markdown_guide": "Show Markdown Demo"
+  }
+}

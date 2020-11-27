@@ -22,7 +22,8 @@
 	.content {
 		position: relative;
 		padding: 4rem;
-		width: 36rem;
+		min-width: 36rem;
+		max-width: 40rem;
 		border-radius: 0.6rem;
 	}
 }

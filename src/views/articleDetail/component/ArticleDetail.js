@@ -10,8 +10,10 @@ import { msg, Skeleton } from '@/components/base'
 import { Tag } from 'sylas-react-ui'
 import { useFetch } from '@/utils/hooks'
 import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
 
 export default function ArticleDetail() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
 	const detail = useSelector(state => state.article.detail)
@@ -38,9 +40,17 @@ export default function ArticleDetail() {
 	const infoElement = (
 		<div className={style.info}>
 			<div>
-				{dayjs(creationTime).isValid() && <span>{dayjs(creationTime).format('YYYY年MM月DD日HH:mm:ss')}</span>}
-				<span>总字数：{content.length}</span>
-				<span>阅读量：{views}</span>
+				{dayjs(creationTime).isValid() && (
+					<span>{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}</span>
+				)}
+				<span>
+					{t('article_detail.total_words')}
+					{content.length}
+				</span>
+				<span>
+					{t('article_detail.views')}
+					{views}
+				</span>
 			</div>
 			<div className={style.tags_wrapper}>
 				{tags.map((tag, index) => (

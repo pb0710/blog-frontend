@@ -3,7 +3,7 @@ import TYPE from '@/common/actionTypes'
 
 export const setting = handleActions(
 	{
-		[TYPE.UPDATE_SETTING]: (state, action) => ({ ...state, ...action.payload })
+		[TYPE.MERGE_SETTING]: (state, action) => ({ ...state, ...action.payload })
 	},
 	{
 		theme: 'primary',

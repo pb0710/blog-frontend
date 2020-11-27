@@ -12,10 +12,12 @@ import { useBoolean } from '@/utils/hooks'
 import { msg } from '@/components/base'
 import defaultArticleBg from '@/assets/images/default_article_bg.png'
 import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
 
 export default function ArticleInfo(props) {
 	const { content } = props
 
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const { userId } = useSelector(state => state.userProfile)
 	const theme = useSelector(state => state.setting.theme)
@@ -33,10 +35,10 @@ export default function ArticleInfo(props) {
 				return remotePicUrl
 			} catch (err) {
 				console.error(`图片上传失败 ${err}`)
-				msg.error('图片上传失败')
+				msg.error(t('error.upload'))
 			}
 		},
-		[userId]
+		[t, userId]
 	)
 
 	const handleClose = useCallback(() => {
@@ -57,13 +59,13 @@ export default function ArticleInfo(props) {
 			try {
 				await articleApi.addArticle(userId, articleDetail)
 				handleClose()
-				msg.success('添加成功')
+				msg.success(t('success.add'))
 			} catch (err) {
 				console.error('添加文章失败', err)
-				msg.error('添加文章失败')
+				msg.error(t('error.add'))
 			}
 		},
-		[content, handleClose, userId]
+		[content, handleClose, t, userId]
 	)
 
 	const formItems = [
@@ -88,23 +90,23 @@ export default function ArticleInfo(props) {
 				{
 					async validator(value) {
 						if (value.length < 6 || value.length > 36) {
-							return Promise.reject('标题长度限制为 6～36 位！')
+							return Promise.reject(t('article_publish.rule.title_length_limit'))
 						}
 					}
 				}
 			],
-			component: <Input color={theme} placeholder="标题" />
+			component: <Input color={theme} placeholder={t('article_publish.title')} />
 		},
 		{
 			name: 'sort',
 			initialValue: 'frontend',
 			component: (
-				<Select color={theme} description="文章类别">
-					<Select.Option value="frontend">前端</Select.Option>
-					<Select.Option value="backend">后端</Select.Option>
-					<Select.Option value="mobile">移动端</Select.Option>
-					<Select.Option value="computer_science">计算机通用</Select.Option>
-					<Select.Option value="engineering">工程化</Select.Option>
+				<Select color={theme} description={t('article_publish.sort')}>
+					<Select.Option value="frontend">{t('sort.frontend')}</Select.Option>
+					<Select.Option value="backend">{t('sort.backend')}</Select.Option>
+					<Select.Option value="mobile">{t('sort.mobile')}</Select.Option>
+					<Select.Option value="computer_science">{t('sort.computer_science')}</Select.Option>
+					<Select.Option value="engineering">{t('sort.engineering')}</Select.Option>
 				</Select>
 			)
 		},
@@ -115,18 +117,18 @@ export default function ArticleInfo(props) {
 				{
 					async validator(value) {
 						if (value.length > 150) {
-							return Promise.reject('文章简介长度不能超过 150 位！')
+							return Promise.reject(t('article_publish.rule.introduce_length_limit'))
 						}
 					}
 				}
 			],
-			component: <Input.Textarea color={theme} placeholder="简介" />
+			component: <Input.Textarea color={theme} placeholder={t('article_publish.introduce')} />
 		}
 	]
 
 	return (
 		<div className={style.article_info}>
-			<h1>添加文章</h1>
+			<h1>{t('article_publish.add_article')}</h1>
 			<Button.Icon className={style.close} onClick={handleClose}>
 				<CloseIcon size={20} />
 			</Button.Icon>
@@ -138,7 +140,7 @@ export default function ArticleInfo(props) {
 				))}
 				<div className={style.center_box}>
 					<Button type="submit" color={theme} prefixes={<CheckCircleIcon size={20} />}>
-						发布文章
+						{t('article_publish.publish')}
 					</Button>
 				</div>
 			</Form>

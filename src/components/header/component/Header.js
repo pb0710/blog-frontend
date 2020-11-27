@@ -11,8 +11,10 @@ import UserProfile from './UserProfile'
 import { Login } from '@/components/modal'
 import MenuIcon from 'mdi-react/MenuIcon'
 import Branch from './Branch'
+import { useTranslation } from 'react-i18next'
 
 export default function Header() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
 	const theme = useSelector(state => state.setting.theme)
@@ -42,7 +44,7 @@ export default function Header() {
 					<UserProfile />
 				) : (
 					<Button className={style.go_login} color={theme} onClick={handleGoLogin}>
-						登录
+						{t('header.login')}
 					</Button>
 				)}
 			</div>

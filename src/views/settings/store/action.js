@@ -6,6 +6,6 @@ import TYPE from '@/common/actionTypes'
  * update 更新 redux store
  */
 
-export const updateSetting = createAction(TYPE.UPDATE_SETTING)
+export const mergeSetting = createAction(TYPE.MERGE_SETTING)
 
 export const saveSetting = createAction(TYPE.SAVE_SETTING)

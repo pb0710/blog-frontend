@@ -10,12 +10,13 @@ import PersonIcon from 'mdi-react/PersonIcon'
 import FaceIcon from 'mdi-react/FaceIcon'
 import WcIcon from 'mdi-react/WcIcon'
 import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
-import UploadIcon from 'mdi-react/UploadIcon'
 import * as fileApi from '@/apis/file'
 import * as commonAction from '@/store/actions'
 import { msg } from '@/components/base'
+import { useTranslation } from 'react-i18next'
 
 function Account() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const profile = useSelector(state => state.userProfile)
 	const theme = useSelector(state => state.setting.theme)
@@ -34,10 +35,10 @@ function Account() {
 				)
 				return avatar
 			} catch (err) {
-				msg.error('图片上传失败')
+				msg.error(`${t('error.upload')} ${err}`)
 			}
 		},
-		[dispatch, profile]
+		[dispatch, profile, t]
 	)
 
 	const handleLogout = () => {
@@ -51,35 +52,35 @@ function Account() {
 	const accountOpts = [
 		{
 			icon: <FingerprintIcon size={20} />,
-			title: '用户名',
+			title: t('settings.profile.username'),
 			component: (
 				<div className={usernameOptCls}>
-					<span>{username ?? '尚未登录...'}</span>
+					<span>{username ?? t('settings.profile.not_login')}</span>
 					<Button className={btnCls} light color={theme} onClick={handleLogout}>
-						退出
+						{t('settings.profile.logout')}
 					</Button>
 				</div>
 			)
 		},
 		{
 			icon: <PersonIcon size={20} />,
-			title: '昵称',
+			title: t('settings.profile.nickname'),
 			name: 'nickname',
 			initialValue: nickname,
 			rules: [
 				{
 					async validator(value) {
 						if (value.length < 4) {
-							return Promise.reject('昵称长度不能少于 4 位！')
+							return Promise.reject(t('settings.profile.rule.nickname_length_limit'))
 						}
 					}
 				}
 			],
-			component: <Input color={theme} placeholder="你的名字" />
+			component: <Input color={theme} placeholder={t('settings.profile.your_name')} />
 		},
 		{
 			icon: <FaceIcon size={20} />,
-			title: '头像',
+			title: t('settings.profile.avatar'),
 			name: 'avatar',
 			initialValue: avatar,
 			component: (
@@ -92,25 +93,31 @@ function Account() {
 		},
 		{
 			icon: <WcIcon size={20} />,
-			title: '性别',
+			title: t('settings.profile.gender'),
 			name: 'gender',
 			initialValue: gender,
 			component: (
 				<Select color={theme}>
-					<Select.Option value="male">男</Select.Option>
-					<Select.Option value="female">女</Select.Option>
+					<Select.Option value="male">{t('settings.profile.male')}</Select.Option>
+					<Select.Option value="female">{t('settings.profile.female')}</Select.Option>
 				</Select>
 			)
 		},
 		{
 			icon: <ChatOutlineIcon size={20} />,
-			title: '个人简介',
+			title: t('settings.profile.self_introduction'),
 			name: 'selfIntroduction',
 			initialValue: selfIntroduction,
-			component: <Input.Textarea color={theme} placeholder="技能、兴趣爱好" style={{ resize: 'none' }} />
+			component: (
+				<Input.Textarea
+					color={theme}
+					placeholder={t('settings.profile.skills_and_hobbies')}
+					style={{ resize: 'none' }}
+				/>
+			)
 		}
 	]
-	return <Options className={style.account} heading="用户资料" opts={accountOpts} />
+	return <Options className={style.account} heading={t('settings.profile.heading')} opts={accountOpts} />
 }
 
 export default Account

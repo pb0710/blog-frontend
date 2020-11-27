@@ -10,8 +10,10 @@ import { Link } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
 import * as userApi from '@/apis/user'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
+import { useTranslation } from 'react-i18next'
 
 export default function AuthorPanel() {
+	const { t } = useTranslation()
 	const detail = useSelector(state => state.article.detail)
 	const theme = useSelector(state => state.setting.theme)
 	const { author } = detail
@@ -61,7 +63,7 @@ export default function AuthorPanel() {
 			<Divider />
 			<div className={style.footer}>
 				<Button light color={theme}>
-					关注TA
+					{t('article_detail.subscribe')}
 				</Button>
 			</div>
 		</Panel>

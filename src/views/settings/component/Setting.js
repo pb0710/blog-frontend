@@ -14,8 +14,10 @@ import Editor from './Editor'
 import * as modalAction from '@/components/modal/store/action'
 import * as commonAction from '@/store/actions'
 import * as action from '../store/action'
+import { useTranslation } from 'react-i18next'
 
 function Setting() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
 	const profile = useSelector(state => state.userProfile)
@@ -40,9 +42,9 @@ function Setting() {
 		<FlexiblePage className={style.setting_page}>
 			{online || (
 				<Banner theme={setting.theme}>
-					<span>登录账号 自动同步设置</span>
+					<span>{t('settings.auto_sync')}</span>
 					<div onClick={handleGoLogin}>
-						<span>去登录</span>
+						<span>{t('settings.go_login')}</span>
 						<InputIcon size={20} />
 					</div>
 				</Banner>

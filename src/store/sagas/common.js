@@ -6,13 +6,14 @@ import * as settingAction from '@/views/settings/store/action'
 import { msg } from '@/components/base'
 import TYPE from '@/common/actionTypes'
 import omit from 'omit.js'
+import i18n from '@/common/i18n'
 
 function* fetchUserInfo() {
 	try {
 		const payload = yield userApi.initData()
 		const profile = omit(payload, ['setting'])
 		yield put(commonAction.updateUserProfile(profile))
-		yield put(settingAction.updateSetting(payload.setting))
+		yield put(settingAction.mergeSetting(payload.setting))
 		yield put(commonAction.updateOnline(true))
 		return
 	} catch (err) {
@@ -30,10 +31,10 @@ function* login({ username, password }) {
 		yield fetchUserInfo()
 		yield put(modalAction.updateModal(false, null))
 		yield put(commonAction.updateOnline(true))
-		msg.success('登录成功')
+		msg.success(i18n.t('success.login'))
 	} catch (err) {
-		console.error('登录失败', err)
-		msg.error('登录失败')
+		console.error(i18n.t('error.login'), err)
+		msg.error(`${i18n.t('error.login')} ${err}`)
 	}
 }
 
@@ -43,17 +44,17 @@ function* logout() {
 		yield put(commonAction.updateOnline(false))
 		yield put(commonAction.updateUserProfile({}))
 		yield put(
-			settingAction.updateSetting({
+			settingAction.mergeSetting({
+				// due to browser language detected, don't reset it.
 				theme: 'primary',
 				drawerDefaultOpened: false,
-				lang: 'zh-CN',
 				useMarkdownGuide: true
 			})
 		)
-		msg.success('签出成功')
+		msg.success(i18n.t('success.logout'))
 	} catch (err) {
-		console.error('签出失败', err)
-		msg.error('签出失败')
+		console.error(i18n.t('error.logout'), err)
+		msg.error(i18n.t('error.logout'))
 	}
 }
 
@@ -61,10 +62,10 @@ function* register({ username, password, profile }) {
 	try {
 		yield userApi.register(username, password, profile)
 		yield put(commonAction.userLogin({ username, password }))
-		msg.success('注册成功')
+		msg.success(i18n.t('success.register'))
 	} catch (err) {
-		console.error('注册失败', err)
-		msg.error(`注册失败 ${err}`)
+		console.error(i18n.t('error.register'), err)
+		msg.error(`${i18n.t('error.register')} ${err}`)
 	}
 }
 
@@ -74,10 +75,10 @@ function* saveProfile(profile) {
 	try {
 		yield userApi.saveProfile(newProfile)
 		yield put(commonAction.updateUserProfile(newProfile))
-		msg.success('保存成功')
+		msg.success(i18n.t('success.save'))
 	} catch (err) {
-		console.error('保存失败', err)
-		msg.error('保存失败')
+		console.error(i18n.t('error.save'), err)
+		msg.error(i18n.t('error.save'))
 	}
 }
 

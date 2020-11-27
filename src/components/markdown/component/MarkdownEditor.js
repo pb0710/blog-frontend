@@ -14,6 +14,7 @@ import ViewModuleOutlineIcon from 'mdi-react/ViewModuleOutlineIcon'
 import CodeIcon from 'mdi-react/CodeIcon'
 import SendIcon from 'mdi-react/SendIcon'
 import { msg } from '@/components/base'
+import { useTranslation } from 'react-i18next'
 
 const area = {
 	EDITOR: 'editor',
@@ -21,6 +22,7 @@ const area = {
 }
 
 function MarkdownEditor() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const userId = useSelector(state => state.userProfile.userId)
 	const online = useSelector(state => state.online)
@@ -90,7 +92,7 @@ function MarkdownEditor() {
 
 	const handlePublish = () => {
 		if (!content || content.length < 20) {
-			msg.error('文章字数少于 20')
+			msg.error(t('article_publish.rule.content_length_limit'))
 			return
 		}
 		dispatch(modalAction.updateModal(true, <ArticleInfo content={content} />))
@@ -135,10 +137,10 @@ function MarkdownEditor() {
 				<div className={style.operation}>
 					{online ? (
 						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<SendIcon size={20} />}>
-							去发布
+							{t('article_publish.to_publish')}
 						</Button>
 					) : (
-						'登录成功后可发布文章...'
+						t('article_publish.publish_prompt')
 					)}
 				</div>
 			</div>

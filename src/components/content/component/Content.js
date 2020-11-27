@@ -1,21 +1,14 @@
 import React from 'react'
-import style from '../style/index.module.scss'
 import { Switch, Route } from 'react-router-dom'
 import Home from '@/views/home/Home'
 import NotFound from '@/views/notFound/NotFound'
-import { Loading } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
+import { GlobalLoading } from '@/components/base'
 
 function Content() {
 	const theme = useSelector(state => state.setting.theme)
 	return (
-		<React.Suspense
-			fallback={(() => (
-				<section className={style.loading_wrapper}>
-					<Loading.Line color={theme} />
-				</section>
-			))()}
-		>
+		<React.Suspense fallback={<GlobalLoading color={theme} />}>
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/articles/:sort" component={React.lazy(() => import('@/views/articleList/ArticleList'))} />

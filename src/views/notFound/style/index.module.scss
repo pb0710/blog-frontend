@@ -6,13 +6,15 @@
 		align-items: center;
 		flex-direction: column;
 		justify-content: space-between;
-		width: 36rem;
 		height: 12rem;
 
 		> .operation {
 			display: flex;
 			justify-content: space-between;
-			width: 60%;
+
+			> button:first-child {
+				margin-right: 4rem;
+			}
 		}
 	}
 }

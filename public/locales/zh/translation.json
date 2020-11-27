@@ -1,0 +1,152 @@
+{
+  "info": {
+    "not_login": "尚未登录"
+  },
+  "success": {
+    "add": "添加成功",
+    "save": "保存成功",
+    "login": "登录成功",
+    "logout": "签出成功",
+    "register": "注册成功",
+    "upload": "上传成功"
+  },
+  "error": {
+    "add": "添加失败",
+    "save": "保存失败",
+    "login": "登录失败",
+    "logout": "签出失败",
+    "register": "注册失败",
+    "upload": "上传失败",
+    "server_internal_error": "服务器内部错误",
+    "network_connection_failed": "网络连接失败"
+  },
+  "warning": {},
+  "sort": {
+    "frontend": "Web前端",
+    "mobile": "移动端",
+    "backend": "后端",
+    "computer_science": "计算机通用",
+    "engineering": "工程化"
+  },
+  "nav": {
+    "home": "主页",
+    "article_list": "文章分类",
+    "frontend": "Web前端",
+    "mobile": "移动端",
+    "backend": "后端",
+    "computer_science": "计算机通用",
+    "engineering": "工程化",
+    "document": "文档",
+    "submenu1": "子菜单1",
+    "submenu2": "子菜单2",
+    "write": "写文章",
+    "settings": "设置",
+    "about": "关于"
+  },
+  "not_found": {
+    "page_not_found": "页面找不到啦...",
+    "go_back": "后退",
+    "go_home": "返回首页"
+  },
+  "article_detail": {
+    "create_date": "YYYY年MM月DD日",
+    "total_words": "总字数：",
+    "views": "阅读量：",
+    "subscribe": "关注TA",
+    "comments": "评论数：",
+    "collections": "收藏：",
+    "likes": "获赞："
+  },
+  "article_publish": {
+    "to_publish": "去发布",
+    "publish_prompt": "登录成功后可发布文章...",
+    "add_article": "添加文章",
+    "title": "标题",
+    "sort": "文章类别",
+    "introduce": "简介",
+    "publish": "发布",
+    "rule": {
+      "introduce_length_limit": "文章简介长度不能超过 150 位！",
+      "title_length_limit": "标题长度限制为 6～36 位！",
+      "content_length_limit": "文章字数少于 20"
+    }
+  },
+  "modal": {
+    "login": {
+      "heading": "用户登录",
+      "login": "登录",
+      "have_not_account": "没有账号-立即注册",
+      "username": "用户名",
+      "password": "密码",
+      "rule": {
+        "complete_account": "请输入完整的账号和密码！",
+        "username_not_empty": "用户名不能为空！",
+        "not_zh": "不能是汉字！",
+        "password_length_limit": "密码长度不得少于 6 位！",
+        "number_or_alphabet": "只能是数字或字母！"
+      }
+    },
+    "register": {
+      "heading": "创建账号",
+      "next": "下一步",
+      "username": "用户名",
+      "password": "密码",
+      "password_confirm": "确认密码",
+      "rule": {
+        "username_not_empty": "用户名不能为空！",
+        "not_zh": "不能是汉字！",
+        "password_length_limit": "密码长度不得少于 6 位！",
+        "number_or_alphabet": "只能是数字或字母！",
+        "password_confirm_not_equal": "两次输入的密码不一致！"
+      }
+    },
+    "profile": {
+      "heading": "完善个人资料",
+      "complete": "完成",
+      "nickname": "昵称",
+      "gender": "性别",
+      "self_introduction": "个人简介",
+      "male": "男",
+      "female": "女",
+      "rule": {
+        "nickname_length_limit": "昵称长度不能少于 4 位！"
+      }
+    }
+  },
+  "header": {
+    "login": "登录",
+    "logout": "退出"
+  },
+  "settings": {
+    "profile": {
+      "heading": "用户资料",
+      "not_login": "尚未登录...",
+      "logout": "退出",
+      "username": "用户名",
+      "nickname": "昵称",
+      "avatar": "头像",
+      "gender": "性别",
+      "self_introduction": "个人简介",
+      "your_name": "你的名字",
+      "skills_and_hobbies": "技能、兴趣爱好",
+      "male": "男",
+      "female": "女",
+      "rule": {
+        "nickname_length_limit": "昵称长度不能少于 4 位！"
+      }
+    },
+    "auto_sync": "登录账号 自动同步设置。",
+    "go_login": "去登录",
+    "appearance": "外观",
+    "i18n": "国际化",
+    "article": "文章",
+    "theme": "主题",
+    "primary": "海洋",
+    "success": "草原",
+    "warning": "芒果",
+    "error": "珊瑚",
+    "default_open_drawer": "默认展示侧边栏",
+    "language": "语言",
+    "show_markdown_guide": "展示 Markdown Demo"
+  }
+}

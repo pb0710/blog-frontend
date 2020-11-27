@@ -1,12 +1,13 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { Button, Divider, Popup, TouchRipple } from 'sylas-react-ui'
-import clsx from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
 import * as commonAction from '@/store/actions'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function UserProfile() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const { avatar, nickname, username } = useSelector(state => state.userProfile)
 	const theme = useSelector(state => state.setting.theme)
@@ -35,7 +36,7 @@ export default function UserProfile() {
 				<Divider className={style.divider} />
 				<TouchRipple />
 				<Button light color={theme} onClick={handleSignOut}>
-					退出
+					{t('header.logout')}
 				</Button>
 			</Popup>
 		</>

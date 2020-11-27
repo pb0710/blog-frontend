@@ -6,7 +6,7 @@ const actionTypes = {
 	UPDATE_ONLINE: 'update_online',
 	UPDATE_USER_PROFILE: 'update_user_profile',
 	SAVE_PROILE: 'save_profile',
-	UPDATE_SETTING: 'update_setting',
+	MERGE_SETTING: 'merge_setting',
 	SAVE_SETTING: 'save_setting',
 	UPDATE_MODAL_VISIBLE: 'update_modal_visible',
 	UPDATE_MODAL_CONTENT: 'update_modal_content',

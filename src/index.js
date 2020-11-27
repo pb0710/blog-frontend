@@ -5,15 +5,19 @@ import './assets/styles/preset.scss'
 import * as serviceWorker from './serviceWorker'
 import { JSSBaseline } from 'sylas-react-ui'
 import { BrowserRouter } from 'react-router-dom'
+import { GlobalLoading } from './components/base'
 import { Provider } from 'react-redux'
 import store from './store'
+import './common/i18n'
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>
 				<JSSBaseline>
-					<App />
+					<React.Suspense fallback={<GlobalLoading />}>
+						<App />
+					</React.Suspense>
 				</JSSBaseline>
 			</BrowserRouter>
 		</Provider>

@@ -10,8 +10,10 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { msg } from '@/components/base'
 import * as userApi from '@/apis/user'
 import { useFetch } from '@/utils/hooks'
+import { useTranslation } from 'react-i18next'
 
 export default function Login() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
 
@@ -33,7 +35,7 @@ export default function Login() {
 		console.log('values: ', values)
 		const { username, password } = values
 		if (!username || !password) {
-			msg.error('请输入完整的账号和密码')
+			msg.error(t('modal.login.rule.complete_account'))
 			return
 		}
 
@@ -52,7 +54,7 @@ export default function Login() {
 
 	return (
 		<div className={style.login_wrapper}>
-			<h1>用户登录</h1>
+			<h1>{t('modal.login.heading')}</h1>
 			<Button.Icon className={style.close} onClick={handleClose}>
 				<CloseIcon size={20} />
 			</Button.Icon>
@@ -73,22 +75,23 @@ export default function Login() {
 						{
 							async validator(value) {
 								if (!value) {
-									return Promise.reject('用户名不能为空!')
+									return Promise.reject(t('modal.login.rule.username_not_empty'))
 								}
 							}
 						},
 						{
 							async validator(value) {
+								if (!value) return
 								const pattern = new RegExp('^[^\u4e00-\u9fa5]+$', 'i')
 								if (!pattern.test(value)) {
-									return Promise.reject('不能是汉字！')
+									return Promise.reject(t('modal.login.rule.not_zh'))
 								}
 								fetchAvatar(value)
 							}
 						}
 					]}
 				>
-					<Input color={theme} placeholder="用户名" />
+					<Input color={theme} placeholder={t('modal.login.username')} />
 				</Form.Item>
 				<Form.Item
 					name="password"
@@ -97,7 +100,7 @@ export default function Login() {
 						{
 							async validator(value) {
 								if (value.length < 6) {
-									return Promise.reject('密码长度不得少于 6 位！')
+									return Promise.reject(t('modal.login.rule.password_length_limit'))
 								}
 							}
 						},
@@ -105,19 +108,19 @@ export default function Login() {
 							async validator(value) {
 								const pattern = new RegExp('^[a-z0-9]+$', 'i')
 								if (!pattern.test(value)) {
-									return Promise.reject('只能是数字或字母！')
+									return Promise.reject(t('modal.login.rule.number_or_alphabet'))
 								}
 							}
 						}
 					]}
 				>
-					<Input type="password" color={theme} placeholder="密码" />
+					<Input type="password" color={theme} placeholder={t('modal.login.password')} />
 				</Form.Item>
 				<Button className={style.submit} type="submit" color={theme}>
-					登录
+					{t('modal.login.login')}
 				</Button>
 				<div className={style[`go_register_${theme}`]} onClick={handleGoRegister}>
-					没有账号-立即注册
+					{t('modal.login.have_not_account')}
 				</div>
 			</Form>
 		</div>

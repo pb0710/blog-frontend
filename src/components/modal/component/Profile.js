@@ -13,10 +13,12 @@ import Register from './Register'
 import { useBoolean } from '@/utils/hooks'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { msg } from '@/components/base'
+import { useTranslation } from 'react-i18next'
 
 export default function Profile(props) {
 	const { account } = props
 
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
 	const theme = useSelector(state => state.setting.theme)
@@ -58,14 +60,14 @@ export default function Profile(props) {
 			const remotePicUrl = await fileApi.uploadImage(formData)
 			setAvatarSrc(remotePicUrl)
 		} catch (err) {
-			console.error(`图片上传失败——${err}`)
-			msg.error(err)
+			console.error(`${t('error.upload')} ${err}`)
+			msg.error(`${t('error.upload')} ${err}`)
 		}
 	}
 
 	return (
 		<div className={style.profile_wrapper}>
-			<h1>完善个人资料</h1>
+			<h1>{t('modal.profile.heading')}</h1>
 			<Button.Icon className={style.return} onClick={handleReturn}>
 				<ArrowBackIcon size={20} />
 			</Button.Icon>
@@ -90,26 +92,26 @@ export default function Profile(props) {
 						{
 							async validator(value) {
 								if (value.length < 4) {
-									return Promise.reject('昵称长度不能少于 4 位！')
+									return Promise.reject(t('modal.profile.rule.nickname_length_limit'))
 								}
 							}
 						}
 					]}
 				>
-					<Input color={theme} placeholder="昵称" />
+					<Input color={theme} placeholder={t('modal.profile.nickname')} />
 				</Form.Item>
 				<Form.Item name="gender" initialValue="male">
-					<Select color={theme}>
-						<Select.Option value="male">男</Select.Option>
-						<Select.Option value="female">女</Select.Option>
+					<Select color={theme} description={t('modal.profile.gender')}>
+						<Select.Option value="male">{t('modal.profile.male')}</Select.Option>
+						<Select.Option value="female">{t('modal.profile.female')}</Select.Option>
 					</Select>
 				</Form.Item>
 				<Form.Item name="selfIntroduction" initialValue="">
-					<Input.Textarea color={theme} placeholder="个人简介" />
+					<Input.Textarea color={theme} placeholder={t('modal.profile.self_introduction')} />
 				</Form.Item>
 				<div className={style.footer_bar}>
 					<Button className={style.complete} type="submit" color={theme} suffixes={<CheckCircleIcon size={20} />}>
-						完成
+						{t('modal.profile.complete')}
 					</Button>
 				</div>
 			</Form>
