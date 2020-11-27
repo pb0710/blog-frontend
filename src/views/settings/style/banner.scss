@@ -11,7 +11,7 @@
 	color: $background;
 
 	> span {
-		font-weight: bold;
+		font-weight: 500;
 	}
 
 	> div {
@@ -21,7 +21,7 @@
 
 		> span {
 			margin-right: 1rem;
-			font-weight: bold;
+			font-weight: 500;
 
 			&:hover {
 				text-decoration: underline;
