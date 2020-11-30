@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Home from '@/views/home/Home'
-import NotFound from '@/views/notFound/NotFound'
+import ArticleDetail from '@/views/articleDetail/component/ArticleDetail'
 import { useSelector } from 'react-redux'
 import { GlobalLoading } from '@/components/base'
 
@@ -11,11 +11,11 @@ function Content() {
 		<React.Suspense fallback={<GlobalLoading color={theme} />}>
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/articles/:sort" component={React.lazy(() => import('@/views/articleList/ArticleList'))} />
+				<Route exact path="/articles/:sort/detail/:id" component={ArticleDetail} />
 				<Route
 					exact
-					path="/articles/:sort/detail/:id"
-					component={React.lazy(() => import('@/views/articleDetail/component/ArticleDetail'))}
+					path="/articles/:sort"
+					component={React.lazy(() => import('@/views/articleList/component/ArticleList'))}
 				/>
 				<Route
 					exact
@@ -23,7 +23,7 @@ function Content() {
 					component={React.lazy(() => import('@/views/articleUpload/component/ArticleUpload'))}
 				/>
 				<Route exact path="/setting" component={React.lazy(() => import('@/views/settings/component/Setting'))} />
-				<Route component={NotFound} />
+				<Route component={React.lazy(() => import('@/views/notFound/NotFound'))} />
 			</Switch>
 		</React.Suspense>
 	)

@@ -1,6 +1,7 @@
 {
   "info": {
-    "not_login": "Not login"
+    "not_login": "Not login",
+    "copy_to_clipboard": "Copy link to clipboard:"
   },
   "success": {
     "add": "Added successfully",
@@ -18,7 +19,8 @@
     "register": "Registration failed",
     "upload": "Upload failed",
     "server_internal_error": "Server internal error",
-    "network_connection_failed": "Network connection failed"
+    "network_connection_failed": "Network connection failed",
+    "login_first": "Sign in first, please"
   },
   "warning": {},
   "sort": {
@@ -106,6 +108,10 @@
       "nickname": "Nickname",
       "gender": "Gender",
       "self_introduction": "Self introduction",
+      "github": "Github",
+      "email": "Email",
+      "phone": "Phone Number",
+      "wechat": "WeChat",
       "male": "Male",
       "female": "Female",
       "rule": {
@@ -129,6 +135,10 @@
       "self_introduction": "Self introduction",
       "your_name": "Your name",
       "skills_and_hobbies": "Skills and hobbies",
+      "github": "Github",
+      "email": "Email",
+      "phone": "Phone Number",
+      "wechat": "WeChat",
       "male": "Male",
       "female": "Female",
       "rule": {

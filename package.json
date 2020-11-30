@@ -7,7 +7,6 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
-    "add": "^2.0.6",
     "axios": "^0.21.0",
     "border.css": "^0.10.0",
     "clsx": "^1.1.1",
@@ -34,6 +33,7 @@
     "styled-system": "^5.1.5",
     "sylas-react-ui": "^2.0.4",
     "url-join": "^4.0.1",
+    "use-clipboard-hook": "^1.1.1",
     "uuid": "^8.3.1"
   },
   "devDependencies": {

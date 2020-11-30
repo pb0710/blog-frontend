@@ -54,6 +54,7 @@
 			display: flex;
 			overflow: hidden;
 			flex-direction: column;
+			padding-top: 2rem;
 			width: 100%;
 			background: $background;
 
@@ -63,7 +64,7 @@
 			}
 
 			> .heading {
-				height: 4rem;
+				height: 3.2rem;
 				transform: translateX(-60%);
 			}
 

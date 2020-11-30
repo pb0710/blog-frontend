@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../style/index.module.scss'
-import { Panel } from '@/components/base'
+import { msg, Panel } from '@/components/base'
 import { List } from 'sylas-react-ui'
 import ThumbUpOutlineIcon from 'mdi-react/ThumbUpOutlineIcon'
 import BookmarkAddOutlineIcon from 'mdi-react/BookmarkAddOutlineIcon'
@@ -59,8 +59,12 @@ function ArticleStatsPanel() {
 		[articleId, dispatch]
 	)
 
-	const handleToggleLike = () =>
-		userId && articleId && liked ? handleDislike(userId, detail) : handleLike(userId, detail)
+	const handleToggleLike = () => {
+		if (userId && articleId) {
+			return liked ? handleDislike(userId, detail) : handleLike(userId, detail)
+		}
+		msg.error(t('error.login_first'))
+	}
 
 	return (
 		<Panel className={style[`article_stats_panel_${theme}`]}>

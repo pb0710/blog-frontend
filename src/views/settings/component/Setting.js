@@ -22,11 +22,17 @@ function Setting() {
 	const online = useSelector(state => state.online)
 	const profile = useSelector(state => state.userProfile)
 	const setting = useSelector(state => state.setting)
-	const saveInterval = 400
+	const accountSaveInterval = 1000
+	const settingSaveInterval = 400
 	const [profileForm] = Form.useForm()
 	const [settingsForm] = Form.useForm()
 
-	const handleSaveProfile = profile => {
+	const handleSaveProfile = values => {
+		const { github, phone, email, wechat } = values
+		const profile = {
+			...values,
+			contacts: { github, phone, email, wechat }
+		}
 		dispatch(commonAction.saveProfile(profile))
 	}
 
@@ -53,7 +59,7 @@ function Setting() {
 				<Form
 					form={profileForm}
 					onFinsh={handleSaveProfile}
-					onValuesChange={debounce(profileForm.submit, saveInterval)}
+					onValuesChange={debounce(profileForm.submit, accountSaveInterval)}
 				>
 					<Account form={profileForm} />
 				</Form>
@@ -61,7 +67,7 @@ function Setting() {
 			<Form
 				form={settingsForm}
 				onFinsh={handleSaveSettings}
-				onValuesChange={debounce(settingsForm.submit, saveInterval)}
+				onValuesChange={debounce(settingsForm.submit, settingSaveInterval)}
 			>
 				<Appearance />
 				<I18N />

@@ -21,11 +21,12 @@ export default function ArticleDetail() {
 	const { id } = useParams()
 
 	const { data, error, loading } = useFetch(articleApi.fetchDetail, {
+		initData: {},
 		defaultParams: [id]
 	})
 
 	React.useEffect(() => {
-		if (data?.content) {
+		if (data.content) {
 			dispatch(action.updateDetail(data))
 		}
 		if (error) {
@@ -34,7 +35,9 @@ export default function ArticleDetail() {
 	}, [data, dispatch, error])
 
 	React.useEffect(() => {
-		dispatch(action.increaseArticleViews(id))
+		if (id) {
+			dispatch(action.increaseArticleViews(id))
+		}
 	}, [dispatch, id])
 
 	const infoElement = (

@@ -19,6 +19,7 @@
 				width: 5rem;
 				height: 5rem;
 				border-radius: 50%;
+				background: $background_variant;
 
 				@include flex_center;
 				> img {
@@ -47,7 +48,7 @@
 	.contact_wrapper {
 		display: flex;
 		justify-content: space-around;
-		padding: 0 1rem;
+		padding: 0 2rem;
 		width: 100%;
 
 		button {

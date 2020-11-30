@@ -10,17 +10,20 @@ import PersonIcon from 'mdi-react/PersonIcon'
 import FaceIcon from 'mdi-react/FaceIcon'
 import WcIcon from 'mdi-react/WcIcon'
 import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
+import MailOutlineIcon from 'mdi-react/MailOutlineIcon'
+import PhoneIcon from 'mdi-react/PhoneIcon'
 import * as fileApi from '@/apis/file'
 import * as commonAction from '@/store/actions'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
+import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
 
 function Account() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const profile = useSelector(state => state.userProfile)
 	const theme = useSelector(state => state.setting.theme)
-	const { username, nickname, avatar, gender, selfIntroduction } = profile
+	const { username, nickname, avatar, gender, selfIntroduction, contacts } = profile
 
 	const handleChangeAvatar = React.useCallback(
 		async formData => {
@@ -115,6 +118,34 @@ function Account() {
 					style={{ resize: 'none' }}
 				/>
 			)
+		},
+		{
+			icon: <GithubOutlined />,
+			title: t('settings.profile.github'),
+			name: 'github',
+			initialValue: contacts.github ?? '',
+			component: <Input color={theme} />
+		},
+		{
+			icon: <MailOutlineIcon size={20} />,
+			title: t('settings.profile.email'),
+			name: 'email',
+			initialValue: contacts.email ?? '',
+			component: <Input color={theme} />
+		},
+		{
+			icon: <PhoneIcon size={20} />,
+			title: t('settings.profile.phone'),
+			name: 'phone',
+			initialValue: contacts.phone ?? '',
+			component: <Input color={theme} />
+		},
+		{
+			icon: <WechatOutlined />,
+			title: t('settings.profile.wechat'),
+			name: 'wechat',
+			initialValue: contacts.wechat ?? '',
+			component: <Input color={theme} />
 		}
 	]
 	return <Options className={style.account} heading={t('settings.profile.heading')} opts={accountOpts} />

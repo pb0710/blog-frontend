@@ -109,6 +109,18 @@ export default function Profile(props) {
 				<Form.Item name="selfIntroduction" initialValue="">
 					<Input.Textarea color={theme} placeholder={t('modal.profile.self_introduction')} />
 				</Form.Item>
+				<Form.Item name="github" initialValue="">
+					<Input color={theme} placeholder={t('modal.profile.github')} />
+				</Form.Item>
+				<Form.Item name="email" initialValue="">
+					<Input color={theme} placeholder={t('modal.profile.email')} />
+				</Form.Item>
+				<Form.Item name="phone" initialValue="">
+					<Input color={theme} placeholder={t('modal.profile.phone')} />
+				</Form.Item>
+				<Form.Item name="wechat" initialValue="">
+					<Input color={theme} placeholder={t('modal.profile.wechat')} />
+				</Form.Item>
 				<div className={style.footer_bar}>
 					<Button className={style.complete} type="submit" color={theme} suffixes={<CheckCircleIcon size={20} />}>
 						{t('modal.profile.complete')}

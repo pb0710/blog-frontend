@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './style/index.module.scss'
+import style from '../style/index.module.scss'
 import { FlexiblePage } from '@/components/page'
 import { ArticleCard } from '@/components/article'
 import * as articleApi from '@/apis/article'

@@ -4,13 +4,16 @@ import { useSelector } from 'react-redux'
 import { Panel, Skeleton } from '@/components/base'
 import { List, Divider, Button } from 'sylas-react-ui'
 import MailOutlineIcon from 'mdi-react/MailOutlineIcon'
-import { GithubOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons'
+import PhoneIcon from 'mdi-react/PhoneIcon'
+import AddIcon from 'mdi-react/AddIcon'
+import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
 import * as userApi from '@/apis/user'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useTranslation } from 'react-i18next'
+import Contact from './Contact'
 
 export default function AuthorPanel() {
 	const { t } = useTranslation()
@@ -18,10 +21,12 @@ export default function AuthorPanel() {
 	const theme = useSelector(state => state.setting.theme)
 	const { author } = detail
 
-	const { data, excute } = useFetch(userApi.fetchProfile, {
+	const { data, excute, loading } = useFetch(userApi.fetchProfile, {
 		initData: {},
 		immutable: true
 	})
+	const { nickname, avatar, contacts } = data
+	const hasContacts = typeof contacts === 'object' && Object.values(contacts).filter(Boolean).length > 0
 
 	React.useEffect(() => {
 		if (author) {
@@ -36,33 +41,43 @@ export default function AuthorPanel() {
 			<List>
 				<Link to="/">
 					<List.Item className={avatarItemCls}>
-						<div className={style.avatar}>
-							<img src={data.avatar ?? defaultAvatar} alt="" />
-						</div>
+						<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
 						<div className={style.right_wrapper}>
-							{data.nickname ? <p className={style.name}>{data.nickname}</p> : <Skeleton />}
+							{nickname ? <p className={style.name}>{nickname}</p> : <Skeleton />}
 						</div>
 					</List.Item>
 				</Link>
 			</List>
-			<Divider />
-			<div className={style.contact_wrapper}>
-				<Button.Icon>
-					<GithubOutlined />
-				</Button.Icon>
-				<Button.Icon>
-					<WechatOutlined />
-				</Button.Icon>
-				<Button.Icon>
-					<MailOutlineIcon size={20} />
-				</Button.Icon>
-				<Button.Icon>
-					<QqOutlined />
-				</Button.Icon>
-			</div>
+			{hasContacts && (
+				<>
+					<Divider />
+					<div className={style.contact_wrapper}>
+						{contacts.github && (
+							<Contact link={contacts.github}>
+								<GithubOutlined />
+							</Contact>
+						)}
+						{contacts.wechat && (
+							<Contact link={contacts.wechat}>
+								<WechatOutlined />
+							</Contact>
+						)}
+						{contacts.email && (
+							<Contact link={contacts.email}>
+								<MailOutlineIcon size={20} />
+							</Contact>
+						)}
+						{contacts.phone && (
+							<Contact link={contacts.phone}>
+								<PhoneIcon size={20} />
+							</Contact>
+						)}
+					</div>
+				</>
+			)}
 			<Divider />
 			<div className={style.footer}>
-				<Button light color={theme}>
+				<Button light color={theme} suffixes={<AddIcon size={20} />}>
 					{t('article_detail.subscribe')}
 				</Button>
 			</div>

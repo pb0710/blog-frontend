@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input } from 'sylas-react-ui'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
-import ChevronDoubleRightIcon from 'mdi-react/ChevronDoubleRightIcon'
+import ArrowRightIcon from 'mdi-react/ArrowRightIcon'
 import CloseIcon from 'mdi-react/CloseIcon'
 import * as action from '../store/action'
 import Login from './Login'
@@ -114,7 +114,7 @@ export default function Register() {
 					<Input type="password" color={theme} placeholder={t('modal.register.password_confirm')} />
 				</Form.Item>
 				<div className={style.footer_bar}>
-					<Button type="submit" color={theme} light suffixes={<ChevronDoubleRightIcon size={20} />}>
+					<Button type="submit" color={theme} light suffixes={<ArrowRightIcon size={20} />}>
 						{t('modal.register.next')}
 					</Button>
 				</div>

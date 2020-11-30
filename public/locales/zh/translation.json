@@ -1,6 +1,7 @@
 {
   "info": {
-    "not_login": "尚未登录"
+    "not_login": "尚未登录",
+    "copy_to_clipboard": "复制链接到剪切板："
   },
   "success": {
     "add": "添加成功",
@@ -18,7 +19,8 @@
     "register": "注册失败",
     "upload": "上传失败",
     "server_internal_error": "服务器内部错误",
-    "network_connection_failed": "网络连接失败"
+    "network_connection_failed": "网络连接失败",
+    "login_first": "请先登录"
   },
   "warning": {},
   "sort": {
@@ -52,7 +54,7 @@
     "create_date": "YYYY年MM月DD日",
     "total_words": "总字数：",
     "views": "阅读量：",
-    "subscribe": "关注TA",
+    "subscribe": "关注",
     "comments": "评论数：",
     "collections": "收藏：",
     "likes": "获赞："
@@ -106,6 +108,10 @@
       "nickname": "昵称",
       "gender": "性别",
       "self_introduction": "个人简介",
+      "github": "Github账号",
+      "email": "邮箱",
+      "phone": "电话号码",
+      "wechat": "微信号",
       "male": "男",
       "female": "女",
       "rule": {
@@ -129,6 +135,10 @@
       "self_introduction": "个人简介",
       "your_name": "你的名字",
       "skills_and_hobbies": "技能、兴趣爱好",
+      "github": "Github账号",
+      "email": "邮箱",
+      "phone": "电话号码",
+      "wechat": "微信号",
       "male": "男",
       "female": "女",
       "rule": {
