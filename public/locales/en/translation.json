@@ -121,7 +121,11 @@
   },
   "header": {
     "login": "Sign in",
-    "logout": "Sign out"
+    "logout": "Sign out",
+    "search_placeholder": "Searching for",
+    "article": "Article",
+    "user": "User",
+    "no_data": "No data"
   },
   "settings": {
     "profile": {

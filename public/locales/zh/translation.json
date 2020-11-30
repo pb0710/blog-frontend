@@ -121,7 +121,11 @@
   },
   "header": {
     "login": "登录",
-    "logout": "退出"
+    "logout": "退出",
+    "search_placeholder": "搜一搜",
+    "article": "文章",
+    "user": "用户",
+    "no_data": "没有数据"
   },
   "settings": {
     "profile": {

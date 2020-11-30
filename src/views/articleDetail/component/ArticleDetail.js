@@ -22,7 +22,8 @@ export default function ArticleDetail() {
 
 	const { data, error, loading } = useFetch(articleApi.fetchDetail, {
 		initData: {},
-		defaultParams: [id]
+		params: [id],
+		refreshDeps: [id]
 	})
 
 	React.useEffect(() => {
