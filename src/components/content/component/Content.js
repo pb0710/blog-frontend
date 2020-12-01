@@ -1,17 +1,18 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Home from '@/views/home/Home'
-import ArticleDetail from '@/views/articleDetail/component/ArticleDetail'
-import { useSelector } from 'react-redux'
+import Home from '@/views/home/component/Home'
 import { GlobalLoading } from '@/components/base'
 
 function Content() {
-	const theme = useSelector(state => state.setting.theme)
 	return (
-		<React.Suspense fallback={<GlobalLoading color={theme} />}>
+		<React.Suspense fallback={<GlobalLoading />}>
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/articles/:sort/detail/:id" component={ArticleDetail} />
+				<Route
+					exact
+					path="/articles/:sort/detail/:id"
+					component={React.lazy(() => import('@/views/articleDetail/component/ArticleDetail'))}
+				/>
 				<Route
 					exact
 					path="/articles/:sort"
