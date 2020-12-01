@@ -23,7 +23,7 @@
     "login_first": "Sign in first, please"
   },
   "warning": {},
-  "sort": {
+  "category": {
     "frontend": "Frontend",
     "mobile": "Mobile",
     "backend": "Backend",
@@ -32,7 +32,7 @@
   },
   "nav": {
     "home": "Home",
-    "article_list": "Articles",
+    "article_category": "Article category",
     "frontend": "Frontend",
     "mobile": "Mobile",
     "backend": "Backend",
@@ -64,7 +64,7 @@
     "publish_prompt": "Publish the article after logging in successfully...",
     "add_article": "Add article",
     "title": "Title",
-    "sort": "Category",
+    "category": "Category",
     "introduce": "Introduce",
     "publish": "Publish",
     "rule": {

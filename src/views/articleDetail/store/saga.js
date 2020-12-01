@@ -5,7 +5,7 @@ import * as action from './action'
 
 function* increaseArticleViews(articleId) {
 	try {
-		const { views } = yield articleApi.increaseArticleViews(articleId)
+		const { views } = yield articleApi.increaseViews(articleId)
 		const oldDetail = yield select(state => state.article.detail)
 		yield put(action.updateDetail({ ...oldDetail, views }))
 	} catch (err) {

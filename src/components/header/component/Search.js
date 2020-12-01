@@ -59,7 +59,7 @@ export default function Search() {
 				<h3>{t('header.user')}</h3>
 				{result.users?.map(({ id, avatar, nickname }) => (
 					<Link key={id} to="">
-						<List.Item className={style.user_item} bordered={false} hovered ripple onClick={hide}>
+						<List.Item className={style.user_item} hovered ripple onClick={hide}>
 							<img alt="" src={avatar || defaultAvatar} />
 							<span className={style.text}>{nickname}</span>
 						</List.Item>
@@ -74,9 +74,9 @@ export default function Search() {
 			<Divider />
 			<List>
 				<h3>{t('header.article')}</h3>
-				{result.articles?.map(({ id, title, sort }) => (
-					<Link key={id} to={`/articles/${sort}/detail/${id}`}>
-						<List.Item className={style.article_item} bordered={false} hovered ripple onClick={hide}>
+				{result.articles?.map(({ id, title, category }) => (
+					<Link key={id} to={`/article/${category}/detail/${id}`}>
+						<List.Item className={style.article_item} hovered ripple onClick={hide}>
 							<span className={style.text}>{title}</span>
 							<ArrowRightIcon size={18} />
 						</List.Item>

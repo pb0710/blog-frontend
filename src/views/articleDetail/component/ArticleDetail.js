@@ -21,7 +21,7 @@ export default function ArticleDetail() {
 	const { id } = useParams()
 
 	const { data, error, loading } = useFetch(articleApi.fetchDetail, {
-		initData: {},
+		initialData: {},
 		params: [id],
 		refreshDeps: [id]
 	})
@@ -70,11 +70,10 @@ export default function ArticleDetail() {
 		<FlexiblePage className={style.article_detail}>
 			<section className={style.article_wrapper}>
 				{loading ? (
-					<Skeleton className={style.bg_skeleton}></Skeleton>
+					<Skeleton className={style.bg_skeleton} />
 				) : (
 					<img className={style.bg_pic} src={backgroundImage} alt="" />
 				)}
-				{infoElement}
 				{loading ? (
 					<div className={style.content_skeleton}>
 						<Skeleton className={style.heading} />
@@ -83,7 +82,10 @@ export default function ArticleDetail() {
 						<Skeleton className={style.content3} />
 					</div>
 				) : (
-					<Markdown>{content}</Markdown>
+					<>
+						{infoElement}
+						<Markdown>{content}</Markdown>
+					</>
 				)}
 			</section>
 		</FlexiblePage>

@@ -21,18 +21,42 @@ export default function AuthorPanel() {
 	const theme = useSelector(state => state.setting.theme)
 	const { author } = detail
 
-	const { data, excute, loading } = useFetch(userApi.fetchProfile, {
-		initData: {},
-		immutable: true
+	const { data, loading } = useFetch(userApi.fetchProfile, {
+		initialData: {},
+		immutable: !author,
+		params: [author],
+		refreshDeps: [author]
 	})
 	const { nickname, avatar, contacts } = data
 	const hasContacts = typeof contacts === 'object' && Object.values(contacts).filter(Boolean).length > 0
 
-	React.useEffect(() => {
-		if (author) {
-			excute(author)
-		}
-	}, [author, excute])
+	const contactsElement = hasContacts ? (
+		<>
+			<Divider />
+			<div className={style.contact_wrapper}>
+				{contacts.github && (
+					<Contact link={contacts.github}>
+						<GithubOutlined />
+					</Contact>
+				)}
+				{contacts.wechat && (
+					<Contact link={contacts.wechat}>
+						<WechatOutlined />
+					</Contact>
+				)}
+				{contacts.email && (
+					<Contact link={contacts.email}>
+						<MailOutlineIcon size={20} />
+					</Contact>
+				)}
+				{contacts.phone && (
+					<Contact link={contacts.phone}>
+						<PhoneIcon size={20} />
+					</Contact>
+				)}
+			</div>
+		</>
+	) : null
 
 	const avatarItemCls = clsx(style.item, style.name_wrapper)
 
@@ -48,33 +72,7 @@ export default function AuthorPanel() {
 					</List.Item>
 				</Link>
 			</List>
-			{hasContacts && (
-				<>
-					<Divider />
-					<div className={style.contact_wrapper}>
-						{contacts.github && (
-							<Contact link={contacts.github}>
-								<GithubOutlined />
-							</Contact>
-						)}
-						{contacts.wechat && (
-							<Contact link={contacts.wechat}>
-								<WechatOutlined />
-							</Contact>
-						)}
-						{contacts.email && (
-							<Contact link={contacts.email}>
-								<MailOutlineIcon size={20} />
-							</Contact>
-						)}
-						{contacts.phone && (
-							<Contact link={contacts.phone}>
-								<PhoneIcon size={20} />
-							</Contact>
-						)}
-					</div>
-				</>
-			)}
+			{contactsElement}
 			<Divider />
 			<div className={style.footer}>
 				<Button light color={theme} suffixes={<AddIcon size={20} />}>

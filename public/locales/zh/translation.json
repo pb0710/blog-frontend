@@ -23,7 +23,7 @@
     "login_first": "请先登录"
   },
   "warning": {},
-  "sort": {
+  "category": {
     "frontend": "Web前端",
     "mobile": "移动端",
     "backend": "后端",
@@ -32,7 +32,7 @@
   },
   "nav": {
     "home": "主页",
-    "article_list": "文章分类",
+    "article_category": "文章分类",
     "frontend": "Web前端",
     "mobile": "移动端",
     "backend": "后端",
@@ -64,7 +64,7 @@
     "publish_prompt": "登录成功后可发布文章...",
     "add_article": "添加文章",
     "title": "标题",
-    "sort": "文章类别",
+    "category": "文章类别",
     "introduce": "简介",
     "publish": "发布",
     "rule": {

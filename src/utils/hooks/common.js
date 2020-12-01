@@ -18,17 +18,17 @@ export function useBoolean(initial) {
  * 异步请求hooks
  * @param {Promise} promiseApi 异步请求函数
  * @param {Object} options
- *  @param {any} initData 默认值
+ *  @param {any} initialData 默认值
  *  @param {Boolean} immutable 请求是否不可变
  *  @param {Array} params 默认请求参数
  *  @param {Array} refreshDeps 重新请求依赖项
  */
-export function useFetch(promiseApi, { initData, params = [], immutable = false, refreshDeps = [] }) {
-	const [data, setData] = useState(initData)
+export function useFetch(promiseApi, { initialData, params = [], immutable = false, refreshDeps = [] }) {
+	const [data, setData] = useState(initialData)
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
 
-	let initialize = useRef(initData).current // 初始数据不可变
+	const initialize = useRef(initialData).current // 初始数据不可变
 	let paramsRef = useRef(params)
 	useEffect(() => {
 		paramsRef.current = params
@@ -49,7 +49,9 @@ export function useFetch(promiseApi, { initData, params = [], immutable = false,
 
 	useEffect(
 		() => {
-			if (!immutable) excute(...paramsRef.current)
+			if (!immutable) {
+				excute(...paramsRef.current)
+			}
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[excute, immutable, ...refreshDeps]

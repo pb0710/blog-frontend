@@ -1,0 +1,52 @@
+import { useFetch } from '@/utils/hooks'
+import React from 'react'
+import { List, Loading } from 'sylas-react-ui'
+import style from '../style/index.module.scss'
+import * as articleApi from '@/apis/article'
+import { Link } from 'react-router-dom'
+import dayjs from 'dayjs'
+import { useTranslation } from 'react-i18next'
+import clsx from 'clsx'
+import { useSelector } from 'react-redux'
+
+function ArticleList(props) {
+	const { sortBy } = props
+	const { t } = useTranslation()
+	const theme = useSelector(state => state.setting.theme)
+
+	const { data, loading } = useFetch(articleApi.fetchList, {
+		initialData: [],
+		params: [{ sortBy }],
+		refreshDeps: [sortBy]
+	})
+
+	const listElement = data.map(article => {
+		const { id, title, author, category, introduce, backgroundImage, creationTime } = article
+		return (
+			<Link key={id} to={`/article/${category}/detail/${id}`}>
+				<List.Item className={style.article_item} hovered ripple>
+					<div className={style.inner}>
+						<div className={style.left_wrapper}>
+							<div>
+								<span>
+									<Link to="/user">{author}</Link>
+								</span>
+								<span>-</span>
+								<span>
+									{dayjs(creationTime).isValid && dayjs(creationTime).format(`${t('article_detail.create_date')}`)}
+								</span>
+							</div>
+							<h3 className={clsx(style[`heading_${theme}`])}>{title}</h3>
+							{introduce && <span>{introduce}</span>}
+						</div>
+						<img src={backgroundImage} alt="" />
+					</div>
+				</List.Item>
+			</Link>
+		)
+	})
+
+	return <List className={style.article_list}>{loading ? <Loading /> : listElement}</List>
+}
+
+export default ArticleList

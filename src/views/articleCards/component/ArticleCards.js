@@ -9,16 +9,13 @@ import { Skeleton } from '@/components/base'
 import { AspectRatio } from 'sylas-react-ui'
 import clsx from 'clsx'
 
-export default function ArticleList() {
-	const { sort } = useParams()
-	const { data, excute, loading } = useFetch(articleApi.fetchList, {
-		initData: [],
-		immutable: true
+export default function ArticleCards() {
+	const { category } = useParams()
+	const { data, loading } = useFetch(articleApi.fetchList, {
+		initialData: [],
+		params: [{ category }],
+		refreshDeps: [category]
 	})
-
-	React.useEffect(() => {
-		excute(sort)
-	}, [excute, sort])
 
 	const skeletonElement = Object.keys([...Array(12)]).map(key => (
 		<div key={key} className={style.skeleton}>

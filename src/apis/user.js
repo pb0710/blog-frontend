@@ -3,7 +3,7 @@ import request from '@/utils/request'
 /**
  * 获取用户账号信息、基本信息、用户设置
  */
-export const initData = () => request.get(`user/init_data`)
+export const initialData = () => request.get(`user/init_data`)
 
 /**
  * 获取用户基本信息

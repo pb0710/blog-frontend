@@ -17,8 +17,8 @@ const getNavs = (t = i18n.t) => [
 	{
 		id: '1',
 		level: 1,
-		to: '/articles',
-		title: t('nav.article_list'),
+		to: '/article',
+		title: t('nav.article_category'),
 		icon: <LibraryEditIcon size={20} />,
 		child: [
 			{

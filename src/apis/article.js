@@ -2,12 +2,14 @@ import request from '@/utils/request'
 
 /**
  * 抓取文章列表
- * @param {String} sort 分类 不传时获取全部
+ * @param {String} category 分类 不传时获取全部类别
+ * @param {Number} limit 返回结果数量
+ * @param {String} sortBy 排序 type = 'popular'|'latest'|'random'
  */
-export const fetchList = sort =>
+export const fetchList = ({ category, limit = 20, sortBy = 'latest' }) =>
 	request({
 		url: `article/list`,
-		params: { sort }
+		params: { category, limit, sortBy }
 	})
 
 /**
@@ -36,7 +38,7 @@ export const addArticle = (userId, articleDetail = {}) =>
  * 增加文章访问量
  * @param {String} articleId 文章ID
  */
-export const increaseArticleViews = articleId =>
+export const increaseViews = articleId =>
 	request({
 		url: `article/increase_views`,
 		method: 'POST',
@@ -48,7 +50,7 @@ export const increaseArticleViews = articleId =>
  * @param {String} userId 用户ID
  * @param {String} articleId 文章ID
  */
-export const likeArticle = (userId, articleId) =>
+export const like = (userId, articleId) =>
 	request({
 		url: `article/likes`,
 		method: 'POST',
@@ -60,7 +62,7 @@ export const likeArticle = (userId, articleId) =>
  * @param {String} userId 用户ID
  * @param {String} articleId 文章ID
  */
-export const dislikeArticle = (userId, articleId) =>
+export const dislike = (userId, articleId) =>
 	request({
 		url: `article/dislike`,
 		method: 'POST',

@@ -27,7 +27,7 @@ function ArticleStatsPanel() {
 		async (userId, detail) => {
 			const { likes = [] } = detail
 			try {
-				await articleApi.dislikeArticle(userId, articleId)
+				await articleApi.dislike(userId, articleId)
 				dispatch(
 					articleDetailAction.updateDetail({
 						...detail,
@@ -45,7 +45,7 @@ function ArticleStatsPanel() {
 		async (userId, detail) => {
 			const { likes = [] } = detail
 			try {
-				await articleApi.likeArticle(userId, articleId)
+				await articleApi.like(userId, articleId)
 				dispatch(
 					articleDetailAction.updateDetail({
 						...detail,

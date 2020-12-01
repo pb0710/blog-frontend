@@ -10,7 +10,7 @@ import i18n from '@/common/i18n'
 
 function* fetchUserInfo() {
 	try {
-		const payload = yield userApi.initData()
+		const payload = yield userApi.initialData()
 		const profile = omit(payload, ['setting'])
 		yield put(commonAction.updateUserProfile(profile))
 		yield put(settingAction.mergeSetting(payload.setting))

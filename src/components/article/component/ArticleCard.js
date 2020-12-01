@@ -5,10 +5,10 @@ import { AspectRatio } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 
 export default function ArticleCard(props) {
-	const { id, author, sort, title, backgroundImage } = props
+	const { id, author, category, title, backgroundImage } = props
 	const theme = useSelector(state => state.setting.theme)
 
-	const aritcleLink = `/articles/${sort}/detail/${id}`
+	const aritcleLink = `/article/${category}/detail/${id}`
 	const authorLink = `/user/${1}`
 
 	return (

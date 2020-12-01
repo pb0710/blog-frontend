@@ -10,13 +10,13 @@ function Content() {
 				<Route exact path="/" component={Home} />
 				<Route
 					exact
-					path="/articles/:sort/detail/:id"
+					path="/article/:category/detail/:id"
 					component={React.lazy(() => import('@/views/articleDetail/component/ArticleDetail'))}
 				/>
 				<Route
 					exact
-					path="/articles/:sort"
-					component={React.lazy(() => import('@/views/articleList/component/ArticleList'))}
+					path="/article/:category"
+					component={React.lazy(() => import('@/views/articleCards/component/ArticleCards'))}
 				/>
 				<Route
 					exact

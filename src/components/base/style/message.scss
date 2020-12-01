@@ -14,7 +14,7 @@
 		margin-bottom: 1rem;
 		padding: 0 1.2rem;
 		min-width: 12rem;
-		height: 3.6rem;
+		min-height: 3.6rem;
 		border-radius: 0.6rem;
 		box-shadow: $default_shadow;
 		color: white;
@@ -39,6 +39,12 @@
 
 		&.warning {
 			background: #e6a23c;
+		}
+
+		> span:last-child {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 
 		> svg {

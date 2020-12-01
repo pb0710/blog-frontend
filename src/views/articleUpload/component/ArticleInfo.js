@@ -47,10 +47,10 @@ export default function ArticleInfo(props) {
 
 	const handleAddArticle = useCallback(
 		async values => {
-			const { pic, sort, title, introduce } = values
+			const { pic, category, title, introduce } = values
 			const articleDetail = {
 				content,
-				sort,
+				category,
 				title,
 				introduce,
 				backgroundImage: pic,
@@ -98,15 +98,15 @@ export default function ArticleInfo(props) {
 			component: <Input color={theme} placeholder={t('article_publish.title')} />
 		},
 		{
-			name: 'sort',
+			name: 'category',
 			initialValue: 'frontend',
 			component: (
-				<Select color={theme} description={t('article_publish.sort')}>
-					<Select.Option value="frontend">{t('sort.frontend')}</Select.Option>
-					<Select.Option value="backend">{t('sort.backend')}</Select.Option>
-					<Select.Option value="mobile">{t('sort.mobile')}</Select.Option>
-					<Select.Option value="computer_science">{t('sort.computer_science')}</Select.Option>
-					<Select.Option value="engineering">{t('sort.engineering')}</Select.Option>
+				<Select color={theme} description={t('article_publish.category')}>
+					<Select.Option value="frontend">{t('category.frontend')}</Select.Option>
+					<Select.Option value="backend">{t('category.backend')}</Select.Option>
+					<Select.Option value="mobile">{t('category.mobile')}</Select.Option>
+					<Select.Option value="computer_science">{t('category.computer_science')}</Select.Option>
+					<Select.Option value="engineering">{t('category.engineering')}</Select.Option>
 				</Select>
 			)
 		},

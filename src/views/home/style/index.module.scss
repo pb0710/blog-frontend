@@ -1,10 +1,11 @@
+@import 'article_list';
+
 .home_page {
 	padding: 1rem;
 
-	.article_list {
-		display: flex;
-		flex-flow: wrap;
+	.page_wrapper {
 		margin-top: 1rem;
+		padding: 1rem;
 		width: 100%;
 	}
 }
