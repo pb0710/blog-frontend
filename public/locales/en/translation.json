@@ -85,7 +85,7 @@
         "username_not_empty": "Username can not be empty!",
         "not_zh": "It cannot be Chinese characters!",
         "password_length_limit": "Password length must not be less than 6 digits!",
-        "number_or_alphabet": "It can only be numbers or letters!"
+        "number_and_alphabet": "Password should contain letters and numbers!"
       }
     },
     "register": {
@@ -98,7 +98,7 @@
         "username_not_empty": "Username can not be empty!",
         "not_zh": "It cannot be Chinese characters!",
         "password_length_limit": "Password length must not be less than 6 digits!",
-        "number_or_alphabet": "It can only be numbers or letters!",
+        "number_and_alphabet": "Password should contain letters and numbers!",
         "password_confirm_not_equal": "The two passwords entered are inconsistent!"
       }
     },

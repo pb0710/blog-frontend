@@ -38,9 +38,9 @@ export default function Register() {
 		},
 		{
 			async validator(value) {
-				const pattern = new RegExp('^[a-z0-9]+$', 'i')
+				const pattern = new RegExp('^(?=.*?[a-z])(?=.*?[0-9]).*$', 'i')
 				if (!pattern.test(value)) {
-					return Promise.reject(t('modal.register.rule.number_or_alphabet'))
+					return Promise.reject(t('modal.register.rule.number_and_alphabet'))
 				}
 			}
 		}

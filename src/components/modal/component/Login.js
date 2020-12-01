@@ -108,7 +108,7 @@ export default function Login() {
 							async validator(value) {
 								const pattern = new RegExp('^[a-z0-9]+$', 'i')
 								if (!pattern.test(value)) {
-									return Promise.reject(t('modal.login.rule.number_or_alphabet'))
+									return Promise.reject(t('modal.login.rule.number_and_alphabet'))
 								}
 							}
 						}
