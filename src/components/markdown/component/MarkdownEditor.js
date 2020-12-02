@@ -29,8 +29,11 @@ function MarkdownEditor() {
 	const theme = useSelector(state => state.setting.theme)
 	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
 
-	const defaultContent = useMarkdownGuide ? temp.markdownDemo : ''
-	const [content, setContent] = React.useState(defaultContent)
+	const [content, setContent] = React.useState('')
+	React.useEffect(() => {
+		setContent(useMarkdownGuide ? temp.markdownDemo : '')
+	}, [useMarkdownGuide])
+
 	const editorRef = React.useRef()
 	const previewRef = React.useRef()
 	// 鼠标悬停区域
@@ -67,8 +70,8 @@ function MarkdownEditor() {
 			const remotePic = Array.isArray(payload) ? payload.map(toPicTemp).join('') : toPicTemp(payload)
 			setContent(content => content + remotePic)
 		} catch (err) {
-			console.error(`图片上传失败——${err}`)
-			msg.error('上传失败')
+			console.error(`${t('error.upload')} ${err}`)
+			msg.error(t('error.upload'))
 		}
 	}
 
@@ -86,7 +89,6 @@ function MarkdownEditor() {
 	}
 
 	const handleInsertCode = () => {
-		console.log('content', content)
 		setContent(prev => prev + temp.codeBlock)
 	}
 
@@ -105,6 +107,7 @@ function MarkdownEditor() {
 
 	const editorProps = {
 		content,
+		setContent,
 		handleInput,
 		handleScrollEditor,
 		handleEnterEditor,

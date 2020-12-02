@@ -30,7 +30,8 @@ function ArticleList(props) {
 						<div className={style.left_wrapper}>
 							<div>
 								<span>
-									<Link to="/user">{author}</Link>
+									{/* <Link to="/user">{author}</Link> */}
+									{author}
 								</span>
 								<span>-</span>
 								<span>

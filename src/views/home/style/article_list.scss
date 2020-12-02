@@ -95,7 +95,7 @@
 						color: $text_secondary;
 						font-size: 1.2rem;
 
-						a:hover {
+						&:first-child:hover {
 							text-decoration: underline !important;
 						}
 					}

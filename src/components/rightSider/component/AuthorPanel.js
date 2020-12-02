@@ -63,14 +63,14 @@ export default function AuthorPanel() {
 	return (
 		<Panel className={style.author_panel}>
 			<List>
-				<Link to="/">
-					<List.Item className={avatarItemCls}>
-						<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
-						<div className={style.right_wrapper}>
-							{nickname ? <p className={style.name}>{nickname}</p> : <Skeleton />}
-						</div>
-					</List.Item>
-				</Link>
+				{/* <Link to="/"> */}
+				<List.Item className={avatarItemCls}>
+					<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
+					<div className={style.right_wrapper}>
+						<h2 className={style.name}>{nickname || <Skeleton />}</h2>
+					</div>
+				</List.Item>
+				{/* </Link> */}
 			</List>
 			{contactsElement}
 			<Divider />
