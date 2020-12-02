@@ -2,6 +2,7 @@
 	position: absolute;
 	top: 7rem;
 	right: calc(50% - 55rem);
+	display: block;
 	width: 24rem;
 	height: calc(100% - 7rem);
 	transition: right $normal ease-out;
@@ -12,5 +13,11 @@
 
 	section {
 		margin-bottom: 2rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.right_sider {
+		display: none;
 	}
 }

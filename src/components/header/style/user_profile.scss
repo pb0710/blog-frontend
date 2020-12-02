@@ -57,3 +57,10 @@ $text_secondary: $text_secondary;
 		margin: 1.6rem 0;
 	}
 }
+
+@media screen and (max-width: 600px) {
+	.user_profile {
+		right: 1rem;
+		width: calc(100vw - 4rem);
+	}
+}

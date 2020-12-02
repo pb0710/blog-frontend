@@ -72,3 +72,9 @@
 		}
 	}
 }
+
+@media screen and (max-width: 600px) {
+	.article_card_wrapper {
+		min-width: 50%;
+	}
+}

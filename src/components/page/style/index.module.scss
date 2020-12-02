@@ -21,6 +21,7 @@
 
 	.container {
 		padding-right: 25rem;
+		max-width: 100%;
 		width: 110rem;
 	}
 
@@ -31,12 +32,19 @@
 	&.narrowing {
 		width: calc(100vw - 24rem);
 	}
+
+	@media screen and (max-width: 600px) {
+		&.narrowing {
+			width: 100vw;
+		}
+		.container {
+			padding-right: 0;
+			width: 100%;
+		}
+	}
 }
 
 .full_screen_page {
-	// position: fixed;
-	// top: 0;
-	// left: 0;
 	z-index: $z_modal;
 
 	@extend .page;

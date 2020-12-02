@@ -76,10 +76,7 @@
 				width: calc(100% - 12rem);
 
 				@include use_themes('.heading') {
-					overflow: hidden;
 					margin: 1.5rem 0;
-					text-overflow: ellipsis;
-					white-space: nowrap;
 					font-weight: 600;
 					font-size: 1.7rem;
 					transition: color $normal;
@@ -91,8 +88,11 @@
 
 				> div:first-child {
 					> span {
+						overflow: hidden;
 						margin-right: 1rem;
 						color: $text_secondary;
+						text-overflow: ellipsis;
+						white-space: nowrap;
 						font-size: 1.2rem;
 
 						&:first-child:hover {
@@ -116,6 +116,16 @@
 				vertical-align: text-top;
 
 				object-fit: cover;
+			}
+
+			@media screen and (max-width: 600px) {
+				.left_wrapper {
+					width: calc(100vw - 18rem);
+				}
+				> img {
+					width: 7rem;
+					height: 5rem;
+				}
 			}
 		}
 	}
