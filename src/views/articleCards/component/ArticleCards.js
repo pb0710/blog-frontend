@@ -17,28 +17,37 @@ export default function ArticleCards() {
 		refreshDeps: [category]
 	})
 
-	const skeletonElement = Object.keys([...Array(12)]).map(key => (
-		<div key={key} className={style.skeleton}>
-			<AspectRatio aspectRatio={4 / 3}>
-				<div className={style.inner}>
-					<Skeleton />
-					<Skeleton />
-					<Skeleton />
+	const skeletonElement = (
+		<article className={style.skeleton_list}>
+			{Object.keys([...Array(12)]).map(key => (
+				<div key={key} className={style.skeleton_card}>
+					<AspectRatio aspectRatio={4 / 3}>
+						<div className={style.inner}>
+							<Skeleton />
+							<Skeleton />
+							<Skeleton />
+						</div>
+					</AspectRatio>
 				</div>
-			</AspectRatio>
-		</div>
-	))
+			))}
+		</article>
+	)
+
+	const cardsElement = (
+		<article className={style.article_card_list}>
+			{data.map(article => (
+				<ArticleCard key={article.id} {...article} />
+			))}
+		</article>
+	)
 
 	const pageCls = clsx(style.article_list_page, {
 		[style.fixed]: loading
 	})
-	const listCls = loading ? style.skeleton_list : style.article_list
 
 	return (
 		<FlexiblePage className={pageCls} style={{ paddingBottom: 0 }}>
-			<article className={listCls}>
-				{loading ? skeletonElement : data.map(article => <ArticleCard key={article.id} {...article} />)}
-			</article>
+			{loading ? skeletonElement : cardsElement}
 		</FlexiblePage>
 	)
 }

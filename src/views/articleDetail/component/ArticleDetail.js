@@ -70,19 +70,18 @@ export default function ArticleDetail() {
 		<FlexiblePage className={style.article_detail}>
 			<section className={style.article_wrapper}>
 				{loading ? (
-					<Skeleton className={style.bg_skeleton} />
-				) : (
-					<img className={style.bg_pic} src={backgroundImage} alt="" />
-				)}
-				{loading ? (
-					<div className={style.content_skeleton}>
-						<Skeleton className={style.heading} />
-						<Skeleton className={style.content1} />
-						<Skeleton className={style.content2} />
-						<Skeleton className={style.content3} />
-					</div>
+					<>
+						<Skeleton className={style.bg_skeleton} />
+						<div className={style.content_skeleton}>
+							<Skeleton className={style.heading} />
+							<Skeleton className={style.content1} />
+							<Skeleton className={style.content2} />
+							<Skeleton className={style.content3} />
+						</div>
+					</>
 				) : (
 					<>
+						<img className={style.bg_pic} src={backgroundImage} alt="" />
 						{infoElement}
 						<Markdown>{content}</Markdown>
 					</>

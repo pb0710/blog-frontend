@@ -1,7 +1,7 @@
 {
   "info": {
     "not_login": "Not login",
-    "copy_to_clipboard": "Copy link to clipboard:"
+    "copy_to_clipboard": "The link has been copied to the clipboard:"
   },
   "success": {
     "add": "Added successfully",
@@ -46,7 +46,10 @@
     "about": "About"
   },
   "home": {
-    "frontend": "Frontend"
+    "frontend": "Frontend",
+    "latest": "Latest",
+    "popular": "Popular",
+    "random": "Looking around"
   },
   "not_found": {
     "page_not_found": "Page not found...",
@@ -165,5 +168,8 @@
     "default_open_drawer": "Default display sidebar",
     "language": "Language",
     "show_markdown_guide": "Show Markdown Demo"
+  },
+  "markdown": {
+    "placeholder": "Support markdown, text format..."
   }
 }

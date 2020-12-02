@@ -1,7 +1,9 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import style from '../style/index.module.scss'
 
-function _Editor(props, ref) {
+function Editor(props, ref) {
+	const { t } = useTranslation()
 	return (
 		<article className={style.editor}>
 			<textarea
@@ -11,12 +13,10 @@ function _Editor(props, ref) {
 				onMouseEnter={props.handleEnterEditor}
 				onMouseLeave={props.handleLeave}
 				onScroll={props.handleScrollEditor}
-				placeholder="支持 markdown、text 格式..."
+				placeholder={t('markdown.placeholder')}
 			></textarea>
 		</article>
 	)
 }
 
-const Editor = React.memo(React.forwardRef(_Editor))
-
-export default Editor
+export default React.memo(React.forwardRef(Editor))

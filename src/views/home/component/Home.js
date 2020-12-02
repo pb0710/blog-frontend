@@ -5,13 +5,16 @@ import { Panel } from '@/components/base'
 import { Tabs } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 import ArticleList from './ArticleList'
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
+	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
+
 	const tabList = [
-		{ key: 'latest', title: '最新发布' },
-		{ key: 'popular', title: '热门' },
-		{ key: 'random', title: '随便看看' }
+		{ key: 'latest', title: t('home.latest') },
+		{ key: 'popular', title: t('home.popular') },
+		{ key: 'random', title: t('home.random') }
 	]
 
 	return (

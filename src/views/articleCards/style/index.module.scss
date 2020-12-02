@@ -12,7 +12,7 @@
 		padding-right: 0;
 	}
 
-	.article_list {
+	.article_card_list {
 		display: flex;
 		flex-flow: wrap;
 		margin-top: 1rem;
@@ -22,9 +22,9 @@
 	.skeleton_list {
 		min-height: calc(100vh - 7rem);
 
-		@extend .article_list;
+		@extend .article_card_list;
 
-		.skeleton {
+		.skeleton_card {
 			margin: 1rem;
 			min-width: 20rem;
 			width: calc(20% - 2rem);

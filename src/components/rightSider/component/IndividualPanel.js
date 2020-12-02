@@ -79,7 +79,7 @@ export default function IndividualPanel() {
 					<List.Item className={avatarItemCls}>
 						<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
 						<div className={style.bottom_wrapper}>
-							{nickname ? <h2 className={style.name}>{nickname}</h2> : <Skeleton />}
+							<h2 className={style.name}>{nickname || <Skeleton />}</h2>
 						</div>
 					</List.Item>
 				</Link>
