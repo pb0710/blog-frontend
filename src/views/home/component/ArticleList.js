@@ -1,6 +1,6 @@
 import { useFetch } from '@/utils/hooks'
 import React from 'react'
-import { List, Loading } from 'sylas-react-ui'
+import { List } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
 import * as articleApi from '@/apis/article'
 import { Link } from 'react-router-dom'
@@ -8,6 +8,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
 import { useSelector } from 'react-redux'
+import { Skeleton } from '@/components/base'
 
 function ArticleList(props) {
 	const { sortBy } = props
@@ -46,7 +47,23 @@ function ArticleList(props) {
 		)
 	})
 
-	return <List className={style.article_list}>{loading ? <Loading /> : listElement}</List>
+	const SkeletonElement = (
+		<div className={style.skeleton_list}>
+			{Object.keys([...Array(8)]).map(item => (
+				<div className={style.skeleton_wrapper} key={item}>
+					<div className={style.left_wrapper}>
+						<Skeleton className={style.text_skeleton} />
+						<Skeleton className={style.title_skeleton} />
+						<Skeleton className={style.text_skeleton} />
+						<Skeleton className={style.text_skeleton} />
+					</div>
+					<Skeleton className={style.img_skeleton} />
+				</div>
+			))}
+		</div>
+	)
+
+	return <List className={style.article_list}>{loading ? SkeletonElement : listElement}</List>
 }
 
 export default ArticleList

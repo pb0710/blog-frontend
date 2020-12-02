@@ -56,39 +56,19 @@ const getNavs = (t = i18n.t) => [
 	{
 		id: '2',
 		level: 1,
-		title: t('nav.document'),
-		icon: <ExploreIcon size={20} />,
-		child: [
-			{
-				id: '30',
-				level: 2,
-				to: '/submenu1',
-				title: t('nav.submenu2')
-			},
-			{
-				id: '31',
-				level: 2,
-				to: '/submenu2',
-				title: t('nav.submenu2')
-			}
-		]
-	},
-	{
-		id: '3',
-		level: 1,
 		to: '/upload',
 		title: t('nav.write'),
 		icon: <CreateIcon size={20} />
 	},
 	{
-		id: '4',
+		id: '3',
 		level: 1,
 		to: '/setting',
 		title: t('nav.settings'),
 		icon: <SettingsIcon size={20} />
 	},
 	{
-		id: '5',
+		id: '4',
 		level: 1,
 		to: '/about',
 		title: t('nav.about'),

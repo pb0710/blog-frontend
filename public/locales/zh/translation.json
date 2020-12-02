@@ -45,6 +45,9 @@
     "settings": "设置",
     "about": "关于"
   },
+  "home": {
+    "frontend": "前端"
+  },
   "not_found": {
     "page_not_found": "页面找不到啦...",
     "go_back": "后退",

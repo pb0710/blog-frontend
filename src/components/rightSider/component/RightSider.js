@@ -6,12 +6,20 @@ import clsx from 'clsx'
 import { Panel, Affix } from '@/components/base'
 import AuthorPanel from './AuthorPanel'
 import ArticleStatsPanel from './ArticleStatsPanel'
+import IndividualPanel from './IndividualPanel'
 
 function RightSider() {
 	const opened = useSelector(state => state.sider.drawerOpened)
 	const rightSiderCls = clsx(style.right_sider, opened && style.narrowing)
 	return (
 		<Switch>
+			<Route exact path="/">
+				<aside className={rightSiderCls}>
+					<Affix>
+						<IndividualPanel />
+					</Affix>
+				</aside>
+			</Route>
 			<Route exact path="/upload" />
 			<Route exact path="/setting" />
 			<Route exact path="/article/:category" />

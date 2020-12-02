@@ -45,6 +45,9 @@
     "settings": "Settings",
     "about": "About"
   },
+  "home": {
+    "frontend": "Frontend"
+  },
   "not_found": {
     "page_not_found": "Page not found...",
     "go_back": "Go back",
@@ -154,13 +157,13 @@
     "appearance": "Appearance",
     "i18n": "Internationalization",
     "article": "Article",
-    "theme": "theme",
+    "theme": "Theme",
     "primary": "Ocean",
     "success": "Grassland",
     "warning": "Mango",
     "error": "Coral",
     "default_open_drawer": "Default display sidebar",
-    "language": "language",
+    "language": "Language",
     "show_markdown_guide": "Show Markdown Demo"
   }
 }

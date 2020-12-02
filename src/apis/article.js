@@ -6,7 +6,7 @@ import request from '@/utils/request'
  * @param {Number} limit 返回结果数量
  * @param {String} sortBy 排序 type = 'popular'|'latest'|'random'
  */
-export const fetchList = ({ category, limit = 20, sortBy = 'latest' }) =>
+export const fetchList = ({ category, limit, sortBy = 'latest' }) =>
 	request({
 		url: `article/list`,
 		params: { category, limit, sortBy }

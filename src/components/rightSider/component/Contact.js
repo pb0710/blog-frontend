@@ -16,7 +16,7 @@ function Contact(props) {
 		}
 	})
 	return (
-		<Button.Icon ref={ref} onClick={copy}>
+		<Button.Icon ref={ref} onClick={copy} title={link}>
 			{link && <span className={style.contact_link}>{link}</span>}
 			{children}
 		</Button.Icon>

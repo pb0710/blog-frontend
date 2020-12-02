@@ -8,5 +8,5 @@ export const search = keywords =>
 	request({
 		url: `common/search`,
 		method: 'GET',
-		params: { keywords, limit: 20 }
+		params: { keywords }
 	})

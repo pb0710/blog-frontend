@@ -20,12 +20,12 @@
 body {
 	overflow-x: hidden;
 	overflow-y: auto;
+	font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
 }
 
 #root {
 	box-sizing: border-box;
 	color: $text_primary;
-	font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
