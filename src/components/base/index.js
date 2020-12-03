@@ -10,4 +10,6 @@ export { default as Skeleton } from './component/Skeleton'
 
 export { default as GlobalLoading } from './component/GlobalLoading'
 
+export { default as Mask } from './component/Mask'
+
 export { default as msg } from './component/message'

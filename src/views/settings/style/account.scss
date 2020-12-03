@@ -37,10 +37,13 @@
 		}
 	}
 
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: $breakpoint_small) {
 		.username_wrapper {
-			span {
-				margin: 0 0.5rem;
+			> span {
+				margin-right: 1rem;
+			}
+			button {
+				max-width: 8rem;
 			}
 		}
 	}

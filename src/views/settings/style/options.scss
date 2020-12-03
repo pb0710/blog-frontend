@@ -42,7 +42,7 @@
 				max-width: 24rem;
 			}
 
-			@media screen and (max-width: 600px) {
+			@media screen and (max-width: $breakpoint_small) {
 				.form_item {
 					textarea,
 					input {

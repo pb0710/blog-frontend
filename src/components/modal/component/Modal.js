@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import * as action from '../store/action'
 import { Popup } from 'sylas-react-ui'
+import { Mask } from '@/components/base'
 
 export default function Modal(props) {
 	const { allowClose } = props
@@ -17,12 +18,14 @@ export default function Modal(props) {
 
 	return (
 		visible && (
-			<div className={style.modal_wrapper}>
-				<div className={style.mask} onClick={handleClose}></div>
-				<Popup className={style.content} visible={visible}>
-					{content}
-				</Popup>
-			</div>
+			<>
+				<Mask onClick={handleClose} />
+				<div className={style.modal_wrapper}>
+					<Popup className={style.content} visible={visible}>
+						{content}
+					</Popup>
+				</div>
+			</>
 		)
 	)
 }

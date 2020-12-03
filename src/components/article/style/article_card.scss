@@ -73,7 +73,7 @@
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $breakpoint_small) {
 	.article_card_wrapper {
 		min-width: 50%;
 	}

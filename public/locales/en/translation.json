@@ -67,7 +67,7 @@
   },
   "article_publish": {
     "to_publish": "To publish",
-    "publish_prompt": "Publish the article after logging in successfully...",
+    "publish_prompt": "Publish after logging in...",
     "add_article": "Add article",
     "title": "Title",
     "category": "Category",

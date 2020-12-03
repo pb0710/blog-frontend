@@ -2,14 +2,21 @@ import React, { useState } from 'react'
 import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import getNavs from './navs'
 import { useTranslation } from 'react-i18next'
+import { useMediaQuery } from '@/utils/hooks/ui'
+import { updateDrawer } from '../store/action'
 
 function Nav(props) {
 	const { id, level, to, title, icon } = props
+	const dispatch = useDispatch()
+	const isMobile = useMediaQuery('(max-width:600px)')
+	const hide = () => {
+		dispatch(updateDrawer(false))
+	}
 	return (
-		<NavLink to={to}>
+		<NavLink to={to} onClick={isMobile ? hide : null}>
 			<Menu.Item menuKey={id} className={style[`level${level}`]}>
 				{icon && React.cloneElement(icon, { className: style.icon })}
 				{title}

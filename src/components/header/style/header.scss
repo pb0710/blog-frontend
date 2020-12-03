@@ -38,3 +38,9 @@
 		}
 	}
 }
+
+@media screen and (max-width: $breakpoint_small) {
+	.header {
+		padding: 0 0 0 8rem;
+	}
+}

@@ -7,11 +7,14 @@ import * as action from '@/components/sider/store/action'
 import clsx from 'clsx'
 import NavMenu from './NavMenu'
 import { Branch } from '@/components/header'
+import { Mask } from '@/components/base'
+import { useMediaQuery } from '@/utils/hooks/ui'
 
 export default function Sider() {
 	const dispatch = useDispatch()
 	const drawerDefaultOpened = useSelector(state => state.setting.drawerDefaultOpened)
 	const drawerOpened = useSelector(state => state.sider.drawerOpened)
+	const isMobile = useMediaQuery('(max-width:600px)')
 
 	const hanldeClose = () => {
 		dispatch(action.updateDrawer(false))
@@ -26,14 +29,17 @@ export default function Sider() {
 	})
 
 	return (
-		<aside className={asideCls}>
-			<div className={style.top}>
-				<Branch />
-				<Button.Icon className={style.drawer_control} onClick={hanldeClose}>
-					<ArrowBackIcon size={20} />
-				</Button.Icon>
-			</div>
-			<NavMenu />
-		</aside>
+		<>
+			{isMobile && drawerOpened && <Mask style={{ zIndex: 250 }} onClick={hanldeClose} />}
+			<aside className={asideCls}>
+				<div className={style.top}>
+					<Branch />
+					<Button.Icon className={style.drawer_control} onClick={hanldeClose}>
+						<ArrowBackIcon size={20} />
+					</Button.Icon>
+				</div>
+				<NavMenu />
+			</aside>
+		</>
 	)
 }

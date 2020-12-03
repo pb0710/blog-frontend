@@ -12,9 +12,12 @@ import * as modalAction from '@/components/modal/store/action'
 import { ArticleInfo } from '@/views/articleUpload'
 import ViewModuleOutlineIcon from 'mdi-react/ViewModuleOutlineIcon'
 import CodeIcon from 'mdi-react/CodeIcon'
+import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon'
 import SendIcon from 'mdi-react/SendIcon'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
+import { useMediaQuery } from '@/utils/hooks/ui'
+import { useBoolean } from '@/utils/hooks'
 
 const area = {
 	EDITOR: 'editor',
@@ -28,7 +31,9 @@ function MarkdownEditor() {
 	const online = useSelector(state => state.online)
 	const theme = useSelector(state => state.setting.theme)
 	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
+	const isMobile = useMediaQuery('(max-width:600px)')
 
+	const [previewing, { setToggle: togglePreview, setTrue }] = useBoolean(false)
 	const [content, setContent] = React.useState('')
 	React.useEffect(() => {
 		setContent(useMarkdownGuide ? temp.markdownDemo : '')
@@ -105,6 +110,12 @@ function MarkdownEditor() {
 		editorRef.current.focus()
 	}, [])
 
+	React.useEffect(() => {
+		if (!isMobile) {
+			setTrue()
+		}
+	}, [isMobile, setTrue])
+
 	const editorProps = {
 		content,
 		setContent,
@@ -121,7 +132,7 @@ function MarkdownEditor() {
 		handleLeave
 	}
 
-	const toolsBar = (
+	const toolsBarElement = (
 		<div className={style.tools}>
 			<Button.Icon onClick={handleInsertTable}>
 				<ViewModuleOutlineIcon size={20} />
@@ -133,23 +144,42 @@ function MarkdownEditor() {
 		</div>
 	)
 
+	const operationElement = (
+		<div className={style.operation}>
+			{isMobile && (
+				<Button.Icon focus={previewing} onClick={togglePreview}>
+					<EyeOutlineIcon size={20} />
+				</Button.Icon>
+			)}
+			{online ? (
+				<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<SendIcon size={20} />}>
+					{t('article_publish.to_publish')}
+				</Button>
+			) : (
+				<span>{t('article_publish.publish_prompt')}</span>
+			)}
+		</div>
+	)
+
 	return (
 		<div className={style.markdown_editor}>
 			<div className={style.header_bar}>
-				{toolsBar}
-				<div className={style.operation}>
-					{online ? (
-						<Button className={style.publish} color={theme} onClick={handlePublish} prefixes={<SendIcon size={20} />}>
-							{t('article_publish.to_publish')}
-						</Button>
-					) : (
-						t('article_publish.publish_prompt')
-					)}
-				</div>
+				{toolsBarElement}
+				{operationElement}
 			</div>
 			<section className={style.content}>
-				<Editor ref={editorRef} {...editorProps} />
-				<Preview ref={previewRef} {...previewProps} />
+				{isMobile ? (
+					previewing ? (
+						<Preview ref={previewRef} {...previewProps} />
+					) : (
+						<Editor ref={editorRef} {...editorProps} />
+					)
+				) : (
+					<>
+						<Editor ref={editorRef} {...editorProps} />
+						<Preview ref={previewRef} {...previewProps} />
+					</>
+				)}
 			</section>
 		</div>
 	)

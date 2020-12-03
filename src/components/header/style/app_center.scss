@@ -13,7 +13,7 @@
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: $breakpoint_small) {
 	.app_center {
 		right: 1rem;
 		width: calc(100vw - 4rem);
