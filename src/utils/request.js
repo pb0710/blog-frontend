@@ -1,12 +1,14 @@
 import axios from 'axios'
 import { msg } from '@/components/base'
 import i18n from '@/common/i18n'
+import config from '@/config/index'
 
 const getNetError = () => i18n.t('error.network_connection_failed')
 
 const instance = axios.create({
-	// baseURL: 'http://192.168.0.100:10086',
-	baseURL: 'http://localhost:10086',
+	// baseURL: 'http://8.129.105.196:10086',
+	// baseURL: 'http://localhost:10086',
+	baseURL: config.BASE_URL,
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json;charset=UTF-8',

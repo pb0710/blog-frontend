@@ -73,7 +73,7 @@ function Account() {
 			rules: [
 				{
 					async validator(value) {
-						if (value.length < 4) {
+						if (value.length < 2) {
 							return Promise.reject(t('settings.profile.rule.nickname_length_limit'))
 						}
 					}

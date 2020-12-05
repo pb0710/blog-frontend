@@ -44,7 +44,11 @@ export default function Profile(props) {
 					avatar: avatarSrc,
 					nickname: values.nickname,
 					gender: values.gender,
-					selfIntroduction: values.selfIntroduction
+					selfIntroduction: values.selfIntroduction,
+					github: values.github,
+					phone: values.phone,
+					email: values.email,
+					wechat: values.wechat
 				}
 			}
 			dispatch(commonAction.userRegister(userInfo))
@@ -91,7 +95,7 @@ export default function Profile(props) {
 					rules={[
 						{
 							async validator(value) {
-								if (value.length < 4) {
+								if (value.length < 2) {
 									return Promise.reject(t('modal.profile.rule.nickname_length_limit'))
 								}
 							}

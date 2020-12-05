@@ -2,6 +2,7 @@
   "name": "blog-fe",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@testing-library/jest-dom": "^5.11.6",
@@ -50,9 +51,9 @@
     "sass-resources-loader": "^2.1.1"
   },
   "scripts": {
-    "start": "PORT=3333 react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
+    "start": "REACT_APP_PROXY_ENV=development PORT=3333 react-app-rewired start",
+    "build": "REACT_APP_PROXY_ENV=production react-app-rewired build",
+    "test": "REACT_APP_PROXY_ENV=development react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {

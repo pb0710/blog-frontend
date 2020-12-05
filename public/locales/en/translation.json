@@ -121,7 +121,7 @@
       "male": "Male",
       "female": "Female",
       "rule": {
-        "nickname_length_limit": "The length of the nickname cannot be less than 4 digits!"
+        "nickname_length_limit": "The length of the nickname cannot be less than 2 digits!"
       }
     }
   },
@@ -152,7 +152,7 @@
       "male": "Male",
       "female": "Female",
       "rule": {
-        "nickname_length_limit": "The length of the nickname cannot be less than 4 digits!"
+        "nickname_length_limit": "The length of the nickname cannot be less than 2 digits!"
       }
     },
     "auto_sync": "Sign account automatic synchronization settings.",

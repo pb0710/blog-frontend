@@ -114,14 +114,14 @@
       "nickname": "昵称",
       "gender": "性别",
       "self_introduction": "个人简介",
-      "github": "Github账号",
+      "github": "Github主页",
       "email": "邮箱",
       "phone": "电话号码",
       "wechat": "微信号",
       "male": "男",
       "female": "女",
       "rule": {
-        "nickname_length_limit": "昵称长度不能少于 4 位！"
+        "nickname_length_limit": "昵称长度不能少于 2 位！"
       }
     }
   },
@@ -152,7 +152,7 @@
       "male": "男",
       "female": "女",
       "rule": {
-        "nickname_length_limit": "昵称长度不能少于 4 位！"
+        "nickname_length_limit": "昵称长度不能少于 2 位！"
       }
     },
     "auto_sync": "登录账号 自动同步设置。",
