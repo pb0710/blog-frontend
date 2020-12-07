@@ -47,5 +47,11 @@
 				}
 			}
 		}
+
+		@media screen and (max-width: $breakpoint_small) {
+			.skeleton_card {
+				min-width: calc(50% - 2rem);
+			}
+		}
 	}
 }

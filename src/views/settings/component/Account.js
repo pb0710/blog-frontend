@@ -87,7 +87,7 @@ function Account() {
 			name: 'avatar',
 			initialValue: avatar,
 			component: (
-				<Uploader action={handleChangeAvatar}>
+				<Uploader multiple={false} action={handleChangeAvatar}>
 					<div className={avatarOptCls}>
 						<img src={avatar || defaultAvatar} alt="" />
 					</div>

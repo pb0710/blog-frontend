@@ -73,7 +73,7 @@ export default function ArticleInfo(props) {
 			name: 'pic',
 			initialValue: picSrc,
 			component: (
-				<Uploader className={style.center_box} action={handleAddPic}>
+				<Uploader className={style.center_box} multiple={false} action={handleAddPic}>
 					<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
 						<div className={style.pic_cover}>
 							<AddToPhotosIcon size={30} color={visible ? '#fff' : 'transparent'} />

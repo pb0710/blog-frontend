@@ -9,21 +9,22 @@
 	@include use_themes('.avatar_wrapper') {
 		display: flex;
 		align-items: center;
+		border: 2px solid transparent;
+		border-radius: 50%;
 		cursor: pointer;
+		transition: border-color $normal;
+
+		&:hover {
+			border: 2px solid $highlight;
+		}
 
 		> img {
 			width: 6rem;
 			height: 6rem;
-			border: 2px solid transparent;
-			border-radius: 50%;
+			border-radius: inherit;
 			vertical-align: text-top;
-			transition: border-color $normal;
 
 			object-fit: cover;
-
-			&:hover {
-				border: 2px solid $highlight;
-			}
 		}
 	}
 

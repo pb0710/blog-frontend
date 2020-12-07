@@ -137,7 +137,7 @@ function MarkdownEditor() {
 			<Button.Icon onClick={handleInsertTable}>
 				<ViewModuleOutlineIcon size={20} />
 			</Button.Icon>
-			<Uploader multiple onChange={handleFilesChange} />
+			<Uploader multiple={false} onChange={handleFilesChange} />
 			<Button.Icon onClick={handleInsertCode}>
 				<CodeIcon size={20} />
 			</Button.Icon>

@@ -80,7 +80,7 @@ export default function Profile(props) {
 			</Button.Icon>
 			<Form onFinsh={handleRegister}>
 				<Form.Item className={style.avatar_wrapper} name="avatar" initialValue={avatarSrc}>
-					<Uploader action={handleAddAvatar}>
+					<Uploader multiple={false} action={handleAddAvatar}>
 						<div className={style.avatar}>
 							<img src={avatarSrc} alt="" />
 							<div className={style.upload_cover} onMouseEnter={handleShowUpload} onMouseLeave={handleHideUpload}>
