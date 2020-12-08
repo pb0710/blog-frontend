@@ -76,7 +76,7 @@
     "rule": {
       "introduce_length_limit": "Article description length cannot exceed 150 characters!",
       "title_length_limit": "Title length is limited to 6～36 characters!",
-      "content_length_limit": "Article less than 20 words"
+      "content_length_limit": "Article less than 150 digits"
     }
   },
   "modal": {

@@ -33,10 +33,8 @@ export default function Search() {
 		if (!/^[a-z0-9]+$/i.test(keywords) && inputing.current) {
 			return
 		}
-		if (!keywords || keywords.length < 2) {
-			reset()
-			return
-		}
+		if (!keywords) return reset()
+
 		try {
 			const res = await search(keywords)
 			setResult(res)

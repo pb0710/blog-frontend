@@ -33,7 +33,7 @@ function MarkdownEditor() {
 	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
 	const isMobile = useMediaQuery('(max-width:600px)')
 
-	const [previewing, { setToggle: togglePreview, setTrue }] = useBoolean(false)
+	const [previewing, { toggle: togglePreview, setTrue }] = useBoolean(false)
 	const [content, setContent] = React.useState('')
 	React.useEffect(() => {
 		setContent(useMarkdownGuide ? temp.markdownDemo : '')
@@ -98,7 +98,7 @@ function MarkdownEditor() {
 	}
 
 	const handlePublish = () => {
-		if (!content || content.length < 20) {
+		if (!content || content.length < 150) {
 			msg.error(t('article_publish.rule.content_length_limit'))
 			return
 		}

@@ -1,5 +1,9 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 
+/**
+ * boolean hook
+ * @param {Boolean} initial 默认值
+ */
 export function useBoolean(initial) {
 	const [state, setState] = useState(initial)
 	const setTrue = () => {
@@ -8,14 +12,14 @@ export function useBoolean(initial) {
 	const setFalse = () => {
 		setState(false)
 	}
-	const setToggle = () => {
+	const toogle = () => {
 		setState(prev => !prev)
 	}
-	return [state, { setTrue, setFalse, setToggle }]
+	return [state, { setTrue, setFalse, toogle }]
 }
 
 /**
- * 异步请求hooks
+ * 异步请求hook
  * @param {Promise} promiseApi 异步请求函数
  * @param {Object} options
  *  @param {any} initialData 默认值

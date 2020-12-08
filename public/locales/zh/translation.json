@@ -67,7 +67,7 @@
   },
   "article_publish": {
     "to_publish": "去发布",
-    "publish_prompt": "登录成功后可发布...",
+    "publish_prompt": "发布文章需先登录...",
     "add_article": "添加文章",
     "title": "标题",
     "category": "文章类别",
@@ -76,7 +76,7 @@
     "rule": {
       "introduce_length_limit": "文章简介长度不能超过 150 位！",
       "title_length_limit": "标题长度限制为 6～36 位！",
-      "content_length_limit": "文章字数少于 20"
+      "content_length_limit": "文章字数少于 150"
     }
   },
   "modal": {

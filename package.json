@@ -43,16 +43,19 @@
     "babel-plugin-transform-imports": "^2.0.0",
     "customize-cra": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "gzipper": "^4.3.0",
     "husky": "^4.3.0",
     "prettier": "^2.2.0",
     "pretty-quick": "^3.1.0",
     "react-app-rewired": "^2.1.6",
     "sass": "^1.29.0",
-    "sass-resources-loader": "^2.1.1"
+    "sass-resources-loader": "^2.1.1",
+    "source-map-explorer": "^2.5.1"
   },
   "scripts": {
     "start": "REACT_APP_PROXY_ENV=development PORT=3333 react-app-rewired start",
-    "build": "REACT_APP_PROXY_ENV=production react-app-rewired build",
+    "build": "REACT_APP_PROXY_ENV=production react-app-rewired build && gzipper compress --verbose ./build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "test": "REACT_APP_PROXY_ENV=development react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
