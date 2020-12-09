@@ -1,9 +1,10 @@
 import React from 'react'
 import MarkdownToJSX from 'markdown-to-jsx'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import style from '../style/index.module.scss'
 import { getlang } from '../util'
+import { useSelector } from 'react-redux'
 
 const Fragment = props => <>{props.children}</>
 
@@ -19,7 +20,7 @@ const Pre = props => <pre className={style.code_wrapper}>{props.children}</pre>
 const Highlight = React.memo(props => {
 	const { language, children } = props
 	return (
-		<SyntaxHighlighter PreTag={Fragment} style={github} language={language}>
+		<SyntaxHighlighter PreTag={Fragment} style={vs} language={language}>
 			{children}
 		</SyntaxHighlighter>
 	)
@@ -31,8 +32,9 @@ function Code(props) {
 }
 
 function Markdown(props) {
+	const theme = useSelector(state => state.setting.theme)
 	return (
-		<div className={style.markdown_wrapper}>
+		<div className={style[`markdown_wrapper_${theme}`]}>
 			<MarkdownToJSX
 				options={{
 					disableParsingRawHTML: true,

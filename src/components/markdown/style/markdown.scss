@@ -1,4 +1,10 @@
-.markdown_wrapper {
+@mixin code_base {
+	font-size: 1.3rem !important;
+	font-family: SF Mono, Menlo !important;
+	line-height: 1.75em !important;
+}
+
+@include use_themes('.markdown_wrapper') {
 	p,
 	ul > li,
 	ol > li {
@@ -6,11 +12,21 @@
 	}
 
 	a {
-		color: get_theme('primary');
+		color: $highlight !important;
+		text-decoration: underline !important;
+		font-weight: 500;
+	}
 
-		&:hover {
-			text-decoration: underline;
-		}
+	code {
+		@include code_base;
+	}
+
+	p > code {
+		padding: 0.2rem 0.4rem;
+		border-radius: 0.4rem;
+		background: $background_variant;
+
+		@include code_base;
 	}
 
 	.code_wrapper {
@@ -19,12 +35,6 @@
 		padding: 2rem;
 		border-radius: 0.6rem;
 		background: $background_variant;
-
-		code {
-			font-size: 1.3rem;
-			font-family: 'SF Mono';
-			line-height: 1.75em;
-		}
 	}
 
 	.pic {

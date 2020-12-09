@@ -11484,10 +11484,10 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sylas-react-ui@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.npm.taobao.org/sylas-react-ui/download/sylas-react-ui-2.0.7.tgz#9da6da4a42646b228832625348a6a1fb2821176d"
-  integrity sha1-nabaSkJkayKIMmJTSKah+yghF20=
+sylas-react-ui@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npm.taobao.org/sylas-react-ui/download/sylas-react-ui-2.0.8.tgz#560f4518b183ce68f593db1454c46de98f9b93cc"
+  integrity sha1-Vg9FGLGDzmj1k9sUVMRt6Y+bk8w=
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@material-ui/styles" "^4.11.1"

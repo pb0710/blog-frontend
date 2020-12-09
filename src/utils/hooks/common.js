@@ -12,10 +12,10 @@ export function useBoolean(initial) {
 	const setFalse = () => {
 		setState(false)
 	}
-	const toogle = () => {
+	const toggle = () => {
 		setState(prev => !prev)
 	}
-	return [state, { setTrue, setFalse, toogle }]
+	return [state, { setTrue, setFalse, toggle }]
 }
 
 /**
