@@ -5,7 +5,7 @@
 	display: flex;
 	align-items: center;
 	padding: 0 1rem 0 8rem;
-	width: 100vw;
+	width: 100%;
 	height: 5rem;
 	border-bottom: 1px solid $divider;
 	background: $background;
@@ -15,6 +15,12 @@
 	> .drawer_control {
 		position: absolute;
 		left: 2rem;
+	}
+
+	@media screen and (max-width: $breakpoint_small) {
+		> .drawer_control {
+			left: 1rem;
+		}
 	}
 
 	> .tool_bar {
@@ -36,11 +42,5 @@
 			margin-left: 1rem;
 			@extend.btn;
 		}
-	}
-}
-
-@media screen and (max-width: $breakpoint_small) {
-	.header {
-		padding: 0 0 0 8rem;
 	}
 }

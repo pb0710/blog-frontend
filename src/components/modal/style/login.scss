@@ -17,8 +17,10 @@
 		cursor: pointer;
 		transition: color $normal;
 
-		&:hover {
-			color: $highlight;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $highlight;
+			}
 		}
 	}
 

@@ -43,8 +43,10 @@
 		.article_item {
 			justify-content: space-between;
 
-			&:hover {
-				color: $highlight;
+			@media (any-hover: hover) {
+				&:hover {
+					color: $highlight;
+				}
 			}
 		}
 

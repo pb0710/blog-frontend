@@ -23,8 +23,11 @@
 			color: #fff;
 
 			@include flex_center;
-			&:hover {
-				backdrop-filter: blur(24px);
+
+			@media (any-hover: hover) {
+				&:hover {
+					backdrop-filter: blur(24px);
+				}
 			}
 		}
 

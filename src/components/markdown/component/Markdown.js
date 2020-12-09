@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux'
 
 const Fragment = props => <>{props.children}</>
 
+const Blockquote = props => <blockquote className={style.blockquote}>{props.children}</blockquote>
+
 const Img = props => (
 	<span className={style.pic}>
 		<img alt="" {...props} />
@@ -16,7 +18,7 @@ const Img = props => (
 
 const Pre = props => <pre className={style.code_wrapper}>{props.children}</pre>
 
-// 防止 SyntaxHighlighter 大量重渲染
+// 防止 SyntaxHighlighter 重复注入 props.language ，进而引发组件频繁重渲染造成性能问题。
 const Highlight = React.memo(props => {
 	const { language, children } = props
 	return (
@@ -39,6 +41,7 @@ function Markdown(props) {
 				options={{
 					disableParsingRawHTML: true,
 					overrides: {
+						blockquote: Blockquote,
 						code: Code,
 						pre: Pre,
 						img: Img

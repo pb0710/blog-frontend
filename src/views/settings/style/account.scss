@@ -2,8 +2,11 @@
 	@include use_themes('.btn') {
 		border: 1px solid $highlight;
 		background: #fff;
-		&:hover {
-			background: #f8f8f8;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: #f8f8f8;
+			}
 		}
 	}
 	@include use_themes('.avatar_wrapper') {
@@ -14,8 +17,10 @@
 		cursor: pointer;
 		transition: border-color $normal;
 
-		&:hover {
-			border: 2px solid $highlight;
+		@media (any-hover: hover) {
+			&:hover {
+				border: 2px solid $highlight;
+			}
 		}
 
 		> img {

@@ -37,6 +37,13 @@
 		background: $background_variant;
 	}
 
+	.blockquote {
+		padding-left: 1rem;
+		border-left: 0.4rem solid $highlight;
+		border-top-right-radius: 0.6rem;
+		border-bottom-right-radius: 0.6rem;
+	}
+
 	.pic {
 		display: flex;
 		justify-content: center;

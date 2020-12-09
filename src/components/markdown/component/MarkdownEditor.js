@@ -13,6 +13,7 @@ import { ArticleInfo } from '@/views/articleUpload'
 import ViewModuleOutlineIcon from 'mdi-react/ViewModuleOutlineIcon'
 import CodeIcon from 'mdi-react/CodeIcon'
 import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon'
+import EyeIcon from 'mdi-react/EyeIcon'
 import SendIcon from 'mdi-react/SendIcon'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
@@ -147,8 +148,8 @@ function MarkdownEditor() {
 	const operationElement = (
 		<div className={style.operation}>
 			{isMobile && (
-				<Button.Icon focus={previewing} onClick={togglePreview}>
-					<EyeOutlineIcon size={20} />
+				<Button.Icon onClick={togglePreview}>
+					{previewing ? <EyeIcon size={20} /> : <EyeOutlineIcon size={20} />}
 				</Button.Icon>
 			)}
 			{online ? (

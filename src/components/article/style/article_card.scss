@@ -17,12 +17,14 @@
 			transition: color $normal;
 		}
 
-		&:hover {
-			box-shadow: $large_shadow;
-			transform: scale(1.02);
+		@media (any-hover: hover) {
+			&:hover {
+				box-shadow: $large_shadow;
+				transform: scale(1.02);
 
-			h3 {
-				color: $highlight;
+				h3 {
+					color: $highlight;
+				}
 			}
 		}
 
