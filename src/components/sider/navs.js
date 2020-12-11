@@ -1,6 +1,5 @@
 import HomeIcon from 'mdi-react/HomeIcon'
 import LibraryEditIcon from 'mdi-react/LibraryEditIcon'
-import ExploreIcon from 'mdi-react/ExploreIcon'
 import CreateIcon from 'mdi-react/CreateIcon'
 import SettingsIcon from 'mdi-react/SettingsIcon'
 import InfoCircleIcon from 'mdi-react/InfoCircleIcon'
@@ -10,14 +9,14 @@ const getNavs = (t = i18n.t) => [
 	{
 		id: '0',
 		level: 1,
-		to: '/',
+		to: '/blog',
 		title: t('nav.home'),
 		icon: <HomeIcon size={20} />
 	},
 	{
 		id: '1',
 		level: 1,
-		to: '/article',
+		to: '/blog/article',
 		title: t('nav.article_category'),
 		icon: <LibraryEditIcon size={20} />,
 		child: [
@@ -56,21 +55,21 @@ const getNavs = (t = i18n.t) => [
 	{
 		id: '2',
 		level: 1,
-		to: '/upload',
+		to: '/blog/upload',
 		title: t('nav.write'),
 		icon: <CreateIcon size={20} />
 	},
 	{
 		id: '3',
 		level: 1,
-		to: '/setting',
+		to: '/blog/setting',
 		title: t('nav.settings'),
 		icon: <SettingsIcon size={20} />
 	},
 	{
 		id: '4',
 		level: 1,
-		to: '/about',
+		to: '/blog/about',
 		title: t('nav.about'),
 		icon: <InfoCircleIcon size={20} />
 	}

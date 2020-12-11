@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Branch(props) {
-	const { to = '/', name = 'BLOG' } = props
+	const { to = '/blog', name = 'BLOG' } = props
 	const theme = useSelector(state => state.setting.theme)
 	return (
 		<Link className={style[`branch_${theme}`]} to={to}>

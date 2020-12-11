@@ -8,7 +8,7 @@ import clsx from 'clsx'
 import NavMenu from './NavMenu'
 import { Branch } from '@/components/header'
 import { Mask } from '@/components/base'
-import { useMediaQuery } from '@/utils/hooks/ui'
+import { useMediaQuery } from '@/utils/hooks'
 
 export default function Sider() {
 	const dispatch = useDispatch()

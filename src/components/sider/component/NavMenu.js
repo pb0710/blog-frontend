@@ -3,9 +3,9 @@ import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import getNavs from './navs'
+import getNavs from '../navs'
 import { useTranslation } from 'react-i18next'
-import { useMediaQuery } from '@/utils/hooks/ui'
+import { useMediaQuery } from '@/utils/hooks'
 import { updateDrawer } from '../store/action'
 
 function Nav(props) {

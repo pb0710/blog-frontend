@@ -16,7 +16,7 @@ export default function ArticleDetail() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
-	const detail = useSelector(state => state.article.detail)
+	const detail = useSelector(state => state.articleDetail)
 	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0 } = detail
 	const { id } = useParams()
 
@@ -28,12 +28,15 @@ export default function ArticleDetail() {
 
 	React.useEffect(() => {
 		if (data.content) {
-			dispatch(action.updateDetail(data))
+			dispatch(action.updateArticleDetail(data))
 		}
+	}, [data, dispatch])
+
+	React.useEffect(() => {
 		if (error) {
 			msg.error(error)
 		}
-	}, [data, dispatch, error])
+	}, [error])
 
 	React.useEffect(() => {
 		if (id) {

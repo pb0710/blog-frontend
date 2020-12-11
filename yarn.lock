@@ -1838,10 +1838,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@testing-library/user-event@^12.2.2":
-  version "12.2.2"
-  resolved "https://registry.npm.taobao.org/@testing-library/user-event/download/@testing-library/user-event-12.2.2.tgz?cache=0&sync_timestamp=1605075534297&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40testing-library%2Fuser-event%2Fdownload%2F%40testing-library%2Fuser-event-12.2.2.tgz#22d0047da745289335240f523dfe74c889ec96cb"
-  integrity sha1-ItAEfadFKJM1JA9SPf50yInslss=
+"@testing-library/user-event@^12.5.0":
+  version "12.5.0"
+  resolved "https://registry.npm.taobao.org/@testing-library/user-event/download/@testing-library/user-event-12.5.0.tgz#7c6f69cee4dbd11037ac9c3f62c5d81b9a4ccf30"
+  integrity sha1-fG9pzuTb0RA3rJw/YsXYG5pMzzA=
   dependencies:
     "@babel/runtime" "^7.10.2"
 
@@ -4252,10 +4252,10 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-dayjs@^1.9.6:
-  version "1.9.6"
-  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.9.6.tgz#6f0c77d76ac1ff63720dd1197e5cb87b67943d70"
-  integrity sha1-bwx312rB/2NyDdEZfly4e2eUPXA=
+dayjs@^1.9.7:
+  version "1.9.7"
+  resolved "https://registry.npm.taobao.org/dayjs/download/dayjs-1.9.7.tgz?cache=0&sync_timestamp=1607178688305&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fdayjs%2Fdownload%2Fdayjs-1.9.7.tgz#4b260bb17dceed2d5f29038dfee03c65a6786fc0"
+  integrity sha1-SyYLsX3O7S1fKQON/uA8ZaZ4b8A=
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -4940,10 +4940,10 @@ eslint-plugin-jsx-a11y@^6.3.1:
     jsx-ast-utils "^3.1.0"
     language-tags "^1.0.5"
 
-eslint-plugin-prettier@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.npm.taobao.org/eslint-plugin-prettier/download/eslint-plugin-prettier-3.1.4.tgz#168ab43154e2ea57db992a2cd097c828171f75c2"
-  integrity sha1-Foq0MVTi6lfbmSos0JfIKBcfdcI=
+eslint-plugin-prettier@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/eslint-plugin-prettier/download/eslint-plugin-prettier-3.2.0.tgz?cache=0&sync_timestamp=1606976467694&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-plugin-prettier%2Fdownload%2Feslint-plugin-prettier-3.2.0.tgz#af391b2226fa0e15c96f36c733f6e9035dbd952c"
+  integrity sha1-rzkbIib6DhXJbzbHM/bpA129lSw=
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
@@ -5947,7 +5947,12 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
-highlight.js@^10.1.1, highlight.js@~10.4.0:
+highlight.js@^10.4.1:
+  version "10.4.1"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.4.1.tgz#d48fbcf4a9971c4361b3f95f302747afe19dbad0"
+  integrity sha512-yR5lWvNz7c85OhVAEAeFhVCc/GV4C30Fjzc/rCP0aCWzc1UUOPUk55dK/qdwTZHBvMZo+eZ2jpk62ndX/xMFlg==
+
+highlight.js@~10.4.0:
   version "10.4.0"
   resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-10.4.0.tgz#ef3ce475e5dfa7a48484260b49ea242ddab823a0"
   integrity sha1-7zzkdeXfp6SEhCYLSeokLdq4I6A=
@@ -6159,10 +6164,10 @@ human-signals@^1.1.1:
   resolved "https://registry.npm.taobao.org/human-signals/download/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha1-xbHNFPUK6uCatsWf5jujOV/k36M=
 
-husky@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.npm.taobao.org/husky/download/husky-4.3.0.tgz?cache=0&sync_timestamp=1606024957860&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhusky%2Fdownload%2Fhusky-4.3.0.tgz#0b2ec1d66424e9219d359e26a51c58ec5278f0de"
-  integrity sha1-Cy7B1mQk6SGdNZ4mpRxY7FJ48N4=
+husky@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.npm.taobao.org/husky/download/husky-4.3.5.tgz?cache=0&sync_timestamp=1607327417714&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhusky%2Fdownload%2Fhusky-4.3.5.tgz#ab8d2a0eb6b62fef2853ee3d442c927d89290902"
+  integrity sha1-q40qDra2L+8oU+49RCySfYkpCQI=
   dependencies:
     chalk "^4.0.0"
     ci-info "^2.0.0"
@@ -7773,7 +7778,7 @@ lower-case@^2.0.1:
   dependencies:
     tslib "^1.10.0"
 
-lowlight@^1.14.0:
+lowlight@^1.17.0:
   version "1.17.0"
   resolved "https://registry.npm.taobao.org/lowlight/download/lowlight-1.17.0.tgz?cache=0&sync_timestamp=1605775661899&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Flowlight%2Fdownload%2Flowlight-1.17.0.tgz#a1143b2fba8239df8cd5893f9fe97aaf8465af4a"
   integrity sha1-oRQ7L7qCOd+M1Yk/n+l6r4Rlr0o=
@@ -9623,10 +9628,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npm.taobao.org/prettier/download/prettier-2.2.0.tgz?cache=0&sync_timestamp=1605845828329&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprettier%2Fdownload%2Fprettier-2.2.0.tgz#8a03c7777883b29b37fb2c4348c66a78e980418b"
-  integrity sha1-igPHd3iDsps3+yxDSMZqeOmAQYs=
+prettier@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/prettier/download/prettier-2.2.1.tgz?cache=0&sync_timestamp=1606521409892&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprettier%2Fdownload%2Fprettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha1-eVoaeN1S8HPaDNQrIfnJE4GSP/U=
 
 pretty-bytes@^5.3.0:
   version "5.4.1"
@@ -9891,14 +9896,14 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-app-rewired@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.npm.taobao.org/react-app-rewired/download/react-app-rewired-2.1.6.tgz#33ee3076a7f34d6a7c94e649cac67e7c8c580de8"
-  integrity sha1-M+4wdqfzTWp8lOZJysZ+fIxYDeg=
+react-app-rewired@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.npm.taobao.org/react-app-rewired/download/react-app-rewired-2.1.7.tgz#b229d32b93b076059e62b06e8117109b92599e18"
+  integrity sha1-sinTK5OwdgWeYrBugRcQm5JZnhg=
   dependencies:
     semver "^5.6.0"
 
-react-dev-utils@^11.0.0:
+react-dev-utils@^11.0.1:
   version "11.0.1"
   resolved "https://registry.npm.taobao.org/react-dev-utils/download/react-dev-utils-11.0.1.tgz#30106c2055acfd6b047d2dc478a85c356e66fe45"
   integrity sha1-MBBsIFWs/WsEfS3EeKhcNW5m/kU=
@@ -9942,10 +9947,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-6.0.8.tgz?cache=0&sync_timestamp=1603462422193&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-error-overlay%2Fdownload%2Freact-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha1-R07RHQT8a9o69kNEfYXpEn7Wtd4=
 
-react-i18next@^11.7.3:
-  version "11.7.3"
-  resolved "https://registry.npm.taobao.org/react-i18next/download/react-i18next-11.7.3.tgz#256461c46baf5b3208c3c6860ca4e569fc7ed053"
-  integrity sha1-JWRhxGuvWzIIw8aGDKTlafx+0FM=
+react-i18next@^11.8.3:
+  version "11.8.3"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.3.tgz#d365586a537f759a1bff75e01054f6a5fc71e4f5"
+  integrity sha512-E5LjGmM3Kgje4M0oSkHFNAxiU1BM+P1J9QPfF7+Agm4sa1YS18GhQNJCZD3o9ofZLjq8ocQfGUuYweYGfrj0RQ==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -10005,10 +10010,10 @@ react-router@5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-scripts@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npm.taobao.org/react-scripts/download/react-scripts-4.0.0.tgz#36f3d84ffff708ac0618fd61e71eaaea11c26417"
-  integrity sha1-NvPYT//3CKwGGP1h5x6q6hHCZBc=
+react-scripts@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/react-scripts/download/react-scripts-4.0.1.tgz#34974c0f4cfdf1655906c95df6a04d80db8b88f0"
+  integrity sha1-NJdMD0z98WVZBsld9qBNgNuLiPA=
   dependencies:
     "@babel/core" "7.12.3"
     "@pmmmwh/react-refresh-webpack-plugin" "0.4.2"
@@ -10052,8 +10057,9 @@ react-scripts@4.0.0:
     postcss-normalize "8.0.1"
     postcss-preset-env "6.7.0"
     postcss-safe-parser "5.0.2"
+    prompts "2.4.0"
     react-app-polyfill "^2.0.0"
-    react-dev-utils "^11.0.0"
+    react-dev-utils "^11.0.1"
     react-refresh "^0.8.3"
     resolve "1.18.1"
     resolve-url-loader "^3.1.2"
@@ -10070,14 +10076,14 @@ react-scripts@4.0.0:
   optionalDependencies:
     fsevents "^2.1.3"
 
-react-syntax-highlighter@^15.3.0:
-  version "15.3.1"
-  resolved "https://registry.npm.taobao.org/react-syntax-highlighter/download/react-syntax-highlighter-15.3.1.tgz#ba16ae8705f191956b73d0e11ae938fd255f2579"
-  integrity sha1-uhauhwXxkZVrc9DhGuk4/SVfJXk=
+react-syntax-highlighter@^15.4.3:
+  version "15.4.3"
+  resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-15.4.3.tgz#fffe3286677ac470b963b364916d16374996f3a6"
+  integrity sha512-TnhGgZKXr5o8a63uYdRTzeb8ijJOgRGe0qjrE0eK/gajtdyqnSO6LqB3vW16hHB0cFierYSoy/AOJw8z1Dui8g==
   dependencies:
     "@babel/runtime" "^7.3.1"
-    highlight.js "^10.1.1"
-    lowlight "^1.14.0"
+    highlight.js "^10.4.1"
+    lowlight "^1.17.0"
     prismjs "^1.22.0"
     refractor "^3.2.0"
 
@@ -10655,10 +10661,10 @@ sass-resources-loader@^2.1.1:
     glob "^7.1.6"
     loader-utils "^2.0.0"
 
-sass@^1.29.0:
-  version "1.29.0"
-  resolved "https://registry.npm.taobao.org/sass/download/sass-1.29.0.tgz?cache=0&sync_timestamp=1604536466387&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsass%2Fdownload%2Fsass-1.29.0.tgz#ec4e1842c146d8ea9258c28c141b8c2b7c6ab7f1"
-  integrity sha1-7E4YQsFG2OqSWMKMFBuMK3xqt/E=
+sass@^1.30.0:
+  version "1.30.0"
+  resolved "https://registry.npm.taobao.org/sass/download/sass-1.30.0.tgz?cache=0&sync_timestamp=1607126627822&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsass%2Fdownload%2Fsass-1.30.0.tgz#60bbbbaf76ba10117e61c6c24f00161c3d60610e"
+  integrity sha1-YLu7r3a6EBF+YcbCTwAWHD1gYQ4=
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
@@ -11484,10 +11490,10 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-sylas-react-ui@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.npm.taobao.org/sylas-react-ui/download/sylas-react-ui-2.0.8.tgz#560f4518b183ce68f593db1454c46de98f9b93cc"
-  integrity sha1-Vg9FGLGDzmj1k9sUVMRt6Y+bk8w=
+sylas-react-ui@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/sylas-react-ui/-/sylas-react-ui-2.0.9.tgz#81c0ee252fa648ce0f640ef720de061e7912b260"
+  integrity sha512-UxW5pvuw0i0qmePKxMCR6iv9PKaIFz7uVJbYpgPx8TUqi+VK4RWiP353HHGnjEODxOzAm1k9jRwF2FqZ/COpJA==
   dependencies:
     "@ant-design/icons" "^4.3.0"
     "@material-ui/styles" "^4.11.1"
@@ -12119,6 +12125,11 @@ uuid@^8.3.0, uuid@^8.3.1:
   version "8.3.1"
   resolved "https://registry.npm.taobao.org/uuid/download/uuid-8.3.1.tgz?cache=0&sync_timestamp=1605962408810&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuuid%2Fdownload%2Fuuid-8.3.1.tgz#2ba2e6ca000da60fce5a196954ab241131e05a31"
   integrity sha1-K6LmygANpg/OWhlpVKskETHgWjE=
+
+uuid@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.npm.taobao.org/uuid/download/uuid-8.3.2.tgz?cache=0&sync_timestamp=1607460077975&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fuuid%2Fdownload%2Fuuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=
 
 v8-compile-cache@^2.0.3:
   version "2.2.0"

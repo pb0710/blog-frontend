@@ -24,12 +24,12 @@ export default function UserProfile() {
 				<img src={avatar} alt="" />
 			</Button.Icon>
 			<Popup ref={popupRef} className={style.user_profile} visible={visible} scaleOrigin="top-right">
-				<Link to="/">
+				<Link to="/blog">
 					<div className={style.large_avatar}>
 						<img src={avatar} alt="" />
 					</div>
 				</Link>
-				<Link to="/">
+				<Link to="/blog">
 					<h3>{nickname}</h3>
 				</Link>
 				<span>{username}</span>

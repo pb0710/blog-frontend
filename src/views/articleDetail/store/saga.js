@@ -6,10 +6,10 @@ import * as action from './action'
 function* increaseArticleViews(articleId) {
 	try {
 		const { views } = yield articleApi.increaseViews(articleId)
-		const oldDetail = yield select(state => state.article.detail)
-		yield put(action.updateDetail({ ...oldDetail, views }))
+		const oldDetail = yield select(state => state.articleDetail)
+		yield put(action.updateArticleDetail({ ...oldDetail, views }))
 	} catch (err) {
-		console.error('增加文章阅读量失败', err)
+		console.error('增加文章阅读次数失败', err)
 	}
 }
 

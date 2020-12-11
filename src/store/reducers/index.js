@@ -9,6 +9,6 @@ export default combineReducers({
 	...common,
 	sider: combineReducers(sider),
 	modal: combineReducers(modal),
-	article: combineReducers(article),
+	...article,
 	...setting
 })

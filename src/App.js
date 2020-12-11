@@ -4,7 +4,7 @@ import { Sider } from '@/components/sider'
 import { RightSider } from '@/components/rightSider'
 import { Content } from '@/components/content'
 import { Modal } from '@/components/modal'
-import { useMediaQuery } from '@/utils/hooks/ui'
+import { useMediaQuery } from '@/utils/hooks'
 
 export default function App() {
 	const isMobile = useMediaQuery('(max-width:600px)')

@@ -4,43 +4,67 @@ import { Switch, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import clsx from 'clsx'
 import { Panel, Affix } from '@/components/base'
+import IndividualPanel from './IndividualPanel'
 import AuthorPanel from './AuthorPanel'
 import ArticleStatsPanel from './ArticleStatsPanel'
-import IndividualPanel from './IndividualPanel'
 
 function RightSider() {
 	const opened = useSelector(state => state.sider.drawerOpened)
 	const rightSiderCls = clsx(style.right_sider, opened && style.narrowing)
-	return (
-		<Switch>
-			<Route exact path="/">
-				<aside className={rightSiderCls}>
-					<Affix>
-						<IndividualPanel />
-					</Affix>
-				</aside>
-			</Route>
-			<Route exact path="/upload" />
-			<Route exact path="/setting" />
-			<Route exact path="/article/:category" />
-			<Route exact path="/article/:category/detail/:id">
-				<aside className={rightSiderCls}>
+
+	const rightSideRoutes = [
+		{
+			path: '',
+			component: (
+				<Affix>
+					<IndividualPanel />
+				</Affix>
+			)
+		},
+		{
+			path: '/upload',
+			component: null
+		},
+		{
+			path: '/setting',
+			component: null
+		},
+		{
+			path: '/article/:category',
+			component: null
+		},
+		{
+			path: '/article/:category/detail/:id',
+			component: (
+				<>
 					<AuthorPanel />
 					<Affix>
 						<ArticleStatsPanel />
 					</Affix>
-				</aside>
-			</Route>
-			<Route>
-				<aside className={rightSiderCls}>
-					<Panel></Panel>
-					<Panel></Panel>
-					<Affix>
+				</>
+			)
+		}
+	]
+
+	return (
+		<React.Suspense fallback="loading">
+			<aside className={rightSiderCls}>
+				<Switch>
+					{rightSideRoutes.map(({ path, component, ...rest }) => (
+						<Route key={path} exact path={`/blog${path}`} {...rest}>
+							{component}
+						</Route>
+					))}
+					<Route>
 						<Panel></Panel>
-					</Affix>
-				</aside>
-			</Route>
-		</Switch>
+						<Panel></Panel>
+						<Affix>
+							<Panel></Panel>
+						</Affix>
+					</Route>
+				</Switch>
+			</aside>
+		</React.Suspense>
 	)
 }
 

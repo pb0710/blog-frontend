@@ -22,7 +22,7 @@ export function useBoolean(initial) {
  * 异步请求hook
  * @param {Promise} promiseApi 异步请求函数
  * @param {Object} options
- *  @param {any} initialData 默认值
+ *  @param {*} initialData 默认值
  *  @param {Boolean} immutable 请求是否不可变
  *  @param {Array} params 默认请求参数
  *  @param {Array} refreshDeps 重新请求依赖项
@@ -62,4 +62,21 @@ export function useFetch(promiseApi, { initialData, params = [], immutable = fal
 	)
 
 	return { data, error, loading, excute }
+}
+
+export const useMediaQuery = (query, whenTrue = true, whenFalse = false) => {
+	if (typeof window === 'undefined' || typeof window.matchMedia === 'undefined') return whenFalse
+
+	const mediaQuery = window.matchMedia(query)
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const [match, setMatch] = useState(!!mediaQuery.matches)
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	useEffect(() => {
+		const handler = () => setMatch(!!mediaQuery.matches)
+		mediaQuery.addListener(handler)
+		return () => mediaQuery.removeListener(handler)
+	}, [mediaQuery])
+
+	return match ? whenTrue : whenFalse
 }

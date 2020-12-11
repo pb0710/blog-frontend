@@ -23,7 +23,7 @@ export default function NotFound() {
 					<Button color={theme} light onClick={handleGoback}>
 						{t('not_found.go_back')}
 					</Button>
-					<Link to="/">
+					<Link to="/blog">
 						<Button color={theme}>{t('not_found.go_home')}</Button>
 					</Link>
 				</div>

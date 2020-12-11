@@ -8,16 +8,16 @@ import PhoneIcon from 'mdi-react/PhoneIcon'
 import AddIcon from 'mdi-react/AddIcon'
 import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
 import * as userApi from '@/apis/user'
+import { updateArticleDetail } from '@/views/articleDetail/store/action'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useTranslation } from 'react-i18next'
 import Contact from './Contact'
 
 export default function AuthorPanel() {
 	const { t } = useTranslation()
-	const detail = useSelector(state => state.article.detail)
+	const detail = useSelector(state => state.articleDetail)
 	const theme = useSelector(state => state.setting.theme)
 	const { author } = detail
 
@@ -29,6 +29,14 @@ export default function AuthorPanel() {
 	})
 	const { nickname, avatar, contacts } = data
 	const hasContacts = typeof contacts === 'object' && Object.values(contacts).filter(Boolean).length > 0
+
+	React.useEffect(
+		() => () => {
+			console.log('AuthorPanel卸载')
+			updateArticleDetail({})
+		},
+		[]
+	)
 
 	const contactsElement = hasContacts ? (
 		<>
@@ -63,7 +71,7 @@ export default function AuthorPanel() {
 	return (
 		<Panel className={style.author_panel}>
 			<List>
-				{/* <Link to="/"> */}
+				{/* <Link to="/blog"> */}
 				<List.Item className={avatarItemCls}>
 					<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
 					<div className={style.right_wrapper}>

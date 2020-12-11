@@ -17,8 +17,7 @@ import EyeIcon from 'mdi-react/EyeIcon'
 import SendIcon from 'mdi-react/SendIcon'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
-import { useMediaQuery } from '@/utils/hooks/ui'
-import { useBoolean } from '@/utils/hooks'
+import { useMediaQuery, useBoolean } from '@/utils/hooks'
 
 const area = {
 	EDITOR: 'editor',
@@ -162,26 +161,30 @@ function MarkdownEditor() {
 		</div>
 	)
 
+	const contentElement = (
+		<section className={style.content}>
+			{isMobile ? (
+				previewing ? (
+					<Preview ref={previewRef} {...previewProps} />
+				) : (
+					<Editor ref={editorRef} {...editorProps} />
+				)
+			) : (
+				<>
+					<Editor ref={editorRef} {...editorProps} />
+					<Preview ref={previewRef} {...previewProps} />
+				</>
+			)}
+		</section>
+	)
+
 	return (
 		<div className={style.markdown_editor}>
 			<div className={style.header_bar}>
 				{toolsBarElement}
 				{operationElement}
 			</div>
-			<section className={style.content}>
-				{isMobile ? (
-					previewing ? (
-						<Preview ref={previewRef} {...previewProps} />
-					) : (
-						<Editor ref={editorRef} {...editorProps} />
-					)
-				) : (
-					<>
-						<Editor ref={editorRef} {...editorProps} />
-						<Preview ref={previewRef} {...previewProps} />
-					</>
-				)}
-			</section>
+			{contentElement}
 		</div>
 	)
 }

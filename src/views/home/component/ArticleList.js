@@ -24,13 +24,13 @@ function ArticleList(props) {
 	const listElement = data.map(article => {
 		const { id, title, author, category, introduce, backgroundImage, creationTime } = article
 		return (
-			<Link key={id} to={`/article/${category}/detail/${id}`}>
+			<Link key={id} to={`/blog/article/${category}/detail/${id}`}>
 				<List.Item className={style.article_item} hovered ripple>
 					<div className={style.inner}>
 						<div className={style.left_wrapper}>
 							<div>
 								<span>
-									{/* <Link to="/user">{author}</Link> */}
+									{/* <Link to="/blog/user">{author}</Link> */}
 									{author}
 								</span>
 								<span>-</span>

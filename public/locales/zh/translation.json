@@ -59,7 +59,7 @@
   "article_detail": {
     "create_date": "YYYY年MM月DD日",
     "total_words": "总字数：",
-    "views": "阅读量：",
+    "views": "被阅读：",
     "subscribe": "关注",
     "comments": "评论数：",
     "collections": "收藏：",

@@ -18,7 +18,7 @@ function ArticleStatsPanel() {
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
 	const { userId } = useSelector(state => state.userProfile)
-	const detail = useSelector(state => state.article.detail)
+	const detail = useSelector(state => state.articleDetail)
 	const { id: articleId, likes = [], views = 0 } = detail
 
 	const liked = likes.some(item => item?.toString?.() === userId?.toString?.())
@@ -29,7 +29,7 @@ function ArticleStatsPanel() {
 			try {
 				await articleApi.dislike(userId, articleId)
 				dispatch(
-					articleDetailAction.updateDetail({
+					articleDetailAction.updateArticleDetail({
 						...detail,
 						likes: likes.filter(item => item?.toString?.() !== userId?.toString?.())
 					})
@@ -47,7 +47,7 @@ function ArticleStatsPanel() {
 			try {
 				await articleApi.like(userId, articleId)
 				dispatch(
-					articleDetailAction.updateDetail({
+					articleDetailAction.updateArticleDetail({
 						...detail,
 						likes: [...likes, userId]
 					})
