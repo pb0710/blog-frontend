@@ -2,9 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
-import * as commonAction from '@/store/actions'
-import * as action from '@/components/sider/store/action'
-import * as modalAction from '@/components/modal/store/action'
+import { initUser } from '@/store/actions'
+import { updateDrawer } from '@/components/sider/store/action'
+import { updateModal } from '@/components/modal/store/action'
 import AppCenter from './AppCenter'
 import Search from './Search'
 import UserProfile from './UserProfile'
@@ -20,15 +20,15 @@ export default function Header() {
 	const theme = useSelector(state => state.setting.theme)
 
 	const handleToggleDrawer = () => {
-		dispatch(action.updateDrawer(true))
+		dispatch(updateDrawer(true))
 	}
 
 	const handleGoLogin = () => {
-		dispatch(modalAction.updateModal(true, <Login />))
+		dispatch(updateModal(true, <Login />))
 	}
 
 	React.useEffect(() => {
-		dispatch(commonAction.initUser())
+		dispatch(initUser())
 	}, [dispatch])
 
 	return (

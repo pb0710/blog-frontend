@@ -3,8 +3,8 @@ import style from '../style/index.module.scss'
 import { Form, Input, Button, Loading } from 'sylas-react-ui'
 import CloseIcon from 'mdi-react/CloseIcon'
 import { useDispatch, useSelector } from 'react-redux'
-import * as commonAction from '@/store/actions'
-import * as action from '../store/action'
+import { userLogin } from '@/store/actions'
+import { updateModal } from '../store/action'
 import Register from './Register'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { msg } from '@/components/base'
@@ -24,11 +24,11 @@ export default function Login() {
 	})
 
 	const handleClose = () => {
-		dispatch(action.updateModal(false, null))
+		dispatch(updateModal(false, null))
 	}
 
 	const handleGoRegister = () => {
-		dispatch(action.updateModal(true, <Register />))
+		dispatch(updateModal(true, <Register />))
 	}
 
 	const handleSubmit = values => {
@@ -39,7 +39,7 @@ export default function Login() {
 			return
 		}
 
-		dispatch(commonAction.userLogin({ username, password }))
+		dispatch(userLogin({ username, password }))
 	}
 
 	React.useEffect(() => {

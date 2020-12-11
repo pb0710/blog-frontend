@@ -13,7 +13,7 @@ import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
 import MailOutlineIcon from 'mdi-react/MailOutlineIcon'
 import PhoneIcon from 'mdi-react/PhoneIcon'
 import * as fileApi from '@/apis/file'
-import * as commonAction from '@/store/actions'
+import { updateUserProfile, userLogout } from '@/store/actions'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
 import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
@@ -31,7 +31,7 @@ function Account() {
 			try {
 				const avatar = await fileApi.uploadImage(formData)
 				dispatch(
-					commonAction.updateUserProfile({
+					updateUserProfile({
 						...profile,
 						avatar
 					})
@@ -45,7 +45,7 @@ function Account() {
 	)
 
 	const handleLogout = () => {
-		dispatch(commonAction.userLogout())
+		dispatch(userLogout())
 	}
 
 	const usernameOptCls = clsx(style.option, style.username_wrapper)

@@ -1,36 +1,47 @@
-.article_detail {
-	padding: 1rem;
-	padding-top: 5rem;
+.article_detail_wrapper {
+	overflow: hidden;
+	margin-bottom: 2rem;
+	border-radius: 0.6rem;
+	background: $background;
+	box-shadow: $small_shadow;
 
-	.article_wrapper {
-		padding: 1rem;
+	.article_content {
+		padding: 0 4rem 4rem 4rem;
+	}
 
-		.bg {
-			margin-top: 1rem;
-			width: 100%;
-			border-radius: 0.6rem;
+	.bg_pic {
+		width: 100%;
+		background: #fff;
+	}
+
+	.bg_skeleton {
+		width: 100%;
+		height: 36rem;
+		background: $background_variant;
+	}
+
+	.info {
+		padding: 2rem 4rem;
+
+		@include use_themes('.author') {
+			margin-bottom: 1rem;
+
+			> a {
+				color: $text_secondary !important;
+
+				@media (any-hover: hover) {
+					&:hover {
+						color: $highlight !important;
+					}
+				}
+			}
 		}
 
-		.bg_pic {
-			border: 1px solid $divider;
-			box-shadow: $small_shadow;
-
-			@extend .bg;
-		}
-
-		.bg_skeleton {
-			height: 36rem;
-			background: $background_variant;
-
-			@extend .bg;
-		}
-
-		.info {
+		.article {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			width: 100%;
-			height: 5rem;
 
 			> div:first-child {
 				word-break: break-all;
@@ -54,36 +65,38 @@
 				}
 			}
 		}
+	}
 
-		.content_skeleton {
-			position: relative;
-			display: flex;
-			overflow: hidden;
-			flex-direction: column;
-			padding-top: 2rem;
-			width: 100%;
-			background: $background;
+	.content_skeleton {
+		position: relative;
+		display: flex;
+		overflow: hidden;
+		flex-direction: column;
+		padding-top: 2rem;
+		width: 100%;
+		background: $background;
 
-			> div {
-				margin-bottom: 2.4rem;
-				height: 2.4rem;
-			}
+		> div {
+			margin-bottom: 2.4rem;
+			height: 2.4rem;
+		}
 
-			> .heading {
-				height: 3.2rem;
-				transform: translateX(-60%);
-			}
+		> .heading {
+			height: 3.2rem;
+			transform: translateX(-60%);
+		}
 
-			> .content1 {
-				transform: translateX(10%);
-			}
-			> .content2 {
-				width: 95%;
-			}
-			> .content3 {
-				margin-bottom: 0;
-				transform: translateX(-50%);
-			}
+		> .content1 {
+			transform: translateX(10%);
+		}
+
+		> .content2 {
+			width: 95%;
+		}
+
+		> .content3 {
+			margin-bottom: 0;
+			transform: translateX(-50%);
 		}
 	}
 }

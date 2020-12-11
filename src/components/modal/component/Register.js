@@ -5,7 +5,7 @@ import { Button, Form, Input } from 'sylas-react-ui'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
 import ArrowRightIcon from 'mdi-react/ArrowRightIcon'
 import CloseIcon from 'mdi-react/CloseIcon'
-import * as action from '../store/action'
+import { updateModal } from '../store/action'
 import Login from './Login'
 import Profile from './Profile'
 import { useTranslation } from 'react-i18next'
@@ -16,16 +16,16 @@ export default function Register() {
 	const theme = useSelector(state => state.setting.theme)
 
 	const handleReturn = () => {
-		dispatch(action.updateModal(true, <Login />))
+		dispatch(updateModal(true, <Login />))
 	}
 
 	const handleClose = () => {
-		dispatch(action.updateModal(false, null))
+		dispatch(updateModal(false, null))
 	}
 
 	const handleCreateAccount = values => {
 		const { username, password } = values
-		dispatch(action.updateModal(true, <Profile account={{ username, password }} />))
+		dispatch(updateModal(true, <Profile account={{ username, password }} />))
 	}
 
 	const passwordRules = [

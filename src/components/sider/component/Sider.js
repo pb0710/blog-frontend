@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'sylas-react-ui'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
 import style from '../style/index.module.scss'
-import * as action from '@/components/sider/store/action'
+import { updateDrawer } from '@/components/sider/store/action'
 import clsx from 'clsx'
 import NavMenu from './NavMenu'
 import { Branch } from '@/components/header'
@@ -17,11 +17,11 @@ export default function Sider() {
 	const isMobile = useMediaQuery('(max-width:600px)')
 
 	const hanldeClose = () => {
-		dispatch(action.updateDrawer(false))
+		dispatch(updateDrawer(false))
 	}
 
 	React.useEffect(() => {
-		dispatch(action.updateDrawer(drawerDefaultOpened))
+		dispatch(updateDrawer(drawerDefaultOpened))
 	}, [dispatch, drawerDefaultOpened])
 
 	const asideCls = clsx(style.sider, {

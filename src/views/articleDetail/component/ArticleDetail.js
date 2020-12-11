@@ -1,11 +1,11 @@
 import React from 'react'
 import style from '../style/index.module.scss'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FlexiblePage } from '@/components/page'
 import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
-import * as action from '../store/action'
+import { increaseArticleViews, updateArticleDetail } from '../store/action'
 import { msg, Skeleton } from '@/components/base'
 import { Tag } from 'sylas-react-ui'
 import { useFetch } from '@/utils/hooks'
@@ -28,7 +28,7 @@ export default function ArticleDetail() {
 
 	React.useEffect(() => {
 		if (data.content) {
-			dispatch(action.updateArticleDetail(data))
+			dispatch(updateArticleDetail(data))
 		}
 	}, [data, dispatch])
 
@@ -40,53 +40,64 @@ export default function ArticleDetail() {
 
 	React.useEffect(() => {
 		if (id) {
-			dispatch(action.increaseArticleViews(id))
+			dispatch(increaseArticleViews(id))
 		}
 	}, [dispatch, id])
 
 	const infoElement = (
 		<div className={style.info}>
-			<div>
-				{dayjs(creationTime).isValid() && (
-					<span>{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}</span>
-				)}
-				<span>
-					{t('article_detail.total_words')}
-					{content.length}
-				</span>
-				<span>
-					{t('article_detail.views')}
-					{views}
-				</span>
+			<div className={style[`author_${theme}`]}>
+				<Link to="/blog/user">{data.author}</Link>
 			</div>
-			<div className={style.tags_wrapper}>
-				{tags.map((tag, index) => (
-					<Tag key={index} color={theme}>
-						{tag}
-					</Tag>
-				))}
+			<div className={style.article}>
+				<div>
+					{dayjs(creationTime).isValid() && (
+						<span>{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}</span>
+					)}
+					<span>
+						{t('article_detail.total_words')}
+						{content.length}
+					</span>
+					<span>
+						{t('article_detail.views')}
+						{views}
+					</span>
+				</div>
+				<div className={style.tags_wrapper}>
+					{tags.map((tag, index) => (
+						<Tag key={index} color={theme}>
+							{tag}
+						</Tag>
+					))}
+				</div>
 			</div>
 		</div>
 	)
 
+	const skeletonElement = (
+		<>
+			<Skeleton className={style.bg_skeleton} />
+			<div className={style.content_skeleton}>
+				<Skeleton className={style.heading} />
+				<Skeleton className={style.content1} />
+				<Skeleton className={style.content2} />
+				<Skeleton className={style.content3} />
+			</div>
+		</>
+	)
+
 	return (
-		<FlexiblePage className={style.article_detail}>
-			<section className={style.article_wrapper}>
+		<FlexiblePage>
+			<section className={style.article_detail_wrapper}>
 				{loading ? (
-					<>
-						<Skeleton className={style.bg_skeleton} />
-						<div className={style.content_skeleton}>
-							<Skeleton className={style.heading} />
-							<Skeleton className={style.content1} />
-							<Skeleton className={style.content2} />
-							<Skeleton className={style.content3} />
-						</div>
-					</>
+					skeletonElement
 				) : (
 					<>
 						<img className={style.bg_pic} src={backgroundImage} alt="" />
 						{infoElement}
-						<Markdown>{content}</Markdown>
+						<article className={style.article_content}>
+							<Markdown>{content}</Markdown>
+						</article>
 					</>
 				)}
 			</section>

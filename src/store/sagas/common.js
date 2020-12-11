@@ -1,8 +1,8 @@
 import { all, spawn, put, select, takeEvery, takeLatest } from 'redux-saga/effects'
 import * as userApi from '@/apis/user'
-import * as commonAction from '@/store/actions'
-import * as modalAction from '@/components/modal/store/action'
-import * as settingAction from '@/views/settings/store/action'
+import { updateOnline, updateUserProfile, userLogin } from '@/store/actions'
+import { updateModal } from '@/components/modal/store/action'
+import { mergeSetting } from '@/views/settings/store/action'
 import { msg } from '@/components/base'
 import TYPE from '@/common/actionTypes'
 import omit from 'omit.js'
@@ -12,9 +12,9 @@ function* fetchUserInfo() {
 	try {
 		const payload = yield userApi.initialData()
 		const profile = omit(payload, ['setting'])
-		yield put(commonAction.updateUserProfile(profile))
-		yield put(settingAction.mergeSetting(payload.setting))
-		yield put(commonAction.updateOnline(true))
+		yield put(updateUserProfile(profile))
+		yield put(mergeSetting(payload.setting))
+		yield put(updateOnline(true))
 		return
 	} catch (err) {
 		console.error('获取用户信息失败', err)
@@ -29,8 +29,8 @@ function* login({ username, password }) {
 	try {
 		yield userApi.login(username, password)
 		yield fetchUserInfo()
-		yield put(modalAction.updateModal(false, null))
-		yield put(commonAction.updateOnline(true))
+		yield put(updateModal(false, null))
+		yield put(updateOnline(true))
 		msg.success(i18n.t('success.login'))
 	} catch (err) {
 		console.error(i18n.t('error.login'), err)
@@ -41,10 +41,10 @@ function* login({ username, password }) {
 function* logout() {
 	try {
 		yield userApi.logout()
-		yield put(commonAction.updateOnline(false))
-		yield put(commonAction.updateUserProfile({}))
+		yield put(updateOnline(false))
+		yield put(updateUserProfile({}))
 		yield put(
-			settingAction.mergeSetting({
+			mergeSetting({
 				// due to browser language detected, don't reset it.
 				theme: 'primary',
 				drawerDefaultOpened: false,
@@ -61,7 +61,7 @@ function* logout() {
 function* register({ username, password, profile }) {
 	try {
 		yield userApi.register(username, password, profile)
-		yield put(commonAction.userLogin({ username, password }))
+		yield put(userLogin({ username, password }))
 		msg.success(i18n.t('success.register'))
 	} catch (err) {
 		console.error(i18n.t('error.register'), err)
@@ -74,7 +74,7 @@ function* saveProfile(profile) {
 	const newProfile = { ...oldProfile, ...profile }
 	try {
 		yield userApi.saveProfile(newProfile)
-		yield put(commonAction.updateUserProfile(newProfile))
+		yield put(updateUserProfile(newProfile))
 		msg.success(i18n.t('success.save'))
 	} catch (err) {
 		console.error(i18n.t('error.save'), err)

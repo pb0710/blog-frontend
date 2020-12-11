@@ -1,4 +1,6 @@
 .not_found_page {
+	background: #fff;
+
 	@include flex_center;
 
 	> .prompt {

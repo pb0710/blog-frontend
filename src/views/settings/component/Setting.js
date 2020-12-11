@@ -11,9 +11,9 @@ import Appearance from './Appearance'
 import I18N from './I18N'
 import Banner from './Banner'
 import Editor from './Editor'
-import * as modalAction from '@/components/modal/store/action'
-import * as commonAction from '@/store/actions'
-import * as action from '../store/action'
+import { updateModal } from '@/components/modal/store/action'
+import { saveProfile } from '@/store/actions'
+import { saveSetting } from '../store/action'
 import { useTranslation } from 'react-i18next'
 
 function Setting() {
@@ -33,15 +33,15 @@ function Setting() {
 			...values,
 			contacts: { github, phone, email, wechat }
 		}
-		dispatch(commonAction.saveProfile(profile))
+		dispatch(saveProfile(profile))
 	}
 
 	const handleSaveSettings = settings => {
-		dispatch(action.saveSetting(settings))
+		dispatch(saveSetting(settings))
 	}
 
 	const handleGoLogin = () => {
-		dispatch(modalAction.updateModal(true, <Login />))
+		dispatch(updateModal(true, <Login />))
 	}
 
 	return (

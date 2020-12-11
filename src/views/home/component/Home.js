@@ -18,8 +18,8 @@ export default function Home() {
 	]
 
 	return (
-		<FlexiblePage className={style.home_page}>
-			<article className={style.page_wrapper}>
+		<FlexiblePage>
+			<article className={style.home_wrapper}>
 				<Panel>
 					<Tabs bordered={false} color={theme} activeKey="latest">
 						{tabList.map(({ key, title }) => (

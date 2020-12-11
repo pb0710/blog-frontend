@@ -6,8 +6,8 @@ import CloseIcon from 'mdi-react/CloseIcon'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
 import UserIcon from 'mdi-react/UserIcon'
 import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
-import * as action from '../store/action'
-import * as commonAction from '@/store/actions'
+import { updateModal } from '../store/action'
+import { userRegister } from '@/store/actions'
 import * as fileApi from '@/apis/file'
 import Register from './Register'
 import { useBoolean } from '@/utils/hooks'
@@ -26,11 +26,11 @@ export default function Profile(props) {
 	const [visible, { setTrue: handleShowUpload, setFalse: handleHideUpload }] = useBoolean(false)
 
 	const handleReturn = () => {
-		dispatch(action.updateModal(true, <Register />))
+		dispatch(updateModal(true, <Register />))
 	}
 
 	const handleClose = useCallback(() => {
-		dispatch(action.updateModal(false, null))
+		dispatch(updateModal(false, null))
 	}, [dispatch])
 
 	const handleRegister = useCallback(
@@ -51,7 +51,7 @@ export default function Profile(props) {
 					wechat: values.wechat
 				}
 			}
-			dispatch(commonAction.userRegister(userInfo))
+			dispatch(userRegister(userInfo))
 			if (online) {
 				handleClose()
 			}

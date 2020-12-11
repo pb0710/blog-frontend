@@ -5,7 +5,7 @@ import CloseIcon from 'mdi-react/CloseIcon'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Input, Select, Uploader } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
-import * as modalAction from '@/components/modal/store/action'
+import { updateModal } from '@/components/modal/store/action'
 import * as articleApi from '@/apis/article'
 import * as fileApi from '@/apis/file'
 import { useBoolean } from '@/utils/hooks'
@@ -42,7 +42,7 @@ export default function ArticleInfo(props) {
 	)
 
 	const handleClose = useCallback(() => {
-		dispatch(modalAction.updateModal(false, null))
+		dispatch(updateModal(false, null))
 	}, [dispatch])
 
 	const handleAddArticle = useCallback(

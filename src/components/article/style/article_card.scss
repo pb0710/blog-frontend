@@ -6,7 +6,6 @@
 	@include use_themes('.article_card') {
 		position: relative;
 		overflow: hidden;
-		border: 1px solid $divider;
 		border-radius: 0.6rem;
 		background: $background;
 		box-shadow: $small_shadow;

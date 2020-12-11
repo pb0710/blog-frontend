@@ -10,7 +10,7 @@ import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon'
 import * as articleApi from '@/apis/article'
 import { useDispatch, useSelector } from 'react-redux'
 import clsx from 'clsx'
-import * as articleDetailAction from '@/views/articleDetail/store/action'
+import { updateArticleDetail } from '@/views/articleDetail/store/action'
 import { useTranslation } from 'react-i18next'
 
 function ArticleStatsPanel() {
@@ -29,7 +29,7 @@ function ArticleStatsPanel() {
 			try {
 				await articleApi.dislike(userId, articleId)
 				dispatch(
-					articleDetailAction.updateArticleDetail({
+					updateArticleDetail({
 						...detail,
 						likes: likes.filter(item => item?.toString?.() !== userId?.toString?.())
 					})
@@ -47,7 +47,7 @@ function ArticleStatsPanel() {
 			try {
 				await articleApi.like(userId, articleId)
 				dispatch(
-					articleDetailAction.updateArticleDetail({
+					updateArticleDetail({
 						...detail,
 						likes: [...likes, userId]
 					})

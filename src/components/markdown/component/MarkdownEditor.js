@@ -8,7 +8,7 @@ import Preview from './Preview'
 import * as temp from '../temp'
 import * as fileApi from '@/apis/file'
 import { useDispatch, useSelector } from 'react-redux'
-import * as modalAction from '@/components/modal/store/action'
+import { updateModal } from '@/components/modal/store/action'
 import { ArticleInfo } from '@/views/articleUpload'
 import ViewModuleOutlineIcon from 'mdi-react/ViewModuleOutlineIcon'
 import CodeIcon from 'mdi-react/CodeIcon'
@@ -102,7 +102,7 @@ function MarkdownEditor() {
 			msg.error(t('article_publish.rule.content_length_limit'))
 			return
 		}
-		dispatch(modalAction.updateModal(true, <ArticleInfo content={content} />))
+		dispatch(updateModal(true, <ArticleInfo content={content} />))
 	}
 
 	// 默认focus textarea

@@ -2,7 +2,7 @@ import React from 'react'
 import style from '../style/index.module.scss'
 import { Button, Divider, Popup, TouchRipple } from 'sylas-react-ui'
 import { useDispatch, useSelector } from 'react-redux'
-import * as commonAction from '@/store/actions'
+import { userLogout } from '@/store/actions'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -14,7 +14,7 @@ export default function UserProfile() {
 	const [visible, popupRef, { toggle, hide }] = Popup.usePopup()
 
 	const handleSignOut = () => {
-		dispatch(commonAction.userLogout())
+		dispatch(userLogout())
 		hide()
 	}
 

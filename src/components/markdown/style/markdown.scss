@@ -22,8 +22,8 @@
 	}
 
 	p > code {
-		padding: 0.4rem;
-		border-radius: 0.4rem;
+		padding: 0.4rem 0.6rem;
+		border-radius: 0.6rem;
 		background: $background_variant;
 
 		@include code_base;
