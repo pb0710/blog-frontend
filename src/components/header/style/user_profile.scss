@@ -30,6 +30,11 @@
 	width: 28rem;
 	border-radius: 0.6rem;
 
+	@media screen and (max-width: $breakpoint_small) {
+		right: 1rem;
+		width: calc(100vw - 4rem);
+	}
+
 	.large_avatar {
 		> img {
 			width: 8rem;
@@ -51,12 +56,5 @@
 
 	.divider {
 		margin: 1.6rem 0;
-	}
-}
-
-@media screen and (max-width: $breakpoint_small) {
-	.user_profile {
-		right: 1rem;
-		width: calc(100vw - 4rem);
 	}
 }

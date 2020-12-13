@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 import { FlexiblePage } from '@/components/page'
-import { ArticleCard } from '@/components/article'
+import ArticleCard from './ArticleCard'
 import * as articleApi from '@/apis/article'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '@/utils/hooks'
@@ -22,10 +22,13 @@ export default function ArticleCards() {
 			{Object.keys([...Array(12)]).map(key => (
 				<div key={key} className={style.skeleton_card}>
 					<AspectRatio aspectRatio={4 / 3}>
-						<div className={style.inner}>
-							<Skeleton />
-							<Skeleton />
-							<Skeleton />
+						<div className={style.container}>
+							<Skeleton className={style.img_skeleton} />
+							<div className={style.inner}>
+								<Skeleton />
+								<Skeleton />
+								<Skeleton />
+							</div>
 						</div>
 					</AspectRatio>
 				</div>

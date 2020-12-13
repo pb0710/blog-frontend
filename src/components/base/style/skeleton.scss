@@ -14,9 +14,8 @@ $bright: #fdfdfd;
 }
 
 .skeleton {
-	min-width: 10rem;
 	width: 100%;
 	height: 2rem;
 	background: $dim;
-	animation: flashing 2.5s infinite;
+	animation: flashing 2s infinite;
 }

@@ -1,1 +1,7 @@
 @import 'article_list';
+
+.home_page {
+	> div:first-child {
+		padding-top: 2rem;
+	}
+}

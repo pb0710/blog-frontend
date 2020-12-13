@@ -4,7 +4,7 @@ import { GlobalLoading } from '@/components/base'
 
 const navRoutes = [
 	{
-		path: '',
+		path: '/',
 		component: () => import('@/views/home/component/Home')
 	},
 	{
@@ -34,9 +34,9 @@ function Content() {
 		<React.Suspense fallback={<GlobalLoading />}>
 			<Switch>
 				{navRoutes.map(({ path, component, ...rest }) => (
-					<Route key={path} exact path={`/blog${path}`} component={React.lazy(component)} {...rest} />
+					<Route key={path} exact path={`${path}`} component={React.lazy(component)} {...rest} />
 				))}
-				<Redirect to="/blog/404" />
+				<Redirect to="/404" />
 			</Switch>
 		</React.Suspense>
 	)

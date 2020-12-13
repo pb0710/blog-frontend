@@ -1,13 +1,8 @@
 export function getlang(str) {
 	if (typeof str != 'string') return str
-	const [prefix, lang, ...rest] = str.split('-')
 
-	switch (lang) {
-		case 'js':
-			return 'javascript'
-		default:
-			return lang
-	}
+	const array = str.split('-')
+	return array[1]
 }
 
 export function insertTemp(str, index, target) {
@@ -62,6 +57,10 @@ export function getPosition(elem) {
  * @param pos
  */
 export function setPosition(elem, pos) {
-	elem.focus()
-	elem.setSelectionRange(pos, pos)
+	if (elem instanceof HTMLElement) {
+		setTimeout(() => {
+			elem.setSelectionRange(pos, pos)
+			elem.focus()
+		})
+	}
 }

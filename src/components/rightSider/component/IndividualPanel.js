@@ -75,7 +75,7 @@ export default function IndividualPanel() {
 	return (
 		<Panel className={style.individual_panel}>
 			<List>
-				<Link to="/blog">
+				<Link to="/">
 					<List.Item className={avatarItemCls}>
 						<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
 						<div className={style.bottom_wrapper}>

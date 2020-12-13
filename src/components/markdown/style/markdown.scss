@@ -38,19 +38,24 @@
 	}
 
 	.blockquote {
-		padding-left: 1rem;
+		padding: 2rem;
 		border-left: 0.4rem solid $highlight;
 		border-top-right-radius: 0.6rem;
 		border-bottom-right-radius: 0.6rem;
+		background: $background_variant;
+
+		> p:first-child {
+			margin: 0;
+		}
 	}
 
 	.pic {
-		display: flex;
-		justify-content: center;
-		width: 100%;
+		padding: 1rem 0;
 
-		> img {
-			max-width: 90%;
+		> img:first-child {
+			display: block; // fix 底部间隙
+			width: 100%;
+			border-radius: 0.6rem;
 		}
 	}
 }

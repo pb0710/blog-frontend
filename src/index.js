@@ -12,7 +12,7 @@ import store from './store'
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<BrowserRouter>
+			<BrowserRouter basename="/blog">
 				<JSSBaseline>
 					<React.Suspense fallback={<GlobalLoading />}>
 						<App />

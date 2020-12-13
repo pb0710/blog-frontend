@@ -32,7 +32,7 @@
   },
   "nav": {
     "home": "主页",
-    "article_category": "文章分类",
+    "article_category": "笔记分类",
     "frontend": "Web前端",
     "mobile": "移动端",
     "backend": "后端",
@@ -41,7 +41,7 @@
     "document": "文档",
     "submenu1": "子菜单1",
     "submenu2": "子菜单2",
-    "write": "写文章",
+    "write": "写作",
     "settings": "设置",
     "about": "关于"
   },
@@ -68,15 +68,15 @@
   "article_publish": {
     "to_publish": "去发布",
     "publish_prompt": "发布文章需先登录...",
-    "add_article": "添加文章",
+    "add_article": "添加笔记",
     "title": "标题",
-    "category": "文章类别",
+    "category": "类别",
     "introduce": "简介",
     "publish": "发布",
     "rule": {
-      "introduce_length_limit": "文章简介长度不能超过 150 位！",
+      "introduce_length_limit": "简介长度不能超过 150 位！",
       "title_length_limit": "标题长度限制为 6～36 位！",
-      "content_length_limit": "文章字数少于 150"
+      "content_length_limit": "字数少于 150"
     }
   },
   "modal": {
@@ -159,7 +159,7 @@
     "go_login": "去登录",
     "appearance": "外观",
     "i18n": "国际化",
-    "article": "文章",
+    "article": "编辑",
     "theme": "主题",
     "primary": "海洋",
     "success": "草原",

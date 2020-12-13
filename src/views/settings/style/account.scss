@@ -1,7 +1,7 @@
 .account {
 	@include use_themes('.btn') {
 		border: 1px solid $highlight;
-		background: #fff;
+		background: $background;
 
 		@media (any-hover: hover) {
 			&:hover {
@@ -41,10 +41,8 @@
 			margin-right: 3rem;
 			font-weight: 500;
 		}
-	}
 
-	@media screen and (max-width: $breakpoint_small) {
-		.username_wrapper {
+		@media screen and (max-width: $breakpoint_small) {
 			> span {
 				margin-right: 1rem;
 			}

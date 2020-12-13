@@ -71,7 +71,7 @@ export default function AuthorPanel() {
 	return (
 		<Panel className={style.author_panel}>
 			<List>
-				{/* <Link to="/blog"> */}
+				{/* <Link to="/"> */}
 				<List.Item className={avatarItemCls}>
 					<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
 					<div className={style.right_wrapper}>

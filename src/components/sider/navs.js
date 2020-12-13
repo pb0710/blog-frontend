@@ -9,14 +9,14 @@ const getNavs = (t = i18n.t) => [
 	{
 		id: '0',
 		level: 1,
-		to: '/blog',
+		to: '',
 		title: t('nav.home'),
 		icon: <HomeIcon size={20} />
 	},
 	{
 		id: '1',
 		level: 1,
-		to: '/blog/article',
+		to: '/article',
 		title: t('nav.article_category'),
 		icon: <LibraryEditIcon size={20} />,
 		child: [
@@ -55,21 +55,21 @@ const getNavs = (t = i18n.t) => [
 	{
 		id: '2',
 		level: 1,
-		to: '/blog/upload',
+		to: '/upload',
 		title: t('nav.write'),
 		icon: <CreateIcon size={20} />
 	},
 	{
 		id: '3',
 		level: 1,
-		to: '/blog/setting',
+		to: '/setting',
 		title: t('nav.settings'),
 		icon: <SettingsIcon size={20} />
 	},
 	{
 		id: '4',
 		level: 1,
-		to: '/blog/about',
+		to: '/about',
 		title: t('nav.about'),
 		icon: <InfoCircleIcon size={20} />
 	}

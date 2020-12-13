@@ -18,7 +18,7 @@ export default function Home() {
 	]
 
 	return (
-		<FlexiblePage>
+		<FlexiblePage className={style.home_page}>
 			<article className={style.home_wrapper}>
 				<Panel>
 					<Tabs bordered={false} color={theme} activeKey="latest">

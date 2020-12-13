@@ -11,9 +11,9 @@ const Fragment = props => <>{props.children}</>
 const Blockquote = props => <blockquote className={style.blockquote}>{props.children}</blockquote>
 
 const Img = props => (
-	<span className={style.pic}>
-		<img alt="" {...props} />
-	</span>
+	<div className={style.pic}>
+		<img className={style.pic} alt="" {...props} />
+	</div>
 )
 
 const Pre = props => <pre className={style.code_wrapper}>{props.children}</pre>

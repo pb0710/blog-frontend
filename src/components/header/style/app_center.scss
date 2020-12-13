@@ -10,10 +10,7 @@
 	.tab {
 		padding: 2rem;
 	}
-}
-
-@media screen and (max-width: $breakpoint_small) {
-	.app_center {
+	@media screen and (max-width: $breakpoint_small) {
 		right: 1rem;
 		width: calc(100vw - 4rem);
 	}

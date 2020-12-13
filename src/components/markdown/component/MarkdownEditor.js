@@ -68,12 +68,31 @@ function MarkdownEditor() {
 		hoverArea = ''
 	}
 
+	const insert = (targetString, offset = 0) => {
+		if (typeof targetString !== 'string') return
+
+		setContent(oldContent => {
+			const position = getPosition(editorRef.current)
+			const targetPos = position.start + offset
+			setPosition(editorRef.current, targetPos)
+			return insertTemp(oldContent, position.start, targetString)
+		})
+	}
+
+	const handleInsertTable = () => {
+		insert(temp.table, 4)
+	}
+
+	const handleInsertCode = () => {
+		insert(temp.codeBlock, 5)
+	}
+
 	const uploadFiles = async formData => {
 		try {
-			const payload = await fileApi.uploadImage(formData)
-			const toPicTemp = picSrc => `  \n![](${picSrc})`
-			const remotePic = Array.isArray(payload) ? payload.map(toPicTemp).join('') : toPicTemp(payload)
-			setContent(content => content + remotePic)
+			const res = await fileApi.uploadImage(formData)
+			const urlToPicTemp = picSrc => `  \n![](${picSrc})`
+			const remotePic = Array.isArray(res) ? res.map(urlToPicTemp).join('') : urlToPicTemp(res)
+			insert(remotePic, remotePic.length)
 		} catch (err) {
 			console.error(`${t('error.upload')} ${err}`)
 			msg.error(t('error.upload'))
@@ -84,17 +103,6 @@ function MarkdownEditor() {
 		if (!formData) return
 		formData.set('userId', userId)
 		uploadFiles(formData)
-	}
-
-	const handleInsertTable = () => {
-		const position = getPosition(editorRef.current)
-		const targetPos = position.start + temp.table.length
-		setPosition(editorRef.current, targetPos)
-		setContent(prev => insertTemp(prev, position.start, temp.table))
-	}
-
-	const handleInsertCode = () => {
-		setContent(prev => prev + temp.codeBlock)
 	}
 
 	const handlePublish = () => {

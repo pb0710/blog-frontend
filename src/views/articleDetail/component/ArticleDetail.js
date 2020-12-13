@@ -7,7 +7,7 @@ import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
 import { increaseArticleViews, updateArticleDetail } from '../store/action'
 import { msg, Skeleton } from '@/components/base'
-import { Tag } from 'sylas-react-ui'
+import { AspectRatio, Tag } from 'sylas-react-ui'
 import { useFetch } from '@/utils/hooks'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
@@ -47,7 +47,7 @@ export default function ArticleDetail() {
 	const infoElement = (
 		<div className={style.info}>
 			<div className={style[`author_${theme}`]}>
-				<Link to="/blog/user">{data.author}</Link>
+				<Link to="/user">{data.author}</Link>
 			</div>
 			<div className={style.article}>
 				<div>
@@ -75,19 +75,21 @@ export default function ArticleDetail() {
 	)
 
 	const skeletonElement = (
-		<>
-			<Skeleton className={style.bg_skeleton} />
+		<div className={style.skeleton_wrapper}>
+			<AspectRatio aspectRatio={5 / 8}>
+				<Skeleton className={style.bg_skeleton} />
+			</AspectRatio>
 			<div className={style.content_skeleton}>
 				<Skeleton className={style.heading} />
 				<Skeleton className={style.content1} />
 				<Skeleton className={style.content2} />
 				<Skeleton className={style.content3} />
 			</div>
-		</>
+		</div>
 	)
 
 	return (
-		<FlexiblePage>
+		<FlexiblePage className={style.article_detail_page}>
 			<section className={style.article_detail_wrapper}>
 				{loading ? (
 					skeletonElement

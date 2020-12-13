@@ -16,10 +16,8 @@
 		max-width: 40rem;
 		width: 38rem;
 		border-radius: 0.6rem;
-	}
 
-	@media screen and (max-width: $breakpoint_small) {
-		.content {
+		@media screen and (max-width: $breakpoint_small) {
 			padding: 3rem;
 			width: calc(100vw - 6rem);
 		}

@@ -16,20 +16,20 @@ function MessageContainer() {
 	const [msgList, setMsgList] = React.useState([])
 
 	const remove = msg => {
-		setMsgList(prev => prev.filter(item => item.id !== msg.id))
+		setMsgList(oldMsgList => oldMsgList.filter(item => item.id !== msg.id))
 	}
 
 	add = msg => {
 		const newMsg = { ...msg, id: uuid() }
 		const duration = msg.duration || 2500
 
-		setMsgList(prev => {
-			prev.forEach(item => {
+		setMsgList(oldMsgList => {
+			oldMsgList.forEach(item => {
 				if (item.content === newMsg.content && item.type === newMsg.type) {
 					remove(item)
 				}
 			})
-			return [...prev, newMsg]
+			return [...oldMsgList, newMsg]
 		})
 		setTimeout(() => {
 			remove(newMsg)

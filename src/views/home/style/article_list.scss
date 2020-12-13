@@ -6,6 +6,10 @@
 		overflow: hidden;
 		height: calc(100vh - 12rem);
 
+		@media screen and (max-width: $breakpoint_small) {
+			height: calc(100vh - 10rem);
+		}
+
 		.skeleton_wrapper {
 			display: flex;
 			align-items: center;
@@ -125,11 +129,11 @@
 
 			@media screen and (max-width: $breakpoint_small) {
 				.left_wrapper {
-					width: calc(100vw - 18rem);
+					width: calc(100% - 12rem);
 				}
 				> img {
-					width: 7rem;
-					height: 5rem;
+					width: 10rem;
+					height: 7rem;
 				}
 			}
 		}

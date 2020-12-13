@@ -10,6 +10,10 @@
 		height: 5rem;
 		background: $background_variant;
 
+		@media screen and (max-width: $breakpoint_small) {
+			padding: 0 1rem;
+		}
+
 		.tools {
 			display: flex;
 			align-items: center;
@@ -54,14 +58,12 @@
 			width: 50%;
 			height: 100%;
 
+			@media screen and (max-width: $breakpoint_small) {
+				width: 100%;
+			}
+
 			&:last-child {
 				border-left: 1px solid $divider;
-			}
-		}
-
-		@media screen and (max-width: $breakpoint_small) {
-			> article {
-				width: 100%;
 			}
 		}
 

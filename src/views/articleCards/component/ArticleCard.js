@@ -8,8 +8,8 @@ export default function ArticleCard(props) {
 	const { id, author, category, title, backgroundImage } = props
 	const theme = useSelector(state => state.setting.theme)
 
-	const aritcleLink = `/blog/article/${category}/detail/${id}`
-	const authorLink = `/blog/user/${1}`
+	const aritcleLink = `/article/${category}/detail/${id}`
+	const authorLink = `/user/${1}`
 
 	return (
 		<div className={style.article_card_wrapper}>

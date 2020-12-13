@@ -14,10 +14,14 @@
 .flexible_page {
 	display: flex;
 	justify-content: center;
-	padding-top: 7rem;
+	padding-top: 5rem;
 	transition: width $normal ease-out;
 
 	@extend .page;
+
+	@media screen and(max-width: $breakpoint_small) {
+		padding-top: 5rem;
+	}
 
 	.container {
 		padding-right: 26rem;

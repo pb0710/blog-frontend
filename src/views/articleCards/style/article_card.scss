@@ -34,7 +34,7 @@
 			> img {
 				width: 100%;
 				height: 100%;
-				background: $background_variant;
+				background: $background;
 				vertical-align: text-top;
 
 				object-fit: cover;
@@ -72,10 +72,8 @@
 			}
 		}
 	}
-}
 
-@media screen and (max-width: $breakpoint_small) {
-	.article_card_wrapper {
+	@media screen and (max-width: $breakpoint_small) {
 		min-width: 50%;
 	}
 }

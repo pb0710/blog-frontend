@@ -14,7 +14,7 @@ function RightSider() {
 
 	const rightSideRoutes = [
 		{
-			path: '',
+			path: '/',
 			component: (
 				<Affix>
 					<IndividualPanel />
@@ -51,7 +51,7 @@ function RightSider() {
 			<aside className={rightSiderCls}>
 				<Switch>
 					{rightSideRoutes.map(({ path, component, ...rest }) => (
-						<Route key={path} exact path={`/blog${path}`} {...rest}>
+						<Route key={path} exact path={`${path}`} {...rest}>
 							{component}
 						</Route>
 					))}
