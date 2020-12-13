@@ -13,8 +13,11 @@
 
 	a {
 		color: $highlight !important;
-		text-decoration: underline !important;
 		font-weight: 500;
+
+		&:hover {
+			text-decoration: underline !important;
+		}
 	}
 
 	code {
@@ -43,6 +46,9 @@
 		border-top-right-radius: 0.6rem;
 		border-bottom-right-radius: 0.6rem;
 		background: $background_variant;
+
+		margin-inline-start: 1rem;
+		margin-inline-end: 1rem;
 
 		> p:first-child {
 			margin: 0;

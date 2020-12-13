@@ -155,7 +155,7 @@
         "nickname_length_limit": "昵称长度不能少于 2 位！"
       }
     },
-    "auto_sync": "登录账号 自动同步设置。",
+    "auto_sync": "登录账号 · 自动同步设置。",
     "go_login": "去登录",
     "appearance": "外观",
     "i18n": "国际化",

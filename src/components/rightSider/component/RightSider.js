@@ -3,7 +3,7 @@ import style from '../style/index.module.scss'
 import { Switch, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import clsx from 'clsx'
-import { Panel, Affix } from '@/components/base'
+import { Affix } from '@/components/base'
 import IndividualPanel from './IndividualPanel'
 import AuthorPanel from './AuthorPanel'
 import ArticleStatsPanel from './ArticleStatsPanel'
@@ -22,18 +22,6 @@ function RightSider() {
 			)
 		},
 		{
-			path: '/upload',
-			component: null
-		},
-		{
-			path: '/setting',
-			component: null
-		},
-		{
-			path: '/article/:category',
-			component: null
-		},
-		{
 			path: '/article/:category/detail/:id',
 			component: (
 				<>
@@ -48,22 +36,13 @@ function RightSider() {
 
 	return (
 		<React.Suspense fallback="loading">
-			<aside className={rightSiderCls}>
-				<Switch>
-					{rightSideRoutes.map(({ path, component, ...rest }) => (
-						<Route key={path} exact path={`${path}`} {...rest}>
-							{component}
-						</Route>
-					))}
-					<Route>
-						<Panel></Panel>
-						<Panel></Panel>
-						<Affix>
-							<Panel></Panel>
-						</Affix>
+			<Switch>
+				{rightSideRoutes.map(({ path, component, ...rest }) => (
+					<Route key={path} exact path={`${path}`} {...rest}>
+						<aside className={rightSiderCls}>{component}</aside>
 					</Route>
-				</Switch>
-			</aside>
+				))}
+			</Switch>
 		</React.Suspense>
 	)
 }

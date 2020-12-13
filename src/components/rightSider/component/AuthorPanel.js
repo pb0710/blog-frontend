@@ -32,7 +32,6 @@ export default function AuthorPanel() {
 
 	React.useEffect(
 		() => () => {
-			console.log('AuthorPanel卸载')
 			updateArticleDetail({})
 		},
 		[]

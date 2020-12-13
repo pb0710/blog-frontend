@@ -88,9 +88,9 @@ function MarkdownEditor() {
 	}
 
 	const uploadFiles = async formData => {
+		const urlToPicTemp = picSrc => `  \n![](${picSrc})`
 		try {
 			const res = await fileApi.uploadImage(formData)
-			const urlToPicTemp = picSrc => `  \n![](${picSrc})`
 			const remotePic = Array.isArray(res) ? res.map(urlToPicTemp).join('') : urlToPicTemp(res)
 			insert(remotePic, remotePic.length)
 		} catch (err) {
