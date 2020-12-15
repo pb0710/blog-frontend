@@ -3,7 +3,11 @@ import style from '../style/index.module.scss'
 import clsx from 'clsx'
 
 export default function Panel(props) {
-	const { children, className } = props
+	const { children, className, ...rest } = props
 	const panelCls = clsx(style.panel, className)
-	return <section className={panelCls}>{children}</section>
+	return (
+		<section className={panelCls} {...rest}>
+			{children}
+		</section>
+	)
 }

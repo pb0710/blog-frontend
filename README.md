@@ -8,7 +8,7 @@
 开发、搭建个人博客主要是为了熟悉 web 项目整体流程，了解各端项目分工，实践所学技术、知识。
 而且网站搭建完成后，也能作为信息展示平台，用来记录个人所用所学、所见所闻、所感所想。一举多得。
 
-当前进度：约 75%。
+当前进度：约 `75%`。
 
 支持功能：
 
@@ -16,7 +16,7 @@
 - 用户个人资料、配置项 编辑、同步 ✅
 - markdown 文章展示、编辑、发布 ✅
 - 用户个人详情页
-- 关于页
+- 关于页 ✅
 - 适配移动端响应式 ✅
 - 国际化 ✅
 - 切换主题 ✅
@@ -26,7 +26,7 @@
 
 技术栈：
 
-- react（100% react hooks、suspense）
+- react（`100%` react hooks、suspense）
 - react-router、redux、redux-saga、create-react-app
 - 自建 react 基础 ui 组件库 [https://www.npmjs.com/package/sylas-react-ui](https://www.npmjs.com/package/sylas-react-ui)
 - sass、axios、i18next

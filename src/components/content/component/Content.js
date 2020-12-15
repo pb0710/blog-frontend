@@ -24,6 +24,10 @@ const navRoutes = [
 		component: () => import('@/views/settings/component/Setting')
 	},
 	{
+		path: '/about',
+		component: () => import('@/views/about/component/About')
+	},
+	{
 		path: '/404',
 		component: () => import('@/views/notFound/NotFound')
 	}
@@ -34,7 +38,7 @@ function Content() {
 		<React.Suspense fallback={<GlobalLoading />}>
 			<Switch>
 				{navRoutes.map(({ path, component, ...rest }) => (
-					<Route key={path} exact path={`${path}`} component={React.lazy(component)} {...rest} />
+					<Route key={path} exact path={path} component={React.lazy(component)} {...rest} />
 				))}
 				<Redirect to="/404" />
 			</Switch>

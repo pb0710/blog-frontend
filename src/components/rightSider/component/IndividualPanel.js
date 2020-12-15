@@ -14,7 +14,7 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useTranslation } from 'react-i18next'
 import Contact from './Contact'
 
-export default function IndividualPanel() {
+export default function IndividualPanel(props) {
 	const { t } = useTranslation()
 	const { username = 'pb@qq.com' } = useSelector(state => state.userProfile)
 
@@ -73,7 +73,7 @@ export default function IndividualPanel() {
 	const avatarItemCls = clsx(style.item, style.name_wrapper)
 
 	return (
-		<Panel className={style.individual_panel}>
+		<Panel className={style.individual_panel} {...props}>
 			<List>
 				<Link to="/">
 					<List.Item className={avatarItemCls}>

@@ -22,6 +22,14 @@ function RightSider() {
 			)
 		},
 		{
+			path: '/about',
+			component: (
+				<Affix>
+					<IndividualPanel style={{ boxShadow: 'none' }} />
+				</Affix>
+			)
+		},
+		{
 			path: '/article/:category/detail/:id',
 			component: (
 				<>
@@ -38,7 +46,7 @@ function RightSider() {
 		<React.Suspense fallback="loading">
 			<Switch>
 				{rightSideRoutes.map(({ path, component, ...rest }) => (
-					<Route key={path} exact path={`${path}`} {...rest}>
+					<Route key={path} exact path={path} {...rest}>
 						<aside className={rightSiderCls}>{component}</aside>
 					</Route>
 				))}
