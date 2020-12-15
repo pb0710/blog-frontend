@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 技术博客
 
-## Available Scripts
+线上地址：[个人技术博客 http://8.129.105.196:3333/blog](http://8.129.105.196:3333/blog)
 
-In the project directory, you can run:
+### 简介
 
-### `yarn start`
+该博客是一个较为完整的个人项目。
+开发、搭建个人博客主要是为了熟悉 web 项目整体流程，了解各端项目分工，实践所学技术、知识。
+而且网站搭建完成后，也能作为信息展示平台，用来记录个人所用所学、所见所闻、所感所想。一举多得。
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+当前进度：约 75%。
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+支持功能：
 
-### `yarn test`
+- 用户注册、登录 ✅
+- 用户个人资料、配置项 编辑、同步 ✅
+- markdown 文章展示、编辑、发布 ✅
+- 用户个人详情页
+- 关于页
+- 适配移动端响应式 ✅
+- 国际化 ✅
+- 切换主题 ✅
+- 搜索 ✅
+- 用户阅读、点赞 ✅
+- 用户评论
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+技术栈：
 
-### `yarn build`
+- react（100% react hooks、suspense）
+- react-router、redux、redux-saga、create-react-app
+- 自建 react 基础 ui 组件库 [https://www.npmjs.com/package/sylas-react-ui](https://www.npmjs.com/package/sylas-react-ui)
+- sass、axios、i18next
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 开发
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+本地运行调试
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+yarn start
+```
 
-### `yarn eject`
+生产版本打包
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```shell
+yarn build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+生成 analyze
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```shell
+yarn analyze
+```

@@ -26,23 +26,23 @@ export const markdownDemo = `
 
 要创建标题，请在单词或短语前面添加井号 (\`#\`) 。井号的数量代表了标题的级别。例如，添加三个井号即创建一个三级标题 (\`<h3>\`) (例如：\`### My Header\`)。
 
-| Markdown                 | HTML                       | 渲染效果        |
-| ------------------------ | -------------------------- | --------------- |
-| \`# Heading level 1\`      | \`<h1>Heading level 1</h1>\` | Heading level 1 |
-| \`## Heading level 2\`     | \`<h2>Heading level 2</h2>\` | Heading level 2 |
-| \`### Heading level 3\`    | \`<h3>Heading level 3</h3>\` | Heading level 3 |
-| \`#### Heading level 4\`   | \`<h4>Heading level 4</h4>\` | Heading level 4 |
-| \`##### Heading level 5\`  | \`<h5>Heading level 5</h5>\` | Heading level 5 |
-| \`###### Heading level 6\` | \`<h6>Heading level 6</h6>\` | Heading level 6 |
+| Markdown                 | 渲染效果        |
+| ------------------------ | --------------- |
+| \`# Heading level 1\`      | Heading level 1 |
+| \`## Heading level 2\`     | Heading level 2 |
+| \`### Heading level 3\`    | Heading level 3 |
+| \`#### Heading level 4\`   | Heading level 4 |
+| \`##### Heading level 5\`  | Heading level 5 |
+| \`###### Heading level 6\` | Heading level 6 |
 
 ### 可选语法
 
 还可以在文本下方添加任意数量的 \`==\` 号来标识一级标题，或者 \`--\` 号来标识二级标题。
 
-| Markdown                         | HTML                       | 渲染效果        |
-| -------------------------------- | -------------------------- | --------------- |
-| \`Heading level 1===============\` | \`<h1>Heading level 1</h1>\` | Heading level 1 |
-| \`Heading level 2---------------\` | \`<h2>Heading level 2</h2>\` | Heading level 2 |
+| Markdown                         | 渲染效果        |
+| -------------------------------- | --------------- |
+| \`Heading level 1===============\` | Heading level 1 |
+| \`Heading level 2---------------\` | Heading level 2 |
 
 ### 标题（Heading）用法的最佳实践
 
@@ -56,9 +56,9 @@ export const markdownDemo = `
 
 要创建段落，请使用空白行将一行或多行文本进行分隔。
 
-| Markdown                                                     | HTML                                                         | 渲染效果                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| \`I really like using Markdown.I think I'll use it to format all of my documents from now on.\` | \`<p>I really like using Markdown.</p><p>I think I'll use it to format all of my documents from now on.</p>\` | \`I really like using Markdown.I think I'll use it to format all of my documents from now on.\` |
+| Markdown                                                     | 渲染效果                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| \`I really like using Markdown.I think I'll use it to format all of my documents from now on.\` | \`I really like using Markdown.I think I'll use it to format all of my documents from now on.\` |
 
 ### 段落（Paragraph）用法的最佳实践
 
@@ -72,9 +72,9 @@ export const markdownDemo = `
 
 在一行的末尾添加两个或多个空格，然后按回车键（return），即可创建一个换行（line break） (\`<br>\`)。
 
-| Markdown                                                | HTML                                                         | 渲染效果                                             |
-| ------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
-| \`This is the first line.  And this is the second line.\` | \`<p>This is the first line.<br>And this is the second line.</p>\` | \`This is the first line. And this is the second line.\` |
+| Markdown                                                | 渲染效果                                             |
+| ------------------------------------------------------- | ---------------------------------------------------- |
+| \`This is the first line.  And this is the second line.\` | \`This is the first line. And this is the second line.\` |
 
 ### 换行（Line Break）用法的最佳实践
 
@@ -96,11 +96,11 @@ export const markdownDemo = `
 
 要加粗文本，请在单词或短语的前后各添加两个星号（asterisks）或下划线（underscores）。如需加粗一个单词或短语的中间部分用以表示强调的话，请在要加粗部分的两侧各添加两个星号（asterisks）。
 
-| Markdown                     | HTML                                      | 渲染效果                   |
-| ---------------------------- | ----------------------------------------- | -------------------------- |
-| \`I just love **bold text**.\` | \`I just love <strong>bold text</strong>.\` | \`I just love **bold text**.\` |
-| \`I just love __bold text__.\` | \`I just love <strong>bold text</strong>.\` | \`I just love **bold text**.\` |
-| \`Love**is**bold\`             | \`Love<strong>is</strong>bold\`             | \`Love**is**bold\`            |
+| Markdown                     | 渲染效果                   |
+| ---------------------------- | -------------------------- |
+| \`I just love **bold text**.\` | \`I just love **bold text**.\` |
+| \`I just love __bold text__.\` | \`I just love **bold text**.\` |
+| \`Love**is**bold\`             | \`Love**is**bold\`            |
 
 #### 粗体（Bold）用法最佳实践
 
@@ -114,11 +114,11 @@ Markdown 应用程序在如何处理单词或短语中间的下划线上并不�
 
 要用斜体显示文本，请在单词或短语前后添加一个星号（asterisk）或下划线（underscore）。要斜体突出单词的中间部分，请在字母前后各添加一个星号，中间不要带空格。
 
-| Markdown                               | HTML                                          | 渲染效果                             |
-| -------------------------------------- | --------------------------------------------- | ------------------------------------ |
-| \`Italicized text is the *cat's meow*.\` | \`Italicized text is the <em>cat's meow</em>.\` | \`Italicized text is the *cat’s meow*.\` |
-| \`Italicized text is the _cat's meow_.\` | \`Italicized text is the <em>cat's meow</em>.\` | \`Italicized text is the *cat’s meow*.\` |
-| \`A*cat*meow\`                           | \`A<em>cat</em>meow\`                           | \`A*cat*meow\`                           |
+| Markdown                               | 渲染效果                             |
+| -------------------------------------- | ------------------------------------ |
+| \`Italicized text is the *cat's meow*.\` | \`Italicized text is the *cat’s meow*.\` |
+| \`Italicized text is the _cat's meow_.\` | \`Italicized text is the *cat’s meow*.\` |
+| \`A*cat*meow\`                           | \`A*cat*meow\`                           |
 
 #### 斜体（Italic）用法的最佳实践
 
@@ -132,13 +132,13 @@ Markdown 的众多应用程序在如何处理单词中间的下划线上意见�
 
 要同时用粗体和斜体突出显示文本，请在单词或短语的前后各添加三个星号或下划线。要加粗并用斜体显示单词或短语的中间部分，请在要突出显示的部分前后各添加三个星号，中间不要带空格。
 
-| Markdown                                  | HTML                                                         | 渲染效果                                 |
-| ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------------- |
-| \`This text is ***really important***.\`    | \`This text is <strong><em>really important</em></strong>.\`   | \`This text is ***really important***.\`    |
-| \`This text is ___really important___.\`    | \`This text is <strong><em>really important</em></strong>.\`   | \`This text is ***really important***.\`    |
-| \`This text is __*really important*__.\`    | \`This text is <strong><em>really important</em></strong>.\`   | \`This text is ***really important***.\`    |
-| \`This text is **_really important_**.\`    | \`This text is <strong><em>really important</em></strong>.\`   | \`This text is ***really important***.\`    |
-| \`This is really***very***important text.\` | \`This is really<strong><em>very</em></strong>important text.\` | \`This is really***very***important text.\` |
+| Markdown                                  | 渲染效果                                 |
+| ----------------------------------------- | ---------------------------------------- |
+| \`This text is ***really important***.\`    | \`This text is ***really important***.\`    |
+| \`This text is ___really important___.\`    | \`This text is ***really important***.\`    |
+| \`This text is __*really important*__.\`    | \`This text is ***really important***.\`    |
+| \`This text is **_really important_**.\`    | \`This text is ***really important***.\`    |
+| \`This is really***very***important text.\` | \`This is really***very***important text.\` |
 
 #### 粗体（Bold）和斜体（Italic）用法的最佳实践
 
@@ -222,12 +222,12 @@ Markdown 应用程序在处理单词或短语中间添加的下划线上并不�
 
 要创建有序列表，请在每个列表项前添加数字并紧跟一个英文句点。数字不必按数学顺序排列，但是列表应当以数字 1 起始。
 
-| Markdown                                                     | HTML                                                         | Rendered Output                                              |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| \`1. First item2. Second item3. Third item4. Fourth item\`     | \`<ol><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ol>\` | \`First itemSecond itemThird itemFourth item\`                   |
-| \`1. First item1. Second item1. Third item1. Fourth item\`     | \`<ol><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ol>\` | \`First itemSecond itemThird itemFourth item \`                  |
-| \`1. First item8. Second item3. Third item5. Fourth item\`     | \`<ol><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ol>\` | \`First itemSecond itemThird itemFourth item \`                  |
-| \`1. First item2. Second item3. Third item  1. Indented item  2. Indented item4. Fourth item\` | \`<ol><li>First item</li><li>Second item</li><li>Third item<ol><li>Indented item</li><li>Indented item</li></ol></li><li>Fourth item</li></ol>\` | \`First itemSecond itemThird itemIndented itemIndented itemFourth item\` |
+| Markdown                                                     | Rendered Output                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| \`1. First item2. Second item3. Third item4. Fourth item\`   | \`First itemSecond itemThird itemFourth item\`                   |
+| \`1. First item1. Second item1. Third item1. Fourth item\`   | \`First itemSecond itemThird itemFourth item \`                  |
+| \`1. First item8. Second item3. Third item5. Fourth item\`   | \`First itemSecond itemThird itemFourth item \`                  |
+| \`1. First item2. Second item3. Third item  1. Indented item  2. Indented item4. Fourth item\` | \`First itemSecond itemThird itemIndented itemIndented itemFourth item\` |
 
 #### Ordered List Best Practices
 
@@ -241,12 +241,12 @@ CommonMark and a few other lightweight markup languages let you use a parenthesi
 
 要创建无序列表，请在每个列表项前面添加破折号 (\`-\`)、星号 (\`*\`) 或加号 (\`+\`) 。缩进一个或多个列表项可创建嵌套列表。
 
-| Markdown                                                     | HTML                                                         | 渲染效果                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| \`- First item- Second item- Third item- Fourth item\`         | \`<ul><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ul>\` | \`First itemSecond itemThird itemFourth item\`                   |
-| \`* First item* Second item* Third item* Fourth item\`         | \`<ul><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ul>\` | \`First itemSecond itemThird itemFourth item\`                   |
-| \`+ First item+ Second item+ Third item+ Fourth item\`         | \`<ul><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ul>\` | \`First itemSecond itemThird itemFourth item\`                   |
-| \`- First item- Second item- Third item  - Indented item  - Indented item- Fourth item\` | \`<ul><li>First item</li><li>Second item</li><li>Third item<ul><li>Indented item</li><li>Indented item</li></ul></li><li>Fourth item</li></ul>\` | \`First itemSecond itemThird itemIndented itemIndented itemFourth item\` |
+| Markdown                                                     | 渲染效果                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| \`- First item- Second item- Third item- Fourth item\`         | \`First itemSecond itemThird itemFourth item\`                   |
+| \`* First item* Second item* Third item* Fourth item\`         | \`First itemSecond itemThird itemFourth item\`                   |
+| \`+ First item+ Second item+ Third item+ Fourth item\`         | \`First itemSecond itemThird itemFourth item\`                   |
+| \`- First item- Second item- Third item  - Indented item  - Indented item- Fourth item\` | \`First itemSecond itemThird itemIndented itemIndented itemFourth item\` |
 
 #### Unordered List Best Practices
 
@@ -380,17 +380,17 @@ The rendered output looks like this:
 
 要将单词或短语表示为代码，请将其包裹在反引号 (\`\`\`) 中。
 
-| Markdown                              | HTML                                             | 渲染效果                            |
-| ------------------------------------- | ------------------------------------------------ | ----------------------------------- |
-| \`At the command prompt, type \`nano\`.\` | \`At the command prompt, type <code>nano</code>.\` | At the command prompt, type \`nano\`. |
+| Markdown                              | 渲染效果                            |
+| ------------------------------------- | ----------------------------------- |
+| \`At the command prompt, type \`nano\`.\` | At the command prompt, type \`nano\`. |
 
 ### 转义反引号
 
 如果你要表示为代码的单词或短语中包含一个或多个反引号，则可以通过将单词或短语包裹在双反引号(\`\`\`\`)中。
 
-| Markdown                                | HTML                                             | 渲染效果                            |
-| --------------------------------------- | ------------------------------------------------ | ----------------------------------- |
-| \`\`\`Use \`code\` in your Markdown file.\`\`\` | \`<code>Use \`code\` in your Markdown file.</code>\` | \`Use \`code\` in your Markdown file.\` |
+| Markdown                                | 渲染效果                            |
+| --------------------------------------- | ----------------------------------- |
+| \`\`\`Use \`code\` in your Markdown file.\`\`\` | \`Use \`code\` in your Markdown file.\` |
 
 ### 代码块（Code Blocks）
 

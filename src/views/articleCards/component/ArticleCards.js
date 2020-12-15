@@ -48,9 +48,5 @@ export default function ArticleCards() {
 		[style.fixed]: loading
 	})
 
-	return (
-		<FlexiblePage className={pageCls} style={{ paddingBottom: 0 }}>
-			{loading ? skeletonElement : cardsElement}
-		</FlexiblePage>
-	)
+	return <FlexiblePage className={pageCls}>{loading ? skeletonElement : cardsElement}</FlexiblePage>
 }

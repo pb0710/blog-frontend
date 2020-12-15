@@ -3,5 +3,8 @@
 .home_page {
 	> div:first-child {
 		padding-top: 2rem;
+		@media screen and(max-width: $breakpoint_small) {
+			padding-top: 0;
+		}
 	}
 }
