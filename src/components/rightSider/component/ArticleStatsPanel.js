@@ -19,7 +19,7 @@ function ArticleStatsPanel() {
 	const theme = useSelector(state => state.setting.theme)
 	const { userId } = useSelector(state => state.userProfile)
 	const detail = useSelector(state => state.articleDetail)
-	const { id: articleId, likes = [], views = 0 } = detail
+	const { id: articleId, likes = [], views = 0, reviews = [] } = detail
 
 	const liked = likes.some(item => item?.toString?.() === userId?.toString?.())
 
@@ -92,8 +92,8 @@ function ArticleStatsPanel() {
 				</List.Item>
 				<List.Item className={style.item} bordered={false}>
 					<ForumOutlineIcon size={20} />
-					{t('article_detail.comments')}
-					<strong>0</strong>
+					{t('article_detail.reviews')}
+					<strong>{reviews.length}</strong>
 				</List.Item>
 			</List>
 		</Panel>

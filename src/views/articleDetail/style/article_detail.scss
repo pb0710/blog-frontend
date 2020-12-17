@@ -6,7 +6,7 @@
 	background: $background;
 	box-shadow: $small_shadow;
 
-	@media screen and(max-width: $breakpoint_small) {
+	@media screen and(max-width: $breakpoint_sm) {
 		margin-bottom: 0;
 		border-radius: 0;
 	}
@@ -14,7 +14,7 @@
 	.article_content {
 		padding: 0 4rem 4rem 4rem;
 
-		@media screen and(max-width: $breakpoint_small) {
+		@media screen and(max-width: $breakpoint_sm) {
 			padding: 0 2rem 4rem 2rem;
 		}
 	}
@@ -41,7 +41,7 @@
 			}
 		}
 
-		@media screen and(max-width: $breakpoint_small) {
+		@media screen and(max-width: $breakpoint_sm) {
 			padding: 2rem;
 		}
 
@@ -78,6 +78,10 @@
 	.skeleton_wrapper {
 		padding: 4rem;
 		height: calc(100vh - 5rem);
+
+		@media screen and(max-width: $breakpoint_sm) {
+			padding: 2rem;
+		}
 
 		.bg_skeleton {
 			width: 100%;

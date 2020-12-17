@@ -5,6 +5,7 @@ import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import style from '../style/index.module.scss'
 import { getlang } from '../util'
 import { useSelector } from 'react-redux'
+import { LinkOutlined } from '@ant-design/icons'
 
 const Fragment = props => <>{props.children}</>
 
@@ -33,6 +34,13 @@ function Code(props) {
 	return <Highlight language={getlang(className)}>{children}</Highlight>
 }
 
+const A = props => (
+	<a target="blank" {...props}>
+		<LinkOutlined />
+		{props.children}
+	</a>
+)
+
 function Markdown(props) {
 	const theme = useSelector(state => state.setting.theme)
 	return (
@@ -44,7 +52,8 @@ function Markdown(props) {
 						blockquote: Blockquote,
 						code: Code,
 						pre: Pre,
-						img: Img
+						img: Img,
+						a: A
 					}
 				}}
 			>

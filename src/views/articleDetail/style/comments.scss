@@ -1,0 +1,28 @@
+.comments_wrapper {
+	padding: 1rem 4rem;
+
+	@media screen and (max-width: $breakpoint_sm) {
+		padding: 1rem 2rem;
+	}
+
+	.add_review_wrapper {
+		textarea {
+			height: 10rem;
+		}
+
+		.footer {
+			display: flex;
+			flex-direction: row-reverse;
+			padding: 1rem 0;
+
+			@include use_themes('.go_login') {
+				cursor: pointer;
+				transition: color $normal;
+				&:hover {
+					color: $highlight;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

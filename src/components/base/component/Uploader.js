@@ -28,8 +28,8 @@ function Uploader(props) {
 		fileInputRef.current.click()
 	}
 
-	const handleChange = e => {
-		const files = e.target.files
+	const handleChange = event => {
+		const files = event.target.files
 
 		if (format === dataFormat.BASE_64) {
 			const fileList = Array.prototype.map.call(files, readFile)

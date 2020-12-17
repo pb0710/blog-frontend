@@ -7,10 +7,11 @@ import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
 import { increaseArticleViews, updateArticleDetail } from '../store/action'
 import { msg, Skeleton } from '@/components/base'
-import { AspectRatio, Tag } from 'sylas-react-ui'
+import { AspectRatio, Divider, Tag } from 'sylas-react-ui'
 import { useFetch } from '@/utils/hooks'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
+import Comments from './Comments'
 
 export default function ArticleDetail() {
 	const { t } = useTranslation()
@@ -47,7 +48,8 @@ export default function ArticleDetail() {
 	const infoElement = (
 		<div className={style.info}>
 			<div className={style[`author_${theme}`]}>
-				<Link to="/user">{data.author}</Link>
+				{/* <Link to="/user">{data.author}</Link> */}
+				{data.author}
 			</div>
 			<div className={style.article}>
 				<div>
@@ -91,7 +93,7 @@ export default function ArticleDetail() {
 	return (
 		<FlexiblePage className={style.article_detail_page}>
 			<section className={style.article_detail_wrapper}>
-				{loading ? (
+				{!data.content || loading ? (
 					skeletonElement
 				) : (
 					<>
@@ -100,6 +102,8 @@ export default function ArticleDetail() {
 						<article className={style.article_content}>
 							<Markdown>{content}</Markdown>
 						</article>
+						<Divider />
+						<Comments />
 					</>
 				)}
 			</section>

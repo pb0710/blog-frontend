@@ -7,7 +7,7 @@
 	width: 32rem;
 	border-radius: 0.6rem;
 
-	@media screen and (max-width: $breakpoint_small) {
+	@media screen and (max-width: $breakpoint_sm) {
 		right: 1rem;
 		width: calc(100vw - 4rem);
 	}

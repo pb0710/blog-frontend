@@ -20,7 +20,7 @@ export default function Login() {
 	const [avatar, setAvatar] = React.useState(defaultAvatar)
 	const { loading, data, error, excute: fetchAvatar } = useFetch(userApi.fetchProfile, {
 		initialData: {},
-		immutable: true
+		ready: false
 	})
 
 	const handleClose = () => {

@@ -42,7 +42,7 @@
 			font-weight: 500;
 		}
 
-		@media screen and (max-width: $breakpoint_small) {
+		@media screen and (max-width: $breakpoint_sm) {
 			> span {
 				margin-right: 1rem;
 			}

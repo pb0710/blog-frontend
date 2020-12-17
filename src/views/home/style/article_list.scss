@@ -6,7 +6,7 @@
 		overflow: hidden;
 		height: calc(100vh - 12rem);
 
-		@media screen and (max-width: $breakpoint_small) {
+		@media screen and (max-width: $breakpoint_sm) {
 			height: calc(100vh - 10rem);
 		}
 
@@ -127,7 +127,7 @@
 				object-fit: cover;
 			}
 
-			@media screen and (max-width: $breakpoint_small) {
+			@media screen and (max-width: $breakpoint_sm) {
 				.left_wrapper {
 					width: calc(100% - 12rem);
 				}

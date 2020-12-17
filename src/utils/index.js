@@ -1,12 +1,12 @@
 // 防抖
 export function debounce(fn, wait = 0) {
 	let timeout
-	return e => {
+	return event => {
 		// react的event是合成对象，先转化
-		e.persist && e.persist()
+		event.persist && event.persist()
 		clearTimeout(timeout)
 		timeout = setTimeout(function () {
-			fn(e)
+			fn(event)
 		}, wait)
 	}
 }

@@ -20,7 +20,7 @@ export default function IndividualPanel(props) {
 
 	const { data, loading } = useFetch(userApi.fetchProfile, {
 		initialData: {},
-		immutable: !username,
+		ready: username,
 		params: [username],
 		refreshDeps: [username]
 	})

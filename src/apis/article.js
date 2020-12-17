@@ -68,3 +68,25 @@ export const dislike = (userId, articleId) =>
 		method: 'POST',
 		data: { userId, articleId }
 	})
+
+/**
+ * 发表评论
+ * @param {String} articleId 文章ID
+ */
+export const comment = ({ userId, articleId, content }) =>
+	request({
+		url: `article/comment`,
+		method: 'POST',
+		data: { articleId, userId, content }
+	})
+
+/**
+ * 获取该文章所有评论
+ * @param {String} articleId 文章ID
+ */
+export const fetchReviewList = (articleId, cancelToken) =>
+	request({
+		url: `article/review_list`,
+		params: { articleId },
+		cancelToken
+	})

@@ -23,7 +23,7 @@ export default function AuthorPanel() {
 
 	const { data, loading } = useFetch(userApi.fetchProfile, {
 		initialData: {},
-		immutable: !author,
+		ready: author,
 		params: [author],
 		refreshDeps: [author]
 	})

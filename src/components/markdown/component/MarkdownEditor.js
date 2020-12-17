@@ -44,8 +44,8 @@ function MarkdownEditor() {
 	// 鼠标悬停区域
 	let hoverArea = React.useRef(area.EDITOR).current
 
-	const handleInput = e => {
-		setContent(e.target.value)
+	const handleInput = event => {
+		setContent(event.target.value)
 	}
 
 	const handleScrollEditor = () => {

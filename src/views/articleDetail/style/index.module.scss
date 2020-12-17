@@ -1,9 +1,11 @@
-@import 'article_detail.scss';
+@import 'article_detail';
+@import 'comments';
+@import 'reviews';
 
 .article_detail_page {
 	> div:first-child {
 		padding-top: 2rem;
-		@media screen and(max-width: $breakpoint_small) {
+		@media screen and(max-width: $breakpoint_sm) {
 			padding-top: 0;
 		}
 	}

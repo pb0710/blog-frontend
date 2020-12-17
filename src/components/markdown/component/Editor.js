@@ -6,9 +6,9 @@ function Editor(props, ref) {
 	const { content, setContent, handleInput, handleEnterEditor, handleLeave, handleScrollEditor } = props
 	const { t } = useTranslation()
 
-	const pressTab = e => {
-		e.preventDefault()
-		const elem = e.target
+	const pressTab = event => {
+		event.preventDefault()
+		const elem = event.target
 		const tabIndentStep = 2
 
 		setContent(oldContent => {
@@ -30,10 +30,10 @@ function Editor(props, ref) {
 		})
 	}
 
-	const handleKeyDown = e => {
-		let isTab = e.type === 'keydown' && (e.key === 'Tab' || e.keyCode === 9)
+	const handleKeyDown = event => {
+		let isTab = event.type === 'keydown' && (event.key === 'Tab' || event.keyCode === 9)
 		if (isTab) {
-			pressTab(e)
+			pressTab(event)
 		}
 	}
 
