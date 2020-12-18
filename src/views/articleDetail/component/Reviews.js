@@ -6,14 +6,15 @@ import dayjs from 'dayjs'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 
 function Reviews(props) {
-	const { sourceData = [] } = props
+	const { sourceData = [], handleQuote } = props
 	const { t } = useTranslation()
 	return (
 		<div className={style.reviews_wrapper}>
 			<h3>{`${t('article_detail.reviews')} (${sourceData.length} ${t('article_detail.reviews_total')})`}</h3>
 			<List>
-				{sourceData.map(item => {
+				{sourceData.map((item, index) => {
 					const { reviewId, content, creationTime, speaker } = item
+					const layerNum = sourceData.length - index
 					return (
 						<List.Item key={reviewId} className={style.review_wrapper}>
 							<div className={style.review}>
@@ -21,9 +22,13 @@ function Reviews(props) {
 									<img alt="" src={speaker.avatar || defaultAvatar} />
 									<strong>{speaker.nickname}</strong>
 								</div>
-								<span className={style.content}>{content}</span>
-								<div className={style.create_time}>
+								<pre className={style.content}>
+									<span>{content}</span>
+								</pre>
+								<div className={style.footer}>
 									<span>{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}</span>
+									<span>#{layerNum}</span>
+									<span onClick={() => handleQuote(item)}>回复</span>
 								</div>
 							</div>
 						</List.Item>
@@ -34,4 +39,4 @@ function Reviews(props) {
 	)
 }
 
-export default Reviews
+export default React.memo(Reviews)

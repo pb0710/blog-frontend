@@ -39,20 +39,36 @@
 				border: 1px solid $divider;
 				border-radius: 1rem;
 				border-top-left-radius: 0;
-				word-wrap: break-word;
 				transform: scale(0);
 				transform-origin: left top;
 				animation: pop-up $normal ease-out forwards;
+
+				> span {
+					white-space: pre-wrap;
+					word-wrap: break-word;
+					font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
+					line-height: 1.5em;
+				}
 			}
 
-			.create_time {
+			.footer {
 				display: flex;
 				flex-direction: row-reverse;
 				width: 100%;
 
 				> span {
+					margin: 0 1rem;
 					color: $text_secondary;
-					font-size: 1.2rem;
+					font-size: 1.3rem;
+					transition: color $normal;
+
+					&:last-child {
+						cursor: pointer;
+						&:hover {
+							color: $text_primary;
+							text-decoration: underline;
+						}
+					}
 				}
 			}
 		}
