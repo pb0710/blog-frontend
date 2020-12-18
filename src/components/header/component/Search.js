@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import style from '../style/index.module.scss'
 import { Button, Popup, Input, List, Divider } from 'sylas-react-ui'
 import SearchIcon from 'mdi-react/SearchIcon'
@@ -13,15 +13,15 @@ import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 export default function Search() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
-	const ref = React.useRef()
+	const ref = useRef()
 	const [visible, popupRef, { toggle, hide }] = Popup.usePopup()
-	const inputing = React.useRef(false)
-	const initialResult = React.useMemo(() => ({ articles: [], users: [] }), [])
-	const [result, setResult] = React.useState(initialResult)
+	const inputing = useRef(false)
+	const initialResult = useMemo(() => ({ articles: [], users: [] }), [])
+	const [result, setResult] = useState(initialResult)
 
 	const notResult = !result.articles.length && !result.users.length
 
-	const reset = React.useCallback(() => {
+	const reset = useCallback(() => {
 		setResult(initialResult)
 	}, [initialResult])
 
@@ -43,7 +43,7 @@ export default function Search() {
 		}
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (visible) {
 			ref.current?.focus?.()
 			reset()

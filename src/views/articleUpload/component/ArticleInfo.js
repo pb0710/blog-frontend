@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import AddToPhotosIcon from 'mdi-react/AddToPhotosIcon'
 import CheckCircleIcon from 'mdi-react/CheckCircleIcon'
 import CloseIcon from 'mdi-react/CloseIcon'
@@ -23,7 +23,7 @@ export default function ArticleInfo(props) {
 	const theme = useSelector(state => state.setting.theme)
 
 	const [visible, { setTrue: handleShowCover, setFalse: handleHideCover }] = useBoolean(false)
-	const [picSrc, setPicSrc] = React.useState(defaultArticleBg)
+	const [picSrc, setPicSrc] = useState(defaultArticleBg)
 
 	const handleAddPic = useCallback(
 		async formData => {

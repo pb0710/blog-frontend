@@ -84,9 +84,8 @@ export const comment = ({ userId, articleId, content }) =>
  * 获取该文章所有评论
  * @param {String} articleId 文章ID
  */
-export const fetchReviewList = (articleId, cancelToken) =>
+export const fetchReviewList = articleId =>
 	request({
 		url: `article/review_list`,
-		params: { articleId },
-		cancelToken
+		params: { articleId }
 	})

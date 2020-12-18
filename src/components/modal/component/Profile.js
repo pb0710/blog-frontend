@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import style from '../style/index.module.scss'
 import { Button, Form, Input, Select, Uploader } from 'sylas-react-ui'
@@ -22,7 +22,7 @@ export default function Profile(props) {
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
 	const theme = useSelector(state => state.setting.theme)
-	const [avatarSrc, setAvatarSrc] = React.useState(defaultAvatar)
+	const [avatarSrc, setAvatarSrc] = useState(defaultAvatar)
 	const [visible, { setTrue: handleShowUpload, setFalse: handleHideUpload }] = useBoolean(false)
 
 	const handleReturn = () => {

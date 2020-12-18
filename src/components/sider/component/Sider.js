@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'sylas-react-ui'
 import ArrowBackIcon from 'mdi-react/ArrowBackIcon'
@@ -20,7 +20,7 @@ export default function Sider() {
 		dispatch(updateDrawer(false))
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(updateDrawer(drawerDefaultOpened))
 	}, [dispatch, drawerDefaultOpened])
 

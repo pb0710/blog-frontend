@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from '../style/index.module.scss'
 import { useSelector } from 'react-redux'
 import { Panel, Skeleton } from '@/components/base'
@@ -21,17 +21,17 @@ export default function AuthorPanel() {
 	const theme = useSelector(state => state.setting.theme)
 	const { author } = detail
 
-	const { data, loading } = useFetch(userApi.fetchProfile, {
+	const { data, loading } = useFetch(async () => userApi.fetchProfile(author), {
 		initialData: {},
-		ready: author,
-		params: [author],
+		ready: !!author,
 		refreshDeps: [author]
 	})
 	const { nickname, avatar, contacts } = data
 	const hasContacts = typeof contacts === 'object' && Object.values(contacts).filter(Boolean).length > 0
 
-	React.useEffect(
+	useEffect(
 		() => () => {
+			// reset article detail
 			updateArticleDetail({})
 		},
 		[]

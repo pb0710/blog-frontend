@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Button } from 'sylas-react-ui'
 import { insertTemp, followScroll, getPosition, setPosition } from '../util'
 import style from '../style/index.module.scss'
@@ -34,15 +34,15 @@ function MarkdownEditor() {
 	const isMobile = useMediaQuery('(max-width:600px)')
 
 	const [previewing, { toggle: togglePreview, setTrue }] = useBoolean(false)
-	const [content, setContent] = React.useState('')
-	React.useEffect(() => {
+	const [content, setContent] = useState('')
+	useEffect(() => {
 		setContent(useMarkdownGuide ? temp.markdownDemo : '')
 	}, [useMarkdownGuide])
 
-	const editorRef = React.useRef()
-	const previewRef = React.useRef()
+	const editorRef = useRef()
+	const previewRef = useRef()
 	// 鼠标悬停区域
-	let hoverArea = React.useRef(area.EDITOR).current
+	let hoverArea = useRef(area.EDITOR).current
 
 	const handleInput = event => {
 		setContent(event.target.value)
@@ -114,11 +114,11 @@ function MarkdownEditor() {
 	}
 
 	// 默认focus textarea
-	React.useEffect(() => {
+	useEffect(() => {
 		editorRef.current.focus()
 	}, [])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (!isMobile) {
 			setTrue()
 		}

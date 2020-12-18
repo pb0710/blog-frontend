@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
@@ -27,7 +27,7 @@ export default function Header() {
 		dispatch(updateModal(true, <Login />))
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(initUser())
 	}, [dispatch])
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -14,14 +14,14 @@ import { Login } from '@/components/modal'
 import { updateModal } from '@/components/modal/store/action'
 
 function AddComment(props) {
-	const { setState } = props
+	const { mutate } = props
 	const dispatch = useDispatch()
 	const { t } = useTranslation()
 	const { id: articleId } = useParams()
 	const theme = useSelector(state => state.setting.theme)
 	const online = useSelector(state => state.online)
 	const { userId } = useSelector(state => state.userProfile)
-	const [content, setContent] = React.useState('')
+	const [content, setContent] = useState('')
 
 	const handleComment = async () => {
 		if (content.length < 8) {
@@ -30,7 +30,7 @@ function AddComment(props) {
 		}
 		try {
 			const payload = await articleApi.comment({ userId, articleId, content })
-			setState(oldState => [payload, ...oldState])
+			mutate(oldReviews => [payload, ...oldReviews])
 			msg.success(t('success.comment'))
 		} catch (err) {
 			msg.error(t('error.comment'))
@@ -63,32 +63,27 @@ function AddComment(props) {
 function Comments() {
 	const dispatch = useDispatch()
 	const { id: articleId } = useParams()
-
-	const { data } = useFetch(articleApi.fetchReviewList, {
+	const { data, mutate } = useFetch(async () => articleApi.fetchReviewList(articleId), {
 		initialData: [],
-		params: [articleId],
+		ready: !!articleId,
 		refreshDeps: [articleId]
 	})
-	const [state, setState] = React.useState(data)
-	React.useEffect(() => {
-		setState(data)
-	}, [data])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(
 			updateArticleDetail({
 				// 防止重渲染，不用useSelector，直接getState取最新值
 				...store.getState().articleDetail,
-				reviews: state
+				reviews: data
 			})
 		)
-	}, [dispatch, state])
+	}, [dispatch, data])
 
 	return (
 		<div className={style.comments_wrapper}>
-			<AddComment setState={setState} />
+			<AddComment mutate={mutate} />
 			<Divider />
-			<Reviews sourceData={state} />
+			<Reviews sourceData={data} />
 		</div>
 	)
 }

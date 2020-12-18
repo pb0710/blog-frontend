@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from '../style/index.module.scss'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import * as articleApi from '@/apis/article'
 import { increaseArticleViews, updateArticleDetail } from '../store/action'
 import { msg, Skeleton } from '@/components/base'
 import { AspectRatio, Divider, Tag } from 'sylas-react-ui'
-import { useFetch } from '@/utils/hooks'
+import { useFetch, useScrollToTop } from '@/utils/hooks'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import Comments from './Comments'
@@ -20,26 +20,25 @@ export default function ArticleDetail() {
 	const detail = useSelector(state => state.articleDetail)
 	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0 } = detail
 	const { id } = useParams()
-
-	const { data, error, loading } = useFetch(articleApi.fetchDetail, {
+	useScrollToTop()
+	const { data, loading } = useFetch(async () => articleApi.fetchDetail(id), {
 		initialData: {},
-		params: [id],
-		refreshDeps: [id]
+		ready: !!id,
+		refreshDeps: [id],
+		onSuccess(res) {
+			if (res?.content) {
+				dispatch(updateArticleDetail(res))
+			}
+		},
+		onError(err) {
+			if (err) {
+				msg.error(err)
+			}
+		}
 	})
+	const dataReady = !data.content || loading
 
-	React.useEffect(() => {
-		if (data.content) {
-			dispatch(updateArticleDetail(data))
-		}
-	}, [data, dispatch])
-
-	React.useEffect(() => {
-		if (error) {
-			msg.error(error)
-		}
-	}, [error])
-
-	React.useEffect(() => {
+	useEffect(() => {
 		if (id) {
 			dispatch(increaseArticleViews(id))
 		}
@@ -93,7 +92,7 @@ export default function ArticleDetail() {
 	return (
 		<FlexiblePage className={style.article_detail_page}>
 			<section className={style.article_detail_wrapper}>
-				{!data.content || loading ? (
+				{dataReady ? (
 					skeletonElement
 				) : (
 					<>

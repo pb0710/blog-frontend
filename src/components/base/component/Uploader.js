@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import style from '../style/index.module.scss'
 import { Button } from 'sylas-react-ui'
 import ImageOutlineIcon from 'mdi-react/ImageOutlineIcon'
@@ -22,7 +22,7 @@ function Uploader(props) {
 		...rest
 	} = props
 
-	const fileInputRef = React.useRef()
+	const fileInputRef = useRef()
 
 	const handleSelect = () => {
 		fileInputRef.current.click()

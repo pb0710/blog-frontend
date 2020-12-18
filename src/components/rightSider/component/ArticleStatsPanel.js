@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import style from '../style/index.module.scss'
 import { msg, Panel } from '@/components/base'
 import { List } from 'sylas-react-ui'
@@ -23,7 +23,7 @@ function ArticleStatsPanel() {
 
 	const liked = likes.some(item => item?.toString?.() === userId?.toString?.())
 
-	const handleDislike = React.useCallback(
+	const handleDislike = useCallback(
 		async (userId, detail) => {
 			const { likes = [] } = detail
 			try {
@@ -41,7 +41,7 @@ function ArticleStatsPanel() {
 		[articleId, dispatch]
 	)
 
-	const handleLike = React.useCallback(
+	const handleLike = useCallback(
 		async (userId, detail) => {
 			const { likes = [] } = detail
 			try {

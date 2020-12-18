@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import style from '../style/index.module.scss'
 import Options from './Options'
 import { Input, Button, Select, Uploader } from 'sylas-react-ui'
@@ -25,7 +25,7 @@ function Account() {
 	const theme = useSelector(state => state.setting.theme)
 	const { username, nickname, avatar, gender, selfIntroduction, contacts } = profile
 
-	const handleChangeAvatar = React.useCallback(
+	const handleChangeAvatar = useCallback(
 		async formData => {
 			formData.append('userId', profile.userId)
 			try {

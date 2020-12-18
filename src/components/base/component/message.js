@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import style from '../style/index.module.scss'
 import { v4 as uuid } from 'uuid'
@@ -13,7 +13,7 @@ let add
 
 function MessageContainer() {
 	// { id, content, type, duration }
-	const [msgList, setMsgList] = React.useState([])
+	const [msgList, setMsgList] = useState([])
 
 	const remove = msg => {
 		setMsgList(oldMsgList => oldMsgList.filter(item => item.id !== msg.id))

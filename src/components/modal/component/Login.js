@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from '../style/index.module.scss'
 import { Form, Input, Button, Loading } from 'sylas-react-ui'
 import CloseIcon from 'mdi-react/CloseIcon'
@@ -17,10 +17,20 @@ export default function Login() {
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
 
-	const [avatar, setAvatar] = React.useState(defaultAvatar)
-	const { loading, data, error, excute: fetchAvatar } = useFetch(userApi.fetchProfile, {
+	const [avatar, setAvatar] = useState(defaultAvatar)
+	const { loading, run: fetchAvatar } = useFetch(async username => userApi.fetchProfile(username), {
 		initialData: {},
-		ready: false
+		manual: true,
+		onSuccess(res) {
+			if (res?.avatar) {
+				setAvatar(res.avatar)
+			}
+		},
+		onError(err) {
+			if (err) {
+				setAvatar(defaultAvatar)
+			}
+		}
 	})
 
 	const handleClose = () => {
@@ -41,16 +51,6 @@ export default function Login() {
 
 		dispatch(userLogin({ username, password }))
 	}
-
-	React.useEffect(() => {
-		if (error) {
-			setAvatar(defaultAvatar)
-			return
-		}
-		if (data?.avatar) {
-			setAvatar(data.avatar)
-		}
-	}, [data, error])
 
 	return (
 		<div className={style.login_wrapper}>

@@ -15,9 +15,9 @@ function ArticleList(props) {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
 
-	const { data, loading } = useFetch(articleApi.fetchList, {
+	const { data, loading } = useFetch(async () => articleApi.fetchList({ sortBy }), {
 		initialData: [],
-		params: [{ sortBy }],
+		ready: !!sortBy,
 		refreshDeps: [sortBy]
 	})
 

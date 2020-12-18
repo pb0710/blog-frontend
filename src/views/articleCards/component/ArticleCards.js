@@ -11,9 +11,8 @@ import clsx from 'clsx'
 
 export default function ArticleCards() {
 	const { category } = useParams()
-	const { data, loading } = useFetch(articleApi.fetchList, {
+	const { data, loading } = useFetch(async () => articleApi.fetchList({ category }), {
 		initialData: [],
-		params: [{ category }],
 		refreshDeps: [category]
 	})
 

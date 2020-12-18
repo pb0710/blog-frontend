@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Menu } from 'sylas-react-ui'
 import { matchPath, NavLink, useLocation } from 'react-router-dom'
 import style from '../style/index.module.scss'
@@ -31,7 +31,7 @@ function NavMenu() {
 	const { t } = useTranslation()
 	const [currentKey, setCurrentKey] = useState('')
 
-	React.useEffect(() => {
+	useEffect(() => {
 		function selectMenu(nav) {
 			const match = matchPath(pathname, {
 				path: nav.to,
@@ -66,7 +66,7 @@ function NavMenu() {
 						}
 					>
 						{nav.child.map(child => {
-							child = { ...child, to: nav.to + child.to }
+							child = { ...child, to: `${nav.to}${child.to}` }
 							return <Nav key={child.id} {...child} />
 						})}
 					</Menu.Sub>

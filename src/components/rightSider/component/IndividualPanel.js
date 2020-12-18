@@ -18,10 +18,9 @@ export default function IndividualPanel(props) {
 	const { t } = useTranslation()
 	const { username = 'pb@qq.com' } = useSelector(state => state.userProfile)
 
-	const { data, loading } = useFetch(userApi.fetchProfile, {
+	const { data, loading } = useFetch(async () => userApi.fetchProfile(username), {
 		initialData: {},
-		ready: username,
-		params: [username],
+		ready: !!username,
 		refreshDeps: [username]
 	})
 	const { nickname, avatar, contacts } = data
