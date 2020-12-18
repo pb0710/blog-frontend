@@ -15,6 +15,7 @@ import { updateModal } from '@/components/modal/store/action'
 import { saveProfile } from '@/store/actions'
 import { saveSetting } from '../store/action'
 import { useTranslation } from 'react-i18next'
+import { useScrollToTop } from '@/utils/hooks'
 
 function Setting() {
 	const { t } = useTranslation()
@@ -22,6 +23,7 @@ function Setting() {
 	const online = useSelector(state => state.online)
 	const profile = useSelector(state => state.userProfile)
 	const setting = useSelector(state => state.setting)
+	useScrollToTop()
 	const accountSaveInterval = 1000
 	const settingSaveInterval = 400
 	const [profileForm] = Form.useForm()

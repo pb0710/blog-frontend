@@ -12,6 +12,7 @@ import store from '@/store'
 import { updateArticleDetail } from '../store/action'
 import { Login } from '@/components/modal'
 import { updateModal } from '@/components/modal/store/action'
+import config from '@/config'
 
 const AddComment = React.forwardRef((props, ref) => {
 	const { mutate, content, setContent } = props
@@ -61,21 +62,26 @@ const AddComment = React.forwardRef((props, ref) => {
 })
 
 function Comments() {
+	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const { id: articleId } = useParams()
 	const [content, setContent] = useState('')
 	const textareaRef = useRef()
 	const { data, mutate } = useFetch(async () => articleApi.fetchReviewList(articleId), {
 		initialData: [],
+		loadingDelay: config.LOADING_DELAY,
 		ready: !!articleId,
 		refreshDeps: [articleId]
 	})
 
-	const handleQuote = useCallback(({ speaker, content }) => {
-		const splitLine = `------------------------------------------------------------`
-		setContent(`${speaker.nickname} : ${content.trim()}  \n${splitLine}  \n`)
-		textareaRef.current?.focus()
-	}, [])
+	const handleQuote = useCallback(
+		({ speaker, content }) => {
+			const splitLine = `----------------------------------------------------------------------`
+			setContent(`${speaker.nickname || t('article_detail.anonymous_user')} : ${content.trim()}  \n${splitLine}  \n`)
+			textareaRef.current?.focus()
+		},
+		[t]
+	)
 
 	useEffect(() => {
 		dispatch(

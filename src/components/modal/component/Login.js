@@ -11,6 +11,7 @@ import { msg } from '@/components/base'
 import * as userApi from '@/apis/user'
 import { useFetch } from '@/utils/hooks'
 import { useTranslation } from 'react-i18next'
+import config from '@/config'
 
 export default function Login() {
 	const { t } = useTranslation()
@@ -21,6 +22,7 @@ export default function Login() {
 	const { loading, run: fetchAvatar } = useFetch(async username => userApi.fetchProfile(username), {
 		initialData: {},
 		manual: true,
+		loadingDelay: config.LOADING_DELAY,
 		onSuccess(res) {
 			if (res?.avatar) {
 				setAvatar(res.avatar)

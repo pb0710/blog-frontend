@@ -2,6 +2,7 @@ const local = {
 	// 只有本地环境走代理
 	BASE_URL: 'http://localhost:10086',
 	PROXY_URL: 'http://localhost:3333',
-	REDUX_LOG: true
+	REDUX_LOG: true,
+	LOADING_DELAY: 200
 }
 export default local

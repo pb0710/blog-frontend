@@ -73,7 +73,7 @@ export default function ArticleInfo(props) {
 			name: 'pic',
 			initialValue: picSrc,
 			component: (
-				<Uploader className={style.center_box} multiple={false} action={handleAddPic}>
+				<Uploader className={style.center_wrapper} multiple={false} action={handleAddPic}>
 					<div className={style.pic_wrapper} onMouseEnter={handleShowCover} onMouseLeave={handleHideCover}>
 						<div className={style.pic_cover}>
 							<AddToPhotosIcon size={30} color={visible ? '#fff' : 'transparent'} />
@@ -138,7 +138,7 @@ export default function ArticleInfo(props) {
 						{item.component}
 					</Form.Item>
 				))}
-				<div className={style.center_box}>
+				<div className={style.center_wrapper}>
 					<Button type="submit" color={theme} prefixes={<CheckCircleIcon size={20} />}>
 						{t('article_publish.publish')}
 					</Button>

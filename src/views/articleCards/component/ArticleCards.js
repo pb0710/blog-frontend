@@ -4,17 +4,20 @@ import { FlexiblePage } from '@/components/page'
 import ArticleCard from './ArticleCard'
 import * as articleApi from '@/apis/article'
 import { useParams } from 'react-router-dom'
-import { useFetch } from '@/utils/hooks'
+import { useFetch, useScrollToTop } from '@/utils/hooks'
 import { Skeleton } from '@/components/base'
 import { AspectRatio } from 'sylas-react-ui'
 import clsx from 'clsx'
+import config from '@/config'
 
 export default function ArticleCards() {
 	const { category } = useParams()
 	const { data, loading } = useFetch(async () => articleApi.fetchList({ category }), {
 		initialData: [],
+		loadingDelay: config.LOADING_DELAY,
 		refreshDeps: [category]
 	})
+	useScrollToTop()
 
 	const skeletonElement = (
 		<article className={style.skeleton_list}>

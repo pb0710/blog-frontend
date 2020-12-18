@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { GlobalLoading } from '@/components/base'
+import config from '@/config'
 
 const navRoutes = [
 	{
@@ -35,7 +36,7 @@ const navRoutes = [
 
 function Content() {
 	return (
-		<React.Suspense fallback={<GlobalLoading />}>
+		<React.Suspense fallback={<GlobalLoading />} maxDuration={config.LOADING_DELAY}>
 			<Switch>
 				{navRoutes.map(({ path, component, ...rest }) => (
 					<Route key={path} exact path={path} component={React.lazy(component)} {...rest} />

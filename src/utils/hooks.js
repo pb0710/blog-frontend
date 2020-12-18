@@ -33,51 +33,86 @@ export function useLatestStateRef(state) {
  * 异步请求hook
  * @param {Function} promisedFn 异步请求函数
  * @param {Object} options
- *  @param {*} initialData 默认值
+ *  @param {*} initialData data 默认值
  *  @param {Boolean} ready 是否自动请求
  *  @param {Boolean} manual 是否只允许手动请求 manual = true 后，refreshDeps 将无效，只允许 run()
  *  @param {Array} refreshDeps 自动请求依赖项
+ *  @param {Number} loadingDelay 显示 loading 的延迟时间，避免闪烁
  *  @param {Function} onSuccess 请求成功回调
  *  @param {Function} onError 请求失败回调
  */
 export function useFetch(
 	promisedFn,
-	{ initialData, ready = true, manual = false, refreshDeps = [], onSuccess, onError }
+	{
+		initialData,
+		ready = true,
+		manual = false,
+		refreshDeps = [],
+		loadingDelay = 0,
+		onSuccess,
+		onError,
+		formatResult = x => x
+	}
 ) {
 	const [data, setData] = useState(initialData)
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
 
-	const initialize = useRef(initialData).current // 初始数据不可变
+	const initialDataRef = useRef(initialData) // 永不变
+	// 请求计数，用来处理请求时序问题。即 接口响应顺序与调用顺序不一致，弱网环境可能出现。
+	const count = useRef(0)
 
-	const latestFnRef = useLatestStateRef(promisedFn)
+	const promisedFnRef = useLatestStateRef(promisedFn)
 	const onSuccessRef = useLatestStateRef(onSuccess)
 	const onErrorRef = useLatestStateRef(onError)
+	const formatRef = useLatestStateRef(formatResult)
 	const internalRefreshDeps = manual ? [] : refreshDeps
 
 	const mutate = useCallback(setData, [setData])
 
 	const run = useCallback(
 		(...args) => {
-			if (typeof latestFnRef.current !== 'function') return
+			if (typeof promisedFnRef.current !== 'function' || typeof formatRef.current !== 'function') {
+				return
+			}
 
-			setLoading(true)
-			setData(initialize)
-			setError()
-			latestFnRef
+			const currentCount = count.current
+			const loadingTimer = setTimeout(() => {
+				setLoading(true)
+			}, loadingDelay)
+
+			promisedFnRef
 				.current(...args)
 				.then(res => {
-					onSuccessRef.current?.(res)
-					setData(res)
+					if (currentCount !== count.current) {
+						return
+					}
+					const formated = formatRef.current(res)
+					onSuccessRef.current?.(formated)
+					setData(formated)
 				})
 				.catch(err => {
+					if (currentCount !== count.current) {
+						return
+					}
 					onErrorRef.current?.(err)
 					setError(err)
 				})
-				.finally(() => setLoading(false))
+				.finally(() => {
+					clearTimeout(loadingTimer)
+					setLoading(false)
+				})
 		},
-		[initialize, latestFnRef, onErrorRef, onSuccessRef]
+		[formatRef, loadingDelay, onErrorRef, onSuccessRef, promisedFnRef]
 	)
+
+	useEffect(() => {
+		setData(initialDataRef.current)
+		// 组件卸载后阻断请求
+		return () => {
+			count.current += 1
+		}
+	}, [])
 
 	useEffect(
 		() => {

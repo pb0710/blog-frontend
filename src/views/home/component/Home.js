@@ -6,10 +6,12 @@ import { Tabs } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 import ArticleList from './ArticleList'
 import { useTranslation } from 'react-i18next'
+import { useScrollToTop } from '@/utils/hooks'
 
 export default function Home() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
+	useScrollToTop()
 
 	const tabList = [
 		{ key: 'latest', title: t('home.latest') },

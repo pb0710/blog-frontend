@@ -12,6 +12,7 @@ import { useFetch, useScrollToTop } from '@/utils/hooks'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import Comments from './Comments'
+import config from '@/config'
 
 export default function ArticleDetail() {
 	const { t } = useTranslation()
@@ -23,6 +24,7 @@ export default function ArticleDetail() {
 	useScrollToTop()
 	const { data, loading } = useFetch(async () => articleApi.fetchDetail(id), {
 		initialData: {},
+		loadingDelay: config.LOADING_DELAY,
 		ready: !!id,
 		refreshDeps: [id],
 		onSuccess(res) {
@@ -36,7 +38,6 @@ export default function ArticleDetail() {
 			}
 		}
 	})
-	const dataReady = !data.content || loading
 
 	useEffect(() => {
 		if (id) {
@@ -92,7 +93,7 @@ export default function ArticleDetail() {
 	return (
 		<FlexiblePage className={style.article_detail_page}>
 			<section className={style.article_detail_wrapper}>
-				{dataReady ? (
+				{loading ? (
 					skeletonElement
 				) : (
 					<>

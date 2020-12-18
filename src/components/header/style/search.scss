@@ -12,13 +12,22 @@
 		width: calc(100vw - 4rem);
 	}
 
-	.search_input_box {
+	.search_input_wrapper {
 		padding: 2rem 2rem 1rem 2rem;
 	}
 
-	.result_box {
+	.loading_wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 24rem;
+		width: 100%;
+	}
+
+	.result_wrapper {
 		overflow-y: auto;
 		padding-top: 0;
+		min-height: 24rem;
 		max-height: 48rem;
 		width: 100%;
 

@@ -7,6 +7,7 @@ import { Affix } from '@/components/base'
 import IndividualPanel from './IndividualPanel'
 import AuthorPanel from './AuthorPanel'
 import ArticleStatsPanel from './ArticleStatsPanel'
+import config from '@/config'
 
 function RightSider() {
 	const opened = useSelector(state => state.sider.drawerOpened)
@@ -43,7 +44,7 @@ function RightSider() {
 	]
 
 	return (
-		<React.Suspense fallback="loading">
+		<React.Suspense fallback="loading" maxDuration={config.LOADING_DELAY}>
 			<Switch>
 				{rightSideRoutes.map(({ path, component, ...rest }) => (
 					<Route key={path} exact path={path} {...rest}>

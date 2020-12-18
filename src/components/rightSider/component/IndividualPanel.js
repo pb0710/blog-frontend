@@ -13,6 +13,7 @@ import * as userApi from '@/apis/user'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useTranslation } from 'react-i18next'
 import Contact from './Contact'
+import config from '@/config'
 
 export default function IndividualPanel(props) {
 	const { t } = useTranslation()
@@ -20,6 +21,7 @@ export default function IndividualPanel(props) {
 
 	const { data, loading } = useFetch(async () => userApi.fetchProfile(username), {
 		initialData: {},
+		loadingDelay: config.LOADING_DELAY,
 		ready: !!username,
 		refreshDeps: [username]
 	})
@@ -76,7 +78,7 @@ export default function IndividualPanel(props) {
 			<List>
 				<Link to="/">
 					<List.Item className={avatarItemCls}>
-						<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
+						<div className={style.avatar}>{loading ? null : <img src={avatar ?? defaultAvatar} alt="" />}</div>
 						<div className={style.bottom_wrapper}>
 							<h2 className={style.name}>{nickname || <Skeleton />}</h2>
 						</div>

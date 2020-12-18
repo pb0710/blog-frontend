@@ -20,7 +20,7 @@ function Reviews(props) {
 							<div className={style.review}>
 								<div className={style.user}>
 									<img alt="" src={speaker.avatar || defaultAvatar} />
-									<strong>{speaker.nickname}</strong>
+									<strong>{speaker.nickname || t('article_detail.anonymous_user')}</strong>
 								</div>
 								<pre className={style.content}>
 									<span>{content}</span>
@@ -28,7 +28,7 @@ function Reviews(props) {
 								<div className={style.footer}>
 									<span>{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}</span>
 									<span>#{layerNum}</span>
-									<span onClick={() => handleQuote(item)}>回复</span>
+									<span onClick={() => handleQuote(item)}>{t('article_detail.quote')}</span>
 								</div>
 							</div>
 						</List.Item>

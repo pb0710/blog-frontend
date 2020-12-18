@@ -71,6 +71,8 @@
     "add_review": "Comment",
     "add": "Comment",
     "after_login": "Sign in to comment...",
+    "quote": "Quote",
+    "anonymous_user": "Anonymous User",
     "rule": {
       "content_length_limit": "Comment less than 8 digits"
     }

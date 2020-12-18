@@ -71,6 +71,8 @@
     "add_review": "发表评论",
     "add": "发表",
     "after_login": "登录后即可发表评论...",
+    "quote": "回复",
+    "anonymous_user": "匿名用户",
     "rule": {
       "content_length_limit": "评论字数不能少于 8 位！"
     }

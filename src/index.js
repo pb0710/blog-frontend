@@ -8,13 +8,14 @@ import { BrowserRouter } from 'react-router-dom'
 import { GlobalLoading } from './components/base'
 import { Provider } from 'react-redux'
 import store from './store'
+import config from './config'
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<BrowserRouter basename="/blog">
 				<JSSBaseline>
-					<React.Suspense fallback={<GlobalLoading />}>
+					<React.Suspense fallback={<GlobalLoading />} maxDuration={config.LOADING_DELAY}>
 						<App />
 					</React.Suspense>
 				</JSSBaseline>

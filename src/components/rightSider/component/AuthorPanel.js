@@ -14,6 +14,7 @@ import { updateArticleDetail } from '@/views/articleDetail/store/action'
 import defaultAvatar from '@/assets/images/default_avatar1.jpg'
 import { useTranslation } from 'react-i18next'
 import Contact from './Contact'
+import config from '@/config'
 
 export default function AuthorPanel() {
 	const { t } = useTranslation()
@@ -23,6 +24,7 @@ export default function AuthorPanel() {
 
 	const { data, loading } = useFetch(async () => userApi.fetchProfile(author), {
 		initialData: {},
+		loadingDelay: config.LOADING_DELAY,
 		ready: !!author,
 		refreshDeps: [author]
 	})
@@ -72,7 +74,7 @@ export default function AuthorPanel() {
 			<List>
 				{/* <Link to="/"> */}
 				<List.Item className={avatarItemCls}>
-					<div className={style.avatar}>{loading || <img src={avatar ?? defaultAvatar} alt="" />}</div>
+					<div className={style.avatar}>{loading ? null : <img src={avatar ?? defaultAvatar} alt="" />}</div>
 					<div className={style.right_wrapper}>
 						<h2 className={style.name}>{nickname || <Skeleton />}</h2>
 					</div>
