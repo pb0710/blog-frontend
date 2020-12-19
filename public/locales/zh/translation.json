@@ -1,7 +1,8 @@
 {
   "info": {
     "not_login": "尚未登录",
-    "copy_to_clipboard": "链接已复制到剪切板："
+    "copy_link_to_clipboard": "链接已复制到剪切板",
+    "copy_code_to_clipboard": "代码已复制到剪切板"
   },
   "success": {
     "add": "添加成功",
@@ -143,7 +144,10 @@
     "search_placeholder": "搜一搜",
     "article": "文章",
     "user": "用户",
-    "no_data": "没有数据"
+    "no_data": "没有数据",
+    "libary": "框架和库",
+    "lang": "语言",
+    "tool": "工具"
   },
   "settings": {
     "profile": {

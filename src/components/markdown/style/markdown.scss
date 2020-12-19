@@ -25,19 +25,45 @@
 	}
 
 	p > code {
-		padding: 0.4rem 0.6rem;
+		margin: 0 0.2rem;
+		padding: 0.2rem 0.4rem;
+		border: 1px solid $divider;
 		border-radius: 0.6rem;
 		background: $background_variant;
 
 		@include code_base;
 	}
 
+	.copy_btn {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		z-index: 1;
+		height: 0;
+		color: $text_secondary;
+		font-size: 1.5rem;
+		cursor: pointer;
+		transition: color $fast;
+
+		&:hover {
+			color: $text_primary;
+		}
+
+		> span:last-child {
+			font-size: 0;
+			opacity: 0;
+		}
+	}
+
 	.code_wrapper {
+		position: relative;
 		display: block;
 		overflow-x: auto;
 		padding: 2rem;
+		max-height: 70rem;
+		border: 1px solid $divider;
 		border-radius: 0.6rem;
-		background: $background_variant;
+		background: #fcfcfc;
 	}
 
 	.blockquote {

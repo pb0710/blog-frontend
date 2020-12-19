@@ -1,12 +1,67 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import style from '../style/index.module.scss'
-import { Button, Popup, Tabs } from 'sylas-react-ui'
+import { AspectRatio, Button, Loading, Popup, Tabs, TouchRipple } from 'sylas-react-ui'
 import AppsIcon from 'mdi-react/AppsIcon'
 import { useSelector } from 'react-redux'
+import { useFetch } from '@/utils/hooks'
+import * as commonApi from '@/apis'
+import config from '@/config'
+import { useTranslation } from 'react-i18next'
+
+function LinkCard({ title, url, pic, hide }) {
+	const [rippleRef, controlProps] = TouchRipple.useRipple()
+	const handleOpen = () => {
+		setTimeout(() => {
+			hide()
+			window.open(url)
+		}, 400)
+	}
+	return (
+		<div className={style.outer} title={url}>
+			<AspectRatio aspectRatio={1}>
+				<div className={style.card_wrapper} {...controlProps} onClick={handleOpen}>
+					<div className={style.inner}>
+						<img alt="" src={pic} />
+						<span>{title}</span>
+					</div>
+					<TouchRipple ref={rippleRef} />
+				</div>
+			</AspectRatio>
+		</div>
+	)
+}
 
 export default function AppCenter() {
+	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
-	const [visible, popupRef, { toggle }] = Popup.usePopup()
+	const [visible, popupRef, { toggle, hide }] = Popup.usePopup()
+
+	const fetched = useRef(false)
+	const { data, loading, run: doFetch } = useFetch(commonApi.fetchUrls, {
+		initialData: { docs: [], tools: [], langs: [] },
+		loadingDelay: config.LOADING_DELAY,
+		manual: true
+	})
+
+	useEffect(
+		// 该接口自始自终仅调取一次
+		() => {
+			if (visible && !fetched.current) {
+				fetched.current = true
+				doFetch()
+			}
+		},
+		[doFetch, visible]
+	)
+
+	const renderCards = cards =>
+		loading ? (
+			<div className={style.loading_wrapper}>
+				<Loading.Line />
+			</div>
+		) : (
+			cards.map(card => <LinkCard key={card.title} hide={hide} {...card} />)
+		)
 
 	return (
 		<>
@@ -14,15 +69,15 @@ export default function AppCenter() {
 				<AppsIcon size={20} />
 			</Button.Icon>
 			<Popup ref={popupRef} className={style.app_center} visible={visible} scaleOrigin="top-right">
-				<Tabs bordered={false} color={theme} activeKey="aa">
-					<Tabs.Panel className={style.tab} tabKey="aa" title="aaa">
-						<h1>aaa</h1>
+				<Tabs bordered={false} color={theme} activeKey="docs">
+					<Tabs.Panel className={style.tab} tabKey="docs" title={t('header.libary')}>
+						{renderCards(data.docs)}
 					</Tabs.Panel>
-					<Tabs.Panel className={style.tab} tabKey="bb" title="bbb">
-						<h1>bbb</h1>
+					<Tabs.Panel className={style.tab} tabKey="langs" title={t('header.lang')}>
+						{renderCards(data.langs)}
 					</Tabs.Panel>
-					<Tabs.Panel className={style.tab} tabKey="cc" title="ccc">
-						<h1>ccc</h1>
+					<Tabs.Panel className={style.tab} tabKey="tools" title={t('header.tool')}>
+						{renderCards(data.tools)}
 					</Tabs.Panel>
 				</Tabs>
 			</Popup>

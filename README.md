@@ -24,6 +24,7 @@
 - 国际化 ✅
 - 切换主题 ✅
 - 搜索 ✅
+- 文档入口 ✅
 - 文章阅读数、点赞 ✅
 - 文章评论 ✅
 - 用户关注订阅
@@ -33,7 +34,7 @@
 - react（`100%` react hooks、suspense）
 - react-router、redux、redux-saga、create-react-app
 - 自建 react 基础 ui 组件库 [https://www.npmjs.com/package/sylas-react-ui](https://www.npmjs.com/package/sylas-react-ui)
-- sass、axios、i18next
+- sass、axios、i18next、markdown-to-jsx
 
 ### 开发
 

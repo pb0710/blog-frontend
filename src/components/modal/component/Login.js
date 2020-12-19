@@ -19,7 +19,7 @@ export default function Login() {
 	const theme = useSelector(state => state.setting.theme)
 
 	const [avatar, setAvatar] = useState(defaultAvatar)
-	const { loading, run: fetchAvatar } = useFetch(async username => userApi.fetchProfile(username), {
+	const { loading, run: fetchAvatar } = useFetch(userApi.fetchProfile, {
 		initialData: {},
 		manual: true,
 		loadingDelay: config.LOADING_DELAY,

@@ -3,15 +3,68 @@
 	top: 5rem;
 	right: 2rem;
 	padding: 0;
-	min-height: 0;
-	width: 30rem;
+	min-height: 33rem;
+	width: 32rem;
 	border-radius: 0.6rem;
 
-	.tab {
-		padding: 2rem;
-	}
 	@media screen and (max-width: $breakpoint_sm) {
 		right: 1rem;
 		width: calc(100vw - 4rem);
+	}
+
+	.tab {
+		overflow-y: auto;
+		overflow-y: overlay;
+		flex-flow: wrap;
+		padding: 0.5rem;
+		max-height: 48rem;
+
+		.loading_wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 33rem;
+			width: 100%;
+		}
+
+		.outer {
+			display: inline-block;
+			padding: 0.5rem;
+			width: 33.3%;
+
+			.card_wrapper {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				border-radius: 0.6rem;
+				cursor: pointer;
+				transition: background-color $normal;
+
+				&:hover {
+					background: $background_variant;
+				}
+
+				.inner {
+					display: flex;
+					align-items: center;
+					flex-direction: column;
+
+					> img {
+						margin: 1rem 0;
+						width: 4rem;
+						height: 4rem;
+						border-radius: 0.6rem;
+						vertical-align: text-top;
+
+						object-fit: cover;
+					}
+
+					> span {
+						color: $text_secondary;
+						font-weight: 600;
+					}
+				}
+			}
+		}
 	}
 }

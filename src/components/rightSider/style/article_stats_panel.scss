@@ -1,5 +1,7 @@
 @include use_themes('.article_stats_panel') {
+	padding: 1rem 0;
 	cursor: default;
+
 	.item {
 		border-radius: 0;
 		color: $text_secondary;

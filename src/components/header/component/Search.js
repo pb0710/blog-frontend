@@ -19,7 +19,7 @@ export default function Search() {
 	const [visible, popupRef, { toggle, hide }] = Popup.usePopup()
 	const inputing = useRef(false)
 	const initialData = useRef({ users: [], articles: [] }).current
-	const { data, loading, run: doSearch, mutate } = useFetch(async keywords => commonApi.search(keywords), {
+	const { data, loading, run: doSearch, mutate } = useFetch(commonApi.search, {
 		initialData,
 		manual: true,
 		loadingDelay: config.LOADING_DELAY

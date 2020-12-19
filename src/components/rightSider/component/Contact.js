@@ -11,7 +11,7 @@ function Contact(props) {
 	const { ref, copy } = useClipboard({
 		onSuccess(text) {
 			if (text) {
-				msg.info(`${t('info.copy_to_clipboard')} ${text} `)
+				msg.info(`${t('info.copy_link_to_clipboard')} - ${text} `)
 			}
 		}
 	})

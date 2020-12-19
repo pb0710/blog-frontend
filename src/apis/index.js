@@ -10,3 +10,8 @@ export const search = keywords =>
 		method: 'GET',
 		params: { keywords }
 	})
+
+/**
+ * 获取文档 url
+ */
+export const fetchUrls = () => request(`common/urls`)

@@ -1,4 +1,4 @@
-import { all } from 'redux-saga/effects'
+import { all, delay } from 'redux-saga/effects'
 import { put, spawn, takeLatest } from 'redux-saga/effects'
 import { updateModalContent, updateModalVisible } from '../store/action'
 import TYPE from '@/common/actionTypes'
@@ -9,6 +9,7 @@ function* updateModal({ visible, content = null }) {
 		yield put(updateModalContent(content))
 		yield put(updateModalVisible(visible))
 	} else {
+		yield delay(300)
 		yield put(updateModalVisible(visible))
 		yield put(updateModalContent(content))
 	}

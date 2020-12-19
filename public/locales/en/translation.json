@@ -1,7 +1,8 @@
 {
   "info": {
     "not_login": "Not login",
-    "copy_to_clipboard": "The link has been copied to the clipboard:"
+    "copy_link_to_clipboard": "The link has been copied to the clipboard",
+    "copy_code_to_clipboard": "The Code has been copied to the clipboard"
   },
   "success": {
     "add": "Added successfully",
@@ -143,7 +144,10 @@
     "search_placeholder": "Searching for",
     "article": "Article",
     "user": "User",
-    "no_data": "No data"
+    "no_data": "No data",
+    "libary": "Libary",
+    "lang": "Language",
+    "tool": "Tool"
   },
   "settings": {
     "profile": {

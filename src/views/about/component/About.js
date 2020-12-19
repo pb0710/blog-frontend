@@ -12,7 +12,7 @@ const content = `
 亦能作为信息展示平台，记录个人所用所学、所见所闻、所感所想。一举多得。  
 毕竟做 web 开发，特别是前端方面的知识体系分散而杂乱，技术推陈出新快。要想提升技术的广度与深度，养成良好的记笔记习惯非常重要。
 
-当前开发进度：约 \`80%\`。
+当前开发进度：约 \`85%\`。
 
 支持功能：
 
@@ -25,6 +25,7 @@ const content = `
 - 国际化 ✅
 - 切换主题 ✅
 - 搜索 ✅
+- 文档入口 ✅
 - 文章阅读数、点赞 ✅
 - 文章评论 ✅
 - 用户关注订阅
@@ -34,12 +35,12 @@ const content = `
 - react（\`100%\` react hooks、suspense）
 - react-router、redux、redux-saga、create-react-app
 - 自建 [react 基础 ui 组件库](https://www.npmjs.com/package/sylas-react-ui)
-- sass、axios、i18next
+- sass、axios、i18next、markdown-to-jsx
 
 [后端部分](https://github.com/pb0710/blog-backend)：
 
 - nodejs
-- koa、koa-router、koa-swagger-decorator、koa-session、koa-static
+- koa、koa-router、koa-swagger-decorator、koa-session、koa-static、koa-aysnc-busboy
 - \`100%\`typescript 编写
 - mysql
 `
