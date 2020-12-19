@@ -13,6 +13,7 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import Comments from './Comments'
 import config from '@/config'
+import clsx from 'clsx'
 
 export default function ArticleDetail() {
 	const { t } = useTranslation()
@@ -78,7 +79,7 @@ export default function ArticleDetail() {
 
 	const skeletonElement = (
 		<div className={style.skeleton_wrapper}>
-			<AspectRatio aspectRatio={5 / 8}>
+			<AspectRatio aspectRatio={9 / 16}>
 				<Skeleton className={style.bg_skeleton} />
 			</AspectRatio>
 			<div className={style.content_skeleton}>
@@ -90,9 +91,13 @@ export default function ArticleDetail() {
 		</div>
 	)
 
+	const detailCls = clsx(style.article_detail_wrapper, {
+		[style.loading]: loading
+	})
+
 	return (
 		<FlexiblePage className={style.article_detail_page}>
-			<section className={style.article_detail_wrapper}>
+			<section className={detailCls}>
 				{loading ? (
 					skeletonElement
 				) : (

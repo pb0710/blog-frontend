@@ -24,11 +24,12 @@ function MessageContainer() {
 		const duration = msg.duration || 2500
 
 		setMsgList(oldMsgList => {
-			oldMsgList.forEach(item => {
-				if (item.content === newMsg.content && item.type === newMsg.type) {
-					remove(item)
-				}
-			})
+			// // 移除重复提示
+			// oldMsgList.forEach(item => {
+			// 	if (item.content === newMsg.content && item.type === newMsg.type) {
+			// 		remove(item)
+			// 	}
+			// })
 			return [...oldMsgList, newMsg]
 		})
 		setTimeout(() => {
