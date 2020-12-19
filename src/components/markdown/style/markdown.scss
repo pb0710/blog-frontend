@@ -68,6 +68,8 @@
 		border: 1px solid $divider;
 		border-radius: 0.6rem;
 		background: #fcfcfc;
+
+		@include hide_scroll_bar;
 	}
 
 	.blockquote {
