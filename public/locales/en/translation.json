@@ -55,7 +55,7 @@
     "random": "Looking around"
   },
   "not_found": {
-    "page_not_found": "Page not found...",
+    "page_not_found": "Page not found",
     "go_back": "Go back",
     "go_home": "Go home"
   },
@@ -71,7 +71,8 @@
     "reviews_total": "Total",
     "add_review": "Comment",
     "add": "Comment",
-    "after_login": "Sign in to comment...",
+    "after_login": "Sign in to comment",
+    "go_login": "Sign in",
     "quote": "Quote",
     "anonymous_user": "Anonymous User",
     "rule": {
@@ -80,7 +81,7 @@
   },
   "article_publish": {
     "to_publish": "To publish",
-    "publish_prompt": "Publish after logging in...",
+    "publish_prompt": "Publish after logging in",
     "add_article": "Add article",
     "title": "Title",
     "category": "Category",
@@ -152,7 +153,7 @@
   "settings": {
     "profile": {
       "heading": "Account Profile",
-      "not_login": "Not logged in yet...",
+      "not_login": "Not logged in yet",
       "logout": "Sign out",
       "username": "Username",
       "nickname": "Nickname",
@@ -186,6 +187,6 @@
     "show_markdown_guide": "Show Markdown Demo"
   },
   "markdown": {
-    "placeholder": "Support markdown, text format..."
+    "placeholder": "Support markdown, text format"
   }
 }

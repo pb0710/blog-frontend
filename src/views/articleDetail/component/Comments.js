@@ -13,14 +13,13 @@ import { updateArticleDetail } from '../store/action'
 import { Login } from '@/components/modal'
 import { updateModal } from '@/components/modal/store/action'
 import config from '@/config'
+import ChatPlusOutlineIcon from 'mdi-react/ChatPlusOutlineIcon'
 
 const AddComment = React.forwardRef((props, ref) => {
 	const { mutate, content, setContent } = props
-	const dispatch = useDispatch()
 	const { t } = useTranslation()
 	const { id: articleId } = useParams()
 	const theme = useSelector(state => state.setting.theme)
-	const online = useSelector(state => state.online)
 	const { userId } = useSelector(state => state.userProfile)
 
 	const handleComment = async () => {
@@ -38,24 +37,14 @@ const AddComment = React.forwardRef((props, ref) => {
 		}
 	}
 
-	const handleGoLogin = () => {
-		dispatch(updateModal(true, <Login />))
-	}
-
 	return (
 		<div className={style.add_review_wrapper}>
 			<h3>{t('article_detail.add_review')}</h3>
 			<Input.Textarea ref={ref} color={theme} value={content} onValueChange={setContent} />
 			<div className={style.footer}>
-				{online ? (
-					<Button color={theme} onClick={handleComment}>
-						{t('article_detail.add')}
-					</Button>
-				) : (
-					<span className={style[`go_login_${theme}`]} onClick={handleGoLogin}>
-						{t('article_detail.after_login')}
-					</span>
-				)}
+				<Button color={theme} onClick={handleComment}>
+					{t('article_detail.add')}
+				</Button>
 			</div>
 		</div>
 	)
@@ -64,6 +53,8 @@ const AddComment = React.forwardRef((props, ref) => {
 function Comments() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
+	const online = useSelector(state => state.online)
+	const theme = useSelector(state => state.setting.theme)
 	const { id: articleId } = useParams()
 	const [content, setContent] = useState('')
 	const textareaRef = useRef()
@@ -74,13 +65,21 @@ function Comments() {
 		refreshDeps: [articleId]
 	})
 
+	const handleGoLogin = useCallback(() => {
+		dispatch(updateModal(true, <Login />))
+	}, [dispatch])
+
 	const handleQuote = useCallback(
 		({ speaker, content }) => {
+			if (!online) {
+				handleGoLogin()
+				return
+			}
 			const splitLine = `----------------------------------------------------------------------`
 			setContent(`${speaker.nickname || t('article_detail.anonymous_user')} : ${content.trim()}  \n${splitLine}  \n`)
 			textareaRef.current?.focus()
 		},
-		[t]
+		[handleGoLogin, online, t]
 	)
 
 	useEffect(() => {
@@ -95,7 +94,19 @@ function Comments() {
 
 	return (
 		<div className={style.comments_wrapper}>
-			<AddComment ref={textareaRef} mutate={mutate} content={content} setContent={setContent} />
+			{online ? (
+				<AddComment ref={textareaRef} mutate={mutate} content={content} setContent={setContent} />
+			) : (
+				<div className={style.go_login_wrapper}>
+					<span>
+						<ChatPlusOutlineIcon size={20} />
+						<strong>{t('article_detail.after_login')}</strong>
+					</span>
+					<Button color={theme} onClick={handleGoLogin}>
+						{t('article_detail.go_login')}
+					</Button>
+				</div>
+			)}
 			<Divider />
 			<Reviews sourceData={data} handleQuote={handleQuote} />
 		</div>

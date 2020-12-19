@@ -15,8 +15,10 @@
 		color: $highlight !important;
 		font-weight: 500;
 
-		&:hover {
-			text-decoration: underline !important;
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline !important;
+			}
 		}
 	}
 
@@ -45,8 +47,10 @@
 		cursor: pointer;
 		transition: color $fast;
 
-		&:hover {
-			color: $text_primary;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $text_primary;
+			}
 		}
 
 		> span:last-child {

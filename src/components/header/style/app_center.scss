@@ -40,8 +40,10 @@
 				cursor: pointer;
 				transition: background-color $normal;
 
-				&:hover {
-					background: $background_variant;
+				@media (any-hover: hover) {
+					&:hover {
+						background: $background_variant;
+					}
 				}
 
 				.inner {

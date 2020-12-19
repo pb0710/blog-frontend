@@ -5,7 +5,7 @@ import { List } from 'sylas-react-ui'
 import ThumbUpOutlineIcon from 'mdi-react/ThumbUpOutlineIcon'
 import BookmarkAddOutlineIcon from 'mdi-react/BookmarkAddOutlineIcon'
 import ThumbUpIcon from 'mdi-react/ThumbUpIcon'
-import ForumOutlineIcon from 'mdi-react/ForumOutlineIcon'
+import ChatOutlineIcon from 'mdi-react/ChatOutlineIcon'
 import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon'
 import * as articleApi from '@/apis/article'
 import { useDispatch, useSelector } from 'react-redux'
@@ -91,7 +91,7 @@ function ArticleStatsPanel() {
 					<strong>{views}</strong>
 				</List.Item>
 				<List.Item className={style.item} bordered={false}>
-					<ForumOutlineIcon size={20} />
+					<ChatOutlineIcon size={20} />
 					{t('article_detail.reviews')}
 					<strong>{reviews.length}</strong>
 				</List.Item>

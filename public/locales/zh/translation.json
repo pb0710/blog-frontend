@@ -55,7 +55,7 @@
     "random": "随便看看"
   },
   "not_found": {
-    "page_not_found": "页面找不到啦...",
+    "page_not_found": "页面找不到啦",
     "go_back": "后退",
     "go_home": "返回首页"
   },
@@ -71,7 +71,8 @@
     "reviews_total": "条",
     "add_review": "发表评论",
     "add": "发表",
-    "after_login": "登录后即可发表评论...",
+    "after_login": "登录后即可参与讨论",
+    "go_login": "去登录",
     "quote": "回复",
     "anonymous_user": "匿名用户",
     "rule": {
@@ -80,7 +81,7 @@
   },
   "article_publish": {
     "to_publish": "去发布",
-    "publish_prompt": "发布文章需先登录...",
+    "publish_prompt": "发布文章需先登录",
     "add_article": "添加笔记",
     "title": "标题",
     "category": "类别",
@@ -152,7 +153,7 @@
   "settings": {
     "profile": {
       "heading": "用户资料",
-      "not_login": "尚未登录...",
+      "not_login": "尚未登录",
       "logout": "退出",
       "username": "用户名",
       "nickname": "昵称",
@@ -186,6 +187,6 @@
     "show_markdown_guide": "展示 Markdown Demo"
   },
   "markdown": {
-    "placeholder": "支持Markdown、纯文本格式..."
+    "placeholder": "支持Markdown、纯文本格式"
   }
 }

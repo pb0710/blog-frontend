@@ -64,9 +64,12 @@
 
 					&:last-child {
 						cursor: pointer;
-						&:hover {
-							color: $text_primary;
-							text-decoration: underline;
+
+						@media (any-hover: hover) {
+							&:hover {
+								color: $text_primary;
+								text-decoration: underline;
+							}
 						}
 					}
 				}
