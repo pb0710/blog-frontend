@@ -58,9 +58,9 @@ export function useFetch(
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
 
-	const initialDataRef = useRef(initialData) // 永不变
-	// 请求计数，用来处理请求时序问题。即 接口响应顺序与调用顺序不一致，弱网环境可能出现。
-	const count = useRef(0)
+	const initialDataRef = useRef(initialData) // 初始值永不改变
+	// 用来处理请求时序问题。即 接口响应顺序与调用顺序不一致，弱网环境可能出现。
+	const unmounted = useRef(false)
 
 	const promisedFnRef = useLatestStateRef(promisedFn)
 	const onSuccessRef = useLatestStateRef(onSuccess)
@@ -76,7 +76,9 @@ export function useFetch(
 				return
 			}
 
-			const currentCount = count.current
+			setData(initialDataRef.current)
+			setError()
+			const currentUnmounted = unmounted.current
 			const loadingTimer = setTimeout(() => {
 				setLoading(true)
 			}, loadingDelay)
@@ -84,7 +86,7 @@ export function useFetch(
 			promisedFnRef
 				.current(...args)
 				.then(res => {
-					if (currentCount !== count.current) {
+					if (currentUnmounted !== unmounted.current) {
 						return
 					}
 					const formated = formatRef.current(res)
@@ -92,7 +94,7 @@ export function useFetch(
 					setData(formated)
 				})
 				.catch(err => {
-					if (currentCount !== count.current) {
+					if (currentUnmounted !== unmounted.current) {
 						return
 					}
 					onErrorRef.current?.(err)
@@ -106,13 +108,13 @@ export function useFetch(
 		[formatRef, loadingDelay, onErrorRef, onSuccessRef, promisedFnRef]
 	)
 
-	useEffect(() => {
-		setData(initialDataRef.current)
-		// 组件卸载后阻断请求
-		return () => {
-			count.current += 1
-		}
-	}, [])
+	useEffect(
+		() => () => {
+			// 组件卸载后阻断请求
+			unmounted.current = true
+		},
+		[]
+	)
 
 	useEffect(
 		() => {

@@ -19,32 +19,37 @@ export const parseMarkdown = str => str.replace(/\n+/g, ns => (ns.length === 1 ?
 
 /**
  * 获取滚动条长度
- * @param elem dom
+ * @param {HTMLElement} elem dom
  */
-export const getScrollbarHeight = elem => elem.clientHeight ** 2 / elem.scrollHeight
+export const getScrollbarHeight = elem => elem instanceof HTMLElement && elem.clientHeight ** 2 / elem.scrollHeight
 
 /**
  * 滚动条联动
- * @param origin
- * @param target
+ * @param {HTMLElement} origin
+ * @param {HTMLElement} target
  */
 export function followScroll(origin, target) {
-	if (!origin || !target) return
+	if (!origin instanceof HTMLElement || !target instanceof HTMLElement) return
 
-	const proportion = getScrollbarHeight(origin) / getScrollbarHeight(target)
-	const originPercent = origin.scrollTop / origin.scrollHeight
-
+	const offset = 10
 	const left = 0
-	const top = Math.round(target.scrollHeight * originPercent * proportion)
-
+	let top =
+		(target.scrollHeight * (origin.scrollTop + origin.clientHeight / 2)) / origin.scrollHeight - target.clientHeight / 2
+	if (origin.scrollTop < offset) {
+		top = 0
+	}
+	if (origin.scrollHeight - origin.clientHeight - origin.scrollTop < offset) {
+		top = target.scrollHeight
+	}
 	target.scrollTo(left, top)
 }
 
 /**
  * 获取正在编辑的坐标
- * @param elem
+ * @param {HTMLElement} elem
  */
 export function getPosition(elem) {
+	if (!elem instanceof HTMLElement) return
 	return {
 		start: elem?.selectionStart || 0,
 		end: elem?.selectionEnd || 0
@@ -57,10 +62,9 @@ export function getPosition(elem) {
  * @param pos
  */
 export function setPosition(elem, pos) {
-	if (elem instanceof HTMLElement) {
-		setTimeout(() => {
-			elem.setSelectionRange(pos, pos)
-			elem.focus()
-		})
-	}
+	if (!elem instanceof HTMLElement) return
+	setTimeout(() => {
+		elem.setSelectionRange(pos, pos)
+		elem.focus()
+	})
 }
