@@ -3,6 +3,7 @@ const local = {
 	BASE_URL: 'http://localhost:10086',
 	PROXY_URL: 'http://localhost:3333',
 	REDUX_LOG: true,
-	LOADING_DELAY: 200
+	LOADING_DELAY: 200,
+	CLICK_DELAY: 300
 }
 export default local

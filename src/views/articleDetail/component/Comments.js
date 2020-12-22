@@ -61,7 +61,7 @@ function Comments() {
 	const { data, mutate } = useFetch(async () => articleApi.fetchReviewList(articleId), {
 		initialData: [],
 		loadingDelay: config.LOADING_DELAY,
-		ready: !!articleId,
+		ready: articleId != null,
 		refreshDeps: [articleId]
 	})
 

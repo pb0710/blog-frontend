@@ -30,55 +30,57 @@ export function useLatestStateRef(state) {
 }
 
 /**
+ * 强制渲染组件
+ */
+export function useUpdate() {
+	const [, setState] = useState(0)
+	const update = useCallback(() => setState(prev => prev + 1), [])
+	return update
+}
+
+/**
  * 异步请求hook
  * @param {Function} promisedFn 异步请求函数
  * @param {Object} options
  *  @param {*} initialData data 默认值
- *  @param {Boolean} ready 是否自动请求
- *  @param {Boolean} manual 是否只允许手动请求 manual = true 后，refreshDeps 将无效，只允许 run()
- *  @param {Array} refreshDeps 自动请求依赖项
+ *  @param {Boolean} defaultParams 如果 manual=false ，自动执行 run 的时候，默认带上的参数
+ *  @param {Boolean} ready 只有当 ready 为 true 时，才会发起请求
+ *  @param {Boolean} manual 默认 false。 即在初始化时自动执行 service。如果设置为 true，则需要手动调用 run 触发执行。
+ *  @param {Array} refreshDeps 在 manual = false 时，refreshDeps 变化，会触发 service 重新执行
  *  @param {Number} loadingDelay 显示 loading 的延迟时间，避免闪烁
- *  @param {Function} onSuccess 请求成功回调
- *  @param {Function} onError 请求失败回调
+ *  @param {Function} onSuccess service resolve 时触发，参数为 data 和如果有 formatResult ，则 data 为格式化后数据。
+ *  @param {Function} onError service 报错时触发，参数为 error。
+ *  @param {Function} formatResult 格式化请求结果
  */
-export function useFetch(
-	promisedFn,
-	{
-		initialData,
-		ready = true,
-		manual = false,
-		refreshDeps = [],
-		loadingDelay = 0,
-		onSuccess,
-		onError,
-		formatResult = x => x
-	}
-) {
-	const [data, setData] = useState(initialData)
+export function useFetch(promisedFn, options) {
+	const { manual = false, ready = true, loadingDelay = 0, refreshDeps = [] } = options
+	const promisedFnRef = useRef(promisedFn)
+	useEffect(() => {
+		promisedFnRef.current = promisedFn
+	}, [promisedFn])
+
+	const optionsRef = useRef(options)
+	useEffect(() => {
+		optionsRef.current = options
+	}, [options])
+	const internalRefreshDeps = manual ? [] : refreshDeps // 在 manual = true 时，该参数失效
+
+	const [data, setData] = useState(optionsRef.current.initialData)
 	const [error, setError] = useState()
 	const [loading, setLoading] = useState(false)
-
-	const initialDataRef = useRef(initialData) // 初始值永不改变
-	// 用来处理请求时序问题。即 接口响应顺序与调用顺序不一致，弱网环境可能出现。
-	const unmounted = useRef(false)
-
-	const promisedFnRef = useLatestStateRef(promisedFn)
-	const onSuccessRef = useLatestStateRef(onSuccess)
-	const onErrorRef = useLatestStateRef(onError)
-	const formatRef = useLatestStateRef(formatResult)
-	const internalRefreshDeps = manual ? [] : refreshDeps
+	const requestCount = useRef(0)
 
 	const mutate = useCallback(setData, [setData])
 
 	const run = useCallback(
 		(...args) => {
-			if (typeof promisedFnRef.current !== 'function' || typeof formatRef.current !== 'function') {
+			if (!ready) {
 				return
 			}
-
-			setData(initialDataRef.current)
+			const currentRequestCount = requestCount.current
+			const { initialData, onSuccess, onError, formatResult = x => x } = optionsRef.current
+			setData(formatResult(initialData))
 			setError()
-			const currentUnmounted = unmounted.current
 			const loadingTimer = setTimeout(() => {
 				setLoading(true)
 			}, loadingDelay)
@@ -86,44 +88,41 @@ export function useFetch(
 			promisedFnRef
 				.current(...args)
 				.then(res => {
-					if (currentUnmounted !== unmounted.current) {
-						return
-					}
-					const formated = formatRef.current(res)
-					onSuccessRef.current?.(formated)
+					if (requestCount.current !== currentRequestCount) return
+
+					const formated = formatResult(res)
+					onSuccess?.(formated)
 					setData(formated)
 				})
 				.catch(err => {
-					if (currentUnmounted !== unmounted.current) {
-						return
-					}
-					onErrorRef.current?.(err)
+					if (requestCount.current !== currentRequestCount) return
+
+					onError?.(err)
 					setError(err)
 				})
 				.finally(() => {
 					clearTimeout(loadingTimer)
+					if (requestCount.current !== currentRequestCount) return
+
 					setLoading(false)
 				})
 		},
-		[formatRef, loadingDelay, onErrorRef, onSuccessRef, promisedFnRef]
-	)
-
-	useEffect(
-		() => () => {
-			// 组件卸载后阻断请求
-			unmounted.current = true
-		},
-		[]
+		[loadingDelay, ready]
 	)
 
 	useEffect(
 		() => {
-			if (!manual && ready) {
-				run()
+			if (!manual) {
+				// 如果 manual=false ，自动执行 run 的时候，默认带上的参数
+				const { defaultParams = [] } = optionsRef.current
+				run(...defaultParams)
+			}
+			return () => {
+				requestCount.current += 1
 			}
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[run, ready, ...internalRefreshDeps]
+		[manual, run, ...internalRefreshDeps]
 	)
 
 	return { data, error, loading, run, mutate }

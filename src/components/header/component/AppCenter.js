@@ -14,7 +14,7 @@ function LinkCard({ title, url, pic, hide }) {
 		setTimeout(() => {
 			hide()
 			window.open(url)
-		}, 400)
+		}, config.CLICK_DELAY)
 	}
 	return (
 		<div className={style.outer} title={url}>

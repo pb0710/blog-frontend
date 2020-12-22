@@ -15,6 +15,7 @@ export default function ArticleCards() {
 	const { data, loading } = useFetch(async () => articleApi.fetchList({ category }), {
 		initialData: [],
 		loadingDelay: config.LOADING_DELAY,
+		ready: category != null,
 		refreshDeps: [category]
 	})
 	useScrollToTop()

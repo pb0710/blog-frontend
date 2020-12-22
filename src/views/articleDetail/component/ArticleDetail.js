@@ -26,7 +26,7 @@ export default function ArticleDetail() {
 	const { data, loading } = useFetch(async () => articleApi.fetchDetail(id), {
 		initialData: {},
 		loadingDelay: config.LOADING_DELAY,
-		ready: !!id,
+		ready: id != null,
 		refreshDeps: [id],
 		onSuccess(res) {
 			if (res?.content) {
