@@ -67,3 +67,26 @@ export const toJSONEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
  * @param {Object} obj
  */
 export const notEmpty = obj => Boolean(Object.values(obj).filter(item => item !== undefined).length)
+
+/**
+ * 获取当前元素
+ * @param {HTMLElement} target 当前元素
+ * @param {HTMLElement} defaultElement 默认元素
+ */
+export function getTargetElement(target, defaultElement) {
+	if (!target) {
+		return defaultElement
+	}
+
+	let targetElement
+
+	if (typeof target === 'function') {
+		targetElement = target()
+	} else if ('current' in target) {
+		targetElement = target.current
+	} else {
+		targetElement = target
+	}
+
+	return targetElement
+}

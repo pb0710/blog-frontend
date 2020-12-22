@@ -5,6 +5,7 @@
 	width: 4rem;
 	height: 4rem;
 	border-radius: 50%;
+	box-shadow: $middle_shadow;
 	transition: border $normal;
 
 	> img {
@@ -28,7 +29,7 @@
 	padding: 2rem;
 	min-height: 0;
 	width: 32rem;
-	border-radius: 0.6rem;
+	border-radius: 0.4rem;
 
 	@media screen and (max-width: $breakpoint_sm) {
 		right: 1rem;

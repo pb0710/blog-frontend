@@ -6,7 +6,7 @@
 	@include use_themes('.article_card') {
 		position: relative;
 		overflow: hidden;
-		border-radius: 0.6rem;
+		border-radius: 0.4rem;
 		background: $background;
 		box-shadow: $small_shadow;
 		transition: transform $fast ease-out, box-shadow $fast ease-out;

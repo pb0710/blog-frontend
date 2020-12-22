@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { getTargetElement } from './index'
 
 /**
  * @param {Boolean} initial 默认值
@@ -167,4 +168,50 @@ export function useScrollToTop(manual) {
 	}, [manual, run])
 
 	return { run }
+}
+
+/**
+ * 监听滚动
+ * @param {HTMLElement}} target 目标元素
+ */
+export function useScroll(target) {
+	const [position, setPosition] = useState({
+		left: NaN,
+		top: NaN
+	})
+
+	useEffect(() => {
+		const el = getTargetElement(target, document)
+		if (!el) return
+
+		function updatePosition(currentTarget) {
+			let newPosition
+			if (currentTarget === document) {
+				if (!document.scrollingElement) return
+				newPosition = {
+					left: document.scrollingElement.scrollLeft,
+					top: document.scrollingElement.scrollTop
+				}
+			} else {
+				newPosition = {
+					left: currentTarget.scrollLeft,
+					top: currentTarget.scrollTop
+				}
+			}
+			setPosition(newPosition)
+		}
+
+		updatePosition(el)
+
+		function listener(event) {
+			if (!event.target) return
+			updatePosition(event.target)
+		}
+		el.addEventListener('scroll', listener)
+		return () => {
+			el.removeEventListener('scroll', listener)
+		}
+	}, [target])
+
+	return position
 }

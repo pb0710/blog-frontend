@@ -1,22 +1,6 @@
 @import 'responsive';
 @import 'border.css';
 
-@font-face {
-	font-style: normal;
-	font-family: 'SF Mono';
-	src: url('../fonts/SF-Mono-Medium.otf') format('opentype');
-
-	font-display: block;
-}
-
-@font-face {
-	font-style: italic;
-	font-family: 'SF Mono';
-	src: url('../fonts/SF-Mono-RegularItalic.otf') format('opentype');
-
-	font-display: block;
-}
-
 body {
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -37,7 +21,9 @@ body {
 	}
 
 	code {
-		font-family: SF Mono, Roboto Mono, Menlo, Consolas, Monaco, 'Courier New', monospace;
+		font-family: Consolas, Menlo, Roboto Mono, SF Mono, Monaco, 'Courier New', monospace;
+
+		-webkit-text-stroke: 0.1px;
 	}
 
 	a,

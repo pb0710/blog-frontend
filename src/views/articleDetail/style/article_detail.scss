@@ -2,7 +2,7 @@
 	overflow-x: auto;
 	margin-bottom: 2rem;
 	max-width: 100%;
-	border-radius: 0.6rem;
+	border-radius: 0.4rem;
 	background: $background;
 	box-shadow: $small_shadow;
 
@@ -17,6 +17,7 @@
 
 	.article_content {
 		padding: 0 4rem 4rem 4rem;
+		min-height: 40rem;
 
 		@media screen and(max-width: $breakpoint_sm) {
 			padding: 0 2rem 4rem 2rem;

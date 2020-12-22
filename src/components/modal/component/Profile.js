@@ -11,7 +11,7 @@ import { userRegister } from '@/store/actions'
 import * as fileApi from '@/apis/file'
 import Register from './Register'
 import { useBoolean } from '@/utils/hooks'
-import defaultAvatar from '@/assets/images/default_avatar1.jpg'
+import defaultAvatar from '@/assets/images/default_avatar.jpg'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
 

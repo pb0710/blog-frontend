@@ -15,7 +15,8 @@
 		min-width: 32rem;
 		max-width: 40rem;
 		width: 38rem;
-		border-radius: 0.6rem;
+		border-radius: 0.4rem;
+		box-shadow: $large_shadow;
 
 		@media screen and (max-width: $breakpoint_sm) {
 			padding: 3rem;

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { List } from 'sylas-react-ui'
 import style from '../style/index.module.scss'
 import dayjs from 'dayjs'
-import defaultAvatar from '@/assets/images/default_avatar1.jpg'
+import defaultAvatar from '@/assets/images/default_avatar.jpg'
 
 function Reviews(props) {
 	const { sourceData = [], handleQuote } = props

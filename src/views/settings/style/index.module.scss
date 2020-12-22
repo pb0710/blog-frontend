@@ -3,12 +3,12 @@
 @import 'banner';
 
 .setting_page {
-	padding-top: 6rem;
+	padding-top: 6rem !important;
 	background: $background_variant;
 
 	> div:first-child {
 		padding: 1rem;
 		width: 64rem;
-		border-radius: 0.6rem;
+		border-radius: 0.4rem;
 	}
 }

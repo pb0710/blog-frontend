@@ -5,7 +5,8 @@
 	padding: 0 0 1rem 0;
 	min-height: 8rem;
 	width: 32rem;
-	border-radius: 0.6rem;
+	border-radius: 0.4rem;
+	box-shadow: $middle_shadow;
 
 	@media screen and (max-width: $breakpoint_sm) {
 		right: 1rem;

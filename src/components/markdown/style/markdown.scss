@@ -1,6 +1,6 @@
 @mixin code_base {
-	font-size: 1.3rem !important;
-	font-family: SF Mono, Menlo !important;
+	font-size: 1.2rem !important;
+	font-family: Consolas, SF mono, Menlo, Roboto Mono !important;
 	line-height: 1.75em !important;
 }
 
@@ -30,7 +30,7 @@
 		margin: 0 0.2rem;
 		padding: 0.2rem 0.4rem;
 		border: 1px solid $divider;
-		border-radius: 0.6rem;
+		border-radius: 0.4rem;
 		background: $background_variant;
 
 		@include code_base;
@@ -66,7 +66,7 @@
 		padding: 2rem;
 		max-height: 70rem;
 		border: 1px solid $divider;
-		border-radius: 0.6rem;
+		border-radius: 0.4rem;
 		background: #fcfcfc;
 
 		@include hide_scroll_bar;
@@ -75,8 +75,8 @@
 	.blockquote {
 		padding: 2rem;
 		border-left: 0.4rem solid $highlight;
-		border-top-right-radius: 0.6rem;
-		border-bottom-right-radius: 0.6rem;
+		border-top-right-radius: 0.4rem;
+		border-bottom-right-radius: 0.4rem;
 		background: $background_variant;
 
 		margin-inline-start: 1rem;
@@ -94,7 +94,7 @@
 			display: block; // fix 底部间隙
 			min-width: 30%;
 			max-width: 100%;
-			border-radius: 0.6rem;
+			border-radius: 0.4rem;
 		}
 	}
 }
