@@ -1,10 +1,14 @@
-export const table = `
+export function createTable(row, column) {
+	function createRow(temp) {
+		return `\n|${Array.from(Array(column))
+			.map(() => temp)
+			.join('')}`
+	}
+	let result = Array.from(Array(row)).map(() => createRow(`       |`))
+	result.splice(1, 0, createRow(` :--  |`))
 
-|       |       |       |
-| :-- | :-- | :-- |
-|       |       |       |
-|       |       |       |
-`
+	return result.join('')
+}
 
 export const codeBlock = `
 

@@ -59,7 +59,7 @@ export default function AuthorPanel() {
 						<img src={avatar ?? defaultAvatar} alt="" />
 					</div>
 					<div className={style.right_wrapper}>
-						<h2 className={style.name}>{nickname || <Skeleton />}</h2>
+						<strong className={style.name}>{nickname || <Skeleton />}</strong>
 					</div>
 				</List.Item>
 				{/* </Link> */}

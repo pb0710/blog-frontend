@@ -15,10 +15,45 @@
 		}
 
 		.tools {
+			position: relative;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			min-width: 14rem;
+			min-width: 18rem;
+
+			.table_input_wrapper {
+				top: 5rem;
+				left: 0;
+				padding: 2rem;
+				min-height: 8rem;
+				max-width: 90vw;
+				width: 24rem;
+				box-shadow: $middle_shadow;
+
+				> form:first-child {
+					width: 100%;
+
+					.top_wrapper {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						padding-bottom: 2rem;
+
+						> div {
+							margin: 0;
+
+							.input {
+								min-width: 8rem;
+								width: 8rem;
+							}
+						}
+					}
+					.bottom_wrapper {
+						display: flex;
+						flex-direction: row-reverse;
+					}
+				}
+			}
 		}
 
 		.operation {

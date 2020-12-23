@@ -20,6 +20,12 @@ const Img = props => (
 	</div>
 )
 
+const Table = props => (
+	<table className={style.table} cellSpacing="0" cellPadding="10">
+		{props.children}
+	</table>
+)
+
 const Pre = props => {
 	const { children } = props
 	const { t } = useTranslation()
@@ -81,7 +87,8 @@ function Markdown(props) {
 						code: Code,
 						pre: Pre,
 						img: Img,
-						a: A
+						a: A,
+						table: Table
 					}
 				}}
 			>

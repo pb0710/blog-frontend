@@ -87,10 +87,15 @@
     "category": "类别",
     "introduce": "简介",
     "publish": "发布",
+    "row": "行",
+    "column": "列",
+    "generate": "生成",
     "rule": {
       "introduce_length_limit": "简介长度不能超过 150 位！",
       "title_length_limit": "标题长度限制为 6～36 位！",
-      "content_length_limit": "字数少于 150"
+      "content_length_limit": "字数少于 150",
+      "row_limit": "行数限制：2~100",
+      "column_limit": "列数限制：2~10"
     }
   },
   "modal": {

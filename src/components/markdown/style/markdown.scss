@@ -4,6 +4,16 @@
 	line-height: 1.75em !important;
 }
 
+@mixin inline_code {
+	margin: 0 0.2rem;
+	padding: 0.1rem 0.4rem;
+	border: 1px solid $divider;
+	border-radius: 0.4rem;
+	background: $background_variant;
+
+	@include code_base;
+}
+
 @include use_themes('.markdown_wrapper') {
 	p,
 	ul > li,
@@ -27,13 +37,7 @@
 	}
 
 	p > code {
-		margin: 0 0.2rem;
-		padding: 0.2rem 0.4rem;
-		border: 1px solid $divider;
-		border-radius: 0.4rem;
-		background: $background_variant;
-
-		@include code_base;
+		@include inline_code;
 	}
 
 	.copy_btn {
@@ -95,6 +99,36 @@
 			min-width: 30%;
 			max-width: 100%;
 			border-radius: 0.4rem;
+		}
+	}
+
+	.table {
+		border-right: 1px solid $divider;
+		border-bottom: 1px solid $divider;
+
+		thead > tr {
+			background: $background_variant;
+
+			> th {
+				text-align: start;
+			}
+		}
+
+		tbody > tr {
+			&:nth-child(even) {
+				background: $background_variant;
+			}
+		}
+
+		th,
+		td {
+			border-top: 1px solid $divider;
+			border-left: 1px solid $divider;
+			line-height: 1.5em;
+
+			> code {
+				@include inline_code;
+			}
 		}
 	}
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Button } from 'sylas-react-ui'
+import { Button, Form, Input, Popup } from 'sylas-react-ui'
 import { insertTemp, followScroll, getPosition, setPosition } from '../util'
 import style from '../style/index.module.scss'
 import { Uploader } from '@/components/base'
@@ -12,12 +12,14 @@ import { updateModal } from '@/components/modal/store/action'
 import { ArticleInfo } from '@/views/articleUpload'
 import ViewModuleOutlineIcon from 'mdi-react/ViewModuleOutlineIcon'
 import CodeIcon from 'mdi-react/CodeIcon'
+import DeleteOutlineIcon from 'mdi-react/DeleteOutlineIcon'
 import EyeOutlineIcon from 'mdi-react/EyeOutlineIcon'
 import EyeIcon from 'mdi-react/EyeIcon'
 import SendIcon from 'mdi-react/SendIcon'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
 import { useMediaQuery, useBoolean } from '@/utils/hooks'
+import CloseIcon from 'mdi-react/CloseIcon'
 
 const area = {
 	EDITOR: 'editor',
@@ -33,7 +35,8 @@ function MarkdownEditor() {
 	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
 	const isMobile = useMediaQuery('(max-width:600px)')
 
-	const [previewing, { toggle: togglePreview, setTrue }] = useBoolean(false)
+	const [previewing, { toggle: togglePreview, setTrue: bePreviewing }] = useBoolean(false)
+	const [tableInputVisible, popupRef, { toggle, hide }] = Popup.usePopup()
 	const [content, setContent] = useState('')
 	useEffect(() => {
 		setContent(useMarkdownGuide ? temp.markdownDemo : '')
@@ -79,12 +82,28 @@ function MarkdownEditor() {
 		})
 	}
 
-	const handleInsertTable = () => {
-		insert(temp.table, 4)
+	const handleInsertTable = ({ row, column }) => {
+		row = Number(row)
+		column = Number(column)
+		if (Number(row) < 2 || Number(row) > 100) {
+			msg.error(t('article_publish.rule.row_limit'))
+			return
+		}
+		if (Number(column) < 2 || Number(column) > 10) {
+			msg.error(t('article_publish.rule.column_limit'))
+			return
+		}
+		insert(temp.createTable(row, column), 4)
+		hide()
 	}
 
 	const handleInsertCode = () => {
 		insert(temp.codeBlock, 5)
+	}
+
+	const handleReset = () => {
+		setContent('')
+		editorRef.current.focus()
 	}
 
 	const uploadFiles = async formData => {
@@ -120,9 +139,9 @@ function MarkdownEditor() {
 
 	useEffect(() => {
 		if (!isMobile) {
-			setTrue()
+			bePreviewing()
 		}
-	}, [isMobile, setTrue])
+	}, [isMobile, bePreviewing])
 
 	const editorProps = {
 		content,
@@ -142,12 +161,33 @@ function MarkdownEditor() {
 
 	const toolsBarElement = (
 		<div className={style.tools}>
-			<Button.Icon onClick={handleInsertTable}>
+			<Button.Icon onClick={toggle}>
 				<ViewModuleOutlineIcon size={20} />
 			</Button.Icon>
+			<Popup ref={popupRef} className={style.table_input_wrapper} visible={tableInputVisible} scaleOrigin="left-top">
+				<Form onFinsh={handleInsertTable}>
+					<div className={style.top_wrapper}>
+						<Form.Item name="row" initialValue="3">
+							<Input className={style.input} placeholder={t('article_publish.row')} />
+						</Form.Item>
+						<CloseIcon className={style.icon} size={18} />
+						<Form.Item name="column" initialValue="3">
+							<Input className={style.input} placeholder={t('article_publish.column')} />
+						</Form.Item>
+					</div>
+					<div className={style.bottom_wrapper}>
+						<Button type="submit" color={theme}>
+							{t('article_publish.generate')}
+						</Button>
+					</div>
+				</Form>
+			</Popup>
 			<Uploader multiple={false} onChange={handleFilesChange} />
 			<Button.Icon onClick={handleInsertCode}>
 				<CodeIcon size={20} />
+			</Button.Icon>
+			<Button.Icon onClick={handleReset}>
+				<DeleteOutlineIcon size={20} />
 			</Button.Icon>
 		</div>
 	)

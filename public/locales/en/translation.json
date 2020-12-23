@@ -87,10 +87,15 @@
     "category": "Category",
     "introduce": "Introduce",
     "publish": "Publish",
+    "row": "Row",
+    "column": "Column",
+    "generate": "Generate",
     "rule": {
       "introduce_length_limit": "Article description length cannot exceed 150 characters!",
       "title_length_limit": "Title length is limited to 6～36 characters!",
-      "content_length_limit": "Article less than 150 digits"
+      "content_length_limit": "Article less than 150 digits",
+      "row_limit": "Row limit: 2~100",
+      "column_limit": "Column limit: 2~10"
     }
   },
   "modal": {
