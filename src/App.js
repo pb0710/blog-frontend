@@ -5,7 +5,6 @@ import { RightSider } from '@/components/rightSider'
 import { Content } from '@/components/content'
 import { Modal } from '@/components/modal'
 import { useMediaQuery } from '@/utils/hooks'
-import Test from './Test'
 
 export default function App() {
 	const isMobile = useMediaQuery('(max-width:600px)')
@@ -17,8 +16,5 @@ export default function App() {
 			<Content />
 			{isMobile || <RightSider />}
 		</div>
-		// <div style={{ width: 300, margin: '100px auto' }}>
-		// 	<Test />
-		// </div>
 	)
 }
