@@ -161,7 +161,7 @@ function MarkdownEditor() {
 
 	const toolsBarElement = (
 		<div className={style.tools}>
-			<Button.Icon onClick={toggle}>
+			<Button.Icon focus={tableInputVisible} onClick={toggle}>
 				<ViewModuleOutlineIcon size={20} />
 			</Button.Icon>
 			<Popup ref={popupRef} className={style.table_input_wrapper} visible={tableInputVisible} scaleOrigin="left-top">

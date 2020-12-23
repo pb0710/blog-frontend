@@ -57,7 +57,7 @@ export default function AppCenter() {
 	const renderCards = cards =>
 		loading ? (
 			<div className={style.loading_wrapper}>
-				<Loading.Line />
+				<Loading.Line color={theme} />
 			</div>
 		) : (
 			cards.map(card => <LinkCard key={card.title} hide={hide} {...card} />)
