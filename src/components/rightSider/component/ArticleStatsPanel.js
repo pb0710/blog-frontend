@@ -21,7 +21,7 @@ function ArticleStatsPanel() {
 	const detail = useSelector(state => state.articleDetail)
 	const { id: articleId, likes = [], views = 0, reviews = [] } = detail
 
-	const liked = likes.some(item => item?.toString?.() === userId?.toString?.())
+	const liked = likes.some(item => String(item) === String(userId))
 
 	const handleDislike = useCallback(
 		async (userId, detail) => {
@@ -31,7 +31,7 @@ function ArticleStatsPanel() {
 				dispatch(
 					updateArticleDetail({
 						...detail,
-						likes: likes.filter(item => item?.toString?.() !== userId?.toString?.())
+						likes: likes.filter(item => String(item) !== String(userId))
 					})
 				)
 			} catch (err) {

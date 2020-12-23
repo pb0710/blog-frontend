@@ -12,6 +12,7 @@ const actionTypes = {
 	UPDATE_MODAL_CONTENT: 'update_modal_content',
 	UPDATE_MODAL: 'update_modal',
 	UPDATE_ARTICLE_DETAIL: 'update_article_detail',
+	UPDATE_ARTICLE_AUTHOR_PROFILE: 'update_article_author_profile',
 	INCREASE_ARTICLE_VIEWS: 'increase_article_views',
 	TOGGLE_DRAWER: 'toggle_drawer',
 	UPDATE_DRAWER: 'update_drawer'

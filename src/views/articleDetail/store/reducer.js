@@ -7,3 +7,10 @@ export const articleDetail = handleActions(
 	},
 	{}
 )
+
+export const articleAuthorProfile = handleActions(
+	{
+		[TYPE.UPDATE_ARTICLE_AUTHOR_PROFILE]: (state, action) => action.payload
+	},
+	{}
+)

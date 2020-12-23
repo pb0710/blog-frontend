@@ -33,7 +33,33 @@
 		padding: 2rem 4rem;
 
 		@include use_themes('.author') {
-			margin-bottom: 1rem;
+			display: flex;
+			align-items: center;
+			margin-bottom: 2rem;
+
+			> img:first-child {
+				margin-right: 1rem;
+				width: 4rem;
+				height: 4rem;
+				border-radius: 50%;
+				vertical-align: text-top;
+
+				object-fit: cover;
+			}
+
+			.right_wrapper {
+				padding-top: 0.5rem;
+				line-height: 1.5em;
+
+				.nickname {
+					font-size: 1.5rem;
+				}
+
+				.creation_time {
+					color: $text_secondary;
+					font-size: 1.3rem;
+				}
+			}
 
 			> a {
 				color: $text_secondary !important;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import style from '../style/index.module.scss'
 import { useSelector } from 'react-redux'
 import { Panel, Skeleton } from '@/components/base'
@@ -8,38 +8,19 @@ import PhoneIcon from 'mdi-react/PhoneIcon'
 import AddIcon from 'mdi-react/AddIcon'
 import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
 import clsx from 'clsx'
-import { useFetch } from '@/utils/hooks'
-import * as userApi from '@/apis/user'
-import { updateArticleDetail } from '@/views/articleDetail/store/action'
 import defaultAvatar from '@/assets/images/default_avatar.jpg'
 import { useTranslation } from 'react-i18next'
 import Contact from './Contact'
-import config from '@/config'
 
 export default function AuthorPanel() {
 	const { t } = useTranslation()
-	const detail = useSelector(state => state.articleDetail)
+	const authorProfile = useSelector(state => state.articleAuthorProfile)
 	const theme = useSelector(state => state.setting.theme)
-	const { author } = detail
 
-	const { data, loading } = useFetch(async () => userApi.fetchProfile(author), {
-		initialData: {},
-		loadingDelay: config.LOADING_DELAY,
-		ready: !!author,
-		refreshDeps: [author]
-	})
-	const { nickname, avatar, contacts } = data
+	const { nickname, avatar, contacts } = authorProfile
 	const hasContacts = typeof contacts === 'object' && Object.values(contacts).filter(Boolean).length > 0
 
-	useEffect(
-		() => () => {
-			// reset article detail
-			updateArticleDetail({})
-		},
-		[]
-	)
-
-	const contactsElement = hasContacts ? (
+	const contactsElement = hasContacts && (
 		<>
 			<Divider />
 			<div className={style.contact_wrapper}>
@@ -65,7 +46,7 @@ export default function AuthorPanel() {
 				)}
 			</div>
 		</>
-	) : null
+	)
 
 	const avatarItemCls = clsx(style.item, style.name_wrapper)
 
@@ -74,7 +55,9 @@ export default function AuthorPanel() {
 			<List>
 				{/* <Link to="/"> */}
 				<List.Item className={avatarItemCls}>
-					<div className={style.avatar}>{loading ? null : <img src={avatar ?? defaultAvatar} alt="" />}</div>
+					<div className={style.avatar}>
+						<img src={avatar ?? defaultAvatar} alt="" />
+					</div>
 					<div className={style.right_wrapper}>
 						<h2 className={style.name}>{nickname || <Skeleton />}</h2>
 					</div>

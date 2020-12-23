@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FlexiblePage } from '@/components/page'
 import { Markdown } from '@/components/markdown'
 import * as articleApi from '@/apis/article'
-import { increaseArticleViews, updateArticleDetail } from '../store/action'
+import * as userApi from '@/apis/user'
+import { increaseArticleViews, updateArticleAuthorProfile, updateArticleDetail } from '../store/action'
 import { msg, Skeleton } from '@/components/base'
 import { AspectRatio, Divider, Tag } from 'sylas-react-ui'
 import { useFetch, useScrollToTop } from '@/utils/hooks'
@@ -14,49 +15,68 @@ import { useTranslation } from 'react-i18next'
 import Comments from './Comments'
 import config from '@/config'
 import clsx from 'clsx'
+import defaultAvatar from '@/assets/images/default_avatar.jpg'
 
 export default function ArticleDetail() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
-	const detail = useSelector(state => state.articleDetail)
-	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0 } = detail
-	const { id } = useParams()
+	const articleDetail = useSelector(state => state.articleDetail)
+	const articleAuthorProfile = useSelector(state => state.articleAuthorProfile)
+	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0, author } = articleDetail
+	const { nickname, avatar } = articleAuthorProfile
+	const { id: articleId } = useParams()
 	useScrollToTop()
-	const { data, loading } = useFetch(async () => articleApi.fetchDetail(id), {
+
+	const { loading } = useFetch(async () => articleApi.fetchDetail(articleId), {
 		initialData: {},
 		loadingDelay: config.LOADING_DELAY,
-		ready: id != null,
-		refreshDeps: [id],
+		ready: articleId != null,
+		refreshDeps: [articleId],
 		onSuccess(res) {
-			if (res?.content) {
-				dispatch(updateArticleDetail(res))
-			}
+			dispatch(updateArticleDetail(res))
 		},
 		onError(err) {
-			if (err) {
-				msg.error(err)
-			}
+			msg.error(err)
+		}
+	})
+
+	useFetch(async () => userApi.fetchProfile(author), {
+		initialData: {},
+		loadingDelay: config.LOADING_DELAY,
+		ready: !!author,
+		refreshDeps: [author],
+		onSuccess(res) {
+			dispatch(updateArticleAuthorProfile(res))
 		}
 	})
 
 	useEffect(() => {
-		if (id) {
-			dispatch(increaseArticleViews(id))
+		if (articleId) {
+			dispatch(increaseArticleViews(articleId))
 		}
-	}, [dispatch, id])
+		return () => {
+			dispatch(updateArticleDetail({}))
+			dispatch(updateArticleAuthorProfile({}))
+		}
+	}, [articleId, dispatch])
 
 	const infoElement = (
 		<div className={style.info}>
 			<div className={style[`author_${theme}`]}>
-				{/* <Link to="/user">{data.author}</Link> */}
-				{data.author}
+				<img alt="" src={avatar || defaultAvatar} />
+				<div className={style.right_wrapper}>
+					<strong className={style.nickname}>{nickname}</strong>
+					<br />
+					{dayjs(creationTime).isValid() && (
+						<span className={style.creation_time}>
+							{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}
+						</span>
+					)}
+				</div>
 			</div>
 			<div className={style.article}>
 				<div>
-					{dayjs(creationTime).isValid() && (
-						<span>{dayjs(creationTime).format(`${t('article_detail.create_date')} HH:mm:ss`)}</span>
-					)}
 					<span>
 						{t('article_detail.total_words')}
 						{content.length}
