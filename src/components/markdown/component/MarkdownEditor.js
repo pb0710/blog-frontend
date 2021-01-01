@@ -168,11 +168,11 @@ function MarkdownEditor() {
 				<Form onFinsh={handleInsertTable}>
 					<div className={style.top_wrapper}>
 						<Form.Item name="row" initialValue="3">
-							<Input className={style.input} placeholder={t('article_publish.row')} />
+							<Input className={style.input} color={theme} placeholder={t('article_publish.row')} />
 						</Form.Item>
 						<CloseIcon className={style.icon} size={18} />
 						<Form.Item name="column" initialValue="3">
-							<Input className={style.input} placeholder={t('article_publish.column')} />
+							<Input className={style.input} color={theme} placeholder={t('article_publish.column')} />
 						</Form.Item>
 					</div>
 					<div className={style.bottom_wrapper}>
