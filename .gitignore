@@ -27,3 +27,9 @@ yarn-error.log*
 
 # packages
 *.zip
+
+# scripts
+/scripts/configs.js
+
+# releases
+/releases/**
