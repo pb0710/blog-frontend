@@ -15,10 +15,12 @@
 	display: flex;
 	justify-content: center;
 	padding-top: 5rem;
-	transition: width $normal ease-out;
 
 	@extend .page;
 
+	@media screen and(min-width: $breakpoint_sm) {
+		transition: width $normal ease-out;
+	}
 	@media screen and(max-width: $breakpoint_sm) {
 		padding-top: 5rem;
 	}

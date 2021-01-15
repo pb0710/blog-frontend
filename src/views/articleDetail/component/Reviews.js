@@ -10,7 +10,7 @@ function Reviews(props) {
 	const { t } = useTranslation()
 	return (
 		<div className={style.reviews_wrapper}>
-			<h3>{`${t('article_detail.reviews')} (${sourceData.length} ${t('article_detail.reviews_total')})`}</h3>
+			<h3>{`${sourceData.length} ${t('article_detail.reviews_total')}`}</h3>
 			<List>
 				{sourceData.map((item, index) => {
 					const { reviewId, content, creationTime, speaker } = item

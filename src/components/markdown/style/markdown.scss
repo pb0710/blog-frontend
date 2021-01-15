@@ -1,6 +1,6 @@
 @mixin code_base {
 	font-size: 1.3rem !important;
-	font-family: Consolas, SF mono, Menlo, Roboto Mono !important;
+	font-family: Menlo, Consolas, SF mono, Roboto Mono !important;
 	line-height: 1.75em !important;
 }
 
@@ -24,9 +24,11 @@
 	a {
 		color: $highlight !important;
 		font-weight: 500;
+		transition: color $normal;
 
 		@media (any-hover: hover) {
 			&:hover {
+				color: rgba($highlight, 0.8) !important;
 				text-decoration: underline !important;
 			}
 		}
@@ -69,19 +71,19 @@
 		overflow-x: auto;
 		padding: 2rem;
 		max-height: 70rem;
-		border: 1px solid $divider;
+		border: 1px solid $divider_variant;
 		border-radius: 0.4rem;
-		background: #fcfcfc;
+		background: $background_variant;
 
-		@include hide_scroll_bar;
+		// @include hide_scroll_bar;
 	}
 
 	.blockquote {
 		padding: 2rem;
-		border-left: 0.4rem solid $highlight;
+		border-left: 0.5rem solid $highlight;
 		border-top-right-radius: 0.4rem;
 		border-bottom-right-radius: 0.4rem;
-		background: $background_variant;
+		background: rgba($highlight, 0.05);
 
 		margin-inline-start: 1rem;
 		margin-inline-end: 1rem;
