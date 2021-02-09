@@ -9,7 +9,7 @@ const currentVersion = packageJson.version
 const fileName = `build.${currentVersion}.zip`
 const packagePath = path.join(process.cwd(), `releases`, fileName)
 
-async function scpPackage() {
+async function scpPackageToRemote() {
 	try {
 		const client = await scp(serverConfig)
 		await client.uploadFile(packagePath, path.join('/data', fileName))
@@ -19,7 +19,7 @@ async function scpPackage() {
 	}
 }
 
-function deletePackage() {
+function deleteLocalPackage() {
 	fs.unlink(packagePath, err => {
 		if (err) console.log(`${packagePath} - deleted errors ${err}`)
 	})
@@ -34,7 +34,7 @@ archive.on('error', err => {
 })
 archive.on('end', () => {
 	console.log('END - Data has been drained')
-	scpPackage().then(deletePackage).catch(console.error)
+	scpPackageToRemote().then(deleteLocalPackage).catch(console.error)
 })
 
 const output = fs.createWriteStream(packagePath)
