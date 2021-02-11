@@ -7,7 +7,7 @@ const { serverConfig } = require('./configs')
 
 const currentVersion = packageJson.version
 const fileName = `build.${currentVersion}.zip`
-const packagePath = path.join(process.cwd(), `releases`, fileName)
+const packagePath = path.join(process.cwd(), fileName)
 
 async function scpPackageToRemote() {
 	try {
@@ -34,7 +34,7 @@ archive.on('error', err => {
 })
 archive.on('end', () => {
 	console.log('END - Data has been drained')
-	scpPackageToRemote().then(deleteLocalPackage).catch(console.error)
+	scpPackageToRemote().then(deleteLocalPackage).catch(console.error).finally(process.exit)
 })
 
 const output = fs.createWriteStream(packagePath)
