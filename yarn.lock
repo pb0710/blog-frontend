@@ -8664,7 +8664,7 @@ make-dir@^2.0.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
-make-dir@^3.0.0, make-dir@^3.0.2:
+make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/make-dir/download/make-dir-3.1.0.tgz?cache=0&sync_timestamp=1587567610342&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmake-dir%2Fdownload%2Fmake-dir-3.1.0.tgz#415e967046b3a7f1d185277d84aa58203726a13f"
   integrity sha1-QV6WcEazp/HRhSd9hKpYIDcmoT8=
@@ -9148,6 +9148,17 @@ node-scp@^0.0.8:
   resolved "https://registry.npm.taobao.org/node-scp/download/node-scp-0.0.8.tgz#6310e2c687dd65968e085528c0fa7082c95ffdbc"
   integrity sha1-YxDixofdZZaOCFUowPpwgslf/bw=
   dependencies:
+    ssh2 "^0.8.9"
+
+node-ssh@^11.1.1:
+  version "11.1.1"
+  resolved "https://registry.npm.taobao.org/node-ssh/download/node-ssh-11.1.1.tgz#b7ed0a82963d34c6e8c007723f83f626ef5b19e0"
+  integrity sha1-t+0KgpY9NMbowAdyP4P2Ju9bGeA=
+  dependencies:
+    make-dir "^3.1.0"
+    sb-promise-queue "^2.1.0"
+    sb-scandir "^3.1.0"
+    shell-escape "^0.2.0"
     ssh2 "^0.8.9"
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.5.0:
@@ -11544,6 +11555,18 @@ saxes@^5.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
+sb-promise-queue@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/sb-promise-queue/download/sb-promise-queue-2.1.0.tgz#7e44bebef643f75d809a3db7f605b815d877a04d"
+  integrity sha1-fkS+vvZD912Amj239gW4Fdh3oE0=
+
+sb-scandir@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/sb-scandir/download/sb-scandir-3.1.0.tgz#31c346abb5184b73c5a25b286858f4299aa8756c"
+  integrity sha1-McNGq7UYS3PFolsoaFj0KZqodWw=
+  dependencies:
+    sb-promise-queue "^2.1.0"
+
 scheduler@^0.20.1:
   version "0.20.1"
   resolved "https://registry.npm.taobao.org/scheduler/download/scheduler-0.20.1.tgz?cache=0&sync_timestamp=1603367591660&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fscheduler%2Fdownload%2Fscheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
@@ -11738,6 +11761,11 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/shebang-regex/download/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha1-rhbxZE2HPsrYQ7AwexQzYtTEIXI=
+
+shell-escape@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npm.taobao.org/shell-escape/download/shell-escape-0.2.0.tgz#68fd025eb0490b4f567a027f0bf22480b5f84133"
+  integrity sha1-aP0CXrBJC09WegJ/C/IkgLX4QTM=
 
 shell-quote@1.7.2:
   version "1.7.2"

@@ -1,6 +1,6 @@
 {
   "name": "blog-frontend",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "private": true,
   "homepage": ".",
   "dependencies": {
@@ -47,6 +47,7 @@
     "gzipper": "^4.4.0",
     "husky": "^5.0.9",
     "node-scp": "^0.0.8",
+    "node-ssh": "^11.1.1",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "react-app-rewired": "^2.1.8",

@@ -1,43 +1,87 @@
-const archiver = require('archiver')
-const fs = require('fs')
+const { Task } = require('./utils')
 const path = require('path')
-const scp = require('node-scp')
+const fs = require('fs')
+const archiver = require('archiver')
 const packageJson = require('../package.json')
+const { version } = packageJson
 const { serverConfig } = require('./configs')
+const fileName = `build.${version}.zip`
+const buildPath = './build'
+const localPackagePath = path.join(process.cwd(), fileName)
+const remoteDirPath = '/data'
+const remotePackagepath = path.join(remoteDirPath, fileName)
 
-const currentVersion = packageJson.version
-const fileName = `build.${currentVersion}.zip`
-const packagePath = path.join(process.cwd(), fileName)
+function compressPackage(inputPath, outputPath) {
+	return async (ctx, next) => {
+		await new Promise((resolve, reject) => {
+			const archive = archiver('zip', {
+				zlib: { level: 9 }
+			})
 
-async function scpPackageToRemote() {
-	try {
-		const client = await scp(serverConfig)
-		await client.uploadFile(packagePath, path.join('/data', fileName))
-		client.close() // remember to close connection after you finish
-	} catch (err) {
-		throw err
+			archive.on('error', err => {
+				reject(err)
+			})
+			archive.on('end', () => {
+				console.log('fulfilled - Data has been drained')
+				resolve()
+			})
+
+			const output = fs.createWriteStream(outputPath)
+			archive.pipe(output)
+			archive.directory(inputPath)
+			archive.finalize()
+		})
+		await next()
 	}
 }
 
-function deleteLocalPackage() {
-	fs.unlink(packagePath, err => {
-		if (err) console.log(`${packagePath} - deleted errors ${err}`)
-	})
+function uploadPackage(localPath, remotePath) {
+	return async (ctx, next) => {
+		await ctx.ssh.putFile(localPath, remotePath)
+		await next()
+	}
 }
 
-const archive = archiver('zip', {
-	zlib: { level: 9 }
-})
+function removeRemoteDirectory(dirname, cwd) {
+	return async (ctx, next) => {
+		await ctx.ssh.execCommand(`rm -rf ${dirname}`, { cwd })
+		await next()
+	}
+}
 
-archive.on('error', err => {
-	throw err
-})
-archive.on('end', () => {
-	console.log('END - Data has been drained')
-	scpPackageToRemote().then(deleteLocalPackage).catch(console.error).finally(process.exit)
-})
+function parseRemotePackage(fileName, cwd) {
+	return async (ctx, next) => {
+		await ctx.ssh.execCommand(`unzip ${fileName}`, { cwd })
+		await next()
+	}
+}
 
-const output = fs.createWriteStream(packagePath)
-archive.pipe(output)
-archive.directory('build/')
-archive.finalize()
+function deleteLocalPackage(localPath) {
+	return async (ctx, next) => {
+		await new Promise((resolve, reject) => {
+			fs.unlink(localPath, async err => {
+				if (err) reject(err)
+				resolve()
+			})
+		})
+		await next()
+	}
+}
+
+const task = new Task()
+
+task
+	.do(compressPackage(buildPath, localPackagePath))
+	.do(uploadPackage(localPackagePath, remotePackagepath))
+	.do(removeRemoteDirectory(buildPath, remoteDirPath))
+	.do(parseRemotePackage(fileName, remoteDirPath))
+	.do(deleteLocalPackage(localPackagePath))
+	.connect(serverConfig)
+	.then(
+		() => {
+			process.exit()
+		},
+		err => {
+			console.error(`task execution failed: ${err}`)
+		}
+	)
