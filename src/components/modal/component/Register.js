@@ -9,6 +9,7 @@ import { updateModal } from '../store/action'
 import Login from './Login'
 import Profile from './Profile'
 import { useTranslation } from 'react-i18next'
+import * as userApi from '@/apis/user'
 
 export default function Register() {
 	const { t } = useTranslation()
@@ -74,6 +75,17 @@ export default function Register() {
 								const pattern = new RegExp('^[^\u4e00-\u9fa5]+$', 'i')
 								if (!pattern.test(value)) {
 									return Promise.reject(t('modal.register.rule.not_zh'))
+								}
+							}
+						},
+						{
+							async validator(value) {
+								if (!value) return
+								try {
+									const res = await userApi.fetchProfile(value)
+									if (res) return Promise.reject(t('modal.register.rule.exist'))
+								} catch (err) {
+									return
 								}
 							}
 						}
