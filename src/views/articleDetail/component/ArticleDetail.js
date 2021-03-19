@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import style from '../style/index.module.scss'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FlexiblePage } from '@/components/page'
 import { Markdown } from '@/components/markdown'
@@ -35,6 +35,7 @@ export default function ArticleDetail() {
 		refreshDeps: [articleId],
 		onSuccess(res) {
 			dispatch(updateArticleDetail(res))
+			dispatch(increaseArticleViews(articleId))
 		},
 		onError(err) {
 			msg.error(err)
@@ -51,15 +52,13 @@ export default function ArticleDetail() {
 		}
 	})
 
-	useEffect(() => {
-		if (articleId) {
-			dispatch(increaseArticleViews(articleId))
-		}
-		return () => {
+	useEffect(
+		() => () => {
 			dispatch(updateArticleDetail({}))
 			dispatch(updateArticleAuthorProfile({}))
-		}
-	}, [articleId, dispatch])
+		},
+		[dispatch]
+	)
 
 	const infoElement = (
 		<div className={style.info}>
