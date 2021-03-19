@@ -22,7 +22,7 @@ export const fetchProfile = username =>
 export const saveProfile = profile =>
 	request({
 		url: `user/save_profile`,
-		method: 'POST',
+		method: 'PUT',
 		data: profile
 	})
 

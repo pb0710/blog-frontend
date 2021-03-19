@@ -6,7 +6,6 @@ import config from '@/config/index'
 const getNetError = () => i18n.t('error.network_connection_failed')
 
 const instance = axios.create({
-	// baseURL: 'http://localhost:10086',
 	baseURL: config.BASE_URL,
 	method: 'GET',
 	headers: {

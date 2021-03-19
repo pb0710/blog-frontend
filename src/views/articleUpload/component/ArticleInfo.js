@@ -13,10 +13,12 @@ import { msg } from '@/components/base'
 import defaultArticleBg from '@/assets/images/default_article_bg.png'
 import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router'
 
 export default function ArticleInfo(props) {
 	const { content } = props
 
+	const history = useHistory()
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const { userId } = useSelector(state => state.userProfile)
@@ -59,6 +61,7 @@ export default function ArticleInfo(props) {
 			try {
 				await articleApi.addArticle(userId, articleDetail)
 				handleClose()
+				history.push('/')
 				msg.success(t('success.add'))
 			} catch (err) {
 				console.error('添加文章失败', err)

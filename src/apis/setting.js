@@ -18,6 +18,6 @@ export const fetchSetting = userId =>
 export const updateSetting = (setting = {}) =>
 	request({
 		url: `setting/update`,
-		method: 'POST',
+		method: 'PUT',
 		data: setting
 	})

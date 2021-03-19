@@ -8,7 +8,7 @@
 亦能作为信息展示平台，记录个人所用所学、所见所闻、所感所想。一举多得。  
 毕竟做 web 开发，特别是前端方面的知识体系分散而杂乱，技术推陈出新快。要想提升技术的广度与深度，养成良好的记笔记习惯非常重要。
 
-当前进度：约 `80%`。
+当前进度：约 `85%`。
 
 前端源码：[https://github.com/pb0710/blog-frontend](https://github.com/pb0710/blog-frontend)
 后端源码：[https://github.com/pb0710/blog-backend](https://github.com/pb0710/blog-backend)
@@ -17,7 +17,8 @@
 
 - 用户注册、登录 ✅
 - 用户个人资料、配置项 编辑、同步 ✅
-- markdown 文章展示、编辑、发布 ✅
+- markdown 文章展示 ✅
+- markdown 编辑器、文章发布 ✅
 - 用户详情页
 - 关于页 ✅
 - 适配移动端响应式 ✅
