@@ -26,7 +26,7 @@ export default function ArticleDetail() {
 	const { content = '', backgroundImage = '', tags = [], creationTime, views = 0, author } = articleDetail
 	const { nickname, avatar } = articleAuthorProfile
 	const { id: articleId } = useParams()
-	useScrollToTop()
+	const { run: doScroll } = useScrollToTop(true)
 
 	const { loading } = useFetch(async () => articleApi.fetchDetail(articleId), {
 		initialData: {},
@@ -36,6 +36,7 @@ export default function ArticleDetail() {
 		onSuccess(res) {
 			dispatch(updateArticleDetail(res))
 			dispatch(increaseArticleViews(articleId))
+			doScroll()
 		},
 		onError(err) {
 			msg.error(err)

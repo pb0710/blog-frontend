@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
-import { getTargetElement } from './index'
+import { debounce, getTargetElement, throttle } from './index'
 
 /**
  * @param {Boolean} initial 默认值
@@ -174,44 +174,47 @@ export function useScrollToTop(manual) {
  * 监听滚动
  * @param {HTMLElement}} target 目标元素
  */
-export function useScroll(target) {
+export function useScroll(target, { throttleDuration = 0, debounceDuration = 0 } = {}) {
 	const [position, setPosition] = useState({
 		left: NaN,
 		top: NaN
 	})
 
+	const updatePosition = useCallback(currentTarget => {
+		let newPosition
+		if (currentTarget === document) {
+			if (!document.scrollingElement) return
+			newPosition = {
+				left: document.scrollingElement.scrollLeft,
+				top: document.scrollingElement.scrollTop
+			}
+		} else {
+			newPosition = {
+				left: currentTarget.scrollLeft,
+				top: currentTarget.scrollTop
+			}
+		}
+		setPosition(newPosition)
+	}, [])
+
 	useEffect(() => {
 		const el = getTargetElement(target, document)
 		if (!el) return
-
-		function updatePosition(currentTarget) {
-			let newPosition
-			if (currentTarget === document) {
-				if (!document.scrollingElement) return
-				newPosition = {
-					left: document.scrollingElement.scrollLeft,
-					top: document.scrollingElement.scrollTop
-				}
-			} else {
-				newPosition = {
-					left: currentTarget.scrollLeft,
-					top: currentTarget.scrollTop
-				}
-			}
-			setPosition(newPosition)
-		}
-
 		updatePosition(el)
 
-		function listener(event) {
-			if (!event.target) return
-			updatePosition(event.target)
-		}
+		const listener = debounce(
+			throttle(event => {
+				if (!event.target) return
+				updatePosition(event.target)
+			}, throttleDuration),
+			debounceDuration
+		)
+
 		el.addEventListener('scroll', listener)
 		return () => {
 			el.removeEventListener('scroll', listener)
 		}
-	}, [target])
+	}, [target, debounceDuration, throttleDuration, updatePosition])
 
 	return position
 }

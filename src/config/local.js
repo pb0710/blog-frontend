@@ -4,6 +4,7 @@ const local = {
 	PROXY_URL: 'http://localhost:3333',
 	REDUX_LOG: true,
 	LOADING_DELAY: 200,
-	CLICK_DELAY: 300
+	CLICK_DELAY: 300,
+	SCROLL_DURATION: 200
 }
 export default local

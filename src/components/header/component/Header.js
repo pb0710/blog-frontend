@@ -11,6 +11,7 @@ import UserProfile from './UserProfile'
 import { Login } from '@/components/modal'
 import MenuIcon from 'mdi-react/MenuIcon'
 import Branch from './Branch'
+import Title from './Titile'
 import { useTranslation } from 'react-i18next'
 
 export default function Header() {
@@ -31,23 +32,28 @@ export default function Header() {
 		dispatch(initUser())
 	}, [dispatch])
 
+	const toolbarElement = (
+		<div className={style.tool_bar}>
+			<Search />
+			<AppCenter />
+			{online ? (
+				<UserProfile />
+			) : (
+				<Button className={style.go_login} color={theme} onClick={handleGoLogin}>
+					{t('header.login')}
+				</Button>
+			)}
+		</div>
+	)
+
 	return (
 		<header className={style.header}>
 			<Button.Icon className={style.drawer_control} onClick={handleToggleDrawer}>
 				<MenuIcon size={20} />
 			</Button.Icon>
 			<Branch />
-			<div className={style.tool_bar}>
-				<Search />
-				<AppCenter />
-				{online ? (
-					<UserProfile />
-				) : (
-					<Button className={style.go_login} color={theme} onClick={handleGoLogin}>
-						{t('header.login')}
-					</Button>
-				)}
-			</div>
+			<Title />
+			{toolbarElement}
 		</header>
 	)
 }

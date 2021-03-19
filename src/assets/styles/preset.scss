@@ -1,9 +1,14 @@
 @import 'responsive';
 @import 'border.css';
 
+html {
+	height: 100%;
+}
+
 body {
 	overflow-x: hidden;
 	overflow-y: auto;
+	height: 100%;
 	font-family: SF Pro Text, SF Pro Icons, PingFang SC, Helvetica, Arial, sans-serif;
 }
 
