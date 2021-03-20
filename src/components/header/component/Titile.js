@@ -9,17 +9,21 @@ import config from '@/config'
 function Title() {
 	const isDetailPage = useRouteMatch('/article/:category/detail')
 	const { title } = useSelector(state => state.articleDetail)
+	const drawerOpened = useSelector(state => state.sider.drawerOpened)
 	const { top } = useScroll(document, { debounceDuration: config.SCROLL_DURATION })
 	const isMobile = useMediaQuery('(max-width:600px)')
 
-	const articleTitleCls = clsx({
+	const titleWrapperCls = clsx(style.article_title, {
+		[style.open]: drawerOpened
+	})
+	const headingCls = clsx({
 		[style.show]: top > document.body.clientHeight
 	})
 	return (
 		isMobile ||
 		!isDetailPage || (
-			<div className={style.article_title}>
-				<h2 className={articleTitleCls}>{title}</h2>
+			<div className={titleWrapperCls}>
+				<h2 className={headingCls}>{title}</h2>
 			</div>
 		)
 	)

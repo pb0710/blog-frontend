@@ -5,7 +5,7 @@
 	display: block;
 	width: 24rem;
 	height: calc(100% - 7rem);
-	transition: right $normal ease-out;
+	transition: right $normal;
 
 	&.narrowing {
 		right: calc(50% - 67rem);

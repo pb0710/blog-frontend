@@ -195,7 +195,7 @@ function MarkdownEditor() {
 	const operationElement = (
 		<div className={style.operation}>
 			{isMobile && (
-				<Button.Icon onClick={togglePreview}>
+				<Button.Icon onClick={togglePreview} focus={previewing}>
 					{previewing ? <EyeIcon size={20} /> : <EyeOutlineIcon size={20} />}
 				</Button.Icon>
 			)}

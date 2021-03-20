@@ -1,4 +1,5 @@
 $header_height: 5rem;
+$sider_width: 24rem;
 
 .header {
 	position: fixed;
@@ -7,7 +8,7 @@ $header_height: 5rem;
 	display: flex;
 	align-items: center;
 	padding: 0 1rem 0 8rem;
-	width: 100%;
+	width: 100vw;
 	height: $header_height;
 	background: $background;
 	box-shadow: 0 0 2px rgba($color: #000000, $alpha: 0.2);
@@ -35,11 +36,16 @@ $header_height: 5rem;
 		align-items: center;
 		width: $title_width;
 		height: 100%;
+		transition: transform $normal;
+
+		&.open {
+			transform: translateX($sider_width / 2);
+		}
 
 		> h2 {
 			overflow: hidden;
 			margin: 0 4rem;
-			width: 80%;
+			width: 70%;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			font-size: 2rem;
@@ -54,9 +60,13 @@ $header_height: 5rem;
 
 	> .tool_bar {
 		position: absolute;
-		right: 1rem;
+		right: 2rem;
 		display: flex;
 		align-items: center;
+
+		@media screen and (max-width: $breakpoint_sm) {
+			right: 1rem;
+		}
 
 		> .btn {
 			position: relative;

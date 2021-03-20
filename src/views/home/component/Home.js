@@ -22,7 +22,7 @@ export default function Home() {
 	return (
 		<FlexiblePage className={style.home_page}>
 			<article className={style.home_wrapper}>
-				<Panel>
+				<Panel className={style.list_wrapper}>
 					<Tabs bordered={false} color={theme} activeKey="latest">
 						{tabList.map(({ key, title }) => (
 							<Tabs.Panel key={key} tabKey={key} title={title}>

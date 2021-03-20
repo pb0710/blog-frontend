@@ -19,7 +19,7 @@
 	@extend .page;
 
 	@media screen and(min-width: $breakpoint_sm) {
-		transition: width $normal ease-out;
+		transition: width $normal;
 	}
 	@media screen and(max-width: $breakpoint_sm) {
 		padding-top: 5rem;
