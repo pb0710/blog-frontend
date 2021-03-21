@@ -65,12 +65,12 @@ export default function AuthorPanel() {
 				{/* </Link> */}
 			</List>
 			{contactsElement}
-			<Divider />
+			{/* <Divider />
 			<div className={style.footer}>
 				<Button light color={theme} suffixes={<AddIcon size={20} />}>
 					{t('article_detail.subscribe')}
 				</Button>
-			</div>
+			</div> */}
 		</Panel>
 	)
 }

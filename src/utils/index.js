@@ -90,3 +90,15 @@ export function getTargetElement(target, defaultElement) {
 
 	return targetElement
 }
+/**
+ * 延迟
+ * @param {Number} timeout
+ * @returns
+ */
+export function delay(timeout = 0) {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve()
+		}, timeout)
+	})
+}
