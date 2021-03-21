@@ -148,7 +148,7 @@
 	"header": {
 		"login": "登录",
 		"logout": "退出",
-		"search_placeholder": "搜一搜",
+		"search_placeholder": "搜索 用户、文章",
 		"article": "文章",
 		"user": "用户",
 		"no_data": "没有数据",
@@ -188,7 +188,6 @@
 		"success": "草原",
 		"warning": "芒果",
 		"error": "珊瑚",
-		"default_open_drawer": "默认展示侧边栏",
 		"language": "语言",
 		"show_markdown_guide": "展示 Markdown Demo"
 	},

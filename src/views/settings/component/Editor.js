@@ -9,6 +9,7 @@ function Editor() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
 	const useMarkdownGuide = useSelector(state => state.setting.useMarkdownGuide)
+
 	const editorOpts = [
 		{
 			icon: <ChromeReaderModeIcon size={20} />,

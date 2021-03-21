@@ -102,3 +102,24 @@ export function delay(timeout = 0) {
 		}, timeout)
 	})
 }
+
+/**
+ * 字符串转 boolean，可用来给 localStorage 取值
+ * @param {String} str
+ * @param {Boolean} defaultValue
+ * @returns Boolean
+ */
+export function stringToBoolean(str, defaultValue = false) {
+	switch (str) {
+		case '0':
+		case 'false':
+			return false
+
+		case '1':
+		case 'true':
+			return true
+
+		default:
+			return defaultValue
+	}
+}

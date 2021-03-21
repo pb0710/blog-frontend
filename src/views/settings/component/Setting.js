@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from '../style/index.module.scss'
 import { Form } from 'sylas-react-ui'
 import { FlexiblePage } from '@/components/page'
@@ -22,7 +22,8 @@ function Setting() {
 	const dispatch = useDispatch()
 	const online = useSelector(state => state.online)
 	const profile = useSelector(state => state.userProfile)
-	const setting = useSelector(state => state.setting)
+	const theme = useSelector(state => state.setting.theme)
+
 	useScrollToTop()
 	const accountSaveInterval = 1000
 	const settingSaveInterval = 400
@@ -40,6 +41,9 @@ function Setting() {
 
 	const handleSaveSettings = settings => {
 		dispatch(saveSetting(settings))
+		Object.keys(settings).forEach(key => {
+			localStorage.setItem(key, settings[key])
+		})
 	}
 
 	const handleGoLogin = () => {
@@ -49,7 +53,7 @@ function Setting() {
 	return (
 		<FlexiblePage className={style.setting_page}>
 			{online || (
-				<Banner theme={setting.theme}>
+				<Banner theme={theme}>
 					<span>{t('settings.auto_sync')}</span>
 					<div onClick={handleGoLogin}>
 						<span>{t('settings.go_login')}</span>

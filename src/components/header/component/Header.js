@@ -20,8 +20,9 @@ export default function Header() {
 	const online = useSelector(state => state.online)
 	const theme = useSelector(state => state.setting.theme)
 
-	const handleToggleDrawer = () => {
+	const handleShowDrawer = () => {
 		dispatch(updateDrawer(true))
+		localStorage.setItem('drawerOpened', true)
 	}
 
 	const handleGoLogin = () => {
@@ -48,7 +49,7 @@ export default function Header() {
 
 	return (
 		<header className={style.header}>
-			<Button.Icon className={style.drawer_control} onClick={handleToggleDrawer}>
+			<Button.Icon className={style.drawer_control} onClick={handleShowDrawer}>
 				<MenuIcon size={20} />
 			</Button.Icon>
 			<Branch />

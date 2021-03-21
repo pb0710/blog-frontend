@@ -188,7 +188,6 @@
 		"success": "Grassland",
 		"warning": "Mango",
 		"error": "Coral",
-		"default_open_drawer": "Default display sidebar",
 		"language": "Language",
 		"show_markdown_guide": "Show Markdown Demo"
 	},

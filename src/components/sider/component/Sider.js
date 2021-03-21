@@ -9,20 +9,21 @@ import NavMenu from './NavMenu'
 import { Branch } from '@/components/header'
 import { Mask } from '@/components/base'
 import { useMediaQuery } from '@/utils/hooks'
+import { stringToBoolean } from '@/utils'
 
 export default function Sider() {
 	const dispatch = useDispatch()
-	const drawerDefaultOpened = useSelector(state => state.setting.drawerDefaultOpened)
 	const drawerOpened = useSelector(state => state.sider.drawerOpened)
 	const isMobile = useMediaQuery('(max-width:600px)')
 
 	const hanldeClose = () => {
 		dispatch(updateDrawer(false))
+		localStorage.setItem('drawerOpened', false)
 	}
 
 	useEffect(() => {
-		dispatch(updateDrawer(drawerDefaultOpened))
-	}, [dispatch, drawerDefaultOpened])
+		dispatch(updateDrawer(stringToBoolean(localStorage.getItem('drawerOpened'))))
+	}, [dispatch])
 
 	const asideCls = clsx(style.sider, {
 		[style.open]: drawerOpened

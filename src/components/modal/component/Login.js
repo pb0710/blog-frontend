@@ -44,7 +44,6 @@ export default function Login() {
 	}
 
 	const handleSubmit = values => {
-		console.log('values: ', values)
 		const { username, password } = values
 		if (!username || !password) {
 			msg.error(t('modal.login.rule.complete_account'))

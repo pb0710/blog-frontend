@@ -7,6 +7,7 @@ import { msg } from '@/components/base'
 import TYPE from '@/common/actionTypes'
 import omit from 'omit.js'
 import i18n from '@/common/i18n'
+import { stringToBoolean } from '@/utils'
 
 function* fetchUserInfo() {
 	try {
@@ -17,7 +18,13 @@ function* fetchUserInfo() {
 		yield put(updateOnline(true))
 		return
 	} catch (err) {
-		console.error('获取用户信息失败', err)
+		console.error('初始化用户信息', err)
+		const theme = localStorage.getItem('theme')
+		const lang = localStorage.getItem('lang')
+		const useMarkdownGuide = stringToBoolean(localStorage.getItem('useMarkdownGuide'))
+		if (theme != null) put(mergeSetting({ theme }))
+		if (lang != null) put(mergeSetting({ lang }))
+		if (useMarkdownGuide != null) put(mergeSetting({ useMarkdownGuide }))
 	}
 }
 
@@ -47,7 +54,6 @@ function* logout() {
 			mergeSetting({
 				// due to browser language detected, don't reset it.
 				theme: 'primary',
-				drawerDefaultOpened: false,
 				useMarkdownGuide: true
 			})
 		)
