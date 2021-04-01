@@ -14,3 +14,5 @@ export const updateOnline = createAction(TYPE.UPDATE_ONLINE)
 export const updateUserProfile = createAction(TYPE.UPDATE_USER_PROFILE)
 
 export const saveProfile = createAction(TYPE.SAVE_PROILE)
+
+export const updateTopProgress = createAction(TYPE.UPDATE_TOP_PROGRESS)

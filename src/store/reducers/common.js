@@ -16,3 +16,11 @@ export const userProfile = handleActions(
 	},
 	{}
 )
+
+// 顶栏进度条百分比 0 ~ 100
+export const topProgress = handleActions(
+	{
+		[TYPE.UPDATE_TOP_PROGRESS]: (state, action) => action.payload
+	},
+	0
+)

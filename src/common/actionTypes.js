@@ -15,7 +15,8 @@ const actionTypes = {
 	UPDATE_ARTICLE_AUTHOR_PROFILE: 'update_article_author_profile',
 	INCREASE_ARTICLE_VIEWS: 'increase_article_views',
 	TOGGLE_DRAWER: 'toggle_drawer',
-	UPDATE_DRAWER: 'update_drawer'
+	UPDATE_DRAWER: 'update_drawer',
+	UPDATE_TOP_PROGRESS: 'update_top_progress'
 }
 
 export default actionTypes

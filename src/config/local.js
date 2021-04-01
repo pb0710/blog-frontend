@@ -5,6 +5,7 @@ const local = {
 	REDUX_LOG: true,
 	LOADING_DELAY: 200,
 	CLICK_DELAY: 300,
-	SCROLL_DURATION: 200
+	SCROLL_DURATION: 200,
+	PROGRESS_DELAY: 200
 }
 export default local

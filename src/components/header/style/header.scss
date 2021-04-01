@@ -1,6 +1,14 @@
 $header_height: 5rem;
 $sider_width: 24rem;
 
+.progress_bar {
+	z-index: $z_sider + 1;
+
+	&.hide {
+		display: none;
+	}
+}
+
 .header {
 	position: fixed;
 	top: 0;

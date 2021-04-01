@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { msg } from '@/components/base'
 import i18n from '@/common/i18n'
-import config from '@/config/index'
+import config from '@/config'
+import { completeFetch, startFetch, stopFetch } from './progress'
 
 const getNetError = () => i18n.t('error.network_connection_failed')
 
@@ -16,12 +17,17 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(
-	req => req,
+	req => {
+		startFetch()
+		return req
+	},
 	err => Promise.reject('Request rejected', err)
 )
 
 instance.interceptors.response.use(
 	res => {
+		completeFetch()
+
 		if (res.status !== 200) {
 			msg.error(`${getNetError()}:${res.status}`)
 			return Promise.reject(res)
@@ -29,10 +35,10 @@ instance.interceptors.response.use(
 		if (res.data.message !== 'ok') {
 			return Promise.reject(res.data.message)
 		}
-
 		return Promise.resolve(res.data.payload)
 	},
 	err => {
+		stopFetch()
 		if (!err.response) {
 			msg.error(getNetError())
 			return Promise.reject(getNetError())
