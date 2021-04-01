@@ -2,7 +2,7 @@ $header_height: 5rem;
 $sider_width: 24rem;
 
 .progress_bar {
-	z-index: $z_sider + 1;
+	z-index: $z_mask + 1;
 
 	&.hide {
 		display: none;
