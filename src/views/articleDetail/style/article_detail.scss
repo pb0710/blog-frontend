@@ -1,5 +1,4 @@
 .article_detail_wrapper {
-	overflow-x: auto;
 	margin-bottom: 2rem;
 	max-width: 100%;
 	border-radius: 0.4rem;
@@ -16,6 +15,7 @@
 	}
 
 	.article_content {
+		overflow-x: auto;
 		padding: 0 4rem 4rem 4rem;
 		min-height: 40rem;
 
