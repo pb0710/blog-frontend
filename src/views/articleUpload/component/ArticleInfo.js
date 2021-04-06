@@ -15,7 +15,17 @@ import dayjs from 'dayjs'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router'
 
-export default function ArticleInfo(props) {
+/**
+ * 文字发布时需填写的信息。
+ * 包括：
+ * - 标题
+ * - 背景图
+ * - 描述
+ * - 分类
+ * @param {{content: string}} props
+ * @returns {JSX.Element}
+ */
+function ArticleInfo(props) {
 	const { content } = props
 
 	const history = useHistory()
@@ -68,7 +78,7 @@ export default function ArticleInfo(props) {
 				msg.error(t('error.add'))
 			}
 		},
-		[content, handleClose, t, userId]
+		[content, handleClose, history, t, userId]
 	)
 
 	const formItems = [
@@ -150,3 +160,5 @@ export default function ArticleInfo(props) {
 		</div>
 	)
 }
+
+export default ArticleInfo

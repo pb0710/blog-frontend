@@ -1,7 +1,16 @@
 import React from 'react'
 import style from '../style/index.module.scss'
 
-export default function AspectRatio(props) {
+/**
+ * 可设置宽高比的容器组件
+ * 基于 padding 实现
+ * @param {{
+ * 	children: JSX.Element,
+ * 	aspectRatio: number
+ * }} props
+ * @returns
+ */
+function InternalAspectRatio(props) {
 	const { children, aspectRatio = 1 } = props
 	return (
 		<div className={style.aspect_ratio_container} style={{ paddingBottom: `calc(${aspectRatio} * 100%)` }}>
@@ -9,3 +18,6 @@ export default function AspectRatio(props) {
 		</div>
 	)
 }
+
+const AspectRatio = React.memo(InternalAspectRatio)
+export default AspectRatio

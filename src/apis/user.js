@@ -7,7 +7,7 @@ export const initialData = () => request.get(`user/init_data`)
 
 /**
  * 获取用户基本信息
- * @param {String} username 用户名
+ * @param {string} username 用户名
  */
 export const fetchProfile = username =>
 	request({
@@ -17,7 +17,7 @@ export const fetchProfile = username =>
 
 /**
  * 保存用户基本信息
- * @param {Object} profile 用户基本信息
+ * @param {Record<string, unknown>} profile 用户基本信息
  */
 export const saveProfile = profile =>
 	request({
@@ -28,9 +28,9 @@ export const saveProfile = profile =>
 
 /**
  * 注册
- * @param {String} username 用户名
- * @param {String} password 密码
- * @param {String} nickname 名称
+ * @param {string} username 用户名
+ * @param {string} password 密码
+ * @param {string} nickname 名称
  */
 export const register = (username, password, profile) =>
 	request({
@@ -41,8 +41,8 @@ export const register = (username, password, profile) =>
 
 /**
  * 登录
- * @param {String} username 用户名
- * @param {String} password 密码
+ * @param {string} username 用户名
+ * @param {string} password 密码
  */
 export const login = (username, password) =>
 	request({
@@ -53,7 +53,7 @@ export const login = (username, password) =>
 
 /**
  * 登出
- * @param {String} username 用户ID
+ * @param {string} username 用户ID
  */
 export const logout = () =>
 	request({

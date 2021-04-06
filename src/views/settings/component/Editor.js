@@ -5,6 +5,10 @@ import ChromeReaderModeIcon from 'mdi-react/ChromeReaderModeIcon'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+/**
+ * 编辑器设置
+ * @returns {JSX.Element}
+ */
 function Editor() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)

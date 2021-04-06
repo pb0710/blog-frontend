@@ -4,6 +4,20 @@ import { Form, List } from 'sylas-react-ui'
 import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 
+/**
+ * 表单域
+ * @param {{
+ * 	className: string,
+ * 	heading: string,
+ * 	opts: ({
+ * 		icon: JSX.Element,
+ * 		title: string,
+ * 		name: string,
+ * 		component: JSX.Element
+ * 	})[]
+ * }} props
+ * @returns
+ */
 function Options(props) {
 	const { opts = [], heading, className } = props
 	const containerCls = clsx(style.container, className)

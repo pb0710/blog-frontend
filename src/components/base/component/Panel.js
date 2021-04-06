@@ -2,7 +2,15 @@ import React from 'react'
 import style from '../style/index.module.scss'
 import clsx from 'clsx'
 
-export default function Panel(props) {
+/**
+ * @param {{
+ * 	children: JSX.Element,
+ * 	className: string,
+ * 	rest: any[]
+ * }} props
+ * @returns
+ */
+function Panel(props) {
 	const { children, className, ...rest } = props
 	const panelCls = clsx(style.panel, className)
 	return (
@@ -11,3 +19,5 @@ export default function Panel(props) {
 		</section>
 	)
 }
+
+export default Panel

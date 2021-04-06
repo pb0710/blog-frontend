@@ -14,6 +14,11 @@ const Fragment = props => <>{props.children}</>
 
 const Blockquote = props => <blockquote className={style.blockquote}>{props.children}</blockquote>
 
+/**
+ * ![title](http://imagesrc)   =>   <img alt="title" src="http://imagesrc" />
+ * @param {{Record<string, any>}} props
+ * @returns
+ */
 const Img = props => (
 	<div className={style.pic}>
 		<img className={style.pic} alt="" {...props} />
@@ -26,6 +31,14 @@ const Table = props => (
 	</table>
 )
 
+/**
+ * 代码块外层容器元素
+ * ```
+ *   let a = 123;   =>   <pre><code>let a = 123</code></pre>
+ * ```
+ * @param {{ children: JSX.Element }} props
+ * @returns
+ */
 const Pre = props => {
 	const { children } = props
 	const { t } = useTranslation()
@@ -75,7 +88,7 @@ const A = props => (
 	</a>
 )
 
-function Markdown(props) {
+function InternalMarkdown(props) {
 	const theme = useSelector(state => state.setting.theme)
 	return (
 		<div className={style[`markdown_wrapper_${theme}`]}>
@@ -98,4 +111,5 @@ function Markdown(props) {
 	)
 }
 
-export default React.memo(Markdown)
+const Markdown = React.memo(InternalMarkdown)
+export default Markdown

@@ -5,6 +5,10 @@ import TranslateIcon from 'mdi-react/TranslateIcon'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+/**
+ * 国际化设置
+ * @returns {JSX.Element}
+ */
 function I18N() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)

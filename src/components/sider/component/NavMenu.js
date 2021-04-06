@@ -8,7 +8,17 @@ import { useTranslation } from 'react-i18next'
 import { useMediaQuery } from '@/utils/hooks'
 import { updateDrawer } from '../store/action'
 
-function Nav(props) {
+/**
+ * @param {{
+ * 	id: number,
+ *	level: number,
+ *	to: string,
+ *	title: string,
+ *	icon: JSX.Element
+ * }} props
+ * @returns
+ */
+function InternalNav(props) {
 	const { id, level, to, title, icon } = props
 	const dispatch = useDispatch()
 	const isMobile = useMediaQuery('(max-width:600px)')
@@ -24,6 +34,8 @@ function Nav(props) {
 		</NavLink>
 	)
 }
+
+const Nav = React.memo(InternalNav)
 
 function NavMenu() {
 	const theme = useSelector(state => state.setting.theme)
@@ -78,4 +90,4 @@ function NavMenu() {
 	)
 }
 
-export default React.memo(NavMenu)
+export default NavMenu

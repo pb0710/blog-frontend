@@ -5,6 +5,13 @@ import useClipboard from 'use-clipboard-hook'
 import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
 
+/**
+ * 联系方式
+ * @param {{
+ *	link: string
+ * }} props
+ * @returns
+ */
 function Contact(props) {
 	const { children, link } = props
 	const { t } = useTranslation()

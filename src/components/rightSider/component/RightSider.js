@@ -9,7 +9,7 @@ import AuthorPanel from './AuthorPanel'
 import ArticleStatsPanel from './ArticleStatsPanel'
 import config from '@/config'
 
-function RightSider() {
+function InternalRightSider() {
 	const opened = useSelector(state => state.sider.drawerOpened)
 	const rightSiderCls = clsx(style.right_sider, opened && style.narrowing)
 
@@ -56,4 +56,5 @@ function RightSider() {
 	)
 }
 
-export default React.memo(RightSider)
+const RightSider = React.memo(InternalRightSider)
+export default RightSider

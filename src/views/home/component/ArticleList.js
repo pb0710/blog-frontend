@@ -10,6 +10,17 @@ import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 import { Skeleton } from '@/components/base'
 
+/**
+ * 文章列表。
+ * 展示：
+ * - 标题
+ * - 作者
+ * - 发布时间
+ * - 简介
+ * 跳转到文章详情
+ * @param {{sortBy: 'latest | popular | random'}} props
+ * @returns
+ */
 function ArticleList(props) {
 	const { sortBy } = props
 	const { t } = useTranslation()
@@ -30,6 +41,7 @@ function ArticleList(props) {
 						<div className={style.left_wrapper}>
 							<div>
 								<span>
+									{/* TODO: 路由到作者详情页 */}
 									{/* <Link to="/user">{author}</Link> */}
 									{author}
 								</span>
@@ -48,7 +60,7 @@ function ArticleList(props) {
 		)
 	})
 
-	const SkeletonElement = (
+	const skeletonElement = (
 		<div className={style.skeleton_list}>
 			{Object.keys([...Array(8)]).map(item => (
 				<div className={style.skeleton_wrapper} key={item}>
@@ -64,7 +76,7 @@ function ArticleList(props) {
 		</div>
 	)
 
-	return <List className={style.article_list}>{loading ? SkeletonElement : listElement}</List>
+	return <List className={style.article_list}>{loading ? skeletonElement : listElement}</List>
 }
 
 export default ArticleList

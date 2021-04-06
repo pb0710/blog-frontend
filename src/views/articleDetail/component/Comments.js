@@ -15,7 +15,17 @@ import { updateModal } from '@/components/modal/store/action'
 import config from '@/config'
 import ChatPlusOutlineIcon from 'mdi-react/ChatPlusOutlineIcon'
 
-const AddComment = React.forwardRef((props, ref) => {
+/**
+ * 文章评论发表
+ * @param {{
+ * 	mutate: boolean,
+ * 	content: string,
+ * 	setContent: React.Dispatch<React.SetStateAction<string>>
+ * }} props
+ * @param {React.MutableRefObject<any>} ref
+ * @returns {JSX.Element}
+ */
+function InternalAddComment(props, ref) {
 	const { mutate, content, setContent } = props
 	const { t } = useTranslation()
 	const { id: articleId } = useParams()
@@ -48,8 +58,16 @@ const AddComment = React.forwardRef((props, ref) => {
 			</div>
 		</div>
 	)
-})
+}
 
+const AddComment = React.forwardRef(InternalAddComment)
+
+/**
+ * 评论区：
+ * - 编写评论
+ * - 评论列表
+ * @returns {JSX.Element}
+ */
 function Comments() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
@@ -75,8 +93,8 @@ function Comments() {
 				handleGoLogin()
 				return
 			}
-			const splitLine = `----------------------------------------------------------------------`
-			setContent(`${speaker.nickname || t('article_detail.anonymous_user')} : ${content.trim()}  \n${splitLine}  \n`)
+			const divider = `----------------------------------------------------------------------`
+			setContent(`${speaker.nickname || t('article_detail.anonymous_user')} : ${content.trim()}  \n${divider}  \n`)
 			textareaRef.current?.focus()
 		},
 		[handleGoLogin, online, t]

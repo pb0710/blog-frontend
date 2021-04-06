@@ -18,6 +18,10 @@ import { msg } from '@/components/base'
 import { useTranslation } from 'react-i18next'
 import { GithubOutlined, WechatOutlined } from '@ant-design/icons'
 
+/**
+ * 用户个人资料
+ * @returns {JSX.Element}
+ */
 function Account() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()

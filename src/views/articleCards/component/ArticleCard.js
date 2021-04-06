@@ -4,7 +4,18 @@ import style from '../style/index.module.scss'
 import { AspectRatio } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 
-export default function ArticleCard(props) {
+/**
+ * 文章卡片。用于展示文章标题、背景缩略图、作者信息，并跳转到对应页面。
+ * @param {{
+ * 	id: number,
+ * 	author: string,
+ * 	category: 'frontend | backend | mobile | computer_science | engineering',
+ * 	title: string,
+ * 	backgroundImage: string
+ * }} props
+ * @returns {JSX.Element}
+ */
+function ArticleCard(props) {
 	const { id, author, category, title, backgroundImage } = props
 	const theme = useSelector(state => state.setting.theme)
 
@@ -33,3 +44,5 @@ export default function ArticleCard(props) {
 		</div>
 	)
 }
+
+export default ArticleCard

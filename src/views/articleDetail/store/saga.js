@@ -3,6 +3,10 @@ import TYPE from '@/common/actionTypes'
 import * as articleApi from '@/apis/article'
 import { updateArticleDetail } from './action'
 
+/**
+ * 访问量记录增加
+ * @param {number} articleId
+ */
 function* increaseArticleViews(articleId) {
 	try {
 		const { views } = yield articleApi.increaseViews(articleId)

@@ -5,6 +5,14 @@ import * as settingApi from '@/apis/setting'
 import { mergeSetting } from './action'
 import i18n from '@/common/i18n'
 
+/**
+ * @param {{
+ *	theme: 'primary | success | error | warning',
+ *  lang: 'zh-CN | en-US',
+ *  useMarkdownGuide: boolean,
+ *  drawerDefaultOpened: boolean
+ * }} newSetting
+ */
 function* saveSetting(newSetting) {
 	try {
 		const { online } = yield select()
@@ -18,6 +26,14 @@ function* saveSetting(newSetting) {
 	}
 }
 
+/**
+ * @param {{
+ *	theme: 'primary | success | error | warning',
+ *  lang: 'zh-CN | en-US",
+ *  useMarkdownGuide: boolean,
+ *  drawerDefaultOpened: boolean
+ * }} setting
+ */
 function* changeLang(setting) {
 	const { setting: oldSetting } = yield select()
 	const lang = setting?.lang ? setting.lang : oldSetting.lang

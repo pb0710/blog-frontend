@@ -1,8 +1,16 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { debounce, getTargetElement, throttle } from './index'
 
 /**
- * @param {Boolean} initial 默认值
+ * @param {boolean} initial 默认值
+ * @returns {[
+ * 	boolean,
+ * 	{
+ * 		setTrue: () => void;
+ * 		setFalse: () => void;
+ * 		toggle: () => void;
+ * 	}
+ * ]}
  */
 export function useBoolean(initial) {
 	const [state, setState] = useState(initial)
@@ -20,7 +28,8 @@ export function useBoolean(initial) {
 
 /**
  * 获取最新引用
- * @param {*} state
+ * @param {any} state
+ * @returns {React.MutableRefObject<any>}
  */
 export function useLatestStateRef(state) {
 	const stateRef = useRef(state)
@@ -42,16 +51,17 @@ export function useUpdate() {
 /**
  * 异步请求hook
  * @param {Function} promisedFn 异步请求函数
- * @param {Object} options
- *  @param {*} initialData data 默认值
- *  @param {Boolean} defaultParams 如果 manual=false ，自动执行 run 的时候，默认带上的参数
- *  @param {Boolean} ready 只有当 ready 为 true 时，才会发起请求
- *  @param {Boolean} manual 默认 false。 即在初始化时自动执行 service。如果设置为 true，则需要手动调用 run 触发执行。
- *  @param {Array} refreshDeps 在 manual = false 时，refreshDeps 变化，会触发 service 重新执行
- *  @param {Number} loadingDelay 显示 loading 的延迟时间，避免闪烁
- *  @param {Function} onSuccess service resolve 时触发，参数为 data 和如果有 formatResult ，则 data 为格式化后数据。
- *  @param {Function} onError service 报错时触发，参数为 error。
- *  @param {Function} formatResult 格式化请求结果
+ * @param {{
+ * 	initialData: any,
+ * 	defaultParams: any[],
+ * 	ready: boolean,
+ * 	manual: boolean,
+ * 	refreshDeps: any[],
+ * 	loadingDelay: number,
+ * 	onSuccess(res: any): void,
+ * 	onError(err: any): void,
+ * 	formatResult(res: any): any,
+ * }} options
  */
 export function useFetch(promisedFn, options) {
 	const { manual = false, ready = true, loadingDelay = 0, refreshDeps = [] } = options
@@ -131,9 +141,10 @@ export function useFetch(promisedFn, options) {
 
 /**
  * 媒体查询
- * @param {String} query 查询语句
- * @param {Function} whenTrue 符合回调
- * @param {Function} whenFalse 不符合回调
+ * @param {string} query 查询语句
+ * @param {unknown} whenTrue 符合值
+ * @param {unknown} whenFalse 不符合值
+ * @returns {unknown}
  */
 export function useMediaQuery(query, whenTrue = true, whenFalse = false) {
 	if (typeof window === 'undefined' || typeof window.matchMedia === 'undefined') return whenFalse
@@ -154,7 +165,8 @@ export function useMediaQuery(query, whenTrue = true, whenFalse = false) {
 
 /**
  * 滚动到顶部
- * @param {Boolean} manual 是否手动触发
+ * @param {boolean} manual 是否手动触发
+ * @returns {{ run: () => void }}
  */
 export function useScrollToTop(manual) {
 	const run = useCallback(() => {
@@ -173,6 +185,7 @@ export function useScrollToTop(manual) {
 /**
  * 监听滚动
  * @param {HTMLElement}} target 目标元素
+ * @returns {{ left: number, top: number }}
  */
 export function useScroll(target, { throttleDuration = 0, debounceDuration = 0 } = {}) {
 	const [position, setPosition] = useState({

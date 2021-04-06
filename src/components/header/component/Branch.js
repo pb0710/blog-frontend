@@ -5,6 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useMediaQuery, useScrollToTop } from '@/utils/hooks'
 import { updateDrawer } from '@/components/sider/store/action'
 
+/**
+ * @param {{
+ *	to: string,
+ *	name: string
+ * }} props
+ * @returns
+ */
 function Branch(props) {
 	const { to = '', name = 'BLOG' } = props
 	const dispatch = useDispatch()

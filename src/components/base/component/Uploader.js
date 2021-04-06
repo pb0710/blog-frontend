@@ -9,9 +9,18 @@ const dataFormat = {
 	FORM_DATA: 'formdata'
 }
 
-function Uploader(props) {
+/**
+ * 文件上传
+ * 内置支持 formdata 和 base64 两种格式
+ * @param {{
+ *	children: JSX.Element,
+ *	format: 'base64 | formdata',
+ *	onChange: (result: any) => void
+ * }} props
+ * @returns
+ */
+function InternalUploader(props) {
 	const {
-		classes,
 		children = (
 			<Button.Icon>
 				<ImageOutlineIcon size={20} />
@@ -54,4 +63,5 @@ function Uploader(props) {
 	)
 }
 
+const Uploader = React.memo(InternalUploader)
 export default Uploader

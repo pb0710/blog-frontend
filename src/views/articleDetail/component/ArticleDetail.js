@@ -17,7 +17,18 @@ import config from '@/config'
 import clsx from 'clsx'
 import defaultAvatar from '@/assets/images/default_avatar.jpg'
 
-export default function ArticleDetail() {
+/**
+ * 文章详情展示页
+ * 主要信息包括：
+ * - 文章标题
+ * - 更新时间、访问量
+ * - 作者信息
+ * - 文章背景图
+ * - Markdown渲染
+ * - 评论区
+ * @returns {JSX.Element}
+ */
+function ArticleDetail() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()
 	const theme = useSelector(state => state.setting.theme)
@@ -135,3 +146,5 @@ export default function ArticleDetail() {
 		</FlexiblePage>
 	)
 }
+
+export default ArticleDetail

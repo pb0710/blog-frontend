@@ -2,9 +2,9 @@ import request from '@/utils/request'
 
 /**
  * 抓取文章列表
- * @param {String} category 分类 不传时获取全部类别
- * @param {Number} limit 返回结果数量
- * @param {String} sortBy 排序 type = 'popular'|'latest'|'random'
+ * @param {string} category 分类 不传时获取全部类别
+ * @param {number} limit 返回结果数量
+ * @param {string} sortBy 排序 type = 'popular'|'latest'|'random'
  */
 export const fetchList = ({ category, limit, sortBy = 'latest' }) =>
 	request({
@@ -14,7 +14,7 @@ export const fetchList = ({ category, limit, sortBy = 'latest' }) =>
 
 /**
  * 抓取文章详情
- * @param {String} articleId 文章ID
+ * @param {string} articleId 文章ID
  */
 export const fetchDetail = articleId =>
 	request({
@@ -24,8 +24,8 @@ export const fetchDetail = articleId =>
 
 /**
  * 添加文章
- * @param {String} userId 用户ID
- * @param {String} articleDetail 文章详情
+ * @param {string} userId 用户ID
+ * @param {string} articleDetail 文章详情
  */
 export const addArticle = (userId, articleDetail = {}) =>
 	request({
@@ -36,7 +36,7 @@ export const addArticle = (userId, articleDetail = {}) =>
 
 /**
  * 增加文章访问量
- * @param {String} articleId 文章ID
+ * @param {string} articleId 文章ID
  */
 export const increaseViews = articleId =>
 	request({
@@ -47,8 +47,8 @@ export const increaseViews = articleId =>
 
 /**
  * 点赞文章
- * @param {String} userId 用户ID
- * @param {String} articleId 文章ID
+ * @param {string} userId 用户ID
+ * @param {string} articleId 文章ID
  */
 export const like = (userId, articleId) =>
 	request({
@@ -59,8 +59,8 @@ export const like = (userId, articleId) =>
 
 /**
  * 取消点赞文章
- * @param {String} userId 用户ID
- * @param {String} articleId 文章ID
+ * @param {string} userId 用户ID
+ * @param {string} articleId 文章ID
  */
 export const dislike = (userId, articleId) =>
 	request({
@@ -71,7 +71,7 @@ export const dislike = (userId, articleId) =>
 
 /**
  * 发表评论
- * @param {String} articleId 文章ID
+ * @param {string} articleId 文章ID
  */
 export const comment = ({ userId, articleId, content }) =>
 	request({
@@ -82,7 +82,7 @@ export const comment = ({ userId, articleId, content }) =>
 
 /**
  * 获取该文章所有评论
- * @param {String} articleId 文章ID
+ * @param {string} articleId 文章ID
  */
 export const fetchReviewList = articleId =>
 	request({

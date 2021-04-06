@@ -10,14 +10,15 @@
 
 当前进度：约 `85%`。
 
-前端源码：[https://github.com/pb0710/blog-frontend](https://github.com/pb0710/blog-frontend)
-后端源码：[https://github.com/pb0710/blog-backend](https://github.com/pb0710/blog-backend)
+- 基础 UI 组件库源码：[https://github.com/pb0710/sylas-react-ui](https://github.com/pb0710/sylas-react-ui)
+- 前端源码：[https://github.com/pb0710/blog-frontend](https://github.com/pb0710/blog-frontend)
+- 后端源码：[https://github.com/pb0710/blog-backend](https://github.com/pb0710/blog-backend)
 
 支持功能：
 
 - 用户注册、登录 ✅
 - 用户个人资料、配置项 编辑、同步 ✅
-- markdown 文章展示 ✅
+- markdown 文章详情页 ✅
 - markdown 编辑器、文章发布 ✅
 - 用户详情页
 - 关于页 ✅

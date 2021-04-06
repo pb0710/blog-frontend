@@ -8,7 +8,7 @@ import ArticleList from './ArticleList'
 import { useTranslation } from 'react-i18next'
 import { useScrollToTop } from '@/utils/hooks'
 
-export default function Home() {
+function Home() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
 	useScrollToTop()
@@ -35,3 +35,5 @@ export default function Home() {
 		</FlexiblePage>
 	)
 }
+
+export default Home

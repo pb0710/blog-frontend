@@ -5,7 +5,26 @@ import style from '../style/index.module.scss'
 import dayjs from 'dayjs'
 import defaultAvatar from '@/assets/images/default_avatar.jpg'
 
-function Reviews(props) {
+/**
+ * 评论列表
+ * 支持回复
+ * @param {{
+ * 	sourceData: ({
+ * 		reviewId: number,
+ * 		content: string,
+ * 		creationTime: string,
+ * 		speaker: string
+ * 	})[],
+ * 	handleQuote: (info: {
+ * 		reviewId: number,
+ * 		content: string,
+ * 		creationTime: string,
+ * 		speaker: string
+ * 	}) => void
+ * }} props
+ * @returns {JSX.Element}
+ */
+function InternalReviews(props) {
 	const { sourceData = [], handleQuote } = props
 	const { t } = useTranslation()
 	return (
@@ -38,5 +57,5 @@ function Reviews(props) {
 		</div>
 	)
 }
-
-export default React.memo(Reviews)
+const Reviews = React.memo(InternalReviews)
+export default Reviews

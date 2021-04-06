@@ -47,7 +47,11 @@ const content = `
 - mysql
 `
 
-export default function About() {
+/**
+ * 用 markdown 渲染，方便后续修改。并且可以和 README.md 同步。
+ * @returns {JSX.Element}
+ */
+function About() {
 	useScrollToTop()
 	return (
 		<FlexiblePage className={style.about_page}>
@@ -57,3 +61,5 @@ export default function About() {
 		</FlexiblePage>
 	)
 }
+
+export default About

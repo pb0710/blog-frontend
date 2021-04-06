@@ -10,7 +10,11 @@ import { AspectRatio } from 'sylas-react-ui'
 import clsx from 'clsx'
 import config from '@/config'
 
-export default function ArticleCards() {
+/**
+ * 文章卡片列表
+ * @returns {JSX.Element}
+ */
+function ArticleCards() {
 	const { category } = useParams()
 	const { data, loading } = useFetch(async () => articleApi.fetchList({ category }), {
 		initialData: [],
@@ -53,3 +57,5 @@ export default function ArticleCards() {
 
 	return <FlexiblePage className={pageCls}>{loading ? skeletonElement : cardsElement}</FlexiblePage>
 }
+
+export default ArticleCards

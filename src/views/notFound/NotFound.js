@@ -6,6 +6,13 @@ import { FullScreenPage } from '@/components/page'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+/**
+ * 404 页面。
+ * 提供两个重定向选项：
+ * 1.返回首页
+ * 2.退回上一个页面
+ * @returns {JSX.Element}
+ */
 export default function NotFound() {
 	const history = useHistory()
 	const theme = useSelector(state => state.setting.theme)

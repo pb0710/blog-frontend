@@ -17,6 +17,18 @@ import { saveSetting } from '../store/action'
 import { useTranslation } from 'react-i18next'
 import { useScrollToTop } from '@/utils/hooks'
 
+/**
+ * 用户设置。
+ * 分为两个表单：
+ * 1.用户个人资料；
+ * 2.系统设置；
+ * 系统设置表单包括如下几部分（TODO:目前比较简陋，仅有几个关键的可配置项）：
+ * - 用户个人信息
+ * - UI
+ * - 编辑器设置
+ * - 国际化
+ * @returns {JSX.Element}
+ */
 function Setting() {
 	const { t } = useTranslation()
 	const dispatch = useDispatch()

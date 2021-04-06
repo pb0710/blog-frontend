@@ -8,6 +8,17 @@ import * as commonApi from '@/apis'
 import config from '@/config'
 import { useTranslation } from 'react-i18next'
 
+/**
+ * 导航卡片
+ * 主要用于一些外链展示
+ * @param {{
+ * 	title: string,
+ * 	url: string,
+ * 	pic: string,
+ * 	hide: boolean
+ * }} props
+ * @returns
+ */
 function LinkCard({ title, url, pic, hide }) {
 	const [rippleRef, controlProps] = TouchRipple.useRipple()
 	const handleOpen = () => {

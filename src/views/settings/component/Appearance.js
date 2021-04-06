@@ -5,6 +5,10 @@ import { Select } from 'sylas-react-ui'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 
+/**
+ * UI设置
+ * @returns {JSX.Element}
+ */
 function Appearance() {
 	const { t } = useTranslation()
 	const theme = useSelector(state => state.setting.theme)
